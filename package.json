@@ -1,0 +1,26 @@
+{
+  "name": "gevorkyan-gevork-js-21-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "npm run editorconfig && npm run stylelint",
+    "stylelint": "stylelint \"src/scss/**/*.scss\" --syntax scss --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanteStrike/gevorkyan-gevork-js-21-02.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanteStrike/gevorkyan-gevork-js-21-02/issues"
+  },
+  "homepage": "https://github.com/DanteStrike/gevorkyan-gevork-js-21-02#readme",
+  "devDependencies": {
+    "stylelint": "13.13.1",
+    "stylelint-config-htmlacademy": "0.1.10",
+    "stylelint-config-recess-order": "2.5.0",
+    "stylelint-order": "4.1.0"
+  }
+}
