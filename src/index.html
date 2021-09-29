@@ -1,10 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Интернет-магазин "Не только красивое"</title>
+  </head>
+  <body class="catalog">
 
-</body>
+    <header class="header">
+      <a class="header__title">Интернет-магазин "Не только красивое"</a>
+    </header>
+
+    <main class="main">
+      <h1 class="main__title">Каталог</h1>
+
+      <aside class="filters">
+        <h2 class="filters__name">Фильтры</h2>
+        <form class="filters__form" method="get" action="">
+          <fieldset class="filter filters__filter">
+            <legend class="filter__title">Морская рыба</legend>
+            <ul class="filter__items">
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="shark" value="0" name="sea-fish">
+                <label class="filter__item-name" for="shark">Акула</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="perch" value="1" name="sea-fish">
+                <label class="filter__item-name" for="perch">Окунь</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="halibut" value="2" name="sea-fish">
+                <label class="filter__item-name" for="halibut">Палтус</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="сod" value="3" name="sea-fish">
+                <label class="filter__item-name" for="сod">Треска</label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="filter filters__filter">
+            <legend class="filter__title">Пресноводная рыба</legend>
+            <ul class="filter__items">
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="white-eye" value="0" name="freshwater-fish">
+                <label class="filter__item-name" for="white-eye">Белоглазка</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="sturgeon" value="1" name="freshwater-fish">
+                <label class="filter__item-name" for="sturgeon">Осётр</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="river-eel" value="2" name="freshwater-fish">
+                <label class="filter__item-name" for="river-eel">Речной угорь</label>
+              </li>
+              <li class="filter__item">
+                <input class="filter__item-checkbox" type="checkbox" id="burbot" value="3" name="freshwater-fish">
+                <label class="filter__item-name" for="burbot">Налим</label>
+              </li>
+            </ul>
+          </fieldset>
+          <button class="filters__button" type="submit">Отфильтровать</button>
+        </form>
+      </aside>
+
+      <section class="promo">
+        <h2 class="promo__title">Рыба на любой вкус</h2>
+        <p class="promo__tagline">Мы продаем рыбов, а не только показываем</p>
+        <div class="promo__wrap">
+          <article class=""></article>
+        </div>
+      </section>
+
+      <section class="populars">
+        <h2 class="populars__title">Популярные</h2>
+        <div class="populars__products">
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Палтус</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Сёмга</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Сом</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Мойва</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Сельдь</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+          <article class="product populars__product">
+            <img class="product__img" src="https://via.placeholder.com/75" width="75" height="75" alt="fish-picture">
+            <h3 class="product__title">
+              <a class="product__link" href="#">Тунец</a>
+            </h3>
+            <button class="product__buy" type="button">Купить</button>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <a class="footer__contacts">Контакты</a>
+      <p class="footer__copyright">&copy; 2021 ИП Рыбов О.А.</p>
+    </footer>
+  </body>
 </html>
