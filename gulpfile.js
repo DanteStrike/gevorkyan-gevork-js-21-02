@@ -11,6 +11,7 @@ const del = require('del');
 
 //  SCSS
 const scss = require('gulp-sass')(require('sass'));
+const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
 //  SERVER
@@ -58,6 +59,7 @@ function buildStyles(cb) {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(scss({includePaths: ['node_modules/normalize.css']}).on('error', scss.logError))
+    .pipe(autoprefixer())
     .pipe(cleanCSS({compatibility: 'ie11'}))
     .pipe(rename("style.min.css"))
     .pipe(sourcemaps.write())
