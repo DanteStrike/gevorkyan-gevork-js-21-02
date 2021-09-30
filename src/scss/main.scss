@@ -1,6 +1,11 @@
 //noinspection CssUnknownTarget
 @import "normalize";
-// main
+//  main
 @import "mixin";
 @import "global";
-
+//  base
+@import "promo-page";
+@import "header";
+@import "promo";
+@import "filters";
+@import "footer";
