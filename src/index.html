@@ -6,78 +6,76 @@
     <link href="assets/css/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
   </head>
-  <body class="catalog">
+  <body class="promo-page">
 
     <header class="header">
       <a class="header__title">Интернет-магазин "Не только красивое"</a>
     </header>
 
-    <main class="main">
-      <h1 class="main__title">Каталог</h1>
+    <aside class="filters">
+      <h2 class="filters__name">Фильтры</h2>
+      <form class="filters__form" method="get" action="">
+        <fieldset class="filter filters__filter">
+          <legend class="filter__title">Морская рыба</legend>
+          <ul class="filter__items">
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="shark" value="0" name="sea-fish">
+              <label class="filter__item-name" for="shark">Акула</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="perch" value="1" name="sea-fish">
+              <label class="filter__item-name" for="perch">Окунь</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="halibut" value="2" name="sea-fish">
+              <label class="filter__item-name" for="halibut">Палтус</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="сod" value="3" name="sea-fish">
+              <label class="filter__item-name" for="сod">Треска</label>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="filter filters__filter">
+          <legend class="filter__title">Пресноводная рыба</legend>
+          <ul class="filter__items">
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="white-eye" value="0" name="freshwater-fish">
+              <label class="filter__item-name" for="white-eye">Белоглазка</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="sturgeon" value="1" name="freshwater-fish">
+              <label class="filter__item-name" for="sturgeon">Осётр</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="river-eel" value="2" name="freshwater-fish">
+              <label class="filter__item-name" for="river-eel">Речной угорь</label>
+            </li>
+            <li class="filter__item">
+              <input class="filter__item-checkbox" type="checkbox" id="burbot" value="3" name="freshwater-fish">
+              <label class="filter__item-name" for="burbot">Налим</label>
+            </li>
+          </ul>
+        </fieldset>
+        <button class="filters__button" type="submit">Отфильтровать</button>
+      </form>
+    </aside>
 
-      <aside class="filters">
-        <h2 class="filters__name">Фильтры</h2>
-        <form class="filters__form" method="get" action="">
-          <fieldset class="filter filters__filter">
-            <legend class="filter__title">Морская рыба</legend>
-            <ul class="filter__items">
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="shark" value="0" name="sea-fish">
-                <label class="filter__item-name" for="shark">Акула</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="perch" value="1" name="sea-fish">
-                <label class="filter__item-name" for="perch">Окунь</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="halibut" value="2" name="sea-fish">
-                <label class="filter__item-name" for="halibut">Палтус</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="сod" value="3" name="sea-fish">
-                <label class="filter__item-name" for="сod">Треска</label>
-              </li>
-            </ul>
-          </fieldset>
-          <fieldset class="filter filters__filter">
-            <legend class="filter__title">Пресноводная рыба</legend>
-            <ul class="filter__items">
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="white-eye" value="0" name="freshwater-fish">
-                <label class="filter__item-name" for="white-eye">Белоглазка</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="sturgeon" value="1" name="freshwater-fish">
-                <label class="filter__item-name" for="sturgeon">Осётр</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="river-eel" value="2" name="freshwater-fish">
-                <label class="filter__item-name" for="river-eel">Речной угорь</label>
-              </li>
-              <li class="filter__item">
-                <input class="filter__item-checkbox" type="checkbox" id="burbot" value="3" name="freshwater-fish">
-                <label class="filter__item-name" for="burbot">Налим</label>
-              </li>
-            </ul>
-          </fieldset>
-          <button class="filters__button" type="submit">Отфильтровать</button>
-        </form>
-      </aside>
-
-      <section class="promo">
-        <h2 class="promo__title">Рыба на любой вкус</h2>
-        <p class="promo__tagline">Мы продаем рыбов, а не только показываем</p>
-        <div class="promo__advantages">
+    <main class="promo">
+      <section class="advantages">
+        <h1 class="advantages__title">Рыба на любой вкус</h1>
+        <p class="advantages__tagline">Мы продаем рыбов, а не только показываем</p>
+        <div class="advantages__list">
           <article class="advantage">
-            <h3 class="advantage__title">
+            <h2 class="advantage__title">
               <a class="advantage__link">Замороженные рыбы</a>
-            </h3>
+            </h2>
             <p class="advantage__tagline">Мы заморозили рыбов для вас</p>
           </article>
           <article class="advantage">
-            <h3 class="advantage__title">
+            <h2 class="advantage__title">
               <a class="advantage__link">Живые рыбы</a>
-            </h3>
+            </h2>
             <p class="advantage__tagline">На кухню или разведение</p>
           </article>
         </div>
@@ -130,7 +128,6 @@
           </article>
         </div>
       </section>
-
     </main>
 
     <footer class="footer">
