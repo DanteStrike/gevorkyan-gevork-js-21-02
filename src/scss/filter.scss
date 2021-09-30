@@ -29,11 +29,7 @@
   align-items: center;
   width: 100%;
   padding: 0;
-  margin: 0;
-}
-
-.filter__item:not(:nth-last-child) {
-  margin-bottom: 8px;
+  margin: 0 0 8px 0;
 }
 
 .filter__item-checkbox {
