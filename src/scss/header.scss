@@ -17,6 +17,10 @@
   text-decoration: none;
 }
 
+.header--theme_dark {
+  background-color: rgb(30, 30, 30);
+}
+
 @media (max-width: 760px) {
   .header {
     display: flex;

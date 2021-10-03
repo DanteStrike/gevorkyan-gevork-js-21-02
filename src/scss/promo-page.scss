@@ -23,6 +23,10 @@
   grid-area: footer;
 }
 
+.promo-page--theme_dark {
+  background-color: rgb(54, 54, 54);
+}
+
 @media (max-width: 520px) {
   .promo-page {
     grid-template-areas: "header" "main" "footer";

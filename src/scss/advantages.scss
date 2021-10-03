@@ -27,6 +27,11 @@
   justify-content: space-between;
 }
 
+.advantages__title--theme_dark,
+.advantages__tagline--theme_dark {
+  color: rgb(230, 230, 230);
+}
+
 @media (max-width: 980px) {
   .advantages__tagline {
     margin-bottom: 30px;
