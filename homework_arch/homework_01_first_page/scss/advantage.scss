@@ -1,0 +1,36 @@
+.advantage {
+  width: 435px;
+  min-height: 90px;
+  padding: 20px 15px 5px 15px;
+  background-color: rgb(242, 242, 242);
+}
+
+.advantage__title {
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+.advantage__link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(0, 153, 201);
+  text-decoration: underline;
+}
+
+.advantage__tagline {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(102, 102, 102);
+}

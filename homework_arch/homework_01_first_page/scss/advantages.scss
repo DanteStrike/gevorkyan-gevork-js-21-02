@@ -1,0 +1,29 @@
+.advantages__title {
+  padding: 0 0 0 16px;
+  margin: 0 0 6px 0;
+
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(0, 0, 0);
+}
+
+.advantages__tagline {
+  padding: 0 0 0 16px;
+  margin: 0 0 50px 0;
+
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.advantages__list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
