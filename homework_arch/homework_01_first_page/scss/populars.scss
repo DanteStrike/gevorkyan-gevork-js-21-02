@@ -1,0 +1,31 @@
+.populars {
+  width: 100%;
+}
+
+.populars__title {
+  padding: 0 0 0 16px;
+  margin: 0 0 30px 0;
+
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(0, 0, 0);
+}
+
+.populars__products {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.populars__products .populars__product {
+  margin-bottom: 15px;
+}
+
+.populars__products .populars__product:not(:nth-child(3n)) {
+  margin-right: 15px;
+}

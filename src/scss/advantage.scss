@@ -1,7 +1,7 @@
 .advantage {
-  width: 435px;
+  width: 47%;
   min-height: 90px;
-  padding: 20px 15px 5px 15px;
+  padding: 20px 15px;
   background-color: rgb(242, 242, 242);
 }
 
@@ -11,8 +11,6 @@
 }
 
 .advantage__link {
-  display: block;
-  width: 100%;
   padding: 0;
   margin: 0;
   font-family: "Roboto", "Arial", sans-serif;
@@ -33,4 +31,14 @@
   font-weight: 400;
   line-height: 1.2;
   color: rgb(102, 102, 102);
+}
+
+.advantage--theme_dark {
+  background-color: rgb(30, 30, 30);
+}
+
+@media (max-width: 760px) {
+  .advantage {
+    width: 100%;
+  }
 }
