@@ -1,0 +1,50 @@
+.filter {
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+.filter__title {
+  display: block;
+  padding: 0;
+  margin: 0 0 5px 0;
+
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgb(0, 0, 0);
+}
+
+.filter__items {
+  padding: 0 0 0 20px;
+  margin: 0;
+  list-style: none;
+}
+
+.filter__item {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 0 8px 0;
+}
+
+.filter__item-checkbox {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0 10px 0 0;
+
+  cursor: pointer;
+}
+
+.filter__item-name {
+  padding-bottom: 1px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(0, 0, 0);
+}
