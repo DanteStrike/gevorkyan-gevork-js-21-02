@@ -15,7 +15,7 @@
 
       <ul class="tasks__list">
         <li class="tasks__item">
-          <article class="task task--id_1">
+          <article class="task">
             <h2 class="task__title">Задача #1</h2>
             <p class="task__desc">Написать скрипт, предлогающий пользователю ввести две строки через запятую.
               Вывести сообщение true, если вторая строка содержится в первый, в противном случае false,
@@ -44,6 +44,28 @@
         </li>
 
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #2</h2>
+            <p class="task__desc">Пользователь вводит строку, затем число (кол-во символов).
+              Функция усекает строку до кол-ва символов и добавляет многоточие.
+              Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
+            <form class="task__work-area" method="get" action="#" id="t2-form">
+              <label class="task__area-name" for="t1-input">
+                Входная строка (*):
+                <input class="task__text-area" id="t2-input-str" type="text" minlength="1" required>
+              </label>
+              <label class="task__area-name" for="t2-input-amount">
+                Кол-во символов (*):
+                <input class="task__text-area" id="t2-input-amount" type="number" min="0" required>
+              </label>
+              <button class="task__start" type="button" form="t2-form">Выполнить</button>
+              <p class="task__err"></p>
+              <label class="task__area-name" for="t2-result">
+                Результат:
+                <textarea class="task__text-area task__text-area--type_result" id="t2-result" readonly></textarea>
+              </label>
+            </form>
+          </article>
         </li>
         <li class="tasks__item">
         </li>
