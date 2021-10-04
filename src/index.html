@@ -89,15 +89,99 @@
             </form>
           </article>
         </li>
+
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #4</h2>
+            <p class="task__desc">Написать функцию, валидирующую ФИО из кирилличиских символов
+              (считать, что отчество может оканчиваться только на "вна" или "вич" или может отсутствовать)
+              Для запуска заполните объязательные поля (*) и нажмите "Проверить ФИО"</p>
+            <form class="task__work-area" method="get" action="#" id="t4-form">
+              <label class="area-name" for="t4-input-full-name">
+                ФИО (*):
+                <input class="input-area task__input-area" id="t4-input-full-name" type="text">
+              </label>
+              <button class="start-button task__start-button" type="button" form="t4-form">Проверить ФИО</button>
+              <label class="area-name" for="t4-output-result">
+                Результат:
+                <textarea class="text-area text-area--type_result task__text-area" id="t4-output-result" readonly></textarea>
+              </label>
+            </form>
+          </article>
         </li>
+
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #5</h2>
+            <p class="task__desc">На вход дана строка в CamelCase, преобразовать строку в snake_case.
+              Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
+            <form class="task__work-area" method="get" action="#" id="t5-form">
+              <label class="area-name" for="t5-input-camel-case">
+                Строка в CamelCase 'GetUserID' (*):
+                <input class="input-area task__input-area" id="t5-input-camel-case" type="text"
+                       pattern="^[A-Z][a-zA-Z]*$"
+                       required>
+              </label>
+              <button class="start-button task__start-button" type="button" form="t5-form">Выполнить</button>
+              <label class="area-name" for="t5-output-result">
+                Результат snake_case:
+                <textarea class="text-area text-area--type_result text-area--underline_false task__text-area" id="t5-output-result" readonly></textarea>
+              </label>
+            </form>
+          </article>
         </li>
+
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #6</h2>
+            <p class="task__desc">На вход даётся многострочная строка, найти и вернуть через alert все html комментарии.
+              Для запуска заполните объязательные поля (*) и нажмите "Найти"</p>
+            <form class="task__work-area" method="get" action="#" id="t6-form">
+              <label class="area-name" for="t6-input-date">
+                Многострочная строка (*):
+                <textarea class="text-area text-area--type_big text-area--underline_false task__text-area" id="t6-input-date" type="text" required></textarea>
+              </label>
+              <button class="start-button task__start-button" type="button" form="t6-form">Найти</button>
+              <label class="area-name" for="t6-output-result">
+                Результат:
+                <textarea class="text-area text-area--type_result text-area--type_big text-area--underline_false task__text-area" id="t6-output-result" readonly></textarea>
+              </label>
+            </form>
+          </article>
         </li>
+
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #7</h2>
+            <p class="task__desc">На вход дана строка, вернуть через alert все числа (десятичные разделяются сиволом ".").
+              Для запуска заполните объязательные поля (*) и нажмите "Найти"</p>
+            <form class="task__work-area" method="get" action="#" id="t7-form">
+              <label class="area-name" for="t7-input-date">
+                Многострочная строка (*):
+                <textarea class="text-area text-area--type_big text-area--underline_false task__text-area" id="t7-input-date" type="text" required></textarea>
+              </label>
+              <button class="start-button task__start-button" type="button" form="t7-form">Найти</button>
+              <label class="area-name" for="t7-output-result">
+                Результат:
+                <textarea class="text-area text-area--type_result text-area--type_big text-area--underline_false task__text-area" id="t7-output-result" readonly></textarea>
+              </label>
+            </form>
+          </article>
         </li>
+
         <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #8</h2>
+            <p class="task__desc">Валидация введённого значения. Вводится идентификатор документа.
+              Идентификатор должен состоять из четырёх частей по четыре символа,разделённых или
+              не разделённых знаком "-". Допускаются только символы латинского алфавита и числа.
+              Вывести через alert "ведётся поиск", при соответствии введённого значения, или "неверный илентификатор",
+              при несоответствии. При несоответствии снова вывести форму для ввода строки.
+              Для запуска нажмите "Старт"</p>
+            <button class="start-button task__start-button" type="button">Старт</button>
+            <form class="task__work-area task__work-area--disabled" method="get" action="#">
+            </form>
+          </article>
         </li>
       </ul>
     </main>

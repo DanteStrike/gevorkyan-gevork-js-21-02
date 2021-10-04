@@ -11,6 +11,10 @@
   border: 1px dotted rgb(0, 0, 0);
 }
 
+.task__work-area--disabled {
+  display: none;
+}
+
 .task__text-area {
   margin: 5px 0;
 }
