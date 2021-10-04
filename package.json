@@ -4,8 +4,10 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "jest",
+    "test": "npm run stylelint && npm run eslint && npm run jest",
     "stylelint": "stylelint \"src/scss/**/*.scss\" --syntax scss --fix",
+    "eslint": "eslint ./src/js/**/*.js --fix",
+    "jest": "jest",
     "start": "gulp clean && gulp start"
   },
   "repository": {
@@ -28,6 +30,8 @@
     "browser-sync": "2.27.5",
     "browserify": "17.0.0",
     "del": "6.0.0",
+    "eslint": "7.32.0",
+    "eslint-config-htmlacademy": "4.1.0",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "8.0.0",
     "gulp-clean-css": "4.3.0",
