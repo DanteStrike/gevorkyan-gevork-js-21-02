@@ -1,5 +1,5 @@
-.task__start {
-  margin-bottom: 15px;
+.task__start-button {
+  margin: 10px auto 15px auto;
 }
 
 .task__work-area {
@@ -11,29 +11,7 @@
   border: 1px dotted rgb(0, 0, 0);
 }
 
-.task__area-name {
-  padding: 5px;
-}
-
-.task__err {
-  width: 100%;
-  height: 20px;
-  padding: 0;
-  margin: 0;
-  color: rgb(212, 12, 12);
-  text-align: center;
-}
-
 .task__text-area {
-  display: block;
-  width: 100%;
-  height: 32px;
-  padding: 5px;
   margin: 5px 0;
-  text-decoration: underline;
-  resize: none;
 }
 
-.task__text-area--type_result {
-  color: rgb(0, 89, 255);
-}

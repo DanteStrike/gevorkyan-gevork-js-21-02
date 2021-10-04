@@ -3,10 +3,10 @@ import truncateByDots from "../utils/truncate-by-dots/truncate-by-dots";
 const init = (taskNode) => {
   const task = {
     validationForm: taskNode.querySelector(`#t2-form`),
-    startButton: taskNode.querySelector(`.task__start`),
-    inputBaseStr: taskNode.querySelector(`#t2-input-str`),
+    inputBaseStr: taskNode.querySelector(`#t2-input-base-str`),
     inputAmount: taskNode.querySelector(`#t2-input-amount`),
-    resultTextArea: taskNode.querySelector(`#t2-result`),
+    startButton: taskNode.querySelector(`.start-button`),
+    resultTextArea: taskNode.querySelector(`#t2-output-result`),
 
     onStartButtonClick() {
       this.resultTextArea.value = ``;

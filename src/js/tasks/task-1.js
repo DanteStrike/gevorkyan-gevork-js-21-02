@@ -2,27 +2,27 @@ import verifyIsContaining from "../utils/verify-is-containing/verify-is-containi
 
 const init = (taskNode) => {
   const task = {
-    startButton: taskNode.querySelector(`.task__start`),
-    inputTextArea: taskNode.querySelector(`#t1-input`),
-    errMsg: taskNode.querySelector(`.task__err`),
-    firstStrTextArea: taskNode.querySelector(`#t1-string-1`),
-    secondStrTextArea: taskNode.querySelector(`#t1-string-2`),
-    resultTextArea: taskNode.querySelector(`#t1-result`),
+    startButton: taskNode.querySelector(`.start-button`),
+    inputTextArea: taskNode.querySelector(`#t1-output-promt`),
+    errMsg: taskNode.querySelector(`.err`),
+    firstStrTextArea: taskNode.querySelector(`#t1-output-str1`),
+    secondStrTextArea: taskNode.querySelector(`#t1-output-str2`),
+    resultTextArea: taskNode.querySelector(`#t1-output-result`),
 
     onStartButtonClick() {
       const userString = prompt(`Введите две строки через запятую`);
-
-      if (userString === null) {
-        this.errMsg.textContent = `Rejected by user`;
-
-        return;
-      }
 
       this.inputTextArea.value = userString;
       this.errMsg.textContent = ``;
       this.firstStrTextArea.value = ``;
       this.secondStrTextArea.value = ``;
       this.resultTextArea.value = ``;
+
+      if (userString === null) {
+        this.errMsg.textContent = `Rejected by user`;
+
+        return;
+      }
 
       try {
         const output = verifyIsContaining(userString);

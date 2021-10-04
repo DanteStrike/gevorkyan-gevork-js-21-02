@@ -20,24 +20,24 @@
             <p class="task__desc">Написать скрипт, предлогающий пользователю ввести две строки через запятую.
               Вывести сообщение true, если вторая строка содержится в первый, в противном случае false,
               регистр при проверке не учитывать. Для запуска нажмите "Старт"</p>
-            <button class="task__start" type="button">Старт</button>
+            <button class="start-button task__start-button" type="button">Старт</button>
             <form class="task__work-area" method="get" action="#">
-              <label class="task__area-name" for="t1-input">
+              <label class="area-name" for="t1-output-promt">
                 Входные данные:
-                <textarea class="task__text-area" id="t1-input" readonly></textarea>
+                <textarea class="text-area task__text-area" id="t1-output-promt" readonly></textarea>
               </label>
-              <p class="task__err"></p>
-              <label class="task__area-name" for="t1-string-1">
+              <p class="err"></p>
+              <label class="area-name" for="t1-output-str1">
                 Первая строка:
-                <textarea class="task__text-area" id="t1-string-1" readonly></textarea>
+                <textarea class="text-area task__text-area" id="t1-output-str1" readonly></textarea>
               </label>
-              <label class="task__area-name" for="t1-string-2">
+              <label class="area-name" for="t1-output-str2">
                 Вторая строка:
-                <textarea class="task__text-area" id="t1-string-2" readonly></textarea>
+                <textarea class="text-area task__text-area" id="t1-output-str2" readonly></textarea>
               </label>
-              <label class="task__area-name" for="t1-result">
+              <label class="area-name" for="t1-output-result">
                 Результат:
-                <textarea class="task__text-area task__text-area--type_result" id="t1-result" readonly></textarea>
+                <textarea class="text-area text-area--type_result task__text-area" id="t1-output-result" readonly></textarea>
               </label>
             </form>
           </article>
@@ -50,19 +50,18 @@
               Функция усекает строку до кол-ва символов и добавляет многоточие.
               Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
             <form class="task__work-area" method="get" action="#" id="t2-form">
-              <label class="task__area-name" for="t1-input">
+              <label class="area-name" for="t2-input-base-str">
                 Входная строка (*):
-                <input class="task__text-area" id="t2-input-str" type="text" minlength="1" required>
+                <input class="input-area task__input-area" id="t2-input-base-str" type="text" minlength="1" required>
               </label>
-              <label class="task__area-name" for="t2-input-amount">
+              <label class="area-name" for="t2-input-amount">
                 Кол-во символов (*):
-                <input class="task__text-area" id="t2-input-amount" type="number" min="0" required>
+                <input class="input-area" id="t2-input-amount" type="number" min="0" required>
               </label>
-              <button class="task__start" type="button" form="t2-form">Выполнить</button>
-              <p class="task__err"></p>
-              <label class="task__area-name" for="t2-result">
+              <button class="start-button task__start-button" type="button" form="t2-form">Выполнить</button>
+              <label class="area-name" for="t2-output-result">
                 Результат:
-                <textarea class="task__text-area task__text-area--type_result" id="t2-result" readonly></textarea>
+                <textarea class="text-area text-area--type_result task__text-area" id="t2-output-result" readonly></textarea>
               </label>
             </form>
           </article>

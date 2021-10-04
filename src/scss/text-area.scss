@@ -1,0 +1,12 @@
+.text-area {
+  display: block;
+  width: 100%;
+  height: 32px;
+  padding: 5px;
+  text-decoration: underline;
+  resize: none;
+}
+
+.text-area--type_result {
+  color: rgb(0, 89, 255);
+}
