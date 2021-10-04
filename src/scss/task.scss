@@ -15,11 +15,21 @@
   padding: 5px;
 }
 
+.task__err {
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  color: rgb(212, 12, 12);
+  text-align: center;
+}
+
 .task__text-area {
   display: block;
   width: 100%;
-  height: 65px;
+  height: 32px;
   padding: 5px;
   margin: 5px 0;
+  text-decoration: underline;
   resize: none;
 }

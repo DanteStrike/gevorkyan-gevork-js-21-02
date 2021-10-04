@@ -19,9 +19,14 @@
             <h2 class="task__title">Задача #1</h2>
             <p class="task__desc">Написать скрипт, предлогающий пользователю ввести две строки через запятую.
               Вывести сообщение true, если вторая строка содержится в первый, в противном случае false,
-              регистр при проверке не учитывать.</p>
+              регистр при проверке не учитывать. Для запуска нажмите "Старт"</p>
             <button class="task__start" type="button">Старт</button>
             <form class="task__work-area" method="get" action="#">
+              <label class="task__area-name" for="t1-input">
+                Входные данные:
+                <textarea class="task__text-area" id="t1-input" readonly></textarea>
+              </label>
+              <p class="task__err"></p>
               <label class="task__area-name" for="t1-string-1">
                 Первая строка:
                 <textarea class="task__text-area" id="t1-string-1" readonly></textarea>

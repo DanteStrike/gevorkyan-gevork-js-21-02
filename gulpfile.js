@@ -1,31 +1,31 @@
-'use strict';
+
 
 //  Main
-const gulp = require('gulp');
-const plumber = require('gulp-plumber');
-const sourcemaps = require('gulp-sourcemaps');
+const gulp = require(`gulp`);
+const plumber = require(`gulp-plumber`);
+const sourcemaps = require(`gulp-sourcemaps`);
 
 //  Filesystem
-const rename = require('gulp-rename');
-const del = require('del');
+const rename = require(`gulp-rename`);
+const del = require(`del`);
 
 //  SCSS
-const scss = require('gulp-sass')(require('sass'));
-const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+const scss = require(`gulp-sass`)(require(`sass`));
+const autoprefixer = require(`gulp-autoprefixer`);
+const cleanCSS = require(`gulp-clean-css`);
 
 //  JS
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
-const buffer = require('vinyl-buffer');
-const log = require('gulplog');
-const uglify = require('gulp-uglify');
+const browserify = require(`browserify`);
+const source = require(`vinyl-source-stream`);
+const buffer = require(`vinyl-buffer`);
+const log = require(`gulplog`);
+const uglify = require(`gulp-uglify`);
 
 //  SERVER
-const browserSync = require('browser-sync').create();
+const browserSync = require(`browser-sync`).create();
 const liveServerConfig = {
   server: {
-    baseDir: './build'
+    baseDir: `./build`
   },
   tunnel: false,
   host: `localhost`,
@@ -37,19 +37,19 @@ const liveServerConfig = {
 //  PATHS
 const paths = {
   src: {
-    scssMain: 'src/scss/main.scss',
-    scss: 'src/scss/**/*.scss',
-    jsMain: 'src/js/index.js',
-    js: 'src/js/**/*.js',
-    jsTests: 'src/js/**/*.test.js',
-    htmlMain: 'src/index.html',
-    html: 'src/*.html'
+    scssMain: `src/scss/main.scss`,
+    scss: `src/scss/**/*.scss`,
+    jsMain: `src/js/index.js`,
+    js: `src/js/**/*.js`,
+    jsTests: `src/js/**/*.test.js`,
+    htmlMain: `src/index.html`,
+    html: `src/*.html`
   },
   dest: {
-    base: 'build/',
-    css: 'build/assets/css/',
-    js: 'build/assets/js/',
-    html: 'build/'
+    base: `build/`,
+    css: `build/assets/css/`,
+    js: `build/assets/js/`,
+    html: `build/`
   }
 };
 
@@ -69,10 +69,10 @@ function buildStyles(cb) {
   gulp.src(paths.src.scssMain)
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(scss({includePaths: ['node_modules/normalize.css']}).on('error', scss.logError))
+    .pipe(scss({includePaths: [`node_modules/normalize.css`]}).on(`error`, scss.logError))
     .pipe(autoprefixer())
-    .pipe(cleanCSS({compatibility: 'ie11'}))
-    .pipe(rename("style.min.css"))
+    .pipe(cleanCSS({compatibility: `ie11`}))
+    .pipe(rename(`style.min.css`))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dest.css))
     .pipe(browserSync.stream());
@@ -82,16 +82,16 @@ function buildStyles(cb) {
 function buildJS(cb) {
   const b = browserify({
     entries: paths.src.jsMain,
-    transform: ['babelify'],
+    transform: [`babelify`],
     debug: true
   });
 
   b.bundle()
-    .pipe(source('bundle.js'))
+    .pipe(source(`bundle.js`))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(uglify())
-      .on('error', log.error)
+      .on(`error`, log.error)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dest.js))
     .pipe(browserSync.stream());
@@ -103,7 +103,7 @@ function startLiveServer(cb) {
   cb();
 }
 
-function watch (cb) {
+function watch(cb) {
   gulp.watch(paths.src.html, copy);
   gulp.watch(paths.src.scss, buildStyles);
   gulp.watch([paths.src.js, `!${paths.src.jsTests}`], buildJS);
