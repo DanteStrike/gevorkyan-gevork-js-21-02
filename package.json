@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "npm run stylelint",
+    "test": "jest",
     "stylelint": "stylelint \"src/scss/**/*.scss\" --syntax scss --fix",
     "start": "gulp clean && gulp start"
   },
@@ -19,7 +19,14 @@
   },
   "homepage": "https://github.com/DanteStrike/gevorkyan-gevork-js-21-02#readme",
   "devDependencies": {
+    "@babel/cli": "7.15.7",
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
+    "@types/jest": "27.0.2",
+    "babel-jest": "27.2.4",
+    "babelify": "10.0.0",
     "browser-sync": "2.27.5",
+    "browserify": "17.0.0",
     "del": "6.0.0",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "8.0.0",
@@ -28,11 +35,16 @@
     "gulp-rename": "2.0.0",
     "gulp-sass": "5.0.0",
     "gulp-sourcemaps": "3.0.0",
+    "gulp-uglify": "3.0.2",
+    "gulplog": "1.0.0",
+    "jest": "27.2.4",
     "sass": "1.42.1",
     "stylelint": "13.13.1",
     "stylelint-config-htmlacademy": "0.1.10",
     "stylelint-config-recess-order": "2.5.0",
-    "stylelint-order": "4.1.0"
+    "stylelint-order": "4.1.0",
+    "vinyl-buffer": "1.0.1",
+    "vinyl-source-stream": "2.0.0"
   },
   "dependencies": {
     "normalize.css": "8.0.1"

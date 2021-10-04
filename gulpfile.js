@@ -14,6 +14,13 @@ const scss = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
+//  JS
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const log = require('gulplog');
+const uglify = require('gulp-uglify');
+
 //  SERVER
 const browserSync = require('browser-sync').create();
 const liveServerConfig = {
@@ -32,12 +39,16 @@ const paths = {
   src: {
     scssMain: 'src/scss/main.scss',
     scss: 'src/scss/**/*.scss',
+    jsMain: 'src/js/index.js',
+    js: 'src/js/**/*.js',
+    jsTests: 'src/js/**/*.test.js',
     htmlMain: 'src/index.html',
     html: 'src/*.html'
   },
   dest: {
     base: 'build/',
     css: 'build/assets/css/',
+    js: 'build/assets/js/',
     html: 'build/'
   }
 };
@@ -68,6 +79,25 @@ function buildStyles(cb) {
   cb();
 }
 
+function buildJS(cb) {
+  const b = browserify({
+    entries: paths.src.jsMain,
+    transform: ['babelify'],
+    debug: true
+  });
+
+  b.bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(uglify())
+      .on('error', log.error)
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.dest.js))
+    .pipe(browserSync.stream());
+  cb();
+}
+
 function startLiveServer(cb) {
   browserSync.init(liveServerConfig);
   cb();
@@ -76,13 +106,15 @@ function startLiveServer(cb) {
 function watch (cb) {
   gulp.watch(paths.src.html, copy);
   gulp.watch(paths.src.scss, buildStyles);
+  gulp.watch([paths.src.js, `!${paths.src.jsTests}`], buildJS);
   cb();
 }
 
 exports.clean = clean;
 exports.copy = copy;
 exports.buildStyles = buildStyles;
+exports.buildJS = buildJS;
 exports.watch = watch;
 
-exports.build = gulp.parallel(copy, buildStyles);
-exports.start = gulp.series(gulp.parallel(copy, buildStyles), startLiveServer, watch);
+exports.build = gulp.parallel(copy, buildStyles, buildJS);
+exports.start = gulp.series(gulp.parallel(copy, buildStyles, buildJS), startLiveServer, watch);
