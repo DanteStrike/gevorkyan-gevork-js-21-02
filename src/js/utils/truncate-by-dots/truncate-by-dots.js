@@ -1,9 +1,3 @@
-const truncateByDots = (str, amount) => {
-  if (amount >= str.length) {
-    return str;
-  }
-
-  return str.slice(0, amount) + `...`;
-};
+const truncateByDots = (str, amount) => (amount >= str.length) ? str : str.slice(0, amount) + `...`;
 
 export default truncateByDots;

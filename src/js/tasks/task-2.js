@@ -10,8 +10,11 @@ const init = (taskNode) => {
 
     onStartButtonClick() {
       this.resultTextArea.value = ``;
-      this.validationForm.reportValidity();
-      this.resultTextArea.value = truncateByDots(this.inputBaseStr.value, this.inputAmount.value);
+
+      const isValid = this.validationForm.reportValidity();
+      if (isValid) {
+        this.resultTextArea.value = truncateByDots(this.inputBaseStr.value, this.inputAmount.value);
+      }
     }
   };
 
