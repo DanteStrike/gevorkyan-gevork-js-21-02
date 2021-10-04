@@ -5,16 +5,6 @@
   padding: 15px;
 
   background-color: rgb(242, 242, 242);
-  transition: all 0.3s ease-in-out;
-  transition-property: transform, box-shadow, background-color;
-}
-
-.product:hover {
-  background-color: rgb(230, 230, 230);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  transform: scale(1.02) translateZ(0);
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .product__img-link {
