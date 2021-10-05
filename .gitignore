@@ -13,4 +13,4 @@ node_modules/
 coverage/
 
 # Папка с собранными файлами проекта
-build/
+# build/
