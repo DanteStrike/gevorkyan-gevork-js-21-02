@@ -1,35 +1,8 @@
 .footer {
-  display: flex;
-  align-items: center;
-  min-height: 60px;
-  padding: 4px 16px 0 16px;
-
-  background-color: rgb(242, 242, 242);
-}
-
-.footer__contacts {
-  display: block;
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", "Arial", sans-serif;
+  min-height: 25px;
+  padding-top: 2px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 1.2;
-  color: rgb(102, 102, 102);
-  text-decoration: none;
-}
-
-.footer__copyright {
-  margin-left: auto;
-  font-family: "Roboto", "Arial", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  color: rgb(102, 102, 102);
-}
-
-.footer--theme_dark {
-  background-color: rgb(30, 30, 30);
+  text-align: right;
+  background-color: rgb(235, 235, 235);
 }

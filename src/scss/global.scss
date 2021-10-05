@@ -4,53 +4,24 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Roboto", "Arial", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
 
   font-weight: 400;
-  line-height: 18px;
-  color: rgb(0, 0, 0);
+  line-height: 1.2;
+  color: rgb(20, 20, 20);
 
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(245, 245, 245);
+}
+
+body {
+  min-width: 760px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 *,
 ::after,
 ::before {
   box-sizing: inherit;
-}
-
-a {
-  padding: 0;
-  margin: 0;
-
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-
-  text-align: center;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
-
-fieldset {
-  padding: 0;
-  margin: 0;
-
-  border: none;
-}
-
-button {
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  background-color: unset;
-
-  border: none;
 }

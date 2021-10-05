@@ -1,0 +1,14 @@
+parserOptions:
+    ecmaVersion: 2018
+    sourceType: 'module'
+
+env:
+  es6: true
+  browser: true
+  commonjs: true
+  jest: true
+
+extends: 'htmlacademy/es6'
+
+rules:
+  no-alert: 1
