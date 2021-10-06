@@ -3,185 +3,122 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Задание 4. Строки и регулярки</title>
+    <title>Задание 5. Массивы и их методы, Set</title>
     <link href="assets/css/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
   </head>
   <body>
-    <header class="header">Задание 4. Строки и регулярки</header>
+    <header class="header">Задание 5. Массивы и их методы, Set</header>
 
     <main class="tasks">
       <h1 class="tasks__title">Задачи</h1>
-
+      <p>Выполнение всех заданий запускается из <b>консоли</b> (глобальая переменная <b>window.tasks</b>)</p>
       <ul class="tasks__list">
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #1</h2>
-            <p class="task__desc">Написать скрипт, предлогающий пользователю ввести две строки через запятую.
-              Вывести сообщение true, если вторая строка содержится в первый, в противном случае false,
-              регистр при проверке не учитывать. Для запуска нажмите "Старт"</p>
-            <button class="start-button task__start-button" type="button">Старт</button>
-            <form class="task__work-area" method="get" action="#">
-              <label class="area-name" for="t1-output-promt">
-                Входные данные:
-                <textarea class="text-area task__text-area" id="t1-output-promt" readonly></textarea>
-              </label>
-              <p class="err"></p>
-              <label class="area-name" for="t1-output-str1">
-                Первая строка:
-                <textarea class="text-area task__text-area" id="t1-output-str1" readonly></textarea>
-              </label>
-              <label class="area-name" for="t1-output-str2">
-                Вторая строка:
-                <textarea class="text-area task__text-area" id="t1-output-str2" readonly></textarea>
-              </label>
-              <label class="area-name" for="t1-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result task__text-area" id="t1-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">На вход поступает массив, вывести массив, удалив неуникальные значения.
+              <br><i><b>Запуск из консоли:</b> tasks.task1.run() | tasks.task1.run(array[])</i>
+            </p>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #2</h2>
-            <p class="task__desc">Пользователь вводит строку, затем число (кол-во символов).
-              Функция усекает строку до кол-ва символов и добавляет многоточие.
-              Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
-            <form class="task__work-area" method="get" action="#" id="t2-form">
-              <label class="area-name" for="t2-input-base-str">
-                Входная строка (*):
-                <input class="input-area task__input-area" id="t2-input-base-str" type="text" minlength="1" required>
-              </label>
-              <label class="area-name" for="t2-input-amount">
-                Кол-во символов (*):
-                <input class="input-area" id="t2-input-amount" type="number" min="0" required>
-              </label>
-              <button class="start-button task__start-button" type="button" form="t2-form">Выполнить</button>
-              <label class="area-name" for="t2-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result task__text-area" id="t2-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">На вход поступает массив, реверсировать значения (подобно методу reverse) метод reverse не использовать.</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task2.run() | tasks.task1.run(array[])</i>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #3</h2>
-            <p class="task__desc">Написать функцию, преобразующее строку с датой и временем формата '12/02/2021 12-00'
-              в строку формата 12.02.2021 12:00, используя регулярные выражения.
-              Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
-            <form class="task__work-area" method="get" action="#" id="t3-form">
-              <label class="area-name" for="t3-input-date">
-                Входная строка даты формата '12/02/2021 12-00' (*):
-                <input class="input-area task__input-area" id="t3-input-date" type="text"
-                       pattern="^(0[1-9]|1[0-9]|2[0-9]|3[01])\/(0[1-9]|1[012])\/([0-9]{4}) (0[0-9]|1[0-9]|2[0-4])-([0-5][0-9])$"
-                       required>
-              </label>
-              <button class="start-button task__start-button" type="button" form="t3-form">Выполнить</button>
-              <p class="err"></p>
-              <label class="area-name" for="t3-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result task__text-area" id="t3-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">На вход поступает массив, содержащий массивы, в которых хранится два элемента.
+              Преобразовать массив в объект, где ключами являются нулевой индекс вложенныхых массивов,
+              а значениями являются элементы с индексом один.</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task3.run() | tasks.task3.run(array[][])</i>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #4</h2>
-            <p class="task__desc">Написать функцию, валидирующую ФИО из кирилличиских символов
-              (считать, что отчество может оканчиваться только на "вна" или "вич" или может отсутствовать)
-              Для запуска заполните объязательные поля (*) и нажмите "Проверить ФИО"</p>
-            <form class="task__work-area" method="get" action="#" id="t4-form">
-              <label class="area-name" for="t4-input-full-name">
-                ФИО (*):
-                <input class="input-area task__input-area" id="t4-input-full-name" type="text">
-              </label>
-              <button class="start-button task__start-button" type="button" form="t4-form">Проверить ФИО</button>
-              <label class="area-name" for="t4-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result task__text-area" id="t4-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">На вход поступает объект, вывести сумму числовых свойств объекта.</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task4.run() | tasks.task4.run(object{})</i>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #5</h2>
-            <p class="task__desc">На вход дана строка в CamelCase, преобразовать строку в snake_case.
-              Для запуска заполните объязательные поля (*) и нажмите "Выполнить"</p>
-            <form class="task__work-area" method="get" action="#" id="t5-form">
-              <label class="area-name" for="t5-input-camel-case">
-                Строка в CamelCase 'GetUserID' (*):
-                <input class="input-area task__input-area" id="t5-input-camel-case" type="text"
-                       pattern="^[A-Z][a-zA-Z]*$"
-                       required>
-              </label>
-              <button class="start-button task__start-button" type="button" form="t5-form">Выполнить</button>
-              <label class="area-name" for="t5-output-result">
-                Результат snake_case:
-                <textarea class="text-area text-area--type_result text-area--underline_false task__text-area" id="t5-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">На вход поступает массив с числами, вывести среднее арифметическое элементов массива.</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task5.run() | tasks.task5.run(array[])</i>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #6</h2>
-            <p class="task__desc">На вход даётся многострочная строка, найти и вернуть через alert все html комментарии.
-              Для запуска заполните объязательные поля (*) и нажмите "Найти"</p>
-            <form class="task__work-area" method="get" action="#" id="t6-form">
-              <label class="area-name" for="t6-input-text">
-                Многострочная строка (*):
-                <textarea class="text-area text-area--type_big text-area--underline_false task__text-area" id="t6-input-text" type="text"></textarea>
-              </label>
-              <button class="start-button task__start-button" type="button" form="t6-form">Найти</button>
-              <label class="area-name" for="t6-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result text-area--type_big text-area--underline_false task__text-area" id="t6-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">Создать функцию-конструктор для объекта "калькулятор", объект должен иметь поле,
+              хранящее текущее значение и методы сложения, вычитания, умножения и деления,
+              принимающие число и манипулирующий свойством значения в соответствии с назначением метода,
+              а так же функцию, сбрасывающую значение в ноль.</p>
+            <br><i><b>Запуск из консоли:</b> const calc = tasks.task6.run()</i>
+            <br>Публичные методы: setVal(num), getVal(), reset(), sum(num), minus(num), div(num), multiply(num)
+            <br>Доступна цепочка вызовов, например: calc.sum(10).minus(2).div(4).multiply(3).getVal()
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #7</h2>
-            <p class="task__desc">На вход дана строка, вернуть через alert все числа (десятичные разделяются сиволом ".").
-              Для запуска заполните объязательные поля (*) и нажмите "Найти"</p>
-            <form class="task__work-area" method="get" action="#" id="t7-form">
-              <label class="area-name" for="t7-input-text">
-                Многострочная строка (*):
-                <textarea class="text-area text-area--type_big text-area--underline_false task__text-area" id="t7-input-text" type="text"></textarea>
-              </label>
-              <button class="start-button task__start-button" type="button" form="t7-form">Найти</button>
-              <label class="area-name" for="t7-output-result">
-                Результат:
-                <textarea class="text-area text-area--type_result text-area--type_big text-area--underline_false task__text-area" id="t7-output-result" readonly></textarea>
-              </label>
-            </form>
+            <p class="task__desc">Функция принимает смешанный массив (содержащий значения чисел, строк и объектов),
+              вернуть объект с полями numbers, strings и objects, содержащими массив со значениями, соответствующими названию поля.</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task7.run() | tasks.task7.run(array[])</i>
           </article>
         </li>
 
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #8</h2>
-            <p class="task__desc">Валидация введённого значения. Вводится идентификатор документа.
-              Идентификатор должен состоять из четырёх частей по четыре символа,разделённых или
-              не разделённых знаком "-". Допускаются только символы латинского алфавита и числа.
-              Вывести через alert "ведётся поиск", при соответствии введённого значения, или "неверный илентификатор",
-              при несоответствии. При несоответствии снова вывести форму для ввода строки.
-              Для запуска нажмите "Старт"</p>
-            <button class="start-button task__start-button" type="button">Старт</button>
-            <form class="task__work-area task__work-area--disabled" method="get" action="#">
-            </form>
+            <p class="task__desc">Функция принимает массив чисел и два числовых значения, вернуть новый массив,
+              содержащий элементы первого массива, значение которых попадает под диапазон переданных в функцию чисел
+              (второе переданное число может быть больше первого)</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task8.run() | tasks.task8.run(array[], min?, max?)</i>
           </article>
+        </li>
+
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #9</h2>
+            <p class="task__desc">Функция принимает две строки. Вывести true, если строки являются анаграммами,
+              в противном случае false</p>
+            <br><i><b>Запуск из консоли:</b> tasks.task9.run() | tasks.task9.run(string, string)</i>
+          </article>
+        </li>
+
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #10</h2>
+            <p class="task__desc">Создать объект, выводящий в консоль все ключи и значения объекта в формате
+              "ключ: значение" через запятую (считать, что значением ключа объекта не может быть объектом или массивом,
+              содержащими объекты) сама функция в консоль выводиться не должна.</p>
+            <br><i><b>Запуск из консоли:</b> const viewer = tasks.task10.run(object{})</i>
+            <br>Публичные методы: print()
+          </article>
+        </li>
+
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #11</h2>
+            <p class="task__desc">Создать функцию-конструктор для объекта, содержащего методы setProp (установить значение свойства),
+              метод принимает ключь (строка), значение (произвольное) и объект со свойствами writable, configurable,
+              enumerable (разрешение перезаписи свойства, разрешение перечисления свойства и разрешение удаления свойства).
+              Если какое-то из свойств в объекте отсутствует, действие должно быть разрешено</p>
+          </article>
+          <br><i><b>Запуск из консоли:</b> const mutant = tasks.task11.run()</i>
+          <br>Публичные методы: setProp(key, value, opt)
         </li>
       </ul>
     </main>
