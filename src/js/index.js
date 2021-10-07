@@ -10,11 +10,17 @@ import compareToAnagram from "./utils/compare-to-anagram/compare-to-anagram";
 import Calc from "./classes/calc/calc";
 import Viewer from "./classes/viewer/viewer";
 import Mutant from "./classes/mutant/mutant";
+import getUniq from "./utils/get-uniq/get-uniq";
 
 window.tasks = {
   task1: {
-    desc: `На вход поступает массив, вывести массив, удалив неуникальные значения`,
+    desc: `На вход поступает массив, вывести массив, удалив повторяемые значения`,
     run: unify
+  },
+
+  task1Alt: {
+    desc: `На вход поступает массив, вывести массив, удалив неуникальные значения`,
+    run: getUniq
   },
 
   task2: {
