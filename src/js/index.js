@@ -1,4 +1,5 @@
 import {getFib, getFibWithCache} from "./utils/fib/fib";
+import parseToObject from "./utils/parse-to-object/parse-to-object";
 
 window.tasks = {
   task1: {
@@ -11,5 +12,11 @@ window.tasks = {
     desc: `Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
     функция должна вернуть значение числа. Использовать рекурсию.`,
     run: getFibWithCache
+  },
+
+  task3: {
+    desc: `Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
+    функция должна вернуть значение числа. Использовать рекурсию.`,
+    run: parseToObject
   }
 };
