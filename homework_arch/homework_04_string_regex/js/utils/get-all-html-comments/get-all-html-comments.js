@@ -1,5 +1,5 @@
 const getAllHTMLComments = (str = ``) => {
-  const matches = str.match(/(?<=<!--).*?(?=-->)/g);
+  const matches = str.match(/(?<=<!--).*?(?=-->)/gs);
 
   return matches ? matches.map((match) => match.trim()) : [];
 };
