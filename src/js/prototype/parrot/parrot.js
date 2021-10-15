@@ -1,18 +1,22 @@
 import Animal from "../animal/animal";
 
-const Parrot = {
-  say() {
-    return `Криии`;
-  }
-};
+const Parrot = () => {
+  const self = {
+    say() {
+      return `Криии`;
+    }
+  };
 
-Object.setPrototypeOf(Parrot, Animal);
-Object.defineProperties(Parrot, {
-  say: {
-    enumerable: false,
-    writable: false,
-    configurable: false
-  }
-});
+  Object.setPrototypeOf(self, new Animal());
+  Object.defineProperties(self, {
+    say: {
+      enumerable: false,
+      writable: false,
+      configurable: false
+    }
+  });
+
+  return self;
+};
 
 export default Parrot;

@@ -2,7 +2,7 @@ import Animal from "./animal";
 
 describe(`Obj Animal should work correctly`, () => {
   it(`props should work correctly`, () => {
-    const animal = Animal;
+    const animal = new Animal();
     expect(animal.name).toBe(`Животное`);
     expect(Object.getOwnPropertyDescriptor(animal, `__name`)).toMatchObject({
       value: `Животное`,
@@ -15,7 +15,7 @@ describe(`Obj Animal should work correctly`, () => {
   });
 
   it(`methods should work correctly`, () => {
-    const animal = Animal;
+    const animal = new Animal();
     expect(animal.eat()).toBe(`Животное ест`);
     expect(Object.getOwnPropertyDescriptor(animal, `eat`)).toMatchObject({
       enumerable: false,

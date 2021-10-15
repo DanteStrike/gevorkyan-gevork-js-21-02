@@ -1,27 +1,31 @@
 import Animal from "../animal/animal";
 
-const Cat = {
-  say() {
-    return `Мяу`;
-  },
+const Cat = () => {
+  const self = {
+    say() {
+      return `Мяу`;
+    },
 
-  hunt() {
-    return `${this.name} охотится`;
-  },
+    hunt() {
+      return `${this.name} охотится`;
+    }
+  };
+
+  Object.setPrototypeOf(self, new Animal());
+  Object.defineProperties(self, {
+    say: {
+      enumerable: false,
+      writable: false,
+      configurable: false
+    },
+    hunt: {
+      enumerable: false,
+      writable: false,
+      configurable: false
+    }
+  });
+
+  return self;
 };
-
-Object.setPrototypeOf(Cat, Animal);
-Object.defineProperties(Cat, {
-  say: {
-    enumerable: false,
-    writable: false,
-    configurable: false
-  },
-  hunt: {
-    enumerable: false,
-    writable: false,
-    configurable: false
-  }
-});
 
 export default Cat;
