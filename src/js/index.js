@@ -1,22 +1,37 @@
-import {getFib, getFibWithCache} from "./utils/fib/fib";
-import parseToObject from "./utils/parse-to-object/parse-to-object";
+import * as AnimalObj from "./prototype/animal/animal";
+import * as CatObj from "./prototype/cat/cat";
+import * as DogObj from "./prototype/dog/dog";
+import * as ParrotObj from "./prototype/parrot/parrot";
+
+import * as AnimalConstructor from "./func/animal/animal";
+import * as CatConstructor from "./func/cat/cat";
+import * as DogConstructor from "./func/dog/dog";
+import * as ParrotConstructor from "./func/parrot/parrot";
+
+import * as AnimalClass from "./class/animal/animal";
+import * as CatClass from "./class/cat/cat";
+import * as DogClass from "./class/dog/dog";
+import * as ParrotClass from "./class/parrot/parrot";
 
 window.tasks = {
-  task1: {
-    desc: `Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
-    функция должна вернуть значение числа. Использовать рекурсию.`,
-    run: getFib
+  prototype: {
+    Animal: AnimalObj.default,
+    Cat: CatObj.default,
+    Dog: DogObj.default,
+    parrot: ParrotObj.default
   },
 
-  task2: {
-    desc: `Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
-    функция должна вернуть значение числа. Использовать рекурсию.`,
-    run: getFibWithCache
+  func: {
+    Animal: AnimalConstructor.default,
+    Cat: CatConstructor.default,
+    Dog: DogConstructor.default,
+    Parrot: ParrotConstructor.default
   },
 
-  task3: {
-    desc: `Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
-    функция должна вернуть значение числа. Использовать рекурсию.`,
-    run: parseToObject
+  class: {
+    Animal: AnimalClass.default,
+    Cat: CatClass.default,
+    Dog: DogClass.default,
+    Parrot: ParrotClass.default
   }
 };
