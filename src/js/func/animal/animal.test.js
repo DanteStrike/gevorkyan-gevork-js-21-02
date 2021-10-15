@@ -1,6 +1,6 @@
 import Animal from "./animal";
 
-describe(`Obj Animal should work correctly`, () => {
+describe(`FUNC Animal should work correctly`, () => {
   it(`props should work correctly`, () => {
     const animal = new Animal();
     expect(animal.getName()).toBe(`Животное`);

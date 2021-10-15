@@ -1,6 +1,6 @@
 import Cat from "./cat";
 
-describe(`newFunc Cat should work correctly`, () => {
+describe(`FUNC Cat should work correctly`, () => {
   it(`methods should work correctly`, () => {
     const cat = new Cat();
     expect(cat.say()).toBe(`Мяу`);

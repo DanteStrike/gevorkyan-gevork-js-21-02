@@ -1,6 +1,6 @@
 import Parrot from "./parrot";
 
-describe(`Obj Parrot should work correctly`, () => {
+describe(`FUNC Parrot should work correctly`, () => {
   it(`methods should work correctly`, () => {
     const parrot = new Parrot();
     expect(parrot.say()).toBe(`Криии`);

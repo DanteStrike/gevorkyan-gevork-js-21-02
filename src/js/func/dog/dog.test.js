@@ -1,6 +1,6 @@
 import Dog from "./dog";
 
-describe(`Obj Dog should work correctly`, () => {
+describe(`FUNC Dog should work correctly`, () => {
   it(`methods should work correctly`, () => {
     const dog = new Dog();
     expect(dog.say()).toBe(`Гав`);
