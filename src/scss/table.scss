@@ -23,52 +23,5 @@
 
 .table__contacts {
   grid-area: contacts;
-  width: 100%;
-  white-space: nowrap;
-  border-collapse: collapse;
-  border: 1px solid rgb(221, 221, 221);
-}
-
-.table__contacts thead,
-.table__contacts tbody,
-.table__contacts tr,
-.table__contacts th,
-.table__contacts td {
-  color: inherit;
-  background: inherit;
-  border: inherit;
-}
-
-.table__contacts tr {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.table__contacts td {
-  padding: 5px;
-  text-align: center;
-}
-
-.table__header {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.table__header--id {
-  width: 60px;
-}
-
-.table__header--name {
-  width: 60%;
-}
-
-.table__header--phone {
-  width: 40%;
-}
-
-.table__header--control {
-  width: 50px;
-  font-size: 0;
 }
 

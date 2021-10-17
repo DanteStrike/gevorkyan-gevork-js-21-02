@@ -32,7 +32,7 @@
 }
 
 .contacts__header--id {
-  width: 60px;
+  min-width: 60px;
 }
 
 .contacts__header--name {
@@ -44,6 +44,6 @@
 }
 
 .contacts__header--control {
-  width: 50px;
+  min-width: 50px;
   font-size: 0;
 }

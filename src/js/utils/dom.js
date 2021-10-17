@@ -1,8 +1,8 @@
-import {Position} from './enum';
+import {ElementType, Position} from './enum';
 
 
-export const createElement = (template) => {
-  const newElement = document.createElement(`div`);
+export const createElement = (template, type = ElementType.DEFAULT) => {
+  const newElement = type === ElementType.DEFAULT ? document.createElement(`div`) : document.createElement(`tbody`);
   newElement.innerHTML = template;
   return newElement.firstChild;
 };
@@ -15,14 +15,8 @@ export const render = (container, element, place) => {
     case Position.BEFOREEND:
       container.append(element);
       break;
-    case Position.AFTEREND:
-      container.insertAdjacentElement(place, element);
-      break;
-  }
-};
 
-export const unmount = (element) => {
-  if (element) {
-    element.remove();
+    default:
+      break;
   }
 };

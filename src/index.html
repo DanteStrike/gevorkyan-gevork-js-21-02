@@ -16,64 +16,7 @@
         Добавить три кнопки, для смены цветового оформления таблицы (каждая меняет цвет фона и текста, цвета на выбор слушателей).<br>
         *Усложнённое задание: реализовать в каждой строке таблицы кнопку для удаление её строки из таблицы</p>
 
-      <section class="table">
-        <h2 class="table__title">Контакты</h2>
-        <form class="table__contact-add contact-add">
-          <h3 class="contact-add__title">Добавить контакт</h3>
-          <label class="contact-add__label" for="contact-add-name">ФИО
-            <input class="contact-add__input" type="text" name="contact-add-name" id="contact-add-name">
-          </label>
-          <label class="contact-add__label" for="contact-add-phone">Телефон
-            <input class="contact-add__input" type="text" name="contact-add-phone" id="contact-add-phone">
-          </label>
-          <button class="contact-add__button" type="submit">Добавить</button>
-        </form>
-        <nav class="table__config config">
-          <h3 class="config__title">Уравление стилями таблицы</h3>
-          <ul class="config__options">
-            <li class="config__option">
-              <label class="config__label" for="config-border-color">Цвет границ</label>
-              <input class="config__input" type="color" name="config-border-color" id="config-border-color">
-            </li>
-            <li class="config__option">
-              <label class="config__label" for="config-background-color">Цвет фона</label>
-              <input class="config__input" type="color" name="config-background-color" id="config-background-color">
-            </li>
-            <li class="config__option">
-              <label class="config__label" for="config-font-color">Цвет текста</label>
-              <input class="config__input" type="color" name="config-font-color" id="config-font-color">
-            </li>
-          </ul>
-        </nav>
-        <table class="table__contacts contacts">
-          <thead>
-            <tr>
-              <th class="contacts__header contacts__header--id">ID</th>
-              <th class="contacts__header contacts__header--name">Name</th>
-              <th class="contacts__header contacts__header--phone">Phone</th>
-              <th class="contacts__header contacts__header--control">Control</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="contacts__contact contact">
-              <td class="contact__id">0001</td>
-              <td class="contact__name">Johnny Five</td>
-              <td class="contact__phone">+0001</td>
-              <td class="contact__delete">
-                <button class="contact__delete-btn" type="button">X</button>
-              </td>
-            </tr>
-            <tr class="contacts__contact contact">
-              <td class="contact__id">0001</td>
-              <td class="contact__name">Johnny Five</td>
-              <td class="contact__phone">+0001</td>
-              <td class="contact__delete">
-                <button class="contact__delete-btn" type="button">X</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <div id="root"></div>
     </main>
 
     <footer class="footer">&copy; 2021-js-02 Gevorkyan G.V.</footer>
