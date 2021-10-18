@@ -1,20 +1,20 @@
 import Timer from "./timer";
 
-export const countFromTo = (a, b, timerOptions, callback = () => {}) => {
+export const countFromTo = (from, to, timerOptions, callback = () => {}) => {
   const timer = new Timer(timerOptions);
   timer.action = () => {
-    callback(a);
+    callback(from);
 
-    if (a === b) {
+    if (from === to) {
       timer.stop();
     }
 
-    if (a < b) {
-      a++;
+    if (from < to) {
+      from++;
     }
 
-    if (a > b) {
-      a--;
+    if (from > to) {
+      from--;
     }
   };
   timer.start();

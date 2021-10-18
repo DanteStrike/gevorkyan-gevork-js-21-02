@@ -61,8 +61,17 @@
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача #2</h2>
-            <p class="task__desc">Выполнить то же самое использую функции конструкторы (функуиональное наследование).</p>
-            <br><i><b>Запуск из консоли:</b> const b = new window.tasks.func.[[FuncName = Animal | Dog | Cat | Parrot]]()</i>
+            <p class="task__desc">Реализовать страницу, через десять секунд перенаправляющую на главную страницу
+              https://maxima.life (для редиректа поменять свойство window.location) на странице вывести сообщение
+              "вы будите перенаправлены через /*количество оставшихся секунд*/" секунд
+              *Опционально: предусмотреть склонение слова "секунда"<br>
+              <i><b>Нажмите "СТАРТ"</b></i></p>
+            <form class="work-area" id="task-2" >
+              <p class="work-area__msg">
+                Вы будите перенаправлены через <span class="work-area__msg-num">10</span> <span class="work-area__msg-sec">секунд</span>
+              </p>
+              <button class="work-area__start" type="submit">СТАРТ</button>
+            </form>
           </article>
         </li>
 
