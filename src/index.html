@@ -12,6 +12,68 @@
 
     <main class="tasks">
       <h1 class="tasks__title">Задачи</h1>
+      <ul class="tasks__list">
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #1</h2>
+            <p class="task__desc">Разработать скрипт. Пользователь вводит два числа (i, j),
+              каждую секунду выводить число от i до j (реализвать через setTimeout и setInterval).<br>
+              <i><b>Нажмите "СТАРТ"</b></i></p>
+
+            <form class="work-area" id="task-1" method="get" action="#">
+              <div class="work-area__wrap">
+                <fieldset class="work-area__item">
+                  <legend>setTimeout</legend>
+                  <label class="work-area__item-label">I
+                    <input class="work-area__item-input" id="task-1l-I" type="number" value="0" required>
+                  </label>
+                  <span>----></span>
+                  <label class="work-area__item-label">J
+                    <input class="work-area__item-input" id="task-1l-J" type="number" value="10" required>
+                  </label>
+                  <label class="work-area__result">
+                    <input class="work-area__result-input" id="task-1l-R" type="number" disabled>
+                  </label>
+                </fieldset>
+
+                <fieldset class="work-area__item">
+                  <legend>setInterval</legend>
+                  <label class="work-area__item-label">I
+                    <input class="work-area__item-input" id="task-1r-I" type="number" value="10" required>
+                  </label>
+                  <span>----></span>
+                  <label class="work-area__item-label">J
+                    <input class="work-area__item-input" id="task-1r-J" type="number" value="0" required>
+                  </label>
+                  <label class="work-area__result">
+                    <input class="work-area__result-input" id="task-1r-R" type="number" disabled>
+                  </label>
+                </fieldset>
+
+              </div>
+
+              <button class="work-area__start" type="submit">СТАРТ</button>
+            </form>
+
+          </article>
+        </li>
+
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #2</h2>
+            <p class="task__desc">Выполнить то же самое использую функции конструкторы (функуиональное наследование).</p>
+            <br><i><b>Запуск из консоли:</b> const b = new window.tasks.func.[[FuncName = Animal | Dog | Cat | Parrot]]()</i>
+          </article>
+        </li>
+
+        <li class="tasks__item">
+          <article class="task">
+            <h2 class="task__title">Задача #3</h2>
+            <p class="task__desc">Выполнить то же самое, используя классы (классовое наследование).</p>
+            <br><i><b>Запуск из консоли:</b> const c = new window.tasks.class.[[ClassName = Animal | Dog | Cat | Parrot]]()</i>
+          </article>
+        </li>
+      </ul>
     </main>
 
     <footer class="footer">&copy; 2021-js-02 Gevorkyan G.V.</footer>

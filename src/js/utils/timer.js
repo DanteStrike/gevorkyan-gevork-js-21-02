@@ -1,30 +1,36 @@
 class Timer {
-  constructor(action = () => {}, mod = Timer.Mod.TICK, delay = 1000, type = Timer.Type.SET_TIMEOUT) {
+  constructor({action = () => {}, mod = Timer.Mod.TICK, delay = 1000, type = Timer.Type.SET_TIMEOUT}) {
     this._timerID = null;
     this._delay = delay;
     this._action = action;
     this._mod = mod;
     this._type = type;
+    this._status = Timer.Status.STOP;
   }
 
   set action(action) {
+    this.stop();
     this._action = action;
   }
 
   set delay(delay) {
+    this.stop();
     this._delay = delay;
   }
 
   set mod(mod) {
+    this.stop();
     this._mod = mod;
   }
 
   set type(type) {
+    this.stop();
     this._type = type;
   }
 
   start() {
     this.stop();
+    this._status = Timer.Status.START;
 
     switch (this._mod) {
       case Timer.Mod.TICK:
@@ -32,6 +38,7 @@ class Timer {
         return;
 
       case Timer.Mod.CYCLE:
+        this._action();
         this._cycle();
         return;
     }
@@ -41,30 +48,28 @@ class Timer {
     if (this._timerID !== null) {
       clearTimeout(this._timerID);
     }
+    this._status = Timer.Status.STOP;
   }
 
   _tick() {
-    const action = this._action;
-    const delay = this._delay;
+    const actionWithStop = () => {
+      this._action();
+      this.stop();
+    };
 
     this._timerID = this._type === Timer.Type.SET_TIMEOUT ?
-      setTimeout(action, delay)
-      : setInterval(() => {
-        this.stop();
-        action();
-      }, delay);
+      setTimeout(actionWithStop, this._delay) : setInterval(actionWithStop, this._delay);
   }
 
   _cycle() {
-    const action = this._action;
-    const cycle = this._cycle.bind(this);
-    const delay = this._delay;
-
     this._timerID = this._type === Timer.Type.SET_TIMEOUT ?
       setTimeout(() => {
-        action();
-        cycle();
-      }, delay) : setInterval(action, delay);
+        this._action();
+
+        if (this._status === Timer.Status.START) {
+          this._cycle();
+        }
+      }, this._delay) : setInterval(() => this._action(), this._delay);
   }
 }
 
@@ -76,6 +81,11 @@ Timer.Type = {
 Timer.Mod = {
   TICK: `tick`,
   CYCLE: `cycle`
+};
+
+Timer.Status = {
+  STOP: `stop`,
+  START: `start`
 };
 
 export default Timer;

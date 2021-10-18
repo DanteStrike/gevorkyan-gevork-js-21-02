@@ -1,0 +1,46 @@
+.work-area__wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.work-area__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 45%;
+  padding: 5px;
+  margin: 0;
+}
+
+.work-area__item-label {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.work-area__item-input {
+  text-align: center;
+}
+
+.work-area__result {
+  width: 100%;
+}
+
+.work-area__result-input {
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.work-area__start {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
