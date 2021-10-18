@@ -1,5 +1,7 @@
 import Timer from "../utils/timer";
 import {countFromTo} from "../utils/count-from-to";
+import {TagName} from "../utils/enum";
+
 
 export const initTaskOne = (formNode) => {
   const onFormStartBtnClick = (evt) => {
@@ -7,7 +9,7 @@ export const initTaskOne = (formNode) => {
     const form = evt.currentTarget;
     const target = evt.target;
 
-    if (target.nodeName !== `BUTTON`) {
+    if (target.nodeName !== TagName.BUTTON) {
       return;
     }
 

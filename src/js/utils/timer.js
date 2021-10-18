@@ -88,4 +88,5 @@ Timer.Status = {
   START: `start`
 };
 
+
 export default Timer;

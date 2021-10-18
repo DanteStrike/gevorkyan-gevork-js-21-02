@@ -24,6 +24,7 @@
 }
 
 .work-area__item-input {
+  width: 200px;
   text-align: center;
 }
 
@@ -40,13 +41,13 @@
 }
 
 .work-area__msg {
-  border: 1px dotted rgb(11, 11, 11);
   display: block;
+  width: 80%;
+  min-height: 50px;
   margin: 0 auto 15px auto;
   font-size: 40px;
   text-align: center;
-  min-height: 50px;
-  width: 80%;
+  border: 1px dotted rgb(11, 11, 11);
 }
 
 .work-area__start {
