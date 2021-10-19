@@ -1,0 +1,16 @@
+.img-list {
+  min-width: 1128px;
+  padding: 3px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px dotted rgb(60, 60, 60);
+}
+
+.img-list__item {
+  width: 260px;
+  height: 200px;
+  padding: 0;
+  margin: 10px 10px;
+}

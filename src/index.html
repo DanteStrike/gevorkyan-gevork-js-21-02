@@ -16,7 +16,35 @@
         <li class="tasks__item">
           <article class="task">
             <h2 class="task__title">Задача</h2>
-            <p class="task__desc"><br><i><b></b></i></p>
+            <p class="task__desc">
+              Разработать страницу, подобную разработанной в ходе урока.<br>
+              Страница должна содержать инпут для ввода файла и дальнейшей отправки на сервер по API https://api.imgbb.com/.<br>
+              Отправляемый файл должен быть закодирован в base64. Отправленные изображения должны выводиться на страницу.<br>
+              Приходящие в ответе от сервера ссылки на изображения должны сохраняться в localStorage.<br>
+              Если при загрузке страницы в localStorage уже есть сохранённые ссылки на изображения,
+              эти изображения должны выводиться на страницу. При выполнении задания необходимо соблюдать модульную структуру
+              (подобную продемонстрированной в уроке посвящённому модулям).<br>
+              *Опционально: При загрузке очередного изображения на сервер необходимо отображать над инпутом лоадер, анимированный на js.
+              В ответе на домашнее задание прикрепить ссылку на GitHub и ссылку на профиль в imgbb.
+              <br><i><b></b></i></p>
+            <div class="work-area" id="root">
+              <form class="img-uploader work-area__img-uploader">
+                <label class="img-uploader__label" for="img-uploader__input">Выберите изборажение:</label>
+                <input class="img-uploader__input" type="file" id="img-uploader__input" name="img">
+                <button class="img-uploader__btn" type="submit">Отправить</button>
+              </form>
+
+              <section class="gallery">
+                <article class="img-preview">
+                  <img class="image" src="https://via.placeholder.com/800x600" alt="name" width="800" height="600">
+                </article>
+                <ul class="img-list work-area__img-list">
+                  <li class="img-list__item">
+                    <img class="image" src="https://via.placeholder.com/260x200" alt="name" width="260" height="200">
+                  </li>
+                </ul>
+              </section>
+            </div>
           </article>
         </li>
       </ul>

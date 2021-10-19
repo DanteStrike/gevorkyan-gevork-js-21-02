@@ -1,0 +1,19 @@
+.img-uploader {
+  display: inline-flex;
+  padding: 5px;
+  align-items: baseline;
+  border: 1px dotted rgb(40, 40, 40);
+}
+
+.img-uploader__label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.img-uploader__input {
+  font-size: 12px;
+}
+
+.img-uploader__btn {
+  margin-left: 10px;
+}
