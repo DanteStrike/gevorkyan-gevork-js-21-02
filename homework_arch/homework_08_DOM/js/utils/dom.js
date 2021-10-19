@@ -20,9 +20,3 @@ export const render = (container, element, place) => {
       break;
   }
 };
-
-export const unmount = (element) => {
-  if (element) {
-    element.remove();
-  }
-};

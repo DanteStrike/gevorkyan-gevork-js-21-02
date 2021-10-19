@@ -1,96 +1,132 @@
-import {render} from "../utils/dom";
-import {Position} from "../utils/enum";
-
-import ContactAdd from "../components/contact-add";
-import Config from "../components/config";
 import Table from "../components/table";
-import Contacts from "../components/contacts";
-import Contact from "../components/contact";
+import SortView from "../components/sort-view";
+import People from "../components/people";
+import Navigation from "../components/navigation";
+import LoadingView from "../components/loading-view";
+import {render, unmount} from "../utils/dom";
+import {Position, Sort} from "../utils/enum";
 
 
 class TableController {
-  constructor({data, container}) {
-    const defaultColors = {
-      borderColor: `#DDDDDD`,
-      backgroundColor: `#F5F5F5`,
-      fontColor: `#141414`
-    };
-
-    this._data = data;
+  constructor(container, onPageChange) {
     this._container = container;
+    this._onPageChange = onPageChange;
+    this._page = {};
+
     this._table = new Table();
 
-    const onNewContactAdd = this._onNewContactAdd.bind(this);
-    this._contactAdd = new ContactAdd({onNewContactAdd});
+    this._sortType = Sort.Type.NAME;
+    this._sortMod = Sort.Mod.DOWN;
+    this._sortView = new SortView(this._sortType, this._onSortTypeChange.bind(this));
 
-    this._config = new Config({
-      ...defaultColors,
-      onBorderColorChange: this._onBorderColorChange.bind(this),
-      onBackgroundColorChange: this._onBackgroundColorChange.bind(this),
-      onFontColorChange: this._onFontColorChange.bind(this)
-    });
-    this._contacts = new Contacts(defaultColors);
+    this._nav = new Navigation(null, this._onNavPrevClick.bind(this), this._onNavNextClick.bind(this));
+
+    this._loadView = new LoadingView();
+
+    this._init();
   }
 
-  init() {
+  setPage(page) {
+    this._page = page;
+    this._nav.navNum = this._page.cur;
+    this.loadingModOFF();
+
+    this._sort();
+    this._update();
+  }
+
+  loadingModOFF() {
+    if (this._page.prev !== null) {
+      this._nav.enablePrevButton();
+    }
+    if (this._page.next !== null) {
+      this._nav.enableNextButton();
+    }
+
+    unmount(this._loadView.getElement());
+    this._table.unBlock();
+  }
+
+  _init() {
     render(this._container, this._table.getElement(), Position.AFTERBEGIN);
-    render(this._table.getElement(), this._contactAdd.getElement(), Position.AFTERBEGIN);
-    render(this._table.getElement(), this._config.getElement(), Position.AFTERBEGIN);
-    render(this._table.getElement(), this._contacts.getElement(), Position.AFTERBEGIN);
+    render(this._table.getElement(), this._sortView.getElement(), Position.AFTERBEGIN);
+    render(this._table.getElement(), this._nav.getElement(), Position.BEFOREEND);
 
-    this._sortByID();
-    this._renderContacts();
+    this._loadingModON();
   }
 
-  _sortByID() {
-    this._data = this._data.sort((a, b) => a.id > b.id);
+  _onSortTypeChange(newType) {
+    if (this._sortType === newType) {
+      this._toggleSortMod();
+    } else {
+      this._sortType = newType;
+    }
+
+    this._sort();
+    this._update();
   }
 
-  _onBorderColorChange(color) {
-    this._contacts.borderColor = color;
+  _toggleSortMod() {
+    if (this._sortMod === Sort.Mod.UP) {
+      this._sortMod = Sort.Mod.DOWN;
+      return;
+    }
+
+    this._sortMod = Sort.Mod.UP;
   }
 
-  _onBackgroundColorChange(color) {
-    this._contacts.backgroundColor = color;
-  }
+  _sort() {
+    this._page.peoples.sort((a, b) => {
+      if (typeof a[this._sortType] === `number`) {
+        return a[this._sortType] - b[this._sortType];
+      }
 
-  _onFontColorChange(color) {
-    this._contacts.fontColor = color;
-  }
-
-  _onNewContactAdd(name, phone) {
-    this._data.push({
-      id: this._data.length > 0 ? this._data[this._data.length - 1].id + 1 : 1,
-      name,
-      phone
+      const strA = a[this._sortType].toLowerCase();
+      const strB = b[this._sortType].toLowerCase();
+      if (strA > strB) {
+        return 1;
+      }
+      if (strA < strB) {
+        return -1;
+      }
+      return 0;
     });
 
-    this._updateList();
+    if (this._sortMod === Sort.Mod.UP) {
+      this._page.peoples.reverse();
+    }
   }
 
-  _onContactDelete(id) {
-    const index = this._data.findIndex((contact) => contact.id === id);
-    this._data = [...this._data.slice(0, index), ...this._data.slice(index + 1)];
-
-    this._updateList();
+  _loadingModON() {
+    this._nav.disableNextButton();
+    this._nav.disablePrevButton();
+    render(this._table.getElement(), this._loadView.getElement(), Position.AFTERBEGIN);
+    this._table.block();
   }
 
-  _clearContacts() {
-    this._contacts.contactsList.innerHTML = ``;
+  _onNavPrevClick() {
+    if (this._page.prev === null) {
+      return;
+    }
+
+    this._loadingModON();
+    this._onPageChange(this._page.prev);
   }
 
-  _renderContacts() {
-    this._data.forEach((contact) => {
-      render(this._contacts.contactsList, new Contact({
-        ...contact,
-        onContactDelete: (id) => this._onContactDelete(id)
-      }).getElement(), Position.BEFOREEND);
+  _onNavNextClick() {
+    if (this._page.next === null) {
+      return;
+    }
+
+    this._loadingModON();
+    this._onPageChange(this._page.next);
+  }
+
+  _update() {
+    this._table.tableList.innerHTML = ``;
+    this._page.peoples.forEach((people) => {
+      render(this._table.tableList, new People(people).getElement(), Position.BEFOREEND);
     });
-  }
-
-  _updateList() {
-    this._clearContacts();
-    this._renderContacts();
   }
 }
 

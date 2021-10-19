@@ -6,11 +6,22 @@ class Table extends AbstractComponent {
     super();
   }
 
+  get tableList() {
+    return this.getElement().querySelector(`.table__peoples`);
+  }
+
+  block() {
+    this.getElement().classList.add(`table--loading`);
+  }
+
+  unBlock() {
+    this.getElement().classList.remove(`table--loading`);
+  }
+
   _getTemplate() {
     return `<section class="table">
-        <h2 class="table__title">Контакты</h2>
-
-      </section>`;
+                <ul class="table__peoples"></ul>
+              </section>`;
   }
 }
 

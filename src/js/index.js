@@ -1,9 +1,15 @@
-import tableData from "./mocks/table-data";
-import TableController from "./controllers/table-controller";
+import {initTaskOne} from "./tasks/task-1";
+import {initTaskTwo} from "./tasks/task-2";
+import {initTaskThree} from "./tasks/task-3";
 
-const root = document.getElementById(`root`);
-const tableController = new TableController({
-  data: tableData,
-  container: root
-});
-tableController.init();
+
+const taskOneNode = document.querySelector(`#task-1`);
+initTaskOne(taskOneNode);
+
+
+const taskTwoNode = document.querySelector(`#task-2`);
+initTaskTwo(taskTwoNode);
+
+
+const taskThreeNode = document.querySelector(`#root`);
+initTaskThree(taskThreeNode);
