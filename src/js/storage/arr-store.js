@@ -2,9 +2,12 @@ class ArrStore {
   constructor({storage, key, initialData}) {
     this._storage = storage;
     this._key = key;
-    this._data = this.isInStorage ?
-      JSON.parse(this._storage.getItem(this._key))
-      : this._storage.setItem(this._key, JSON.stringify(initialData));
+
+    if (!this.isInStorage) {
+      this._storage.setItem(this._key, JSON.stringify(initialData));
+    }
+
+    this._data = JSON.parse(this._storage.getItem(this._key));
   }
 
   get isInStorage() {
