@@ -1,10 +1,10 @@
 .img-list {
+  display: flex;
+  flex-wrap: wrap;
   min-width: 1128px;
   padding: 3px;
   margin: 0 auto;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
   border: 1px dotted rgb(60, 60, 60);
 }
 

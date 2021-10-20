@@ -42,3 +42,4 @@ export const encodeToBase64 = (file) => {
     };
   });
 };
+

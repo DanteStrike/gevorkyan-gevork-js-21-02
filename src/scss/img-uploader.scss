@@ -1,25 +1,25 @@
 .img-uploader {
   display: inline-flex;
-  padding: 5px;
   align-items: center;
+  padding: 5px;
   vertical-align: top;
   border: 1px dotted rgb(40, 40, 40);
 }
 
 .img-uploader--block {
-  cursor: default;
   pointer-events: none;
+  cursor: default;
   opacity: 0.7;
 }
 
 .img-uploader__label {
-  font-size: 16px;
   margin-right: 5px;
+  font-size: 16px;
 }
 
 .img-uploader__input {
-  font-size: 12px;
   margin: 0 15px 0 0;
+  font-size: 12px;
   cursor: pointer;
 }
 

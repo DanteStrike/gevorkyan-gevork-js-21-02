@@ -30,6 +30,7 @@ class GalleryController {
 
   unlock() {
     this._imgUploader.unBlock();
+    this._loader.stopAnimation();
   }
 
   _init() {
@@ -40,6 +41,7 @@ class GalleryController {
 
   _onImageSubmit() {
     this._imgUploader.block();
+    this._loader.startAnimation();
   }
 }
 
