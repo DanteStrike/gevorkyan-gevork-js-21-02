@@ -1,15 +1,31 @@
-import {initTaskOne} from "./tasks/task-1";
-import {initTaskTwo} from "./tasks/task-2";
-import {initTaskThree} from "./tasks/task-3";
+import Api from "./server/api";
+import ImgBBServerConfig from "./configs/img-b-b-server-config";
+import GalleryController from "./controllers/gallery-controller";
+import {encodeToBase64} from "./utils/utils";
+import imagesStoreConfig from "./configs/images-store-config";
+import ArrStore from "./storage/arr-store";
 
 
-const taskOneNode = document.querySelector(`#task-1`);
-initTaskOne(taskOneNode);
+const imgBBAPI = new Api(ImgBBServerConfig);
+const imagesStore = new ArrStore(imagesStoreConfig);
 
+const onImageSubmit = async (formData) => {
+  const imageFile = formData.get(`image`);
 
-const taskTwoNode = document.querySelector(`#task-2`);
-initTaskTwo(taskTwoNode);
+  const imgBase64 = await encodeToBase64(imageFile);
+  formData.set(`image`, imgBase64.replace(/^.*,/, ``));
 
+  const uploadedData = await imgBBAPI.uploadImg(formData);
+  if (imagesStore.data.every((image) => image.id !== uploadedData.id)) {
+    imagesStore.push(uploadedData);
+    galleryController.updateImages(imagesStore.data);
 
-const taskThreeNode = document.querySelector(`#root`);
-initTaskThree(taskThreeNode);
+    return;
+  }
+
+  alert(`Image in gallery already!!!`);
+  galleryController.unlock();
+};
+
+const galleryController = new GalleryController(document.querySelector(`#root`), onImageSubmit);
+galleryController.updateImages(imagesStore.data);
