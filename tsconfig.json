@@ -1,5 +1,6 @@
 {
   "files": ["./src/js/main.ts"],
+  "include": ["./src/js/**/*.ts"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
