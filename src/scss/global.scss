@@ -1,0 +1,44 @@
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(20, 20, 20);
+
+  background-color: rgb(245, 245, 245);
+}
+
+body {
+  min-width: 760px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+
+  white-space: nowrap;
+
+  border: 0;
+}
