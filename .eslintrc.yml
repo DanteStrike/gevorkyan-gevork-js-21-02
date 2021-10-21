@@ -8,7 +8,9 @@ env:
   commonjs: true
   jest: true
 
-extends: 'htmlacademy/es6'
+extends: ['htmlacademy/es6', 'plugin:@typescript-eslint/recommended']
+
+plugins: ['@typescript-eslint']
 
 rules:
   no-alert: 1
