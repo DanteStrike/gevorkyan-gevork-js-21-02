@@ -1,30 +1,27 @@
-import {createElement} from '../utils/dom.js';
+import {createElement} from '../utils/dom';
+import {IAbstractComponent, Nullable} from "../types";
 
 
-class AbstractComponent {
-  constructor() {
-    if (new.target === AbstractComponent) {
-      throw new Error(`Can't instantiate AbstractComponent, only concrete one.`);
+abstract class AbstractComponent implements IAbstractComponent {
+  private element: Nullable<HTMLElement>;
+
+  protected constructor() {
+    this.element = null;
+  }
+
+  getElement(): HTMLElement {
+    if (!this.element) {
+      this.element = createElement(this.getTemplate());
     }
 
-    this._element = null;
+    return this.element;
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this._getTemplate());
-    }
-
-    return this._element;
+  removeElement(): void {
+    this.element = null;
   }
 
-  removeElement() {
-    this._element = null;
-  }
-
-  _getTemplate() {
-    throw new Error(`Abstract method not implemented: getTemplate`);
-  }
+  protected abstract getTemplate(): string
 }
 
 

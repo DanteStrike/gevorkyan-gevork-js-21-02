@@ -1,27 +1,29 @@
 import AbstractComponent from "./abstract-component";
+import {ITable} from "../types";
+import {safeQuery} from "../utils/dom";
 
 
-class Table extends AbstractComponent {
+class Table extends AbstractComponent implements ITable {
   constructor() {
     super();
   }
 
   get tableList() {
-    return this.getElement().querySelector(`.table__peoples`);
+    return safeQuery(this.getElement(), `.table__peoples`);
   }
 
-  block() {
+  block(): void {
     this.getElement().classList.add(`table--loading`);
   }
 
-  unBlock() {
+  unblock(): void {
     this.getElement().classList.remove(`table--loading`);
   }
 
-  _getTemplate() {
+  protected getTemplate(): string {
     return `<section class="table">
-                <ul class="table__peoples"></ul>
-              </section>`;
+              <ul class="table__peoples"></ul>
+            </section>`;
   }
 }
 

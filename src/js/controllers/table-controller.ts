@@ -4,128 +4,160 @@ import People from "../components/people";
 import Navigation from "../components/navigation";
 import LoadingView from "../components/loading-view";
 import {render, unmount} from "../utils/dom";
-import {Position, Sort} from "../utils/enum";
+import {INavigation, IPage, IPeople, ITable, ITableController, Position, SortMod, SortType} from "../types";
+import Page from "../adapters/page";
 
 
-class TableController {
-  constructor(container, onPageChange) {
-    this._container = container;
-    this._onPageChange = onPageChange;
-    this._page = {};
+class TableController implements ITableController {
+  private readonly table: ITable;
+  private readonly sortView: SortView;
+  private readonly nav: INavigation;
+  private readonly loadView: LoadingView;
 
-    this._table = new Table();
+  private page: IPage;
+  private sortType: SortType;
+  private sortMod: SortMod;
 
-    this._sortType = Sort.Type.NAME;
-    this._sortMod = Sort.Mod.DOWN;
-    this._sortView = new SortView(this._sortType, this._onSortTypeChange.bind(this));
+  constructor(
+    private readonly container: HTMLElement,
+    private readonly onPageChange: (pageNum: number) => void
+  ) {
+    this.page = Page.defaultPage();
+    this.table = new Table();
+    this.sortType = SortType.NAME;
+    this.sortMod = SortMod.DOWN;
+    this.sortView = new SortView({
+      sortType: this.sortType,
+      onSortTypeChange: this.onSortTypeChange.bind(this)
+    });
+    this.nav = new Navigation({
+      num: -1,
+      onPrevBtnClick: this.onNavPrevClick.bind(this),
+      onNextBtnClick: this.onNavNextClick.bind(this)
+    });
+    this.loadView = new LoadingView();
 
-    this._nav = new Navigation(null, this._onNavPrevClick.bind(this), this._onNavNextClick.bind(this));
-
-    this._loadView = new LoadingView();
-
-    this._init();
+    this.init();
   }
 
-  setPage(page) {
-    this._page = page;
-    this._nav.navNum = this._page.cur;
+  setPage(page: IPage): void {
+    this.page = page;
+    this.nav.curNum = this.page.cur;
     this.loadingModOFF();
-
-    this._sort();
-    this._update();
+    this.sort();
+    this.update();
   }
 
-  loadingModOFF() {
-    if (this._page.prev !== null) {
-      this._nav.enablePrevButton();
+  loadingModOFF(): void {
+    if (this.page.prev !== null) {
+      this.nav.enablePrevButton();
     }
-    if (this._page.next !== null) {
-      this._nav.enableNextButton();
+    if (this.page.next !== null) {
+      this.nav.enableNextButton();
     }
 
-    unmount(this._loadView.getElement());
-    this._table.unBlock();
+    unmount(this.loadView.getElement());
+    this.table.unblock();
   }
 
-  _init() {
-    render(this._container, this._table.getElement(), Position.AFTERBEGIN);
-    render(this._table.getElement(), this._sortView.getElement(), Position.AFTERBEGIN);
-    render(this._table.getElement(), this._nav.getElement(), Position.BEFOREEND);
+  private init(): void {
+    render(this.container, this.table.getElement(), Position.AFTERBEGIN);
+    render(this.table.getElement(), this.sortView.getElement(), Position.AFTERBEGIN);
+    render(this.table.getElement(), this.nav.getElement(), Position.BEFOREEND);
 
-    this._loadingModON();
+    this.loadingModON();
   }
 
-  _onSortTypeChange(newType) {
-    if (this._sortType === newType) {
-      this._toggleSortMod();
+  private onSortTypeChange(newType: SortType): void {
+    if (this.sortType === newType) {
+      this.toggleSortMod();
     } else {
-      this._sortType = newType;
+      this.sortType = newType;
     }
 
-    this._sort();
-    this._update();
+    this.sort();
+    this.update();
   }
 
-  _toggleSortMod() {
-    if (this._sortMod === Sort.Mod.UP) {
-      this._sortMod = Sort.Mod.DOWN;
+  private toggleSortMod(): void {
+    if (this.sortMod === SortMod.UP) {
+      this.sortMod = SortMod.DOWN;
       return;
     }
 
-    this._sortMod = Sort.Mod.UP;
+    this.sortMod = SortMod.UP;
   }
 
-  _sort() {
-    this._page.peoples.sort((a, b) => {
-      if (typeof a[this._sortType] === `number`) {
-        return a[this._sortType] - b[this._sortType];
+  private sort(): void {
+    this.page.peoples.sort((a: IPeople, b: IPeople): number => {
+      let left: number | string;
+      let right: number | string;
+
+      switch (this.sortType) {
+        case SortType.NAME:
+          left = a.name.toLowerCase();
+          right = b.name.toLowerCase();
+          break;
+
+        case SortType.GENDER:
+          left = a.gender.toLowerCase();
+          right = b.gender.toLowerCase();
+          break;
+
+        case SortType.HEIGHT:
+          left = a.height;
+          right = b.height;
+          break;
+
+        case SortType.MASS:
+          left = a.mass;
+          right = b.mass;
+          break;
       }
 
-      const strA = a[this._sortType].toLowerCase();
-      const strB = b[this._sortType].toLowerCase();
-      if (strA > strB) {
+      if (left > right) {
         return 1;
       }
-      if (strA < strB) {
+      if (left < right) {
         return -1;
       }
       return 0;
     });
 
-    if (this._sortMod === Sort.Mod.UP) {
-      this._page.peoples.reverse();
+    if (this.sortMod === SortMod.UP) {
+      this.page.peoples.reverse();
     }
   }
 
-  _loadingModON() {
-    this._nav.disableNextButton();
-    this._nav.disablePrevButton();
-    render(this._table.getElement(), this._loadView.getElement(), Position.AFTERBEGIN);
-    this._table.block();
+  private loadingModON(): void {
+    this.nav.disableNextButton();
+    this.nav.disablePrevButton();
+    render(this.table.getElement(), this.loadView.getElement(), Position.AFTERBEGIN);
+    this.table.block();
   }
 
-  _onNavPrevClick() {
-    if (this._page.prev === null) {
+  private onNavPrevClick(): void {
+    if (this.page.prev === null) {
       return;
     }
 
-    this._loadingModON();
-    this._onPageChange(this._page.prev);
+    this.loadingModON();
+    this.onPageChange(this.page.prev);
   }
 
-  _onNavNextClick() {
-    if (this._page.next === null) {
+  private onNavNextClick(): void {
+    if (this.page.next === null) {
       return;
     }
 
-    this._loadingModON();
-    this._onPageChange(this._page.next);
+    this.loadingModON();
+    this.onPageChange(this.page.next);
   }
 
-  _update() {
-    this._table.tableList.innerHTML = ``;
-    this._page.peoples.forEach((people) => {
-      render(this._table.tableList, new People(people).getElement(), Position.BEFOREEND);
+  private update(): void {
+    this.table.tableList.innerHTML = ``;
+    this.page.peoples.forEach((people) => {
+      render(this.table.tableList, new People(people).getElement(), Position.BEFOREEND);
     });
   }
 }
