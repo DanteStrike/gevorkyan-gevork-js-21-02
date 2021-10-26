@@ -17,7 +17,7 @@ const Advantages = (
       <h1 className="advantages__title">Рыба на любой вкус</h1>
       <p className="advantages__tagline">Мы продаем рыбов, а не только показываем</p>
       <div className="advantages__list">
-        {advantages.map((advantage) => <Advantage {...advantage}/>)}
+        {advantages.map((advantage, index) => <Advantage {...advantage} key={index}/>)}
       </div>
     </section>
   );

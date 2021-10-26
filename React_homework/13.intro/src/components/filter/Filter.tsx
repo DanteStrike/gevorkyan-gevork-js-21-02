@@ -22,7 +22,7 @@ const Filter = (
       <legend className="filter__title">{title}</legend>
       <ul className="filter__items">
         {items.map((item, index) =>
-          <li className="filter__item">
+          <li className="filter__item" key={index}>
             <input
               className="filter__item-checkbox"
               type={type}

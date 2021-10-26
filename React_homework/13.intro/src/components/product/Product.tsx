@@ -2,7 +2,7 @@ import React from "react";
 import './Product.css';
 
 
-export type ProductProps = {
+type ProductProps = {
   id: number
   name: string,
   href: string,
@@ -42,4 +42,4 @@ const Product = (
 }
 
 
-export {Product};
+export default Product;

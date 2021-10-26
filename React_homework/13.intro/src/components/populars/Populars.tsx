@@ -1,6 +1,6 @@
 import React from "react";
 import './Populars.css'
-import {Product, ProductProps} from "../product/Product";
+import Product from "../product/Product";
 import withMixin from "../../hocs/with-mixin";
 
 const WithMixinProduct = withMixin(Product, [`populars__product`]);
@@ -27,7 +27,7 @@ const Populars = (
     <section className="populars">
       <h2 className="populars__title">Популярные</h2>
       <div className="populars__products">
-        {products.map((product) => <WithMixinProduct {...product} onBuy={(id) => onProductBuy(id)}/>)}
+        {products.map((product, index) => <WithMixinProduct {...product} onBuy={(id) => onProductBuy(id)} key={index}/>)}
       </div>
     </section>
   );

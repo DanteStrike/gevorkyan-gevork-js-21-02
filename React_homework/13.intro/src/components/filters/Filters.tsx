@@ -32,7 +32,7 @@ const Filters = (
           onFilterChange(formData);
         }}
       >
-        {filters.map((filter) => <WithMixinFilter {...filter}/>)}
+        {filters.map((filter, index) => <WithMixinFilter {...filter} key={index}/>)}
         <button className="filters__button" type="submit">Отфильтровать</button>
       </form>
     </section>
