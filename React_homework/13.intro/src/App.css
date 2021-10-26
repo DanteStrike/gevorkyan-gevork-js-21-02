@@ -1,0 +1,35 @@
+.app {
+  display: grid;
+  grid-template-areas: "header header" "aside main" "footer footer";
+  grid-template-rows: 75px 1fr 60px;
+  grid-template-columns: 300px 1fr;
+  grid-gap: 15px;
+  width: 100%;
+  padding: 0 2.3%;
+  margin: 0 auto;
+}
+
+.app__header {
+  grid-area: header;
+}
+
+.app__promo {
+  grid-area: main;
+}
+
+.app__sidebar {
+  grid-area: aside;
+}
+
+.app__footer {
+  grid-area: footer;
+}
+
+@media (min-width: 1280px) {
+  .app {
+    width: 1280px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+}
+
