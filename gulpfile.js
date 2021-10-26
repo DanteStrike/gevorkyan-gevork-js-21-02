@@ -20,6 +20,8 @@ const source = require(`vinyl-source-stream`);
 const buffer = require(`vinyl-buffer`);
 const log = require(`gulplog`);
 const uglify = require(`gulp-uglify`);
+const tsify = require(`tsify`);
+const ts = require(`gulp-typescript`);
 
 //  SERVER
 const browserSync = require(`browser-sync`).create();
@@ -39,8 +41,8 @@ const paths = {
   src: {
     scssMain: `src/scss/main.scss`,
     scss: `src/scss/**/*.scss`,
-    jsMain: `src/js/index.js`,
-    js: `src/js/**/*.js`,
+    jsMain: `src/js/main.ts`,
+    js: `src/js/**/*.ts`,
     jsTests: `src/js/**/*.test.js`,
     htmlMain: `src/index.html`,
     html: `src/*.html`
@@ -86,7 +88,8 @@ function buildJS(cb) {
     debug: true
   });
 
-  b.bundle()
+  b.plugin(tsify)
+    .bundle()
     .pipe(source(`bundle.js`))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))

@@ -3,43 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Задание 6. Функции, контекст, область видимости, замыкания, рекурсия. Обработка ошибок, отладка</title>
+    <title>Тема 9. Асинхронный JavaScript: Event Loop, setTimeout, setInterval</title>
     <link href="assets/css/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
   </head>
   <body>
-    <header class="header">Задание 6. Функции, контекст, область видимости, замыкания, рекурсия. Обработка ошибок, отладка</header>
+    <header class="header">Тема 11. Typescript: примитивные типы, сложные типы, дженерики</header>
 
     <main class="tasks">
       <h1 class="tasks__title">Задачи</h1>
-      <p>Выполнение всех заданий запускается из <b>консоли</b> (глобальая переменная <b>window.tasks</b>)</p>
       <ul class="tasks__list">
         <li class="tasks__item">
           <article class="task">
-            <h2 class="task__title">Задача #1</h2>
-            <p class="task__desc">Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи),
-              функция должна вернуть значение числа. Использовать рекурсию.</p>
-              <br><i><b>Запуск из консоли:</b> tasks.task1.run(n)</i>
-          </article>
-        </li>
-
-        <li class="tasks__item">
-          <article class="task">
-            <h2 class="task__title">Задача #2</h2>
-            <p class="task__desc">Модернизировать написанную функцию, добавив кэширование (функция “”запоминает””
-              входной параметр и вычесленное значение, при следующем вызыве с этим же параметром,
-              функция не вычисляет значение, а возвращает из памяти)</p>
-            <br><i><b>Запуск из консоли:</b> tasks.task2.run(n)</i>
-          </article>
-        </li>
-
-        <li class="tasks__item">
-          <article class="task">
-            <h2 class="task__title">Задача #3</h2>
-            <p class="task__desc">Разработать рекурсивную функцию, принимающую массив, содержащий массивы из двух элементов,
-              в каждом из которых первый элемент является строкой, а второй строкой, числом, логическим значением,
-              объектом, или таким же массивом. Функция должна преобразовать массив в объект.</p>
-            <br><i><b>Запуск из консоли:</b> tasks.task3.run(array[])</i>
+            <h2 class="task__title">Задача</h2>
+            <p class="task__desc">
+              Переписать домашнее задание №3 урока №9 с использованием TypeScript. <br>
+              Реализовать страницу с таблицей. Таблица должна содержать инфрмацию, полученную по API https://swapi.dev/api/people/ (массив объектов в свойстве "results"). А именно росте, весе и поле персонажей (поля "name", "height", "mass" и "gender" соответственно).<br>
+              *Опционально: предусмотреть возможность сортировки таблицы<br>
+              *Опционально: предусмотреть возможность перехода к следующей странице (ссылка содержится в объекте API в свойстве "next") и предыдущей странице (ссылка содержится в объекте API в свойстве "previous")
+              <br><i><b></b></i></p>
+            <div class="work-area" id="root"></div>
           </article>
         </li>
       </ul>
