@@ -1,0 +1,13 @@
+.sort {
+  display: flex;
+  padding: 10px 10px;
+}
+
+.sort__item-name {
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.sort__item:checked ~ .sort__item-name {
+  font-weight: 700;
+}

@@ -1,0 +1,17 @@
+.filters {
+  display: flex;
+  margin: 0;
+  padding: 5px;
+  justify-content: space-around;
+  font-size: 20px;
+  width: 100%;
+  border: 4px solid rgb(40, 40, 40);
+}
+
+.filters__filter-name {
+  cursor: pointer;
+}
+
+.filters__filter:checked ~ .filters__filter-name {
+  font-weight: 700;
+}
