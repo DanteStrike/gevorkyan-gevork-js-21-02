@@ -1,0 +1,143 @@
+.task-edit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  padding: 10px 15px;
+  background-color: rgb(250, 250, 250);
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.task-edit__title,
+.task-edit__desc,
+.task-edit__time {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  font: unset;
+  color: unset;
+  resize: none;
+  background: unset;
+  border: unset;
+}
+
+.task-edit__title {
+  height: 22px;
+  padding: 0 10px 4px 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-edit__desc {
+  height: 100px;
+  padding: 3px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  word-break: break-all;
+  border: 1px solid rgb(40, 40, 40);
+}
+
+.task-edit__time-wrap,
+.task-edit__button-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-edit__time-wrap {
+  margin-bottom: 2px;
+}
+
+.task-edit__time {
+  font-size: 12px;
+}
+
+.task-edit__date {
+  margin-bottom: 4px;
+}
+
+.task-edit__tags,
+.task-edit__colors {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 4px 0 0 0;
+}
+
+.task-edit__tag {
+  display: block;
+  padding: 3px;
+  font-size: 10px;
+  color: rgb(190, 190, 190);
+  border: 1px dotted rgb(190, 190, 190);
+  border-radius: 5px;
+}
+
+.task-edit__tag--checked,
+.task-edit__check:checked ~ .task-edit__tag {
+  color: rgb(240, 240, 240);
+  background: linear-gradient(180deg, rgba(80, 80, 80, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  border: 1px solid transparent;
+}
+
+.task-edit__colors {
+  align-items: center;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.task-edit__color-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.task-edit__color {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  background-color: transparent;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.task-edit__check:checked ~ .task-edit__color::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: "";
+  background-color: transparent;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+
+.task-edit__status {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.task-edit__button-wrap {
+  margin-top: auto;
+}
+
+.task-edit > .task-edit__button {
+  margin-top: 10px;
+}
+
+.task-edit__button-wrap > .task-edit__button {
+  width: 46%;
+}
