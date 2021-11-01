@@ -13,7 +13,11 @@ interface IEditTaskProps {
   onSave: (newTask: IToDoTask) => void,
 }
 
-const TaskEdit = (
+const isEqual = (prevProps: IEditTaskProps, nextProps: IEditTaskProps): boolean => {
+  return prevProps.value.isEdit === nextProps.value.isEdit;
+}
+
+const TaskEdit = React.memo((
   {
     value,
     allTags,
@@ -138,7 +142,7 @@ const TaskEdit = (
               id={`task-${id}-colors-${index}`}
               value={color}
               defaultChecked={colorValue === color}
-              onChange={(evt) => setColorValue(color)}
+              onChange={() => setColorValue(color)}
             />
             <label
               className="task-edit__color"
@@ -168,7 +172,7 @@ const TaskEdit = (
       >Close</Button>
     </form>
   );
-}
+}, isEqual)
 
 export default TaskEdit;
 

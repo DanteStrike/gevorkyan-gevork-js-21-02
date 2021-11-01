@@ -8,7 +8,7 @@ interface ISortProps {
   onChange?: (sort: SortType) => void,
 }
 
-const Sort = (
+const Sort = React.memo((
   {
     initialSort = SortType.DEFAULT,
     sortItems = [],
@@ -34,6 +34,6 @@ const Sort = (
       )}
     </form>
   );
-}
+})
 
 export default Sort;

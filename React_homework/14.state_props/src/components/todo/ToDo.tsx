@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import './ToDo.css';
 import Task from "../task/Task";
 import {Color, FilterType, IToDoState, IToDoTask, SortType, Tag, TaskStatus} from "../../types";
@@ -31,10 +31,10 @@ const ToDo = (
   }: ToDoProps
 ) => {
   const [filter, setFilter] = useState<FilterType>(initialFilter);
-  const handleFilterChange = (filter: FilterType) => setFilter(filter);
+  const handleFilterChange = useCallback((filter: FilterType) => setFilter(filter), []);
 
   const [sort, setSort] = useState<SortType>(initialSort);
-  const handleSortChange = (sort: SortType) => setSort(sort);
+  const handleSortChange = useCallback((sort: SortType) => setSort(sort), []);
 
   const [tasks, setTasks] = useState<IToDoTask[]>(cloneDeep(value));
   const handleTaskAdd = () => setTasks((oldTasks) => {
