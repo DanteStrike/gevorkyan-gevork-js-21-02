@@ -1,7 +1,6 @@
 import React from "react";
 import './Footer.css';
 
-
 const Footer = () => {
   return (
     <footer className="footer promo-page__footer">
@@ -10,6 +9,5 @@ const Footer = () => {
     </footer>
   );
 }
-
 
 export default Footer;

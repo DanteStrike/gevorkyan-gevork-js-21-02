@@ -5,14 +5,14 @@ import {SortType} from "../../types";
 interface ISortProps {
   initialSort?: SortType,
   sortItems?: SortType[],
-  onChange?: (sort: SortType) => void
+  onChange?: (sort: SortType) => void,
 }
 
 const Sort = (
   {
     initialSort = SortType.DEFAULT,
     sortItems = [],
-    onChange = () => {}
+    onChange = () => {},
   }: ISortProps
 ) => {
   return (
@@ -33,7 +33,7 @@ const Sort = (
         )
       )}
     </form>
-  )
+  );
 }
 
 export default Sort;

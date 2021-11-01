@@ -27,7 +27,7 @@ const ToDo = (
     initialFilter = FilterType.DEFAULT,
     initialSort = SortType.DEFAULT,
     value = [],
-    onChange = () => {}
+    onChange = () => {},
   }: ToDoProps
 ) => {
   const [filter, setFilter] = useState<FilterType>(initialFilter);
@@ -118,7 +118,7 @@ const ToDo = (
 
     setDisplayedTasks(displayedTasks);
     onChange({filter, sort, tasks})
-  }, [filter, sort, tasks, onChange])
+  }, [filter, sort, tasks, onChange]);
 
   return (
     <section className="todo-list">

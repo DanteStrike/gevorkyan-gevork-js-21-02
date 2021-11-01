@@ -58,7 +58,7 @@ const Button = (
 
   return (
     <button className={className} type={type} onClick={handleClick}>{children}</button>
-  )
+  );
 }
 
 export default Button;

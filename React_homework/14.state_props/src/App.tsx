@@ -5,7 +5,6 @@ import Footer from "./components/footer/Footer";
 import ToDo from "./components/todo/ToDo";
 import {FilterType, IStorageData, IToDoState, IToDoTask, IToDoTaskData, SortType} from "./types";
 
-
 interface IAppProps {
   storageKey: string
 }

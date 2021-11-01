@@ -7,7 +7,7 @@ import Button, {ButtonType, ButtonVariant} from "../button/Button";
 interface IEditTaskProps {
   value: IToDoTask,
   allTags: Set<Tag>,
-  allColors: Set<Color>
+  allColors: Set<Color>,
   onClose: (id: number) => void,
   onDelete: (id: number) => void,
   onSave: (newTask: IToDoTask) => void,
@@ -20,7 +20,7 @@ const TaskEdit = (
     allColors,
     onSave,
     onDelete,
-    onClose
+    onClose,
   }: IEditTaskProps
 ) => {
   const {id, title, desc, start, end, markColor, tags} = value;
@@ -42,7 +42,7 @@ const TaskEdit = (
     status: TaskStatus.ON_PROGRESS,
     markColor: colorValue,
     isEdit: false,
-    isComplete: false
+    isComplete: false,
   })
   const handleDelete = () => onDelete(id);
   const handleClose = () => onClose(id);
@@ -80,9 +80,9 @@ const TaskEdit = (
         onChange={(evt) => {
           const tempTime = new Date(evt.target.value).getTime();
           if (tempTime > dateEnd) {
-            setDateEnd(tempTime)
+            setDateEnd(tempTime);
           }
-          setDateStart(tempTime)
+          setDateStart(tempTime);
         }}
       />
       <label htmlFor={`task-${id}-date-end`}>End</label>
@@ -95,9 +95,9 @@ const TaskEdit = (
         onChange={(evt) => {
           const tempTime = new Date(evt.target.value).getTime();
           if (tempTime < dateStart) {
-            setDateStart(tempTime)
+            setDateStart(tempTime);
           }
-          setDateEnd(tempTime)
+          setDateEnd(tempTime);
         }}
       />
       <div className="task-edit__tags">
@@ -167,7 +167,7 @@ const TaskEdit = (
         onClick={handleClose}
       >Close</Button>
     </form>
-  )
+  );
 }
 
 export default TaskEdit;

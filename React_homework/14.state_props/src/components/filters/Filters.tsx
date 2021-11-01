@@ -33,7 +33,7 @@ const Filters = (
         )
       )}
     </form>
-  )
+  );
 }
 
 export default Filters;

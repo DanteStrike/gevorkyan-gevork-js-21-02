@@ -16,7 +16,7 @@ const Task = (
     value,
     allTags,
     onEdit,
-    onCompleteToggle
+    onCompleteToggle,
   }: ITaskProps
 ) => {
   const {id, title, desc, status, start, end, markColor, tags, isComplete} = value;
@@ -68,6 +68,5 @@ const Task = (
     </article>
   );
 }
-
 
 export default Task;
