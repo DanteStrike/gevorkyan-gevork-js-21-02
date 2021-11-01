@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App storageKey="appKey"/>
   </React.StrictMode>,
   document.getElementById('root')
 );

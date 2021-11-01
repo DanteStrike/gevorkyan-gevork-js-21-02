@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './ToDo.css';
 import Task from "../task/Task";
-import {Color, FilterType, IToDoTask, SortType, Tag, TaskStatus} from "../../types";
+import {Color, FilterType, IToDoState, IToDoTask, SortType, Tag, TaskStatus} from "../../types";
 import createDefaultTask from "../../helpers/create-default-task";
 import TaskEdit from "../task-edit/TaskEdit";
 import cloneDeep from "lodash.clonedeep";
@@ -19,14 +19,15 @@ interface ToDoProps {
   initialFilter?: FilterType,
   initialSort?: SortType,
   value?: IToDoTask[],
-  onChange?: () => void,
+  onChange?: (data: IToDoState) => void,
 }
 
 const ToDo = (
   {
     initialFilter = FilterType.DEFAULT,
     initialSort = SortType.DEFAULT,
-    value = []
+    value = [],
+    onChange = () => {}
   }: ToDoProps
 ) => {
   const [filter, setFilter] = useState<FilterType>(initialFilter);
@@ -116,7 +117,8 @@ const ToDo = (
     }
 
     setDisplayedTasks(displayedTasks);
-  }, [filter, sort, tasks])
+    onChange({filter, sort, tasks})
+  }, [filter, sort, tasks, onChange])
 
   return (
     <section className="todo-list">

@@ -47,8 +47,27 @@ export interface IToDoTask {
   isEdit: boolean
 }
 
-export interface IToDo {
-  toDoList: IToDoTask[],
-  filterType: FilterType,
-  sortType: SortType
+export interface IToDoTaskData {
+  id: number,
+  title: string,
+  desc: string,
+  start: number,
+  end: number,
+  markColor: Color,
+  tags: Tag[],
+  status: TaskStatus,
+  isComplete: boolean,
+  isEdit: boolean
+}
+
+export interface IToDoState {
+  filter: FilterType,
+  sort: SortType,
+  tasks: IToDoTask[]
+}
+
+export interface IStorageData {
+  filter: FilterType,
+  sort: SortType,
+  tasks: IToDoTaskData[]
 }
