@@ -8,7 +8,7 @@ interface IFiltersProps {
   onChange?: (filter: FilterType) => void
 }
 
-const Filters = (
+const Filters = React.memo((
   {
     initialFilter = FilterType.DEFAULT,
     filters = [],
@@ -34,6 +34,6 @@ const Filters = (
       )}
     </form>
   );
-}
+})
 
 export default Filters;

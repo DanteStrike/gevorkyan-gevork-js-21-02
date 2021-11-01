@@ -29,7 +29,7 @@ const App = (
       filter: data.filter,
       sort: data.sort,
       tasks: data.tasks.map((task: IToDoTask): IToDoTaskData =>
-        Object.assign({}, task, {tags: Array.from(task.tags)}))
+        Object.assign({}, task, {tags: Array.from(task.tags), isEdit: false}))
     };
     localStorage.setItem(storageKey, JSON.stringify(normalizedData));
   }

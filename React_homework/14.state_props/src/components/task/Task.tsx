@@ -11,7 +11,14 @@ interface ITaskProps {
   onCompleteToggle: (id: number) => void,
 }
 
-const Task = (
+const isEqual = (prevProps: ITaskProps, nextProps: ITaskProps): boolean => {
+  return prevProps.value.isEdit === nextProps.value.isEdit
+    && prevProps.value.isComplete === nextProps.value.isComplete
+    && prevProps.value.status === nextProps.value.status
+    && prevProps.value.id === nextProps.value.id;
+}
+
+const Task = React.memo((
   {
     value,
     allTags,
@@ -67,6 +74,6 @@ const Task = (
       </Button>
     </article>
   );
-}
+}, isEqual)
 
 export default Task;
