@@ -1,6 +1,6 @@
 import React from 'react';
 import './Switcher.css';
-import {IThemeContext, ThemeContext} from '../context/ThemeContext';
+import {IThemeContext, ThemeContext} from '../../context/ThemeContext';
 import {Theme} from '../../types';
 
 interface ISwitcherState {
