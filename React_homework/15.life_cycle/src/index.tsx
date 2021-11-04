@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Api from './server/api';
-import serverConfig from './configs/serverConfig';
+import serveConfig from './configs/serve-config';
 import {ThemeProvider} from './context/ThemeContext';
 import {Theme} from './types';
 
-const api = new Api(serverConfig);
+const api = new Api(serveConfig);
 
 ReactDOM.render(
   <React.StrictMode>

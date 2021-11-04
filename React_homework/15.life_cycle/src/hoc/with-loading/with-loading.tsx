@@ -1,5 +1,6 @@
 import React from 'react';
 import './ComponentWithLoading.css';
+import getHOCDisplayName from '../../utils/get-hoc-display-name';
 
 interface IWithLoadingProps {
   isLoading: boolean;
@@ -7,11 +8,7 @@ interface IWithLoadingProps {
 
 function withLoading<P extends object>(WrappedComponent: React.ComponentType<P>) {
   class WithLoading extends React.PureComponent<P & IWithLoadingProps> {
-    get displayName() {
-      return `withLoading(${this.wrappedComponentName})`;
-    }
-
-    private wrappedComponentName = WrappedComponent.displayName || 'Component';
+    static displayName = getHOCDisplayName(WrappedComponent, WithLoading);
 
     render(): React.ReactNode {
       const {isLoading, ...props} = this.props;

@@ -7,6 +7,7 @@ import withLoading from './hoc/with-loading/with-loading';
 import Selector from './components/selector/Selector';
 import {IThemeContext, ThemeContext} from './context/ThemeContext';
 import Switcher from './components/switcher/Switcher';
+import withOpen from './hoc/with-hover/with-open';
 
 interface IAppProps {
   api: IApi;
@@ -21,6 +22,7 @@ interface IAppState {
 }
 
 const UsersWithLoading = withLoading(Users);
+const SelectorWithOpen = withOpen(Selector);
 
 class App extends React.PureComponent<IAppProps, IAppState> {
   constructor(props: IAppProps) {
@@ -77,7 +79,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
           <UsersWithLoading users={users} isLoading={isLoading} />
           <div className="app__wrap">
             <Pagination value={pageAmount} defaultValue={page} onChange={this.handlePageChange} />
-            <Selector options={limitOptions} defaultOption={limit} onChange={this.handleUsersPageLimitChange} />
+            <SelectorWithOpen options={limitOptions} defaultOption={limit} onChange={this.handleUsersPageLimitChange} />
             <Switcher />
           </div>
         </main>
