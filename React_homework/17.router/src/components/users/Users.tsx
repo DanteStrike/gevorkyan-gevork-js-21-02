@@ -3,6 +3,7 @@ import {IUserPreview} from '../../types';
 import User from '../user/User';
 import './Users.css';
 import Tooltip from '../tooltip/Tooltip';
+import CustomLink from '../custom-link/CustomLink';
 
 interface IUsersProps {
   users: IUserPreview[];
@@ -14,7 +15,9 @@ function Users({users}: IUsersProps) {
       {users.map((user) => (
         <li className="users__user" key={user.id}>
           <Tooltip text={user.id}>
-            <User user={user} />
+            <CustomLink to={`/user/${user.id}`}>
+              <User user={user} />
+            </CustomLink>
           </Tooltip>
         </li>
       ))}

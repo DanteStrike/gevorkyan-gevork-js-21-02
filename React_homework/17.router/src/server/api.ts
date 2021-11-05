@@ -1,4 +1,4 @@
-import {IApi, IServerConfig, IUsers} from '../types';
+import {IApi, IServerConfig, IUser, IUsers} from '../types';
 
 class Api implements IApi {
   private endPoint: string;
@@ -8,6 +8,10 @@ class Api implements IApi {
   constructor({endPoint, apiID}: IServerConfig) {
     this.endPoint = endPoint;
     this.apiID = apiID;
+  }
+
+  getUser(id: string): Promise<IUser> {
+    return this.load({url: `user/${id}`}).then((response: Response): Promise<IUser> => response.json());
   }
 
   getUsers(page: number, limit: number): Promise<IUsers> {

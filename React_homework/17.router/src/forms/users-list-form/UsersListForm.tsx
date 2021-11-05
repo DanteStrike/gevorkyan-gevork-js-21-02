@@ -5,7 +5,7 @@ import Pagination from '../../components/pagination/Pagination';
 import Selector from '../../components/selector/Selector';
 import Switcher from '../../components/switcher/Switcher';
 import {IApi, IUserPreview} from '../../types';
-import './UsersList.css';
+import './UsersListForm.css';
 
 interface IUsersListProps {
   api: IApi;
@@ -16,7 +16,7 @@ interface IUsersListState {
   pageAmount: number;
 }
 
-function UsersList({api}: IUsersListProps) {
+function UsersListForm({api}: IUsersListProps) {
   const [loading, setLoading] = useState<IUsersListState>({
     isLoading: false,
     users: [],
@@ -63,4 +63,4 @@ function UsersList({api}: IUsersListProps) {
   );
 }
 
-export default UsersList;
+export default UsersListForm;

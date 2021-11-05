@@ -3,9 +3,9 @@ import './App.css';
 import {Switch, Route, RouteComponentProps, Redirect} from 'react-router-dom';
 import {IApi} from './types';
 import {ThemeContext} from './context/ThemeContext';
-import UsersList from './forms/users-list/UsersList';
-import UserProfile from './forms/user-profile/UserProfile';
-import PageNotFound from "./forms/page-not-found/PageNotFound";
+import UsersListForm from './forms/users-list-form/UsersListForm';
+import UserProfileForm from './forms/user-profile-form/UserProfileForm';
+import PageNotFound from './forms/page-not-found/PageNotFound';
 
 interface IAppProps {
   api: IApi;
@@ -23,9 +23,9 @@ function App({api}: IAppProps) {
       <main className="app__container">
         <Switch>
           <Route exact path="/">
-            <Redirect to="/users"/>
+            <Redirect to="/users" />
           </Route>
-          <Route exact path="/users" component={() => <UsersList api={api}/>} />
+          <Route exact path="/users" render={() => <UsersListForm api={api} />} />
           <Route
             exact
             path="/user/:id"
@@ -33,9 +33,9 @@ function App({api}: IAppProps) {
               match: {
                 params: {id},
               },
-            }: RouteComponentProps<IUserProfileMatchParams>) => <UserProfile id={id} />}
-           />
-           <Route component={PageNotFound}/>
+            }: RouteComponentProps<IUserProfileMatchParams>) => <UserProfileForm id={id} api={api} />}
+          />
+          <Route component={PageNotFound} />
         </Switch>
       </main>
     </div>
