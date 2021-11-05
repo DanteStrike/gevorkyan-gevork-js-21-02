@@ -17,7 +17,7 @@ function Switcher() {
     }
 
     setToggle(!toggle);
-  }
+  };
 
   return (
     <div className="switcher">

@@ -36,4 +36,4 @@ function Pagination({value, defaultValue, onChange}: IPaginationProps) {
   );
 }
 
-export default React.memo(Pagination);
+export default Pagination;

@@ -10,7 +10,7 @@ class Api implements IApi {
     this.apiID = apiID;
   }
 
-  getUsers(page = 0, limit = 20): Promise<IUsers> {
+  getUsers(page: number, limit: number): Promise<IUsers> {
     return this.load({url: `user?page=${page}&limit=${limit}`}).then(
       (response: Response): Promise<IUsers> => response.json()
     );

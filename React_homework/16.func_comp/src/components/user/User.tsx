@@ -1,17 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {IUserPreview} from '../../types';
 import './User.css';
 
 interface IUserProps {
   user: IUserPreview;
-  setTooltipText: (text: string) => void;
 }
 
-function User ({user, setTooltipText}: IUserProps) {
-  useEffect(() => {
-    setTooltipText(user.id);
-  }, [setTooltipText, user.id])
-
+function User({user}: IUserProps) {
   const {title, firstName, lastName, picture} = user;
   return (
     <article className="user">

@@ -11,10 +11,10 @@ function Selector({options, defaultOption, onChange}: ISelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const handleMouseEnter = () => {
     setIsOpen(true);
-  }
+  };
   const handleMouseLeave = () => {
     setIsOpen(false);
-  }
+  };
   const handleOptionClick = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const option = Number((evt.target as HTMLButtonElement).value);
     setIsOpen(false);
