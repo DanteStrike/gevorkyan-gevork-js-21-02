@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
-import Loading from "../../components/loading/Loading";
-import Users from "../../components/users/Users";
-import Pagination from "../../components/pagination/Pagination";
-import Selector from "../../components/selector/Selector";
-import Switcher from "../../components/switcher/Switcher";
-import {IApi, IUserPreview} from "../../types";
-import "./UsersList.css";
+import React, {useEffect, useState} from 'react';
+import Loading from '../../components/loading/Loading';
+import Users from '../../components/users/Users';
+import Pagination from '../../components/pagination/Pagination';
+import Selector from '../../components/selector/Selector';
+import Switcher from '../../components/switcher/Switcher';
+import {IApi, IUserPreview} from '../../types';
+import './UsersList.css';
 
 interface IUsersListProps {
   api: IApi;
@@ -60,7 +60,7 @@ function UsersList({api}: IUsersListProps) {
         <Switcher />
       </div>
     </>
-  )
+  );
 }
 
 export default UsersList;
