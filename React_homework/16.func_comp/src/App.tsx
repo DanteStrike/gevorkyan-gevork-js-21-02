@@ -32,6 +32,7 @@ function App({api}: IAppProps) {
   };
   const handleUsersPageLimitChange = (value: number) => {
     setLimit(value);
+    setPage(0);
   };
   useEffect(() => {
     setLoading((prevLoading) => ({...prevLoading, isLoading: true}));
