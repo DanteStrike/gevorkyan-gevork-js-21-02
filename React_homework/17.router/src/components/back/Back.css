@@ -1,0 +1,19 @@
+.back {
+  display: block;
+  max-width: 150px;
+  min-height: 43px;
+  padding: 10px;
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--primary-color);
+  word-break: break-all;
+  cursor: pointer;
+  background-color: var(--secondory-bg-color);
+  border: 1px solid var(--primary-border-color);
+  border-radius: 4px;
+}
+
+.back:hover {
+  color: var(--additional-color);
+  background-color: var(--additional-bg-color);
+}
