@@ -13,25 +13,49 @@ function Pagination({value, defaultValue, onChange}: IPaginationProps) {
     onChange(Number(target.value));
   };
 
+  const generatePagesNum = (length: number, current: number): Array<number | null> => {
+    if (length <= 10) {
+      return new Array(length).fill(``).map((_, index) => index + 1);
+    }
+
+    return new Array(length)
+      .fill(null)
+      .map((_, index, arr) =>
+        index < 3 || index > arr.length - 4 || index === current - 1 || index === current - 2 || index === current
+          ? index + 1
+          : null
+      )
+      .filter((el, index, arr) => el !== null || arr[index - 1] !== null);
+  };
+
   return (
     <ul className="pagination">
-      {[...new Array(value)].map((_, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <li className="pagination__item" key={index}>
-          <input
-            id={`pagination-${index + 1}`}
-            className="pagination__input visually-hidden"
-            type="radio"
-            name="pagination"
-            value={index}
-            checked={index === defaultValue}
-            onChange={handleChange}
-          />
-          <label className="pagination__label" htmlFor={`pagination-${index + 1}`}>
-            <span>{index + 1}</span>
-          </label>
-        </li>
-      ))}
+      {generatePagesNum(value, defaultValue).map((el) => {
+        if (el !== null) {
+          return (
+            <li className="pagination__item" key={el}>
+              <input
+                id={`pagination-${el}`}
+                className="pagination__input visually-hidden"
+                type="radio"
+                name="pagination"
+                value={el}
+                checked={el === defaultValue}
+                onChange={handleChange}
+              />
+              <label className="pagination__label" htmlFor={`pagination-${el}`}>
+                <span>{el}</span>
+              </label>
+            </li>
+          );
+        }
+
+        return (
+          <li className="pagination__item">
+            <p className="pagination__span">...</p>
+          </li>
+        );
+      })}
     </ul>
   );
 }

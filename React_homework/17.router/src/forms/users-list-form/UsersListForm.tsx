@@ -27,7 +27,7 @@ function UsersListForm({api}: IUsersListProps) {
     users: [],
     pageAmount: 0,
   });
-  const [page, setPage] = useState<number>(Number(query.get(`page`) || 0));
+  const [page, setPage] = useState<number>(Number(query.get(`page`) || 1));
   const [limit, setLimit] = useState<number>(Number(query.get(`limit`) || 20));
   const [limitOptions] = useState<number[]>([5, 10, 20]);
 
@@ -36,12 +36,12 @@ function UsersListForm({api}: IUsersListProps) {
   };
   const handleUsersPageLimitChange = (value: number) => {
     setLimit(value);
-    setPage(0);
+    setPage(1);
   };
   useEffect(() => {
     setLoading((prevLoading) => ({...prevLoading, isLoading: true}));
 
-    api.getUsers(page, limit).then((list) =>
+    api.getUsers(page - 1, limit).then((list) =>
       setLoading((prevLoading) => ({
         ...prevLoading,
         users: list.data,
@@ -52,7 +52,7 @@ function UsersListForm({api}: IUsersListProps) {
   }, [page, limit, api]);
 
   useEffect(() => {
-    setPage(Number(query.get(`page`) || 0));
+    setPage(Number(query.get(`page`) || 1));
     setLimit(Number(query.get(`limit`) || 20));
   }, [query]);
 

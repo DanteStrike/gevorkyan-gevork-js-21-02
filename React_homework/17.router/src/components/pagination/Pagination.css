@@ -1,7 +1,7 @@
 .pagination {
   display: inline-flex;
   flex-wrap: wrap;
-  width: 360px;
+  width: 400px;
   padding: 0 0 30px 0;
   margin: 0;
 }
@@ -34,4 +34,12 @@
 
 .pagination__input:checked ~ .pagination__label {
   cursor: auto;
+}
+
+.pagination__span {
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
 }
