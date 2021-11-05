@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useLayoutEffect, useState} from 'react';
 import './Switcher.css';
 import {ThemeContext} from '../../context/ThemeContext';
 import {Theme} from '../../types';
@@ -18,6 +18,12 @@ function Switcher() {
 
     setToggle(!toggle);
   };
+
+  useLayoutEffect(() => {
+    if (themeContext.theme === Theme.DARK) {
+      setToggle(() => true)
+    }
+  }, [themeContext.theme])
 
   return (
     <div className="switcher">

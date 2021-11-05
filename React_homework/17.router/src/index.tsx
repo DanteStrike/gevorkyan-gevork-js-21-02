@@ -13,7 +13,7 @@ const api = new Api(serveConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme={Theme.LIGHT}>
+    <ThemeProvider defaultTheme={Theme.LIGHT} storageKey="app-theme">
       <Router>
         <ScrollToTop />
         <App api={api} />

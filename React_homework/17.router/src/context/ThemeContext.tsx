@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {Theme} from '../types';
 
 export interface IThemeContext {
@@ -8,6 +8,7 @@ export interface IThemeContext {
 interface IThemeProviderProps {
   defaultTheme: Theme;
   children: React.ReactNode;
+  storageKey: string;
 }
 
 const ThemeContext = React.createContext<IThemeContext>({
@@ -15,9 +16,17 @@ const ThemeContext = React.createContext<IThemeContext>({
   setTheme: () => {},
 });
 
-function ThemeProvider({defaultTheme, children}: IThemeProviderProps) {
+function ThemeProvider({defaultTheme, children, storageKey}: IThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
-  return <ThemeContext.Provider value={{theme, setTheme}}>{children}</ThemeContext.Provider>;
+  const handleThemeChange = (value: Theme) => {
+    setTheme(value);
+    localStorage.setItem(storageKey, value);
+  }
+  useLayoutEffect(() => {
+    setTheme(() => localStorage.getItem(storageKey) as Theme || defaultTheme);
+  }, [defaultTheme, storageKey])
+
+  return <ThemeContext.Provider value={{theme, setTheme: handleThemeChange}}>{children}</ThemeContext.Provider>;
 }
 
 export {ThemeContext, ThemeProvider};
