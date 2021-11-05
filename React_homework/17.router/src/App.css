@@ -38,15 +38,8 @@
   --additional-color: #6e85b2;
 }
 
-.app__title {
-  margin: 0 0 10px 0;
-}
-
 .app__container {
   width: 1080px;
   margin: 0 auto;
 }
 
-.app__wrap {
-  display: flex;
-}
