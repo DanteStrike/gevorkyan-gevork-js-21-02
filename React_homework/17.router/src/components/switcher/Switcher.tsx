@@ -21,9 +21,9 @@ function Switcher() {
 
   useLayoutEffect(() => {
     if (themeContext.theme === Theme.DARK) {
-      setToggle(() => true)
+      setToggle(() => true);
     }
-  }, [themeContext.theme])
+  }, [themeContext.theme]);
 
   return (
     <div className="switcher">

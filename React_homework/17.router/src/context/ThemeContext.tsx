@@ -21,10 +21,10 @@ function ThemeProvider({defaultTheme, children, storageKey}: IThemeProviderProps
   const handleThemeChange = (value: Theme) => {
     setTheme(value);
     localStorage.setItem(storageKey, value);
-  }
+  };
   useLayoutEffect(() => {
-    setTheme(() => localStorage.getItem(storageKey) as Theme || defaultTheme);
-  }, [defaultTheme, storageKey])
+    setTheme(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
+  }, [defaultTheme, storageKey]);
 
   return <ThemeContext.Provider value={{theme, setTheme: handleThemeChange}}>{children}</ThemeContext.Provider>;
 }

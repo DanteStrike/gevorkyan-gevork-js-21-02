@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {IApi, IUser} from '../../types';
 import Loading from '../../components/loading/Loading';
 import UserProfile from '../../components/user-profile/UserProfile';
-import Back from "../../components/back/Back";
+import Back from '../../components/back/Back';
 
 interface IUserProfileProps {
   id: string;
@@ -52,7 +52,7 @@ function UserProfileForm({id, api}: IUserProfileProps) {
       <Loading isLoading={isLoading}>
         <UserProfile userProfile={userProfile} />
       </Loading>
-      <Back/>
+      <Back />
     </>
   );
 }
