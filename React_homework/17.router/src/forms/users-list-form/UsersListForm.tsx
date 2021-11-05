@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory, useLocation} from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import Users from '../../components/users/Users';
 import Pagination from '../../components/pagination/Pagination';
@@ -17,13 +18,17 @@ interface IUsersListState {
 }
 
 function UsersListForm({api}: IUsersListProps) {
+  const history = useHistory();
+  const {search} = useLocation();
+  const query = React.useMemo(() => new URLSearchParams(search), [search]);
+
   const [loading, setLoading] = useState<IUsersListState>({
     isLoading: false,
     users: [],
     pageAmount: 0,
   });
-  const [page, setPage] = useState<number>(0);
-  const [limit, setLimit] = useState<number>(20);
+  const [page, setPage] = useState<number>(Number(query.get(`page`) || 0));
+  const [limit, setLimit] = useState<number>(Number(query.get(`limit`) || 20));
   const [limitOptions] = useState<number[]>([5, 10, 20]);
 
   const handlePageChange = (value: number) => {
@@ -45,6 +50,18 @@ function UsersListForm({api}: IUsersListProps) {
       }))
     );
   }, [page, limit, api]);
+
+  useEffect(() => {
+    setPage(Number(query.get(`page`) || 0));
+    setLimit(Number(query.get(`limit`) || 20));
+  }, [query]);
+
+  useEffect(() => {
+    history.push({
+      ...history.location,
+      search: `?page=${page}&limit=${limit}`,
+    });
+  }, [history, page, limit, loading.pageAmount]);
 
   const {users, pageAmount, isLoading} = loading;
 
