@@ -1,0 +1,26 @@
+.custom-link {
+  display: block;
+  font-size: unset;
+  color: unset;
+  text-decoration: none;
+}
+
+.custom-link--type_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 150px;
+  min-height: 43px;
+  padding: 10px;
+  font-size: 18px;
+  color: var(--primary-color);
+  word-break: break-all;
+  background-color: var(--secondory-bg-color);
+  border: 1px solid var(--primary-border-color);
+  border-radius: 4px;
+}
+
+.custom-link--type_button:hover {
+  color: var(--additional-color);
+  background-color: var(--additional-bg-color);
+}
