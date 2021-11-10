@@ -66,6 +66,7 @@
     "vinyl-source-stream": "2.0.0"
   },
   "dependencies": {
+    "antd": "^4.16.13",
     "normalize.css": "8.0.1"
   }
 }
