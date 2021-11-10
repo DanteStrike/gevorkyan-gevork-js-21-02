@@ -1,38 +1,29 @@
-import React, {useContext, useLayoutEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import './Switcher.css';
+import {Switch} from 'antd';
 import {ThemeContext} from '../../context/ThemeContext';
 import {Theme} from '../../types';
 
 function Switcher() {
-  const [toggle, setToggle] = useState<boolean>(false);
   const themeContext = useContext(ThemeContext);
 
-  const handleToggleClick = () => {
+  const handleThemeChange = (checked: boolean) => {
     const {setTheme} = themeContext;
 
-    if (toggle) {
-      setTheme(Theme.LIGHT);
+    if (checked) {
+      setTheme(Theme.DARK)
     } else {
-      setTheme(Theme.DARK);
+      setTheme(Theme.LIGHT)
     }
-
-    setToggle(!toggle);
   };
 
-  useLayoutEffect(() => {
-    if (themeContext.theme === Theme.DARK) {
-      setToggle(() => true);
-    }
-  }, [themeContext.theme]);
-
   return (
-    <div className="switcher">
-      <button
-        type="button"
-        className={`switcher__button ${toggle ? `switcher__button--right` : ``}`.trim()}
-        onClick={handleToggleClick}
-      />
-    </div>
+    <Switch
+      checkedChildren="dark"
+      unCheckedChildren="light"
+      onChange={handleThemeChange}
+      defaultChecked={themeContext.theme === Theme.DARK}
+    />
   );
 }
 

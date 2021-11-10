@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
+import {Pagination, PageHeader} from 'antd';
 import Loading from '../../components/loading/Loading';
 import Users from '../../components/users/Users';
-import Pagination from '../../components/pagination/Pagination';
-import Selector from '../../components/selector/Selector';
 import Switcher from '../../components/switcher/Switcher';
 import {IApi, IUserPreview} from '../../types';
 import './UsersListForm.css';
@@ -14,29 +12,33 @@ interface IUsersListProps {
 interface IUsersListState {
   isLoading: boolean;
   users: IUserPreview[];
-  pageAmount: number;
+  total: number;
 }
 
-function UsersListForm({api}: IUsersListProps) {
-  const history = useHistory();
-  const {search} = useLocation();
-  const query = React.useMemo(() => new URLSearchParams(search), [search]);
-
-  const [loading, setLoading] = useState<IUsersListState>({
+const defaultState = {
+  loading: {
     isLoading: false,
     users: [],
-    pageAmount: 0,
-  });
-  const [page, setPage] = useState<number>(Number(query.get(`page`) || 1));
-  const [limit, setLimit] = useState<number>(Number(query.get(`limit`) || 20));
-  const [limitOptions] = useState<number[]>([5, 10, 20]);
+    total: 0,
+  },
+  page: 1,
+  limit: 20,
+  pageSizeOptions: [`5`, `10`, `20`, `50`, `100`],
+};
 
-  const handlePageChange = (value: number) => {
-    setPage(value);
-  };
-  const handleUsersPageLimitChange = (value: number) => {
-    setLimit(value);
-    setPage(1);
+function UsersListForm({api}: IUsersListProps) {
+  const [loading, setLoading] = useState<IUsersListState>({...defaultState.loading});
+  const [page, setPage] = useState<number>(defaultState.page);
+  const [limit, setLimit] = useState<number>(defaultState.limit);
+
+  const handlePaginationChange = (selectedPage: number, selectedPageSize?: number) => {
+    if (selectedPage !== page) {
+      setPage(selectedPage);
+    }
+
+    if (selectedPageSize && selectedPageSize !== limit) {
+      setLimit(selectedPageSize);
+    }
   };
   useEffect(() => {
     setLoading((prevLoading) => ({...prevLoading, isLoading: true}));
@@ -45,35 +47,30 @@ function UsersListForm({api}: IUsersListProps) {
       setLoading((prevLoading) => ({
         ...prevLoading,
         users: list.data,
-        pageAmount: Math.ceil(list.total / list.limit),
+        total: list.total,
         isLoading: false,
       }))
     );
   }, [page, limit, api]);
 
-  useEffect(() => {
-    setPage(Number(query.get(`page`) || 1));
-    setLimit(Number(query.get(`limit`) || 20));
-  }, [query]);
-
-  useEffect(() => {
-    history.push({
-      ...history.location,
-      search: `?page=${page}&limit=${limit}`,
-    });
-  }, [history, page, limit, loading.pageAmount]);
-
-  const {users, pageAmount, isLoading} = loading;
+  const {users, total, isLoading} = loading;
 
   return (
     <>
-      <h1 className="users-list__title">Пользователи</h1>
+      <PageHeader backIcon={false} title="Пользователи"/>
       <Loading isLoading={isLoading}>
         <Users users={users} />
       </Loading>
       <div className="users-list__wrap">
-        <Pagination value={pageAmount} defaultValue={page} onChange={handlePageChange} />
-        <Selector options={limitOptions} defaultOption={limit} onChange={handleUsersPageLimitChange} />
+        <Pagination
+          current={page}
+          total={total}
+          pageSizeOptions={defaultState.pageSizeOptions}
+          onChange={handlePaginationChange}
+          disabled={isLoading}
+          defaultCurrent={defaultState.page}
+          defaultPageSize={defaultState.limit}
+        />
         <Switcher />
       </div>
     </>
