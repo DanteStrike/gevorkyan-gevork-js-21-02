@@ -11,9 +11,9 @@ function Switcher() {
     const {setTheme} = themeContext;
 
     if (checked) {
-      setTheme(Theme.DARK)
+      setTheme(Theme.DARK);
     } else {
-      setTheme(Theme.LIGHT)
+      setTheme(Theme.LIGHT);
     }
   };
 

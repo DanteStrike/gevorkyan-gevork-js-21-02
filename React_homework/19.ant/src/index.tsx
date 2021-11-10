@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+/* eslint-disable import/no-extraneous-dependencies */
+import 'antd/dist/antd.min.css';
 import {HashRouter as Router} from 'react-router-dom';
 import App from './App';
 import Api from './server/api';
