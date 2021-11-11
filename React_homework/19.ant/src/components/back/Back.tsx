@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'antd';
 import {useHistory} from 'react-router-dom';
 import './Back.css';
 
@@ -9,9 +10,9 @@ function Back() {
   };
 
   return (
-    <button className="back" type="button" onClick={handleClick}>
+    <Button className="back" type="primary" onClick={handleClick}>
       Назад
-    </button>
+    </Button>
   );
 }
 
