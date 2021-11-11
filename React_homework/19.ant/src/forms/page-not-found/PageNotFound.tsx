@@ -1,13 +1,13 @@
 import React from 'react';
-import './PageNotFound.css';
-import CustomLink from '../../components/custom-link/CustomLink';
+import {PageHeader} from "antd";
+import {useHistory} from 'react-router-dom';
 
 function PageNotFound() {
+  const history = useHistory();
+
   return (
-    <div className="page-not-found">
-      <h1>404.</h1>
-      <p>Page not found</p>
-      <CustomLink to="/" text="На главную" />
+    <div id="page-not-found">
+      <PageHeader title="Error: 404 - Page not found" onBack={() => history.goBack()}/>
     </div>
   );
 }

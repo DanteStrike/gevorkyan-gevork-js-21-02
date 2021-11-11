@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {PageHeader} from 'antd';
+import {useHistory} from "react-router-dom";
 import {IApi, IUser} from '../../types';
 import Loading from '../../components/loading/Loading';
 import UserProfile from '../../components/user-profile/UserProfile';
-import Back from '../../components/back/Back';
 
 interface IUserProfileProps {
   id: string;
@@ -37,6 +38,11 @@ function UserProfileForm({id, api}: IUserProfileProps) {
     },
   });
 
+  const history = useHistory();
+  const handleClick = () => {
+    history.goBack();
+  };
+
   useEffect(() => {
     api.getUser(id).then((userProfile) =>
       setLoading(() => ({
@@ -49,10 +55,10 @@ function UserProfileForm({id, api}: IUserProfileProps) {
   const {isLoading, userProfile} = loading;
   return (
     <>
+      <PageHeader title="Профиль пользователя" onBack={handleClick}/>
       <Loading isLoading={isLoading}>
         <UserProfile userProfile={userProfile} />
       </Loading>
-      <Back />
     </>
   );
 }

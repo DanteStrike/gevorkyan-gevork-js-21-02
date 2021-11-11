@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import './App.css';
-import {Switch, Route, RouteComponentProps, Redirect} from 'react-router-dom';
+import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
 import {IApi} from './types';
 import {ThemeContext} from './context/ThemeContext';
 import UsersListForm from './forms/users-list-form/UsersListForm';
 import UserProfileForm from './forms/user-profile-form/UserProfileForm';
 import PageNotFound from './forms/page-not-found/PageNotFound';
+import AppMenu from "./components/app-menu/AppMenu";
 
 interface IAppProps {
   api: IApi;
@@ -20,6 +21,7 @@ function App({api}: IAppProps) {
 
   return (
     <div className={`app app--theme_${theme}`}>
+      <AppMenu/>
       <main className="app__container">
         <Switch>
           <Route exact path="/">

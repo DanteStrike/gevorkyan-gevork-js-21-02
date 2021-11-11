@@ -12,7 +12,7 @@ function Loading({isLoading, children}: ILoadingProps) {
     <div className="component-with-loading">
       {isLoading && (
         <div className="component-with-loading__loading">
-          <Spin tip="Loading..." size="large"/>
+          <Spin tip="Loading..." size="large" />
         </div>
       )}
       {children}

@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {Pagination, PageHeader} from 'antd';
 import Loading from '../../components/loading/Loading';
 import Users from '../../components/users/Users';
 import Switcher from '../../components/switcher/Switcher';
 import {IApi, IUserPreview} from '../../types';
 import './UsersListForm.css';
+import useQuery from "../../hooks/useQuery";
 
 interface IUsersListProps {
   api: IApi;
@@ -27,9 +29,23 @@ const defaultState = {
 };
 
 function UsersListForm({api}: IUsersListProps) {
+  const history = useHistory();
+  const query = useQuery();
+
   const [loading, setLoading] = useState<IUsersListState>({...defaultState.loading});
-  const [page, setPage] = useState<number>(defaultState.page);
-  const [limit, setLimit] = useState<number>(defaultState.limit);
+  const [page, setPage] = useState<number>(Number(query.get(`page`)) || defaultState.page);
+  const [limit, setLimit] = useState<number>(Number(query.get(`limit`)) || defaultState.limit);
+  useEffect(() => {
+    setPage(Number(query.get(`page`)) || defaultState.page);
+    setLimit(Number(query.get(`limit`)) || defaultState.limit);
+  }, [query]);
+
+  useEffect(() => {
+    history.push({
+      ...history.location,
+      search: `?page=${page}&limit=${limit}`,
+    });
+  }, [history, page, limit]);
 
   const handlePaginationChange = (selectedPage: number, selectedPageSize?: number) => {
     if (selectedPage !== page) {
