@@ -22,7 +22,7 @@ function Switcher() {
       checkedChildren="dark"
       unCheckedChildren="light"
       onChange={handleThemeChange}
-      defaultChecked={themeContext.theme === Theme.DARK}
+      checked={themeContext.theme === Theme.DARK}
     />
   );
 }
