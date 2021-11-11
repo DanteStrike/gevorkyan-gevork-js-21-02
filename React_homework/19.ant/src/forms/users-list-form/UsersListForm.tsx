@@ -56,8 +56,8 @@ function UsersListForm({api}: IUsersListProps) {
   const {users, total, isLoading} = loading;
 
   return (
-    <>
-      <PageHeader backIcon={false} title="Пользователи"/>
+    <div className="users-list">
+      <PageHeader backIcon={false} title="Пользователи" />
       <Loading isLoading={isLoading}>
         <Users users={users} />
       </Loading>
@@ -73,7 +73,7 @@ function UsersListForm({api}: IUsersListProps) {
         />
         <Switcher />
       </div>
-    </>
+    </div>
   );
 }
 

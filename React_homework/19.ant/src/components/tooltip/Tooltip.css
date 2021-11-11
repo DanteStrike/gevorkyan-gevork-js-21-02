@@ -11,4 +11,5 @@
   margin: 0;
   color: var(--additional-color);
   background-color: var(--additional-bg-color);
+  z-index: 99;
 }

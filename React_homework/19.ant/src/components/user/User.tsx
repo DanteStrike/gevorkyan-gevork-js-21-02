@@ -10,9 +10,9 @@ interface IUserProps {
 function User({user}: IUserProps) {
   const {title, firstName, lastName, picture} = user;
   return (
-    <Card className="user" bodyStyle={{padding: 18}}>
+    <Card id="user" className="user" bodyStyle={{padding: 18}}>
       <Card.Meta
-        avatar={<Avatar src={picture} shape="square" size={84}/>}
+        avatar={<Avatar src={picture} shape="square" size={84} />}
         title={<span className="user__name">{`${title}. ${lastName} ${firstName}`}</span>}
       />
     </Card>

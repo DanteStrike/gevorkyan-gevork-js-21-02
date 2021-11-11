@@ -1,8 +1,5 @@
-.users-list__title {
-  margin: 0 0 10px 0;
-}
-
 .users-list__wrap {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }

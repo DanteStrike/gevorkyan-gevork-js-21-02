@@ -1,4 +1,5 @@
 import React from 'react';
+import {Spin} from 'antd';
 import './Loading.css';
 
 interface ILoadingProps {
@@ -10,9 +11,9 @@ function Loading({isLoading, children}: ILoadingProps) {
   return (
     <div className="component-with-loading">
       {isLoading && (
-        <p className="component-with-loading__loading">
-          <span>Loading...</span>
-        </p>
+        <div className="component-with-loading__loading">
+          <Spin tip="Loading..." size="large"/>
+        </div>
       )}
       {children}
     </div>
