@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader} from "antd";
+import {PageHeader} from 'antd';
 import {useHistory} from 'react-router-dom';
 
 function PageNotFound() {
@@ -7,7 +7,7 @@ function PageNotFound() {
 
   return (
     <div id="page-not-found">
-      <PageHeader title="Error: 404 - Page not found" onBack={() => history.goBack()}/>
+      <PageHeader title="Error: 404 - Page not found" onBack={() => history.goBack()} />
     </div>
   );
 }

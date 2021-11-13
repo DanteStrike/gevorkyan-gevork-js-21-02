@@ -1,9 +1,9 @@
 import {IApi, IServerConfig, IUser, IUsers, Method} from '../types';
 
 class Api implements IApi {
-  private endPoint: string;
+  private readonly endPoint: string;
 
-  private apiID: string;
+  private readonly apiID: string;
 
   constructor({endPoint, apiID}: IServerConfig) {
     this.endPoint = endPoint;
@@ -20,24 +20,23 @@ class Api implements IApi {
     );
   }
 
-  createUser(firstName: string, lastName: string, email: string): Promise<IUser> {
+  createUser(data: IUser): Promise<IUser> {
     return this.load({
       url: `user/create`,
       method: Method.POST,
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-      }),
-    }).then((response: Response): Promise<IUser> => response.json());
+      headers: new Headers({'Content-type': `application/json`}),
+      body: JSON.stringify(data),
+    }).then((response: Response): Promise<IUser> => response.json())
   }
 
   private load({
     url = ``,
+    headers = new Headers(),
     method = Method.GET,
     body = null,
   }: {
     url: string;
+    headers?: Headers;
     method?: Method;
     body?: BodyInit | null;
   }): Promise<Response> {
@@ -45,13 +44,13 @@ class Api implements IApi {
       if (response.status >= 200 && response.status < 300) {
         return response;
       }
+
       throw new Error(`${response.status}: ${response.statusText}`);
     };
+    headers.append('app-id', `${this.apiID}`);
 
     return fetch(`${this.endPoint}/${url}`, {
-      headers: {
-        'app-id': `${this.apiID}`,
-      },
+      headers,
       method,
       body,
     })

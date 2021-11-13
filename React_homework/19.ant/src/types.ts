@@ -44,7 +44,7 @@ export interface IServerConfig {
 }
 
 export interface IApi {
-  createUser: (firstName: string, lastName: string, email: string) => Promise<IUser>;
+  createUser: (data: IUser) => Promise<IUser>;
   getUser: (id: string) => Promise<IUser>;
   getUsers: (page: number, limit: number) => Promise<IUsers>;
 }

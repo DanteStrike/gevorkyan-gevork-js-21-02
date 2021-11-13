@@ -6,7 +6,8 @@ import {ThemeContext} from './context/ThemeContext';
 import UsersListForm from './forms/users-list-form/UsersListForm';
 import UserProfileForm from './forms/user-profile-form/UserProfileForm';
 import PageNotFound from './forms/page-not-found/PageNotFound';
-import AppMenu from "./components/app-menu/AppMenu";
+import AppMenu from './components/app-menu/AppMenu';
+import RegistrationForm from './forms/registration-form/RegistrationForm';
 
 interface IAppProps {
   api: IApi;
@@ -21,7 +22,7 @@ function App({api}: IAppProps) {
 
   return (
     <div className={`app app--theme_${theme}`}>
-      <AppMenu/>
+      <AppMenu />
       <main className="app__container">
         <Switch>
           <Route exact path="/">
@@ -37,6 +38,7 @@ function App({api}: IAppProps) {
               },
             }: RouteComponentProps<IUserProfileMatchParams>) => <UserProfileForm id={id} api={api} />}
           />
+          <Route exact path="/registration" component={() => <RegistrationForm api={api} />} />
           <Route component={PageNotFound} />
         </Switch>
       </main>

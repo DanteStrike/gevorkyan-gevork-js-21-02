@@ -11,7 +11,7 @@
 .app * {
   transition-timing-function: ease;
   transition-duration: 0.05s, 0.35s, 0.35s;
-  transition-property: color, background-color, margin;
+  transition-property: color, background-color;
 }
 
 .app--theme_light {

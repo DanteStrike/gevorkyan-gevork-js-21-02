@@ -6,7 +6,7 @@ import Users from '../../components/users/Users';
 import Switcher from '../../components/switcher/Switcher';
 import {IApi, IUserPreview} from '../../types';
 import './UsersListForm.css';
-import useQuery from "../../hooks/useQuery";
+import useQuery from '../../hooks/useQuery';
 
 interface IUsersListProps {
   api: IApi;
