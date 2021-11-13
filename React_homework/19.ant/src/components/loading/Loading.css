@@ -1,0 +1,18 @@
+.component-with-loading {
+  position: relative;
+}
+
+.component-with-loading__loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: var(--secondory-color);
+  background-color: var(--secondory-bg-color);
+}
