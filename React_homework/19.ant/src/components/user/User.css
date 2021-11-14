@@ -1,0 +1,9 @@
+.user {
+  background-color: var(--secondory-bg-color);
+  border-radius: 5px;
+}
+
+.user__name {
+  font-size: 18px;
+  color: var(--secondory-color);
+}
