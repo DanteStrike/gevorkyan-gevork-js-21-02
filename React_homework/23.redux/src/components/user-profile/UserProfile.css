@@ -1,0 +1,33 @@
+.user-profile {
+  display: flex;
+  justify-content: space-between;
+  min-height: 150px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: var(--secondory-bg-color);
+}
+
+.user-profile__img {
+  width: 100px;
+}
+
+.user-profile__col {
+  width: 300px;
+  padding: 0;
+  margin: 0;
+}
+
+.user-profile__row {
+  display: block;
+}
+
+.user-profile__prop,
+.user-profile__title {
+  font-weight: 700;
+}
+
+.user-profile__title--main {
+  font-size: 18px;
+  color: var(--secondory-color);
+}
