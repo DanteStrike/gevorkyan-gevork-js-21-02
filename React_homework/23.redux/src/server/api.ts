@@ -1,4 +1,4 @@
-import {IApi, IServerConfig, IUser, IUsers, Method} from '../types';
+import {IApi, IServerConfig, IUser, IUsers, Method, IResponseError} from '../app-types';
 
 class Api implements IApi {
   private readonly endPoint: string;
@@ -20,13 +20,13 @@ class Api implements IApi {
     );
   }
 
-  createUser(data: IUser): Promise<IUser> {
+  createUser(data: IUser): Promise<IUser | IResponseError> {
     return this.load({
       url: `user/create`,
       method: Method.POST,
       headers: new Headers({'Content-type': `application/json`}),
       body: JSON.stringify(data),
-    }).then((response: Response): Promise<IUser> => response.json());
+    }).then((response: Response): Promise<IUser | IResponseError> => response.json());
   }
 
   private load({
@@ -41,7 +41,7 @@ class Api implements IApi {
     body?: BodyInit | null;
   }): Promise<Response> {
     const checkStatus = (response: Response) => {
-      if (response.status >= 200 && response.status < 300) {
+      if ((response.status >= 200 && response.status < 300) || response.status === 400) {
         return response;
       }
 
