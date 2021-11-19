@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import './App.css';
-import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
-import {IApi} from './types';
+import {Redirect, Route, Switch, RouteComponentProps} from 'react-router-dom';
 import {ThemeContext} from './context/ThemeContext';
 import UsersListForm from './forms/users-list-form/UsersListForm';
 import UserProfileForm from './forms/user-profile-form/UserProfileForm';
@@ -9,15 +8,11 @@ import PageNotFound from './forms/page-not-found/PageNotFound';
 import AppMenu from './components/app-menu/AppMenu';
 import RegistrationForm from './forms/registration-form/RegistrationForm';
 
-interface IAppProps {
-  api: IApi;
-}
-
 interface IUserProfileMatchParams {
   id: string;
 }
 
-function App({api}: IAppProps) {
+function App() {
   const {theme} = useContext(ThemeContext);
 
   return (
@@ -28,7 +23,7 @@ function App({api}: IAppProps) {
           <Route exact path="/">
             <Redirect to="/users" />
           </Route>
-          <Route exact path="/users" render={() => <UsersListForm api={api} />} />
+          <Route exact path="/users" render={() => <UsersListForm />} />
           <Route
             exact
             path="/user/:id"
@@ -36,9 +31,9 @@ function App({api}: IAppProps) {
               match: {
                 params: {id},
               },
-            }: RouteComponentProps<IUserProfileMatchParams>) => <UserProfileForm id={id} api={api} />}
+            }: RouteComponentProps<IUserProfileMatchParams>) => <UserProfileForm id={id} />}
           />
-          <Route exact path="/registration" component={() => <RegistrationForm api={api} />} />
+          <Route exact path="/registration" component={() => <RegistrationForm />} />
           <Route component={PageNotFound} />
         </Switch>
       </main>
