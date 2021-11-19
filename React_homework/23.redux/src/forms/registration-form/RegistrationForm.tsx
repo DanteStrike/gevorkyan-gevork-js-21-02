@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {Form, Input, Button, PageHeader, Select, DatePicker, Alert} from 'antd';
 import {useHistory} from 'react-router-dom';
 import moment, {Moment} from 'moment';
-import {IApi, IUser} from '../../types';
+import {useDispatch, useSelector} from 'react-redux';
+import {IUser} from '../../app-types';
+import {registrationOperations, registrationSelectors} from '../../reducers/registration';
 
-interface IRegistrationForm {
-  api: IApi;
-}
-
-function RegistrationForm({api}: IRegistrationForm) {
+function RegistrationForm() {
   const [form] = Form.useForm();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const isLoading = useSelector(registrationSelectors.getLoadingStatus);
+  const isError = useSelector(registrationSelectors.getErrorStatus);
+  const errMsg = useSelector(registrationSelectors.getErrorMsg);
+  const newUserID = useSelector(registrationSelectors.getNewUserID);
 
   const handleFormFinish = (filedValues: IUser) => {
     const values = {
@@ -20,21 +20,21 @@ function RegistrationForm({api}: IRegistrationForm) {
       dateOfBirth: (filedValues.dateOfBirth as unknown as Moment).toISOString(),
     };
 
-    setIsLoading(true);
-    setIsError(false);
-    api
-      .createUser(values)
-      .then((user) => history.push({pathname: `/user/${user.id}`}))
-      .catch(() => {
-        setIsLoading(false);
-        setIsError(true);
-      });
+    dispatch(registrationOperations.registerUser(values));
   };
+
+  const history = useHistory();
+  const handleBackClick = () => history.goBack();
+  useEffect(() => {
+    if (newUserID !== null) {
+      history.push({pathname: `/user/${newUserID}`});
+    }
+  }, [dispatch, newUserID, history]);
 
   return (
     <>
-      <PageHeader title="Регистрация" onBack={() => history.goBack()} />
-      {isError && <Alert message="Email already used" closable type="error" />}
+      <PageHeader title="Регистрация" onBack={handleBackClick} />
+      {isError && <Alert message={errMsg} closable type="error" />}
       <Form
         form={form}
         name="register"
