@@ -1,23 +1,45 @@
+@import "assets/themes";
+
+:root {
+  --primary-font-family: "Roboto", sans-serif;
+  --secondary-font-family: "Lobster", cursive;
+}
+
 html,
 body {
   box-sizing: border-box;
+  min-width: 320px;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", "Arial", sans-serif;
-  font-size: 18px;
+  font-family: var(--primary-font-family);
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.2;
+  background-color: #f2f2f2;
 }
 
 *,
 ::after,
 ::before {
+  font: inherit;
   box-sizing: inherit;
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 img {
