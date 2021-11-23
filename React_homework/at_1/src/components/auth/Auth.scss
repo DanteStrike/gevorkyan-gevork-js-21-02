@@ -1,0 +1,19 @@
+.auth {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  width: 180px;
+
+  &__link {
+    font-family: var(--secondary-font-family);
+    font-size: 18px;
+    color: inherit;
+    padding: 0 0 0 8px;
+  }
+
+  &__link--left {
+    padding-right: 8px;
+    border-right: 1px solid #868585;
+  }
+}

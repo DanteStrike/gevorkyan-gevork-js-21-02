@@ -22,8 +22,6 @@
 
   &__auth {
     display: flex;
-    width: 180px;
-    background-color: green;
   }
 }
 
@@ -36,20 +34,27 @@
     }
 
     &__logo {
+      display: flex;
+      justify-content: center;
       order: 1;
       width: 100%;
+      border-bottom: 1px solid #868585;
     }
 
     &__menu {
+      display: flex;
+      justify-content: center;
       order: 3;
       width: 100%;
-      background-color: yellow;
+      border-bottom: 1px solid #868585;
     }
 
     &__auth {
+      display: flex;
+      justify-content: center;
       order: 2;
       width: 100%;
-      background-color: green;
+      border-bottom: 1px solid #868585;
     }
   }
 }
