@@ -1,0 +1,13 @@
+.menu {
+  height: 50px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    font-family: var(--secondary-font-family);
+    font-size: 18px;
+  }
+}
