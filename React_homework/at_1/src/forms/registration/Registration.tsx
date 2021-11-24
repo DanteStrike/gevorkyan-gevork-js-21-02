@@ -1,13 +1,12 @@
 import React from 'react';
-import './Registration.scss';
 import RegForm from '../../components/reg-form/RegForm';
+import ContentLayout, {ContentLayoutType} from "../../components/content-layout/ContentLayout";
 
 function Registration() {
   return (
-    <main className="registration">
-      <h1 className="registration__title">Регистрация</h1>
+    <ContentLayout type={ContentLayoutType.SINGLE} title="Регистрация">
       <RegForm />
-    </main>
+    </ContentLayout>
   );
 }
 
