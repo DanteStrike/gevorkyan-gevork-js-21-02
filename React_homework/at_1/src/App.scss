@@ -14,8 +14,10 @@
 
   &__content {
     @include container;
+    display: flex;
     grid-area: content;
-    background-color: #7b7b7b;
+    align-items: center;
+    justify-content: center;
   }
 
   &__footer {

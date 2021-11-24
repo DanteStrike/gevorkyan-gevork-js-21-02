@@ -1,0 +1,28 @@
+@import "src/assets/variables";
+
+.reg-form {
+  width: 380px;
+
+  &__gender .ant-form-item-control-input-content {
+    display: flex;
+  }
+
+  &__gender-container {
+    margin: 0 auto;
+  }
+
+  &__date-picker {
+    width: 100%;
+  }
+
+  .ant-form-item-label {
+    padding: 0;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: $tabletWidth) {
+  .reg-form {
+    width: 85%;
+  }
+}
