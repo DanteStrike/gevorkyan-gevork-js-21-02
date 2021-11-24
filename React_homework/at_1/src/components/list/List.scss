@@ -1,3 +1,5 @@
+@import "src/assets/variables";
+
 .list {
   height: 100%;
   width: 100%;
@@ -8,11 +10,14 @@
     flex-wrap: wrap;
 
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 30px);
   }
 
   &__item {
     width: 31%;
+    max-width: 500px;
+    min-height: 300px;
+    max-height: 400px;
     margin-bottom: 2%;
   }
 
@@ -21,9 +26,50 @@
   }
 
   &__pagination {
-    height: 40px;
+    height: 30px;
     width: 300px;
     margin-left: auto;
+    margin-right: 2%;
     background-color: black;
+  }
+}
+
+@media (max-width: $desktopWidth) {
+  .list {
+
+    &__item {
+      width: 48%;
+    }
+
+    &__item:not(:nth-child(3n)) {
+      margin-right: 0;
+    }
+
+    &__item:not(:nth-child(2n)) {
+      margin-right: 2%;
+    }
+
+    &__pagination {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: $tabletWidth) {
+  .list {
+    padding: 0 5px;
+
+    &__item {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    &__item:not(:nth-child(2n)) {
+      margin-right: 0;
+    }
+
+    &__pagination {
+      margin: 0 auto;
+    }
   }
 }
