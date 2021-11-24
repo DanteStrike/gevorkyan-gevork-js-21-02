@@ -15,8 +15,17 @@
   }
 
   &__link--left {
+    max-width: 108px;
     padding-right: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     border-right: 1px solid #868585;
+  }
+
+  &__link--small {
+    font-size: 12px;
+    color: #868585;
   }
 }
 
