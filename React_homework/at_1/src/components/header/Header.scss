@@ -2,6 +2,7 @@
 @import "src/assets/variables";
 
 .header {
+  border-bottom: 1px solid #868585;
   background-color: var(--primary-background);
 
   &__container {
