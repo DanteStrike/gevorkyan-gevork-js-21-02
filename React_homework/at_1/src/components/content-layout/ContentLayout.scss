@@ -10,10 +10,11 @@
     height: 100%;
   }
 
-  &--single {
+  &--content {
     align-items: center;
+    justify-content: center;
     width: 77%;
-    height: 520px;
+    min-height: 520px;
     padding: 16px;
     background-color: var(--primary-background);
     border: 1px solid #868585;
@@ -33,7 +34,7 @@
 
 @media (max-width: $tabletWidth) {
   .content-layout {
-    &--single {
+    &--content {
       width: 95%;
     }
   }

@@ -1,17 +1,17 @@
 import React from 'react';
-import "./ContentLayout.scss";
+import './ContentLayout.scss';
 
 export enum ContentLayoutType {
   FULL = `full`,
-  SINGLE = `single`
+  CONTENT = `content`,
 }
 
 interface ContentLayoutProps {
-  type: ContentLayoutType,
-  title: string,
+  type: ContentLayoutType;
+  title: string;
   // eslint-disable-next-line react/require-default-props
-  hideTitle?: boolean,
-  children: React.ReactNode,
+  hideTitle?: boolean;
+  children: React.ReactNode;
 }
 
 function ContentLayout({type, hideTitle = false, title, children}: ContentLayoutProps) {
@@ -21,6 +21,6 @@ function ContentLayout({type, hideTitle = false, title, children}: ContentLayout
       {children}
     </main>
   );
-};
+}
 
 export default React.memo(ContentLayout);

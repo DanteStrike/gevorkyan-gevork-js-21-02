@@ -1,10 +1,10 @@
 import React from 'react';
 import RegForm from '../../components/reg-form/RegForm';
-import ContentLayout, {ContentLayoutType} from "../../components/content-layout/ContentLayout";
+import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 
 function Registration() {
   return (
-    <ContentLayout type={ContentLayoutType.SINGLE} title="Регистрация">
+    <ContentLayout type={ContentLayoutType.CONTENT} title="Регистрация">
       <RegForm />
     </ContentLayout>
   );

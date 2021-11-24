@@ -1,19 +1,7 @@
 @import "src/assets/variables";
 
-.reg-form {
+.login-form {
   width: 380px;
-
-  &__gender .ant-form-item-control-input-content {
-    display: flex;
-  }
-
-  &__gender-container {
-    margin: 0 auto;
-  }
-
-  &__date-picker {
-    width: 100%;
-  }
 
   &__last {
     margin-bottom: 0;
@@ -26,7 +14,7 @@
 }
 
 @media (max-width: $tabletWidth) {
-  .reg-form {
+  .login-form {
     width: 85%;
   }
 }

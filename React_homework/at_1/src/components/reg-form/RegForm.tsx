@@ -81,7 +81,7 @@ function RegForm() {
         <Input placeholder="+79991114455" />
       </Item>
 
-      <Item>
+      <Item className="reg-form__last">
         <Button>Зарегистрироваться</Button>
         <CustomLink>Уже есть аккаунт? Войти</CustomLink>
       </Item>
