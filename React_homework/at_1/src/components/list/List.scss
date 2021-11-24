@@ -1,0 +1,29 @@
+.list {
+  height: 100%;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: calc(100% - 40px);
+  }
+
+  &__item {
+    width: 31%;
+    margin-bottom: 2%;
+  }
+
+  &__item:not(:nth-child(3n)) {
+    margin-right: 2%;
+  }
+
+  &__pagination {
+    height: 40px;
+    width: 300px;
+    margin-left: auto;
+    background-color: black;
+  }
+}
