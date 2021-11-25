@@ -1,5 +1,5 @@
 import React from 'react';
-import "./List.scss";
+import './List.scss';
 
 interface IListProps<T> {
   dataSource: T[];
@@ -9,24 +9,18 @@ interface IListProps<T> {
 function List<T>({dataSource, renderItem}: IListProps<T>) {
   return (
     <div className="list">
-      <ul className="list__container">
-        {dataSource.map(renderItem)}
-      </ul>
-      <div className="list__pagination"/>
+      <ul className="list__container">{dataSource.map(renderItem)}</ul>
+      <div className="list__pagination" />
     </div>
   );
 }
 
 interface ListItemProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
-List.Item = ({children}: ListItemProps) => (
-    <li className="list__item">
-      {children}
-    </li>
-  )
+List.Item = ({children}: ListItemProps) => <li className="list__item">{children}</li>;
 
 // @ts-ignore
-List.Item.displayName = `List.Item`
+List.Item.displayName = `List.Item`;
 
 export default List;
