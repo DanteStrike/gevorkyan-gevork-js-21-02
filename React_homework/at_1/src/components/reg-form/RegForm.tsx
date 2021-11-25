@@ -40,6 +40,7 @@ function RegForm() {
         <Radio.Group className="reg-form__gender-container">
           <Radio value="male">Мужской</Radio>
           <Radio value="female">Женский</Radio>
+          <Radio value="other">Другой</Radio>
         </Radio.Group>
       </Item>
 
