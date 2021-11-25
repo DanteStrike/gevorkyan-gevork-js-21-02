@@ -8,6 +8,7 @@ import PageNotFound from "./forms/page-not-found/PageNotFound";
 import Users from "./forms/users/Users";
 import Login from "./forms/login/Login";
 import Registration from "./forms/registration/Registration";
+import Profile from "./forms/profile/Profile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Route>
           <Route exact path="/login" render={() => <Login/>}/>
           <Route exact path="/registration" render={() => <Registration/>}/>
+          <Route exact path="/profile" render={() => <Profile/>}/>
           <Route exact path="/users" render={() => <Users/>}/>
           <Route exact path="/posts" render={() => <Posts/>}/>
           <Route render={() => <PageNotFound/>} />

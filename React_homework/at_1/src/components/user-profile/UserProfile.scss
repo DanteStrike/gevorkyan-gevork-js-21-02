@@ -1,0 +1,45 @@
+.user-profile {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  padding: 2%;
+  margin-bottom: 2%;
+  background-color: var(--primary-background);
+  border: 1px solid #808080;
+  border-radius: 15px;
+
+  &__img {
+    width: 30%;
+    border-radius: 15px;
+    margin-right: 20px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &__row {
+    margin-bottom: 5px;
+  }
+
+  &__row--id {
+    margin-top: auto;
+  }
+
+  &__prop {
+    font-weight: 700;
+  }
+
+  &__edit {
+    align-self: flex-start;
+    margin-left: auto;
+  }
+}
