@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import List from '../../components/list/List';
-import PostCard from "../../components/post-card/PostCard";
+import PostCard from '../../components/post-card/PostCard';
 
 function Posts() {
   return (

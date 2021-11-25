@@ -1,5 +1,6 @@
 import React from 'react';
 import './List.scss';
+import {Pagination} from 'antd';
 
 interface IListProps<T> {
   dataSource: T[];
@@ -10,7 +11,7 @@ function List<T>({dataSource, renderItem}: IListProps<T>) {
   return (
     <div className="list">
       <ul className="list__container">{dataSource.map(renderItem)}</ul>
-      <div className="list__pagination" />
+      <Pagination className="list__pagination" />
     </div>
   );
 }

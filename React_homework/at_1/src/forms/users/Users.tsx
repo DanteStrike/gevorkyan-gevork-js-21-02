@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import List from '../../components/list/List';
-import UserCard from "../../components/user-card/UserCard";
+import UserCard from '../../components/user-card/UserCard';
 
 function Users() {
   return (
