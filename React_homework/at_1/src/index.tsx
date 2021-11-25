@@ -8,6 +8,7 @@ import OverlayScrollbars from 'overlayscrollbars';
 import App from './App';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import {ThemeProvider} from './context/ThemeContext';
+import configureAPI from "./server/cofigure-api";
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
@@ -29,3 +30,9 @@ const init = () => {
   );
 };
 init();
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const api = configureAPI();
+// @ts-ignore
+window.apitest = api;
+
