@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginForm.scss';
 import {Form, Input} from 'antd';
-import Button from '../button/Button';
+import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
 
 const {Item} = Form;

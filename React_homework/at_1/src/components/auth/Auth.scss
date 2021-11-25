@@ -20,12 +20,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-right: 1px solid #868585;
+    border-right: var(--primary-border);
   }
 
   &__link--small {
     font-size: 12px;
-    color: #868585;
+    color: var(--secondory-font-color);
   }
 }
 

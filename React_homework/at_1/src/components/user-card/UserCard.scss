@@ -10,8 +10,13 @@
   min-height: 300px;
   padding: 5%;
   background-color: var(--primary-background);
-  border: 1px solid #808080;
+  border: var(--primary-border);
   border-radius: 15px;
+
+  &__title {
+    color: var(--primary-font-color);
+    font-size: 20px;
+  }
 
   &__img {
     flex-grow: 1;

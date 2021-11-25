@@ -18,7 +18,7 @@
     min-height: 520px;
     padding: 16px;
     background-color: var(--primary-background);
-    border: 1px solid #868585;
+    border: var(--primary-border);
     border-radius: 15px;
   }
 
@@ -26,6 +26,7 @@
     margin-bottom: 14px;
     font-weight: 700;
     text-align: center;
+    color: var(--primary-font-color);
   }
 
   &__title--hide {

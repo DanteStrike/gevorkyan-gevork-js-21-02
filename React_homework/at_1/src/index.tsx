@@ -7,6 +7,7 @@ import 'overlayscrollbars/css/OverlayScrollbars.css';
 import OverlayScrollbars from 'overlayscrollbars';
 import App from './App';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
+import {ThemeProvider} from "./context/ThemeContext";
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
@@ -17,10 +18,12 @@ OverlayScrollbars(document.body, {
 const init = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Router>
-        <ScrollToTop />
-        <App />
-      </Router>
+      <ThemeProvider storageKey="app-theme">
+        <Router>
+          <ScrollToTop />
+          <App />
+        </Router>
+      </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')
   );

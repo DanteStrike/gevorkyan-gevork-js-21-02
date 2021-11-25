@@ -2,7 +2,7 @@ import React from 'react';
 import './RegForm.scss';
 import moment, {Moment} from 'moment';
 import {Form, Input, DatePicker, Radio} from 'antd';
-import Button from '../button/Button';
+import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
 
 const {Item} = Form;

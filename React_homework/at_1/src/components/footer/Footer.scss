@@ -2,7 +2,7 @@
 
 .footer {
   background-color: var(--primary-background);
-  border-top: 1px solid #868585;
+  border-top: var(--primary-border);
 
   &__container {
     @include container;
@@ -38,7 +38,7 @@
       width: 100%;
       padding: 5px;
       font-size: 16px;
-      border-top: 1px solid #868585;
+      border-top: var(--primary-border);
     }
 
     &__item--copyright {

@@ -1,9 +1,9 @@
 import React from 'react';
-import './Button.scss';
+import './SubmitButton.scss';
 import {Button as ButtonANDT} from 'antd';
 
 // eslint-disable-next-line react/require-default-props
-function Button({children = ``}: {children?: React.ReactNode}) {
+function SubmitButton({children = ``}: {children?: React.ReactNode}) {
   return (
     <ButtonANDT className="button" type="primary" htmlType="submit" block>
       {children}
@@ -11,4 +11,4 @@ function Button({children = ``}: {children?: React.ReactNode}) {
   );
 }
 
-export default React.memo(Button);
+export default React.memo(SubmitButton);
