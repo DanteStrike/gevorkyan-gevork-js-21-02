@@ -1,5 +1,6 @@
 import React from 'react';
 import './UserPreview.scss';
+import {EditOutlined} from '@ant-design/icons';
 
 function UserPreview() {
   return (
@@ -26,7 +27,10 @@ function UserPreview() {
           <span className="user-preview__prop">ID:</span> 123123123123123
         </span>
       </p>
-      <div className="user-preview__edit">Редактировать</div>
+      <button type="button" className="user-preview__edit">
+        <EditOutlined />
+        <span className="user-preview__edit-text">Редактировать</span>
+      </button>
     </article>
   );
 }
