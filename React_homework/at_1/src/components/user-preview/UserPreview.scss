@@ -43,14 +43,14 @@
 
   &__edit {
     display: flex;
-    padding: 0;
     align-items: center;
     align-self: flex-start;
+    padding: 0;
     margin: 0 0 0 auto;
+    color: var(--secondory-font-color);
+    cursor: pointer;
     background: none;
     border: none;
-    cursor: pointer;
-    color: var(--secondory-font-color);
   }
 
   &__edit:hover {

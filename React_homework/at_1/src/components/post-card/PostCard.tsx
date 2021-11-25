@@ -2,8 +2,11 @@ import React from 'react';
 import './PostCard.scss';
 import {Avatar} from 'antd';
 
-// eslint-disable-next-line react/require-default-props
-function PostCard({hideTop = false}: {hideTop?: boolean}) {
+interface IPostCard {
+  hideTop?: boolean;
+}
+
+function PostCard({hideTop = false}: IPostCard) {
   return (
     <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
@@ -20,5 +23,9 @@ function PostCard({hideTop = false}: {hideTop?: boolean}) {
     </article>
   );
 }
+
+PostCard.defaultProps = {
+  hideTop: false,
+};
 
 export default React.memo(PostCard);

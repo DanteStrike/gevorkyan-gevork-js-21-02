@@ -3,9 +3,7 @@ import './CustomLink.scss';
 import {Link, LinkProps} from 'react-router-dom';
 
 interface ICustomLink extends LinkProps {
-  // eslint-disable-next-line react/require-default-props
   className?: string;
-  // eslint-disable-next-line react/require-default-props
   children?: React.ReactNode;
 }
 
@@ -17,5 +15,10 @@ function CustomLink({children = ``, className = ``, ...linkProps}: ICustomLink) 
     </Link>
   );
 }
+
+CustomLink.defaultProps = {
+  className: ``,
+  children: ``,
+};
 
 export default React.memo(CustomLink);

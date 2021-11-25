@@ -9,12 +9,11 @@ export enum ContentLayoutType {
 interface ContentLayoutProps {
   type: ContentLayoutType;
   title: string;
-  // eslint-disable-next-line react/require-default-props
   hideTitle?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-function ContentLayout({type, hideTitle = false, title, children}: ContentLayoutProps) {
+function ContentLayout({type, hideTitle, title, children}: ContentLayoutProps) {
   return (
     <main className={`content-layout content-layout--${type}`}>
       <h1 className={`content-layout__title ${hideTitle ? `content-layout__title--hide` : ``}`.trim()}>{title}</h1>
@@ -22,5 +21,10 @@ function ContentLayout({type, hideTitle = false, title, children}: ContentLayout
     </main>
   );
 }
+
+ContentLayout.defaultProps = {
+  hideTitle: false,
+  children: ``,
+};
 
 export default React.memo(ContentLayout);

@@ -25,4 +25,4 @@ function PostsList() {
   );
 }
 
-export default PostsList;
+export default React.memo(PostsList);

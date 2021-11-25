@@ -25,4 +25,4 @@ function UserPosts() {
   );
 }
 
-export default UserPosts;
+export default React.memo(UserPosts);

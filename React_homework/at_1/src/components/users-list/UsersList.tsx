@@ -25,4 +25,4 @@ function UsersList() {
   );
 }
 
-export default UsersList;
+export default React.memo(UsersList);

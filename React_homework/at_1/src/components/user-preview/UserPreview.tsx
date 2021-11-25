@@ -35,4 +35,4 @@ function UserPreview() {
   );
 }
 
-export default UserPreview;
+export default React.memo(UserPreview);
