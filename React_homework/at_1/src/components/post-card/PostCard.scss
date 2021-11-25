@@ -6,22 +6,30 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 300px;
   max-width: 390px;
+  min-height: 300px;
   padding: 5%;
   background-color: var(--primary-background);
   border: 1px solid #808080;
   border-radius: 15px;
+
+  &--top-hide {
+    min-height: 250px;
+  }
+
+  &--top-hide &__top {
+    display: none;
+  }
+
+  &--top-hide &__img {
+    min-height: 170px;
+  }
 
   &__top {
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 10px;
-  }
-
-  &__top--hide {
-    display: none;
   }
 
   &__avatar {
@@ -50,6 +58,7 @@
   &__text {
     width: 100%;
     font-size: 14px;
+    line-height: 1.1;
   }
 }
 

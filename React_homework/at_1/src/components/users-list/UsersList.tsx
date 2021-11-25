@@ -1,6 +1,6 @@
 import React from 'react';
-import {List} from "antd";
-import UserCard from "../user-card/UserCard";
+import {List} from 'antd';
+import UserCard from '../user-card/UserCard';
 
 function UsersList() {
   return (
@@ -18,10 +18,11 @@ function UsersList() {
         md: 2,
         lg: 3,
         xl: 3,
-        xxl: 3,}}
+        xxl: 3,
+      }}
       pagination={{}}
     />
   );
-};
+}
 
 export default UsersList;

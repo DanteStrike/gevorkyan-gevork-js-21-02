@@ -2,13 +2,13 @@ import React from 'react';
 import {List} from 'antd';
 import PostCard from '../post-card/PostCard';
 
-function PostsList() {
+function UserPosts() {
   return (
     <List
-      dataSource={[1, 2, 3, 4, 5, 6]}
+      dataSource={[1, 2, 3]}
       renderItem={(el) => (
         <List.Item key={el}>
-          <PostCard />
+          <PostCard hideTop />
         </List.Item>
       )}
       grid={{
@@ -25,4 +25,4 @@ function PostsList() {
   );
 }
 
-export default PostsList;
+export default UserPosts;

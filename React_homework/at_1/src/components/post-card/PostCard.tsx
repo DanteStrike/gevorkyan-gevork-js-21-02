@@ -5,9 +5,9 @@ import {Avatar} from 'antd';
 // eslint-disable-next-line react/require-default-props
 function PostCard({hideTop = false}: {hideTop?: boolean}) {
   return (
-    <article className="post-card">
+    <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
-        <Avatar className="post-card__avatar"/>
+        <Avatar className="post-card__avatar" />
         <div className="post-card__wrap">
           <h2 className="post-card__title">mr. Кавабанга</h2>
           <p className="post-card__date">25 мая в 04:20</p>

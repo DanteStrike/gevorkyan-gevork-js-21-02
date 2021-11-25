@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentLayout, {ContentLayoutType} from "../../components/content-layout/ContentLayout";
+import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 
 function PageNotFound() {
   return (

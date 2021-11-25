@@ -6,7 +6,7 @@ import './index.scss';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import OverlayScrollbars from 'overlayscrollbars';
 import App from './App';
-import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
