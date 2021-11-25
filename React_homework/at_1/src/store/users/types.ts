@@ -1,0 +1,13 @@
+const SETUP = `users/SETUP`;
+const CHANGE_LIMIT = `users/CHANGE_LIMIT`;
+const CHANGE_PAGE = `users/CHANGE_PAGE`;
+const START_LOADING = `users/START_LOADING`;
+const LOADING_COMPLETE = `users/LOADING_COMPLETE`;
+
+export default {
+  SETUP,
+  CHANGE_LIMIT,
+  CHANGE_PAGE,
+  START_LOADING,
+  LOADING_COMPLETE,
+} as const;

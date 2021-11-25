@@ -1,6 +1,7 @@
 import React from 'react';
 import {HashRouter as Router} from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 import 'antd/dist/antd.min.css';
 import './index.scss';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
@@ -8,7 +9,7 @@ import OverlayScrollbars from 'overlayscrollbars';
 import App from './App';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import {ThemeProvider} from './context/ThemeContext';
-import configureAPI from "./server/cofigure-api";
+import configuredStore from './store';
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
@@ -16,23 +17,19 @@ OverlayScrollbars(document.body, {
   },
 });
 
-const init = () => {
+const init = (store: typeof configuredStore) => {
   ReactDOM.render(
     <React.StrictMode>
-      <ThemeProvider storageKey="app-theme">
-        <Router>
-          <ScrollToTop />
-          <App />
-        </Router>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider storageKey="app-theme">
+          <Router>
+            <ScrollToTop />
+            <App />
+          </Router>
+        </ThemeProvider>
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );
 };
-init();
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const api = configureAPI();
-// @ts-ignore
-window.apitest = api;
-
+init(configuredStore);

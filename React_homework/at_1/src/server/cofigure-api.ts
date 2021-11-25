@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const configureAPI = () => {
   const api = axios.create({
@@ -6,11 +6,11 @@ const configureAPI = () => {
     timeout: 5000,
     headers: {
       'app-id': '619a3ac68a32ffd11ccdeea6',
-    }
+    },
   });
-  api.defaults.headers.post['Content-type'] = 'application/json'
+  api.defaults.headers.post['Content-type'] = 'application/json';
 
   return api;
-}
+};
 
 export default configureAPI;
