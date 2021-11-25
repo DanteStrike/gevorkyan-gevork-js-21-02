@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Auth.scss';
 import {Avatar} from 'antd';
+import CustomLink from '../custom-link/CustomLink';
 
 function Auth() {
   const [isAuth] = useState(true);
@@ -9,22 +10,22 @@ function Auth() {
     <div className="auth">
       {!isAuth ? (
         <>
-          <a className="auth__link auth__link--left" href="#е">
+          <CustomLink className="auth__link auth__link--left" to="/login">
             Вход
-          </a>
-          <a className="auth__link" href="#е">
+          </CustomLink>
+          <CustomLink className="auth__link" to="/registration">
             Регистрация
-          </a>
+          </CustomLink>
         </>
       ) : (
         <>
-          <Avatar />
-          <a className="auth__link auth__link--left" href="#е">
-            Анжелика
-          </a>
-          <a className="auth__link auth__link--small" href="#е">
+          <CustomLink className="auth__link auth__link--left auth__link--profile" to="/profile">
+            <Avatar />
+            <span className="auth__user">Анжелика</span>
+          </CustomLink>
+          <CustomLink className="auth__link auth__link--small" to="/login">
             Выход
-          </a>
+          </CustomLink>
         </>
       )}
     </div>

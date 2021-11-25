@@ -12,6 +12,11 @@
   background-color: var(--primary-background);
   border-color: var(--primary-background);
 
+  &__link {
+    display: inline;
+    padding: 0;
+  }
+
   &__item {
     font-family: var(--secondary-font-family);
     font-size: 18px;
@@ -26,4 +31,8 @@
       font-size: 16px;
     }
   }
+}
+
+.ant-menu-horizontal > .ant-menu-item a {
+  color: var(--primary-font-color);
 }

@@ -83,7 +83,9 @@ function RegForm() {
 
       <Item className="reg-form__last">
         <Button>Зарегистрироваться</Button>
-        <CustomLink>Уже есть аккаунт? Войти</CustomLink>
+        <CustomLink className="reg-form__link" to="/login">
+          Уже есть аккаунт? Войти
+        </CustomLink>
       </Item>
     </Form>
   );

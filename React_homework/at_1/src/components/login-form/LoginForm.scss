@@ -7,12 +7,17 @@
     margin-bottom: 0;
   }
 
+  &__link {
+    color: var(--secondory-font-color);
+    text-align: center;
+  }
+
   .ant-form-item-label {
     padding: 0;
     font-weight: 700;
   }
 
-  .ant-form-item-label>label {
+  .ant-form-item-label > label {
     color: var(--primary-font-color);
   }
 }

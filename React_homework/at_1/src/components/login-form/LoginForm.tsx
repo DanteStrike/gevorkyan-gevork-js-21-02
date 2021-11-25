@@ -26,7 +26,9 @@ function LoginForm() {
 
       <Item className="login-form__last">
         <Button>Войти</Button>
-        <CustomLink>Еще нет аккаунта? Зарегистрироваться</CustomLink>
+        <CustomLink className="login-form__link" to="/registration">
+          Еще нет аккаунта? Зарегистрироваться
+        </CustomLink>
       </Item>
     </Form>
   );

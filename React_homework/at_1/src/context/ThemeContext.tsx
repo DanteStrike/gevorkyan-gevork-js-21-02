@@ -1,10 +1,10 @@
 import React from 'react';
-import {DomUtils} from "../utils";
+import {DomUtils} from '../utils';
 
 export const enum Theme {
   LIGHT = `light`,
   DARK = `dark`,
-  DEFAULT = `light`
+  DEFAULT = `light`,
 }
 
 export interface IThemeContext {
@@ -16,7 +16,7 @@ interface IThemeProviderProps {
   storageKey: string;
 }
 interface IThemeProviderState {
-  theme: Theme
+  theme: Theme;
 }
 
 const ThemeContext = React.createContext<IThemeContext>({
@@ -29,28 +29,28 @@ class ThemeProvider extends React.PureComponent<IThemeProviderProps, IThemeProvi
     super(props);
 
     this.state = {
-      theme: Theme.DEFAULT
-    }
+      theme: Theme.DEFAULT,
+    };
 
     this.handleThemeChange = this.handleThemeChange.bind(this);
   }
 
   componentDidMount(): void {
     const {storageKey} = this.props;
-    const storedTheme = (localStorage.getItem(storageKey) as Theme) || Theme.DEFAULT
+    const storedTheme = (localStorage.getItem(storageKey) as Theme) || Theme.DEFAULT;
 
     this.setState({theme: storedTheme}, () => {
-      DomUtils.addBodyClass(`theme--${storedTheme}`)
+      DomUtils.addBodyClass(`theme--${storedTheme}`);
     });
   }
 
   handleThemeChange(value: Theme) {
     const {storageKey} = this.props;
     const {theme} = this.state;
-    DomUtils.removeBodyClass(`theme--${theme}`)
+    DomUtils.removeBodyClass(`theme--${theme}`);
 
     this.setState({theme: value}, () => {
-      DomUtils.addBodyClass(`theme--${value}`)
+      DomUtils.addBodyClass(`theme--${value}`);
     });
     localStorage.setItem(storageKey, value);
   }
@@ -59,9 +59,7 @@ class ThemeProvider extends React.PureComponent<IThemeProviderProps, IThemeProvi
     const {theme} = this.state;
     const {children} = this.props;
 
-    return (
-      <ThemeContext.Provider value={{theme, setTheme: this.handleThemeChange}}>{children}</ThemeContext.Provider>
-    );
+    return <ThemeContext.Provider value={{theme, setTheme: this.handleThemeChange}}>{children}</ThemeContext.Provider>;
   }
 }
 
