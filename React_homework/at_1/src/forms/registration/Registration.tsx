@@ -10,4 +10,4 @@ function Registration() {
   );
 }
 
-export default React.memo(Registration);
+export default Registration;

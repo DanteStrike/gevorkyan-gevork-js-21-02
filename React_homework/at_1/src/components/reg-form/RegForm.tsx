@@ -89,4 +89,4 @@ function RegForm() {
   );
 }
 
-export default RegForm;
+export default React.memo(RegForm);
