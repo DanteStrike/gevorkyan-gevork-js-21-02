@@ -14,8 +14,8 @@ function UserPosts() {
       grid={{
         gutter: 15,
         xs: 1,
-        sm: 2,
-        md: 2,
+        sm: 1,
+        md: 3,
         lg: 3,
         xl: 3,
         xxl: 3,

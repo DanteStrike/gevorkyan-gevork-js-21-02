@@ -14,6 +14,7 @@
     width: 30%;
     margin-right: 20px;
     border-radius: 15px;
+    object-fit: cover;
   }
 
   &__info {
@@ -42,9 +43,10 @@
 
   &__edit {
     display: flex;
+    padding: 0;
     align-items: center;
     align-self: flex-start;
-    margin-left: auto;
+    margin: 0 0 0 auto;
     background: none;
     border: none;
     cursor: pointer;
