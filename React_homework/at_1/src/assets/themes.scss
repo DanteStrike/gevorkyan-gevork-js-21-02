@@ -9,6 +9,9 @@ body.theme--light {
   --primary-button-font-color: #ffffff;
 
   --primary-border: 1px solid #808080;
+
+  --modal-background-color: rgba(200, 200, 200, 0.8);
+  --modal-button-color: #ffffff;
 }
 
 body.theme--dark {
@@ -22,4 +25,7 @@ body.theme--dark {
   --primary-button-font-color: #ffffff;
 
   --primary-border: 1px solid #808080;
+
+  --modal-background-color: rgba(160, 160, 160, 0.5);
+  --modal-button-color: #000000;
 }
