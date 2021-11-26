@@ -10,12 +10,6 @@ const setupUsers = (users: IUsers) =>
     },
   } as const);
 
-const changeUsersLimit = (limit: number) =>
-  ({
-    type: types.CHANGE_LIMIT,
-    payload: limit,
-  } as const);
-
 const changeUsersTotal = (total: number) =>
   ({
     type: types.CHANGE_LIMIT,
@@ -40,7 +34,6 @@ const loadingComplete = () =>
 
 const actions = {
   setupUsers,
-  changeUsersLimit,
   changeUsersPage,
   changeUsersTotal,
   startLoading,

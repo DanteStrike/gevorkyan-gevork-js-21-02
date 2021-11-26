@@ -11,4 +11,6 @@ const rootReducer = combineReducers({
 });
 
 const configuredStore = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
+export type RootState = ReturnType<typeof configuredStore.getState>;
+export type AppDispatch = typeof configuredStore.dispatch;
 export default configuredStore;

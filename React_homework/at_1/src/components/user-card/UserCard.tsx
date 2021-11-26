@@ -1,11 +1,19 @@
 import React from 'react';
 import './UserCard.scss';
+import {IUserPreview} from "../../types";
 
-function UserCard() {
+interface IUserCardProps {
+  user: IUserPreview;
+}
+
+function UserCard({user}: IUserCardProps) {
+  const {firstName, lastName, title, picture} = user;
+  const name = `${title}. ${lastName} ${firstName}`;
+
   return (
     <article className="card">
-      <img className="card__img" alt="рисунок карточки" src="https://randomuser.me/api/portraits/men/3.jpg" />
-      <h2 className="card__title">mr. Кавабанга</h2>
+      <img className="card__img" alt={name} src={picture} />
+      <h2 className="card__title">{name}</h2>
     </article>
   );
 }

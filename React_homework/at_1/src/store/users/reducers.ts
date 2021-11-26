@@ -6,17 +6,13 @@ import {IUserPreview} from '../../types';
 export interface IUsersReducerStore {
   isLoading: boolean;
   curPage: number;
-  limit: number;
   total: number;
-  limitOptions: string[];
   data: IUserPreview[];
 }
 
 const initUsersState: IUsersReducerStore = {
   isLoading: false,
   curPage: 1,
-  limit: 20,
-  limitOptions: [`5`, `10`, `20`, `50`, `100`],
   total: 0,
   data: [],
 };
