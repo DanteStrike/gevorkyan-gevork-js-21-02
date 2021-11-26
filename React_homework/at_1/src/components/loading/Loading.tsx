@@ -11,7 +11,7 @@ function Loading({isLoading}: ILoadingProps) {
     <>
       {isLoading && (
         <div className="loading">
-          <Spin tip="Loading..." size="large" />
+          <Spin size="large" />
         </div>
       )}
     </>
