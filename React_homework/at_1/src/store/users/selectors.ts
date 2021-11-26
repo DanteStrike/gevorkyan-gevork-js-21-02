@@ -1,8 +1,8 @@
 import {IUsersReducerStore} from './reducers';
-import NameSpace from "../name-space";
+import NameSpace from '../name-space';
 
 interface IDuckStore {
-  [NameSpace.USERS]: IUsersReducerStore
+  [NameSpace.USERS]: IUsersReducerStore;
 }
 
 const getStoreSpace = (store: IDuckStore) => store[NameSpace.USERS];

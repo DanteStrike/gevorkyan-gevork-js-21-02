@@ -1,5 +1,5 @@
 const enum NameSpace {
-  USERS = `USERS`
+  USERS = `USERS`,
 }
 
 export default NameSpace;

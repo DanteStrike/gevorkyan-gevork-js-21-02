@@ -1,6 +1,6 @@
 import React from 'react';
 import './UserCard.scss';
-import {IUserPreview} from "../../types";
+import {IUserPreview} from '../../types';
 
 interface IUserCardProps {
   user: IUserPreview;

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import UsersList from '../../components/users-list/UsersList';
-import {usersSelectors, usersOperations, usersActions} from "../../store/users";
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import useAppSelector from "../../hooks/use-app-selector";
+import {usersSelectors, usersOperations, usersActions} from '../../store/users';
+import useAppDispatch from '../../hooks/use-app-dispatch';
+import useAppSelector from '../../hooks/use-app-selector';
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -17,12 +17,12 @@ function Users() {
   }, [dispatch, page]);
 
   const handlePaginationChange = (newPage: number) => {
-      dispatch(usersActions.changeUsersPage(newPage));
+    dispatch(usersActions.changeUsersPage(newPage));
   };
 
   return (
     <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок слушателей">
-      <UsersList current={page} total={total} users={users} onChange={handlePaginationChange} isLoading={isLoading}/>
+      <UsersList current={page} total={total} users={users} onChange={handlePaginationChange} isLoading={isLoading} />
     </ContentLayout>
   );
 }

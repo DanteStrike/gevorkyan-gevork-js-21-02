@@ -1,8 +1,8 @@
 import React from 'react';
 import {List, Tooltip} from 'antd';
 import UserCard from '../user-card/UserCard';
-import {IUserPreview} from "../../types";
-import CustomLink from "../custom-link/CustomLink";
+import {IUserPreview} from '../../types';
+import CustomLink from '../custom-link/CustomLink';
 
 const listLayout = {
   gutter: 15,
@@ -12,14 +12,14 @@ const listLayout = {
   lg: 3,
   xl: 3,
   xxl: 3,
-}
+};
 
 interface IUsersListProps {
   users: IUserPreview[];
-  current: number,
-  total: number,
-  onChange: (page: number) => void,
-  isLoading: boolean
+  current: number;
+  total: number;
+  onChange: (page: number) => void;
+  isLoading: boolean;
 }
 
 function UsersList({users, current, total, onChange, isLoading}: IUsersListProps) {
@@ -34,7 +34,7 @@ function UsersList({users, current, total, onChange, isLoading}: IUsersListProps
             getPopupContainer={() => document.querySelector(`#users-item-${user.id}`) || document.body}
           >
             <CustomLink to={`/user/${user.id}`}>
-              <UserCard user={user}/>
+              <UserCard user={user} />
             </CustomLink>
           </Tooltip>
         </List.Item>
@@ -47,7 +47,7 @@ function UsersList({users, current, total, onChange, isLoading}: IUsersListProps
         total,
         showSizeChanger: false,
         onChange,
-        disabled: isLoading
+        disabled: isLoading,
       }}
     />
   );

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import configureAPI from '../server/cofigure-api';
 import {usersReducer} from './users';
-import NameSpace from "./name-space";
+import NameSpace from './name-space';
 
 const api = configureAPI();
 const rootReducer = combineReducers({
