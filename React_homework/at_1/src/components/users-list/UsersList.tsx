@@ -33,7 +33,7 @@ function UsersList({users, current, total, onChange, isLoading}: IUsersListProps
             title={user.id}
             getPopupContainer={() => document.querySelector(`#users-item-${user.id}`) || document.body}
           >
-            <CustomLink to={`/user/${user.id}`}>
+            <CustomLink to={`/profile/${user.id}`}>
               <UserCard user={user} />
             </CustomLink>
           </Tooltip>

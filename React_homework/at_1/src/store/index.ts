@@ -4,10 +4,12 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import configureAPI from '../server/cofigure-api';
 import {usersReducer} from './users';
 import NameSpace from './name-space';
+import {profileReducer} from './profile';
 
 const api = configureAPI();
 const rootReducer = combineReducers({
   [NameSpace.USERS]: usersReducer,
+  [NameSpace.PROFILE]: profileReducer,
 });
 
 const configuredStore = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));

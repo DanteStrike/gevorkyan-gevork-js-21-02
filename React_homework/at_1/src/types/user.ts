@@ -17,7 +17,7 @@ export interface ILocation {
   timezone: string;
 }
 
-export interface IUser {
+export interface IUser extends IUserPreview {
   gender: UserGenderType;
   email: string;
   dateOfBirth: string;

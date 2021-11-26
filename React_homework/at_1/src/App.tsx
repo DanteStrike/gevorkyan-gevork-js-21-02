@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect, RouteComponentProps} from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Posts from './forms/posts/Posts';
@@ -9,6 +9,11 @@ import Users from './forms/users/Users';
 import Login from './forms/login/Login';
 import Registration from './forms/registration/Registration';
 import Profile from './forms/profile/Profile';
+
+interface IUserProfileMatchParams {
+  id: string;
+}
+
 
 function App() {
   return (
@@ -23,7 +28,14 @@ function App() {
           </Route>
           <Route exact path="/login" render={() => <Login />} />
           <Route exact path="/registration" render={() => <Registration />} />
-          <Route exact path="/profile" render={() => <Profile />} />
+          <Route
+            exact
+            path="/profile/:id"
+            render={({
+              match: {
+                params: {id},
+              },
+            }: RouteComponentProps<IUserProfileMatchParams>) => <Profile id={id}/>} />
           <Route exact path="/users" render={() => <Users />} />
           <Route exact path="/posts" render={() => <Posts />} />
           <Route render={() => <PageNotFound />} />

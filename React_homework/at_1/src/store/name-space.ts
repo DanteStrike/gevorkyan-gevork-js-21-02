@@ -1,4 +1,5 @@
 const enum NameSpace {
+  PROFILE = `PROFILE`,
   USERS = `USERS`,
 }
 
