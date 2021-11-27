@@ -26,18 +26,18 @@ function App() {
           <Route exact path="/">
             <Redirect to="/registration" />
           </Route>
-          <Route exact path="/login" render={() => <Login />} />
-          <Route exact path="/registration" render={() => <Registration />} />
+          <Route exact path="/login" component={() => <Login />} />
+          <Route exact path="/registration" component={() => <Registration />} />
           <Route
             exact
             path="/profile/:id"
-            render={({
+            component={({
               match: {
                 params: {id},
               },
             }: RouteComponentProps<IUserProfileMatchParams>) => <Profile id={id}/>} />
-          <Route exact path="/users" render={() => <Users />} />
-          <Route exact path="/posts" render={() => <Posts />} />
+          <Route exact path="/users" component={() => <Users />} />
+          <Route exact path="/posts" component={() => <Posts />} />
           <Route render={() => <PageNotFound />} />
         </Switch>
       </div>
