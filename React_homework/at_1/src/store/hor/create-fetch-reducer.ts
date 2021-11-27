@@ -1,34 +1,36 @@
+import {AnyAction} from "redux";
 import {ObjectUtils} from "../../utils";
-import {InferValueTypes} from "../../types";
 
 export const enum FetchStatus {
   IDLE = `idle`,
   LOADING = `loading`,
   SUCCESS = `success`,
-  ERROR = `error`
+  ERROR = `error`,
+  ABORTED = `aborted`
 }
 
 export interface IFetchStore {
   status: FetchStatus
-  error: null | string
+  error: null | string,
+  controller: null | AbortController
 }
 
 export const createFetchReducer = (name: string) => {
-  const REQUEST_STARTED = `${name}/fetch/REQUEST_STARTED` as const;
-  const REQUEST_FINISHED = `${name}/fetch/REQUEST_FINISHED` as const;
-  const REQUEST_FAILED = `${name}/fetch/REQUEST_FAILED` as const;
-  const REQUEST_RESET = `${name}/fetch/REQUEST_RESET` as const;
+  const REQUEST_STARTED = `${name}/fetch/REQUEST_STARTED`;
+  const REQUEST_FINISHED = `${name}/fetch/REQUEST_FINISHED`;
+  const REQUEST_FAILED = `${name}/fetch/REQUEST_FAILED`;
+  const REQUEST_RESET = `${name}/fetch/REQUEST_RESET`;
+  const REQUEST_ABORT = `${name}/fetch/REQUEST_ABORT`;
 
-  const requestStart = () =>
+  const requestStart = (controller?: AbortController) =>
     ({
       type: REQUEST_STARTED,
-      payload: undefined
+      payload: controller || null
     });
 
   const requestFinished = () =>
     ({
       type: REQUEST_FINISHED,
-      payload: undefined
     });
 
   const requestFailed = (errMsg: string) =>
@@ -40,27 +42,33 @@ export const createFetchReducer = (name: string) => {
   const requestReset = () =>
     ({
       type: REQUEST_RESET,
-      payload: undefined
+    });
+
+  const requestAbort = () =>
+    ({
+      type: REQUEST_ABORT,
     });
 
   const actions = {
     requestStart,
     requestFinished,
     requestFailed,
-    requestReset
+    requestReset,
+    requestAbort
   }
-  type ActionsTypes = ReturnType<InferValueTypes<typeof actions>>;
 
   const initStore: IFetchStore = {
     status: FetchStatus.IDLE,
-    error: null
+    error: null,
+    controller: null
   }
 
-  const reducer = (state = initStore, action: ActionsTypes): IFetchStore => {
+  const reducer = (state = initStore, action: AnyAction): IFetchStore => {
     switch (action.type) {
       case REQUEST_STARTED:
         return ObjectUtils.updateObject(state, {
-          status: FetchStatus.LOADING
+          status: FetchStatus.LOADING,
+          controller: action.payload
         });
 
       case REQUEST_FINISHED:
@@ -76,6 +84,13 @@ export const createFetchReducer = (name: string) => {
 
       case REQUEST_RESET:
         return ObjectUtils.updateObject(state, initStore);
+
+      case REQUEST_ABORT:
+        state.controller?.abort();
+        return ObjectUtils.updateObject(state, {
+          status: FetchStatus.ABORTED,
+          controller: null
+        })
 
       default:
         return state;
