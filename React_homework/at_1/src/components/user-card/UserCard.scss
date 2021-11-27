@@ -1,12 +1,11 @@
 @import "src/assets/variables";
 
-.card {
+.user-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 390px;
   min-height: 300px;
   padding: 5%;
   background-color: var(--primary-background);
@@ -29,7 +28,7 @@
 }
 
 @media (max-width: $tabletWidth) {
-  .card {
+  .user-card {
     margin: 0 auto;
   }
 }

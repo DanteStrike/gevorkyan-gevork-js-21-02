@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import {Tooltip} from 'antd';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import AppList from '../../components/app-list/AppList';
 import {usersSelectors, usersOperations, usersActions} from '../../store/users';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import useAppSelector from '../../hooks/use-app-selector';
 import {IUserPreview} from '../../types';
-import CustomLink from '../../components/custom-link/CustomLink';
 import UserCard from '../../components/user-card/UserCard';
+import CustomLink from "../../components/custom-link/CustomLink";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -36,15 +35,9 @@ function Users() {
         pageSize={itemPerPage}
         renderItem={(user: IUserPreview) => (
           <AppList.Item key={user.id} id={`users-item-${user.id}`}>
-            <Tooltip
-              placement="topLeft"
-              title={user.id}
-              getPopupContainer={() => document.querySelector(`#users-item-${user.id}`) || document.body}
-            >
-              <CustomLink to={`/profile/${user.id}`}>
-                <UserCard user={user} />
-              </CustomLink>
-            </Tooltip>
+            <CustomLink to={`/profile/${user.id}`}>
+              <UserCard user={user} />
+            </CustomLink>
           </AppList.Item>
         )}
       />
