@@ -15,9 +15,10 @@ function Users() {
   const total = useAppSelector(usersSelectors.getTotal);
   const users = useAppSelector(usersSelectors.getData);
   const isLoading = useAppSelector(usersSelectors.getIsLoading);
+  const itemPerPage = 6;
 
   useEffect(() => {
-    dispatch(usersOperations.load(6, page));
+    dispatch(usersOperations.load(itemPerPage, page));
   }, [dispatch, page]);
 
   const handlePaginationChange = (newPage: number) => {
@@ -32,6 +33,7 @@ function Users() {
         dataSource={users}
         onChange={handlePaginationChange}
         isLoading={isLoading}
+        pageSize={itemPerPage}
         renderItem={(user: IUserPreview) => (
           <AppList.Item key={user.id} id={`users-item-${user.id}`}>
             <Tooltip

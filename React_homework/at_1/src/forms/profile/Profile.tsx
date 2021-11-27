@@ -3,9 +3,11 @@ import ContentLayout, {ContentLayoutType} from '../../components/content-layout/
 import UserPreview from '../../components/user-preview/UserPreview';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import useAppSelector from '../../hooks/use-app-selector';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {profileActions, profileOperations, profileSelectors} from '../../store/profile';
-// import AppList from "../../components/app-list/AppList";
+import {RequestType} from '../../store/profile/slices/fetch';
+import AppList, {AppListMod} from '../../components/app-list/AppList';
+import {IPostPreview} from '../../types';
+import PostCard from '../../components/post-card/PostCard';
 
 interface IProfileProps {
   id: string;
@@ -13,25 +15,48 @@ interface IProfileProps {
 
 function Profile({id}: IProfileProps) {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(profileSelectors.getIsLoading);
+  const isProfileLoading = useAppSelector(profileSelectors.getProfileIsLoading);
   const userProfile = useAppSelector(profileSelectors.getProfile);
+  const isUserPostsLoading = useAppSelector(profileSelectors.getUserPostsIsLoading);
+  const userPosts = useAppSelector(profileSelectors.getPosts);
+  const page = useAppSelector(profileSelectors.getPage);
+  const total = useAppSelector(profileSelectors.getTotal);
+  const itemPerPage = 3;
 
   useEffect(() => {
-    dispatch(profileOperations.load(id));
-  }, [dispatch, id]);
+    dispatch(profileOperations.loadProfile(id));
+    dispatch(profileOperations.loadUserPosts(id, itemPerPage, page));
+  }, [dispatch, id, page]);
 
   useEffect(
     () => () => {
-      dispatch(profileActions.requestAbort());
-      dispatch(profileActions.reset());
+      dispatch(profileActions.fetchActions[RequestType.LOAD_PROFILE].requestAbort());
+      dispatch(profileActions.fetchActions[RequestType.LOAD_USER_POSTS].requestAbort());
     },
     [dispatch]
   );
 
+  const handlePaginationChange = (newPage: number) => {
+    dispatch(profileActions.changePage(newPage));
+  };
+
   return (
     <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Профиль пользователя">
-      <UserPreview user={userProfile} isLoading={isLoading} />
-      {/* <AppList current={} dataSource={} isLoading onChange={} renderItem={} total={}/> */}
+      <UserPreview user={userProfile} isLoading={isProfileLoading} />
+      <AppList
+        current={page}
+        dataSource={userPosts}
+        isLoading={isUserPostsLoading}
+        onChange={handlePaginationChange}
+        renderItem={(post: IPostPreview) => (
+          <AppList.Item>
+            <PostCard post={post} hideTop />
+          </AppList.Item>
+        )}
+        total={total}
+        pageSize={itemPerPage}
+        mod={AppListMod.ROW}
+      />
     </ContentLayout>
   );
 }

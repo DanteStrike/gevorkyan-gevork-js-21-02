@@ -1,7 +1,7 @@
 import React from 'react';
 import {List} from 'antd';
 
-const enum AppListMod {
+export const enum AppListMod {
   TABLE = `table`,
   ROW = `row`,
   SMALL_ROW = `smallRow`,
@@ -42,6 +42,7 @@ interface IAppListProps<T> {
   renderItem: (item: T, index: number) => React.ReactNode;
   current: number;
   total: number;
+  pageSize: number;
   onChange: (page: number) => void;
   isLoading: boolean;
   mod?: AppListMod;
@@ -54,6 +55,7 @@ function AppList<T>({
   onChange,
   isLoading,
   renderItem,
+  pageSize,
   mod = AppListMod.TABLE,
 }: IAppListProps<T>) {
   return (
@@ -69,6 +71,7 @@ function AppList<T>({
         showSizeChanger: false,
         onChange,
         disabled: isLoading,
+        pageSize,
       }}
     />
   );

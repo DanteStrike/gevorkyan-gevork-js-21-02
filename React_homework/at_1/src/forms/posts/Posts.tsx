@@ -15,9 +15,10 @@ function Posts() {
   const total = useAppSelector(postsSelectors.getTotal);
   const posts = useAppSelector(postsSelectors.getData);
   const isLoading = useAppSelector(postsSelectors.getIsLoading);
+  const itemPerPage = 6;
 
   useEffect(() => {
-    dispatch(postsOperations.load(6, page));
+    dispatch(postsOperations.load(itemPerPage, page));
   }, [dispatch, page]);
 
   const handlePaginationChange = (newPage: number) => {
@@ -32,6 +33,7 @@ function Posts() {
         dataSource={posts}
         onChange={handlePaginationChange}
         isLoading={isLoading}
+        pageSize={itemPerPage}
         renderItem={(post: IPostPreview) => (
           <AppList.Item key={post.id} id={`posts-item-${post.id}`}>
             <Tooltip
