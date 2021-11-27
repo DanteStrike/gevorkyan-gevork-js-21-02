@@ -1,7 +1,9 @@
 import React from 'react';
 import './PostCard.scss';
-import {Avatar} from 'antd';
+import {Tooltip} from 'antd';
 import {IPostPreview} from '../../types';
+import LinkedAvatar from "../linked-avatar/LinkedAvatar";
+import CustomLink from "../custom-link/CustomLink";
 
 interface IPostCard {
   post: IPostPreview;
@@ -10,15 +12,24 @@ interface IPostCard {
 
 function PostCard({hideTop = false, post}: IPostCard) {
   const {owner, publishDate, image, text, id} = post;
-  const {firstName, lastName, title, picture} = owner;
+  const {firstName, lastName, title} = owner;
   const name = `${title}. ${lastName} ${firstName}`;
+  const profileRoute = `/profile/${owner.id}`;
 
   return (
     <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
-        <Avatar className="post-card__avatar" src={picture} />
+        <LinkedAvatar user={owner} className="post-card__avatar" to={profileRoute}/>
         <div className="post-card__wrap">
-          <h2 className="post-card__title">{name}</h2>
+          <Tooltip
+            placement="topLeft"
+            title={post.id}
+            getPopupContainer={() => document.querySelector(`#posts-item-${post.id}`) || document.body}
+          >
+            <CustomLink to={profileRoute}>
+              <h2 className="post-card__title">{name}</h2>
+            </CustomLink>
+          </Tooltip>
           <p className="post-card__date">{publishDate}</p>
         </div>
       </div>
