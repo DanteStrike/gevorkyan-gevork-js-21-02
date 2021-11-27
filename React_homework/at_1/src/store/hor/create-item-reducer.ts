@@ -7,6 +7,7 @@ export interface IItemStore<T> {
 
 export const createItemReducer = <T>(name: string, initItem: T) => {
   const SET = `${name}/item/SET`;
+  const RESET = `${name}/item/RESET`;
 
   const set = (data: T) =>
     ({
@@ -14,8 +15,14 @@ export const createItemReducer = <T>(name: string, initItem: T) => {
       payload: data,
     });
 
+  const reset = () =>
+    ({
+      type: RESET
+    });
+
   const actions = {
-    set
+    set,
+    reset
   }
 
   const initStore: IItemStore<T> = {
@@ -26,6 +33,12 @@ export const createItemReducer = <T>(name: string, initItem: T) => {
     if (action.type === SET) {
       return ObjectUtils.updateObject(state, {
         item: action.payload
+      });
+    }
+
+    if (action.type === RESET) {
+      return ObjectUtils.updateObject(state, {
+        item: initItem
       });
     }
 
