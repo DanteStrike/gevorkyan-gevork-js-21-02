@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-import {Tooltip} from 'antd'
+import {Tooltip} from 'antd';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import AppList from '../../components/app-list/AppList';
 import {usersSelectors, usersOperations, usersActions} from '../../store/users';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import useAppSelector from '../../hooks/use-app-selector';
-import {IUserPreview} from "../../types";
-import CustomLink from "../../components/custom-link/CustomLink";
-import UserCard from "../../components/user-card/UserCard";
+import {IUserPreview} from '../../types';
+import CustomLink from '../../components/custom-link/CustomLink';
+import UserCard from '../../components/user-card/UserCard';
 
 function Users() {
   const dispatch = useAppDispatch();

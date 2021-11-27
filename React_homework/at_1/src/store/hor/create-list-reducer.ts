@@ -1,5 +1,5 @@
-import {AnyAction} from "redux";
-import {ObjectUtils} from "../../utils";
+import {AnyAction} from 'redux';
+import {ObjectUtils} from '../../utils';
 
 export interface IListStore<T> {
   current: number;
@@ -11,33 +11,29 @@ export const createListReducer = <T>(name: string) => {
   const SETUP = `${name}/list/SETUP`;
   const CHANGE_PAGE = `${name}/list/CHANGE_PAGE`;
 
-  const setup = (users: {total: number, data: T[]}) =>
-    ({
-      type: SETUP,
-      payload: {
-        total: users.total,
-        data: users.data,
-      },
-    });
+  const setup = (users: {total: number; data: T[]}) => ({
+    type: SETUP,
+    payload: {
+      total: users.total,
+      data: users.data,
+    },
+  });
 
-
-
-  const changePage = (page: number) =>
-    ({
-      type: CHANGE_PAGE,
-      payload: page,
-    });
+  const changePage = (page: number) => ({
+    type: CHANGE_PAGE,
+    payload: page,
+  });
 
   const actions = {
     setup,
-    changePage
-  }
+    changePage,
+  };
 
   const initStore: IListStore<T> = {
     current: 1,
     total: 0,
-    data: []
-  }
+    data: [],
+  };
 
   const reducer = (state = initStore, action: AnyAction): IListStore<T> => {
     switch (action.type) {
@@ -62,11 +58,11 @@ export const createListReducer = <T>(name: string) => {
     getData,
     getTotal,
     getPage,
-  }
+  };
 
   return {
     actions,
     selectors,
     reducer,
-  }
-}
+  };
+};

@@ -1,7 +1,7 @@
 const enum NameSpace {
   PROFILE = `PROFILE`,
   USERS = `USERS`,
-  POSTS = `POSTS`
+  POSTS = `POSTS`,
 }
 
 export default NameSpace;

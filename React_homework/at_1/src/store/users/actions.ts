@@ -1,9 +1,9 @@
-import {fetchActions} from "./slices/fetch";
-import {listActions} from "./slices/list";
+import {fetchActions} from './slices/fetch';
+import {listActions} from './slices/list';
 
 const actions = {
   ...listActions,
-  ...fetchActions
+  ...fetchActions,
 };
 
 export default actions;

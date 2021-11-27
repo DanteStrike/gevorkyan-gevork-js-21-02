@@ -1,7 +1,7 @@
 import {IDuckStore} from './reducers';
 import NameSpace from '../name-space';
-import {fetchSelectors} from "./slices/fetch";
-import {listSelectors} from "./slices/list";
+import {fetchSelectors} from './slices/fetch';
+import {listSelectors} from './slices/list';
 
 const getStoreSpace = (store: IDuckStore) => store[NameSpace.POSTS];
 
@@ -22,5 +22,5 @@ export default {
   getPage,
   getIsLoading,
   getIsError,
-  getError
+  getError,
 };

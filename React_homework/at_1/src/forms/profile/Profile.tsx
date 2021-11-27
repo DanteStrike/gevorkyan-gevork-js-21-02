@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
 import UserPreview from '../../components/user-preview/UserPreview';
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import useAppSelector from "../../hooks/use-app-selector";
+import useAppDispatch from '../../hooks/use-app-dispatch';
+import useAppSelector from '../../hooks/use-app-selector';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {profileActions, profileOperations, profileSelectors} from "../../store/profile";
+import {profileActions, profileOperations, profileSelectors} from '../../store/profile';
 // import AppList from "../../components/app-list/AppList";
 
 interface IProfileProps {
-  id: string
+  id: string;
 }
 
 function Profile({id}: IProfileProps) {
@@ -20,14 +20,17 @@ function Profile({id}: IProfileProps) {
     dispatch(profileOperations.load(id));
   }, [dispatch, id]);
 
-  useEffect(() => () => {
+  useEffect(
+    () => () => {
       dispatch(profileActions.requestAbort());
       dispatch(profileActions.reset());
-  }, [dispatch])
+    },
+    [dispatch]
+  );
 
   return (
     <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Профиль пользователя">
-      <UserPreview user={userProfile} isLoading={isLoading}/>
+      <UserPreview user={userProfile} isLoading={isLoading} />
       {/* <AppList current={} dataSource={} isLoading onChange={} renderItem={} total={}/> */}
     </ContentLayout>
   );

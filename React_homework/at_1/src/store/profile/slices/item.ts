@@ -1,6 +1,6 @@
-import NameSpace from "../../name-space";
-import {createItemReducer} from "../../hor";
-import {IUser} from "../../../types";
+import NameSpace from '../../name-space';
+import {createItemReducer} from '../../hor';
+import {IUser} from '../../../types';
 
 const initProfile: IUser = {
   id: ``,
@@ -20,15 +20,11 @@ const initProfile: IUser = {
     country: ``,
     timezone: ``,
   },
-}
+};
 
 const item = createItemReducer<IUser>([NameSpace.PROFILE] as unknown as string, initProfile);
 const itemActions = item.actions;
 const itemSelectors = item.selectors;
 const itemReducer = item.reducer;
 
-export {
-  itemActions,
-  itemSelectors,
-  itemReducer
-}
+export {itemActions, itemSelectors, itemReducer};

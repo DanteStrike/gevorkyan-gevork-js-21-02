@@ -1,21 +1,20 @@
 import React from 'react';
 import './UserPreview.scss';
 import {EditOutlined} from '@ant-design/icons';
-import {IUser} from "../../types";
-import Loading from "../loading/Loading";
+import {IUser} from '../../types';
+import Loading from '../loading/Loading';
 
 interface IUserPreviewProps {
   user: IUser;
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 function UserPreview({user, isLoading}: IUserPreviewProps) {
-  const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} =
-    user;
+  const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
 
   return (
     <article className="user-preview">
-      <Loading isLoading={isLoading}/>
+      <Loading isLoading={isLoading} />
       <img className="user-preview__img" alt="рисунок карточки" src={picture} />
       <p className="user-preview__info">
         <span className="user-preview__title">{`${title}. ${firstName} ${lastName}`}</span>

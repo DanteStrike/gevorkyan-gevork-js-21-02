@@ -1,18 +1,18 @@
-import {combineReducers} from "redux";
-import NameSpace from "../name-space";
-import {fetchReducer} from "./slices/fetch";
-import {IFetchStore, IListStore} from "../hor";
-import {listReducer} from "./slices/list";
-import {IUserPreview} from "../../types";
+import {combineReducers} from 'redux';
+import NameSpace from '../name-space';
+import {fetchReducer} from './slices/fetch';
+import {IFetchStore, IListStore} from '../hor';
+import {listReducer} from './slices/list';
+import {IUserPreview} from '../../types';
 
 const reducer = combineReducers({
   fetch: fetchReducer,
   list: listReducer,
-})
+});
 export interface IDuckStore {
   [NameSpace.USERS]: {
-    fetch: IFetchStore
-    list: IListStore<IUserPreview>
-  }
+    fetch: IFetchStore;
+    list: IListStore<IUserPreview>;
+  };
 }
 export default reducer;

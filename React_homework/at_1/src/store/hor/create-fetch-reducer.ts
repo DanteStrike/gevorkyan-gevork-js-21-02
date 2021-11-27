@@ -1,18 +1,18 @@
-import {AnyAction} from "redux";
-import {ObjectUtils} from "../../utils";
+import {AnyAction} from 'redux';
+import {ObjectUtils} from '../../utils';
 
 export const enum FetchStatus {
   IDLE = `idle`,
   LOADING = `loading`,
   SUCCESS = `success`,
   ERROR = `error`,
-  ABORTED = `aborted`
+  ABORTED = `aborted`,
 }
 
 export interface IFetchStore {
-  status: FetchStatus
-  error: null | string,
-  controller: null | AbortController
+  status: FetchStatus;
+  error: null | string;
+  controller: null | AbortController;
 }
 
 export const createFetchReducer = (name: string) => {
@@ -22,64 +22,59 @@ export const createFetchReducer = (name: string) => {
   const REQUEST_RESET = `${name}/fetch/REQUEST_RESET`;
   const REQUEST_ABORT = `${name}/fetch/REQUEST_ABORT`;
 
-  const requestStart = (controller?: AbortController) =>
-    ({
-      type: REQUEST_STARTED,
-      payload: controller || null
-    });
+  const requestStart = (controller?: AbortController) => ({
+    type: REQUEST_STARTED,
+    payload: controller || null,
+  });
 
-  const requestFinished = () =>
-    ({
-      type: REQUEST_FINISHED,
-    });
+  const requestFinished = () => ({
+    type: REQUEST_FINISHED,
+  });
 
-  const requestFailed = (errMsg: string) =>
-    ({
-      type: REQUEST_FAILED,
-      payload: errMsg
-    });
+  const requestFailed = (errMsg: string) => ({
+    type: REQUEST_FAILED,
+    payload: errMsg,
+  });
 
-  const requestReset = () =>
-    ({
-      type: REQUEST_RESET,
-    });
+  const requestReset = () => ({
+    type: REQUEST_RESET,
+  });
 
-  const requestAbort = () =>
-    ({
-      type: REQUEST_ABORT,
-    });
+  const requestAbort = () => ({
+    type: REQUEST_ABORT,
+  });
 
   const actions = {
     requestStart,
     requestFinished,
     requestFailed,
     requestReset,
-    requestAbort
-  }
+    requestAbort,
+  };
 
   const initStore: IFetchStore = {
     status: FetchStatus.IDLE,
     error: null,
-    controller: null
-  }
+    controller: null,
+  };
 
   const reducer = (state = initStore, action: AnyAction): IFetchStore => {
     switch (action.type) {
       case REQUEST_STARTED:
         return ObjectUtils.updateObject(state, {
           status: FetchStatus.LOADING,
-          controller: action.payload
+          controller: action.payload,
         });
 
       case REQUEST_FINISHED:
         return ObjectUtils.updateObject(state, {
-          status: FetchStatus.SUCCESS
+          status: FetchStatus.SUCCESS,
         });
 
       case REQUEST_FAILED:
         return ObjectUtils.updateObject(state, {
           status: FetchStatus.ERROR,
-          error: action.payload
+          error: action.payload,
         });
 
       case REQUEST_RESET:
@@ -89,8 +84,8 @@ export const createFetchReducer = (name: string) => {
         state.controller?.abort();
         return ObjectUtils.updateObject(state, {
           status: FetchStatus.ABORTED,
-          controller: null
-        })
+          controller: null,
+        });
 
       default:
         return state;
@@ -105,12 +100,12 @@ export const createFetchReducer = (name: string) => {
     getStatus,
     getIsLoading,
     getIsError,
-    getError
-  }
+    getError,
+  };
 
   return {
     actions,
     selectors,
     reducer,
-  }
-}
+  };
+};

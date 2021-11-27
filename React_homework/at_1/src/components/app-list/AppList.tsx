@@ -4,7 +4,7 @@ import {List} from 'antd';
 const enum AppListMod {
   TABLE = `table`,
   ROW = `row`,
-  SMALL_ROW = `smallRow`
+  SMALL_ROW = `smallRow`,
 }
 
 const listLayout = {
@@ -34,7 +34,7 @@ const listLayout = {
     lg: 2,
     xl: 2,
     xxl: 2,
-  }
+  },
 };
 
 interface IAppListProps<T> {
@@ -44,10 +44,18 @@ interface IAppListProps<T> {
   total: number;
   onChange: (page: number) => void;
   isLoading: boolean;
-  mod?: AppListMod
+  mod?: AppListMod;
 }
 
-function AppList<T>({dataSource, current, total, onChange, isLoading, renderItem, mod = AppListMod.TABLE}: IAppListProps<T>) {
+function AppList<T>({
+  dataSource,
+  current,
+  total,
+  onChange,
+  isLoading,
+  renderItem,
+  mod = AppListMod.TABLE,
+}: IAppListProps<T>) {
   return (
     <List
       dataSource={dataSource}
@@ -69,7 +77,7 @@ function AppList<T>({dataSource, current, total, onChange, isLoading, renderItem
 AppList.Item = List.Item;
 
 AppList.defaultProps = {
-  mod: AppListMod.TABLE
-}
+  mod: AppListMod.TABLE,
+};
 
 export default AppList;

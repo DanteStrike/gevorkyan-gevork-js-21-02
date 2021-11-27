@@ -14,7 +14,6 @@ interface IUserProfileMatchParams {
   id: string;
 }
 
-
 function App() {
   return (
     <div className="app">
@@ -35,7 +34,8 @@ function App() {
               match: {
                 params: {id},
               },
-            }: RouteComponentProps<IUserProfileMatchParams>) => <Profile id={id}/>} />
+            }: RouteComponentProps<IUserProfileMatchParams>) => <Profile id={id} />}
+          />
           <Route exact path="/users" component={() => <Users />} />
           <Route exact path="/posts" component={() => <Posts />} />
           <Route render={() => <PageNotFound />} />
