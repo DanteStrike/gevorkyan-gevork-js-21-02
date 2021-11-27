@@ -1,6 +1,6 @@
 import React from 'react';
 import {List} from 'antd';
-import PostCard from '../post-card/PostCard';
+// import PostCard from '../post-card/PostCard';
 
 function UserPosts() {
   return (
@@ -8,7 +8,7 @@ function UserPosts() {
       dataSource={[1, 2, 3]}
       renderItem={(el) => (
         <List.Item key={el}>
-          <PostCard hideTop />
+          { /* <PostCard hideTop /> */ }
         </List.Item>
       )}
       grid={{

@@ -1,25 +1,29 @@
 import React from 'react';
 import './PostCard.scss';
 import {Avatar} from 'antd';
+import {IPostPreview} from "../../types";
 
 interface IPostCard {
+  post: IPostPreview
   hideTop?: boolean;
 }
 
-function PostCard({hideTop = false}: IPostCard) {
+function PostCard({hideTop = false, post}: IPostCard) {
+  const {owner, publishDate, image, text, id} = post
+  const {firstName, lastName, title, picture} = owner;
+  const name = `${title}. ${lastName} ${firstName}`;
+
   return (
     <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
-        <Avatar className="post-card__avatar" />
+        <Avatar className="post-card__avatar" src={picture}/>
         <div className="post-card__wrap">
-          <h2 className="post-card__title">mr. Кавабанга</h2>
-          <p className="post-card__date">25 мая в 04:20</p>
+          <h2 className="post-card__title">{name}</h2>
+          <p className="post-card__date">{publishDate}</p>
         </div>
       </div>
-      <img className="post-card__img" src="https://randomuser.me/api/portraits/men/2.jpg" alt="post-card__img" />
-      <p className="post-card__text">
-        Lorem ipsum dolor sit amet, consectetur adipiscin. Lorem ipsum dolor sit amet, consectetur adipiscin.
-      </p>
+      <img className="post-card__img" src={image} alt={id} />
+      <p className="post-card__text">{text}</p>
     </article>
   );
 }

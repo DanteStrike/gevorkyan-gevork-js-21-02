@@ -5,11 +5,13 @@ import configureAPI from '../server/cofigure-api';
 import {usersReducer} from './users';
 import NameSpace from './name-space';
 import {profileReducer} from './profile';
+import {postsReducer} from "./posts";
 
 const api = configureAPI();
 const rootReducer = combineReducers({
   [NameSpace.USERS]: usersReducer,
   [NameSpace.PROFILE]: profileReducer,
+  [NameSpace.POSTS]: postsReducer
 });
 
 const configuredStore = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
