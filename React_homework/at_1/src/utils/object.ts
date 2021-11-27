@@ -1,4 +1,4 @@
-const updateObject = (oldObject: object, newValues: object, ...additionalValues: object[]) =>
+const updateObject = <T>(oldObject: T, newValues: Partial<T>, ...additionalValues: Partial<T>[]) =>
   Object.assign({}, oldObject, newValues, ...additionalValues);
 
 export default {

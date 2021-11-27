@@ -7,17 +7,17 @@ import useAppSelector from '../../hooks/use-app-selector';
 
 function Users() {
   const dispatch = useAppDispatch();
-  const page = useAppSelector(usersSelectors.getUsersPage);
-  const total = useAppSelector(usersSelectors.getUsersTotal);
-  const users = useAppSelector(usersSelectors.getUsersList);
-  const isLoading = useAppSelector(usersSelectors.getUsersLoadingStatus);
+  const page = useAppSelector(usersSelectors.getPage);
+  const total = useAppSelector(usersSelectors.getTotal);
+  const users = useAppSelector(usersSelectors.getData);
+  const isLoading = useAppSelector(usersSelectors.getIsLoading);
 
   useEffect(() => {
-    dispatch(usersOperations.loadUsers(6, page));
+    dispatch(usersOperations.load(6, page));
   }, [dispatch, page]);
 
   const handlePaginationChange = (newPage: number) => {
-    dispatch(usersActions.changeUsersPage(newPage));
+    dispatch(usersActions.changePage(newPage));
   };
 
   return (

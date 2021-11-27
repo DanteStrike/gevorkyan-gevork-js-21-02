@@ -1,11 +1,23 @@
 import {ObjectUtils} from "../../utils";
 import {InferValueTypes} from "../../types";
 
-const createFetchReducer = (name: string) => {
-  const REQUEST_STARTED = `${name}/REQUEST_STARTED` as const;
-  const REQUEST_FINISHED = `${name}/REQUEST_FINISHED` as const;
-  const REQUEST_FAILED = `${name}/REQUEST_FAILED` as const;
-  const REQUEST_RESET = `${name}/REQUEST_RESET` as const;
+export const enum FetchStatus {
+  IDLE = `idle`,
+  LOADING = `loading`,
+  SUCCESS = `success`,
+  ERROR = `error`
+}
+
+export interface IFetchStore {
+  status: FetchStatus
+  error: null | string
+}
+
+export const createFetchReducer = (name: string) => {
+  const REQUEST_STARTED = `${name}/fetch/REQUEST_STARTED` as const;
+  const REQUEST_FINISHED = `${name}/fetch/REQUEST_FINISHED` as const;
+  const REQUEST_FAILED = `${name}/fetch/REQUEST_FAILED` as const;
+  const REQUEST_RESET = `${name}/fetch/REQUEST_RESET` as const;
 
   const requestStart = () =>
     ({
@@ -39,25 +51,12 @@ const createFetchReducer = (name: string) => {
   }
   type ActionsTypes = ReturnType<InferValueTypes<typeof actions>>;
 
-
-  const enum FetchStatus {
-    IDLE = `idle`,
-    LOADING = `loading`,
-    SUCCESS = `success`,
-    ERROR = `error`
-  }
-
-  interface IFetchStore {
-    status: FetchStatus
-    error: null | string
-  }
-
   const initStore: IFetchStore = {
     status: FetchStatus.IDLE,
     error: null
   }
 
-  const reducer = (state = initStore, action: ActionsTypes) => {
+  const reducer = (state = initStore, action: ActionsTypes): IFetchStore => {
     switch (action.type) {
       case REQUEST_STARTED:
         return ObjectUtils.updateObject(state, {
@@ -84,9 +83,13 @@ const createFetchReducer = (name: string) => {
   };
 
   const getStatus = (store: IFetchStore) => store.status;
+  const getIsLoading = (store: IFetchStore) => store.status === FetchStatus.LOADING;
+  const getIsError = (store: IFetchStore) => store.status === FetchStatus.ERROR;
   const getError = (store: IFetchStore) => store.error;
   const selectors = {
     getStatus,
+    getIsLoading,
+    getIsError,
     getError
   }
 
@@ -96,5 +99,3 @@ const createFetchReducer = (name: string) => {
     reducer,
   }
 }
-
-export default createFetchReducer;

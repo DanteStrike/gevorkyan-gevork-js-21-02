@@ -2,14 +2,14 @@ import {AxiosInstance} from 'axios';
 import actions from './actions';
 import {IUsers} from '../../types';
 
-const loadUsers = (limit: number, page: number) => (dispatch: any, _: any, api: AxiosInstance) => {
-  dispatch(actions.startLoading());
+const load = (limit: number, page: number) => (dispatch: any, _: any, api: AxiosInstance) => {
+  dispatch(actions.requestStart());
   api.get<IUsers>(`/user?page=${page - 1}&limit=${limit}`).then((response) => {
-    dispatch(actions.setupUsers(response.data));
-    dispatch(actions.loadingComplete());
+    dispatch(actions.setup(response.data));
+    dispatch(actions.requestFinished());
   });
 };
 
 export default {
-  loadUsers,
+  load,
 };

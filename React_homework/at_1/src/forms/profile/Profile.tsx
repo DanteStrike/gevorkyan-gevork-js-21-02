@@ -12,11 +12,11 @@ interface IProfileProps {
 
 function Profile({id}: IProfileProps) {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(profileSelectors.getProfileLoadingStatus);
-  const userProfile = useAppSelector(profileSelectors.getUserProfile);
+  const isLoading = useAppSelector(profileSelectors.getIsLoading);
+  const userProfile = useAppSelector(profileSelectors.getProfile);
 
   useEffect(() => {
-    dispatch(profileOperations.loadUser(id));
+    dispatch(profileOperations.load(id));
   }, [dispatch, id]);
 
   return (

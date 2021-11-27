@@ -1,19 +1,26 @@
-import {IUsersReducerStore} from './reducers';
+import {IDuckStore} from './reducers';
 import NameSpace from '../name-space';
-
-interface IDuckStore {
-  [NameSpace.USERS]: IUsersReducerStore;
-}
+import {fetchSelectors} from "./slices/fetch";
+import {listSelectors} from "./slices/list";
 
 const getStoreSpace = (store: IDuckStore) => store[NameSpace.USERS];
-const getUsersList = (store: IDuckStore) => getStoreSpace(store).data;
-const getUsersTotal = (store: IDuckStore) => getStoreSpace(store).total;
-const getUsersPage = (store: IDuckStore) => getStoreSpace(store).curPage;
-const getUsersLoadingStatus = (store: IDuckStore) => getStoreSpace(store).isLoading;
+
+const getFetchSpace = (store: IDuckStore) => getStoreSpace(store).fetch;
+const getListSpace = (store: IDuckStore) => getStoreSpace(store).list;
+
+const getIsLoading = (store: IDuckStore) => fetchSelectors.getIsLoading(getFetchSpace(store));
+const getIsError = (store: IDuckStore) => fetchSelectors.getIsError(getFetchSpace(store));
+const getError = (store: IDuckStore) => fetchSelectors.getError(getFetchSpace(store));
+
+const getData = (store: IDuckStore) => listSelectors.getData(getListSpace(store));
+const getTotal = (store: IDuckStore) => listSelectors.getTotal(getListSpace(store));
+const getPage = (store: IDuckStore) => listSelectors.getPage(getListSpace(store));
 
 export default {
-  getUsersList,
-  getUsersTotal,
-  getUsersPage,
-  getUsersLoadingStatus,
+  getData,
+  getTotal,
+  getPage,
+  getIsLoading,
+  getIsError,
+  getError
 };

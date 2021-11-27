@@ -1,27 +1,9 @@
-import types from './types';
-import {InferValueTypes, IUser} from '../../types';
-
-const setupUser = (user: IUser) =>
-  ({
-    type: types.SETUP,
-    payload: user,
-  } as const);
-
-const startLoading = () =>
-  ({
-    type: types.START_LOADING,
-  } as const);
-
-const loadingComplete = () =>
-  ({
-    type: types.LOADING_COMPLETE,
-  } as const);
+import {itemActions} from "./slices/item";
+import {fetchActions} from "./slices/fetch";
 
 const actions = {
-  startLoading,
-  loadingComplete,
-  setupUser,
+  ...fetchActions,
+  ...itemActions
 };
 
-export type ActionsTypes = ReturnType<InferValueTypes<typeof actions>>;
 export default actions;
