@@ -1,5 +1,6 @@
 import React from 'react';
 import {List} from 'antd';
+import "./AppList.scss";
 
 export const enum AppListMod {
   TABLE = `table`,
@@ -72,6 +73,7 @@ function AppList<T>({
         onChange,
         disabled: isLoading,
         pageSize,
+        className: `app-list__nav`
       }}
     />
   );

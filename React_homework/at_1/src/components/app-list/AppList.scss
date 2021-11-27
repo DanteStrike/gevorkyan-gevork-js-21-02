@@ -1,0 +1,8 @@
+@import "src/assets/variables";
+
+@media (max-width: $tabletWidth) {
+  .app-list__nav {
+    display: flex;
+    justify-content: center;
+  }
+}
