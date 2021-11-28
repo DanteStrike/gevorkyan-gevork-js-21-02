@@ -13,7 +13,6 @@ const load = (limit: number, page: number) => (dispatch: any, _: any, api: Axios
     })
     .catch((err) => {
       dispatch(actions.requestFailed(err.message));
-      console.log(err);
     });
   dispatch(actions.requestStart(controller));
 };

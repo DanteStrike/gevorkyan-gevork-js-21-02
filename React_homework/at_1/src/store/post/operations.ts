@@ -19,7 +19,6 @@ const loadPost = (id: string) => (dispatch: any, getState: any, api: AxiosInstan
       } else {
         dispatch(actions.fetchActions[RequestType.LOAD_POST].requestFailed(err.message));
       }
-      console.log(err);
     });
   dispatch(actions.fetchActions[RequestType.LOAD_POST].requestStart(controller));
 };
@@ -56,7 +55,6 @@ const loadComments =
         } else {
           dispatch(actions.fetchActions[RequestType.LOAD_COMMENTS].requestFailed(err.message));
         }
-        console.log(err);
       });
     dispatch(actions.fetchActions[RequestType.LOAD_COMMENTS].requestStart(controller));
   };

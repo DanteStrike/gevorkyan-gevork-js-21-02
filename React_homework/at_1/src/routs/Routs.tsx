@@ -1,14 +1,14 @@
 import React from 'react';
-import {Redirect, Route, RouteComponentProps, Switch} from "react-router-dom";
-import Login from "../forms/login/Login";
-import Registration from "../forms/registration/Registration";
-import Profile from "../forms/profile/Profile";
-import Post from "../forms/post/Post";
-import Users from "../forms/users/Users";
-import Posts from "../forms/posts/Posts";
-import PageNotFound from "../forms/page-not-found/PageNotFound";
-import useAppSelector from "../hooks/use-app-selector";
-import {authSelectors} from "../store/auth";
+import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
+import Login from '../forms/login/Login';
+import Registration from '../forms/registration/Registration';
+import Profile from '../forms/profile/Profile';
+import Post from '../forms/post/Post';
+import Users from '../forms/users/Users';
+import Posts from '../forms/posts/Posts';
+import PageNotFound from '../forms/page-not-found/PageNotFound';
+import useAppSelector from '../hooks/use-app-selector';
+import {authSelectors} from '../store/auth';
 
 interface IIDMatchParams {
   id: string;
@@ -19,7 +19,7 @@ interface IWithPostID extends IIDMatchParams {
 
 function Routs() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const isAuth = useAppSelector(authSelectors.getIsAuth)
+  const isAuth = useAppSelector(authSelectors.getIsAuth);
 
   return (
     <Switch>
@@ -32,28 +32,28 @@ function Routs() {
         exact
         path="/profile/:id"
         render={({
-                   match: {
-                     params: {id},
-                   },
-                 }: RouteComponentProps<IIDMatchParams>) => <Profile id={id} />}
+          match: {
+            params: {id},
+          },
+        }: RouteComponentProps<IIDMatchParams>) => <Profile id={id} />}
       />
       <Route
         exact
         path="/profile/:id/edit"
         render={({
-                   match: {
-                     params: {id},
-                   },
-                 }: RouteComponentProps<IIDMatchParams>) => <Profile id={id} />}
+          match: {
+            params: {id},
+          },
+        }: RouteComponentProps<IIDMatchParams>) => <Profile id={id} />}
       />
       <Route
         exact
         path="/profile/:id/:postID"
         render={({
-                   match: {
-                     params: {id, postID},
-                   },
-                 }: RouteComponentProps<IWithPostID>) => (
+          match: {
+            params: {id, postID},
+          },
+        }: RouteComponentProps<IWithPostID>) => (
           <>
             <Profile id={id} />
             <Post id={postID} />
@@ -66,10 +66,10 @@ function Routs() {
         path="/posts/:id"
         exact
         render={({
-                   match: {
-                     params: {id},
-                   },
-                 }: RouteComponentProps<IIDMatchParams>) => (
+          match: {
+            params: {id},
+          },
+        }: RouteComponentProps<IIDMatchParams>) => (
           <>
             <Posts />
             <Post id={id} />

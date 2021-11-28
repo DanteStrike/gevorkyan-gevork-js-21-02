@@ -45,7 +45,7 @@ function Users() {
         isLoading={isLoading}
         pageSize={itemPerPage}
         renderItem={(user: IUserPreview) => (
-          <AppList.Item key={user.id} id={`users-item-${user.id}`}>
+          <AppList.Item key={user.id}>
             <CustomLink to={`/profile/${user.id}`}>
               <UserCard user={user} />
             </CustomLink>

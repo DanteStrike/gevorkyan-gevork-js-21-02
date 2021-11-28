@@ -21,8 +21,9 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 40px;
-    color: var(--modal-button-color);
+    z-index: 777;
+    font-size: 16px;
+    color: var(--primary-font-color);
     cursor: pointer;
     background-color: unset;
     border: none;
@@ -37,10 +38,17 @@
   }
 
   &__content {
-    display: flex;
-    justify-content: center;
-    min-width: 310px;
-    min-height: 400px;
+    position: relative;
+    width: 95%;
+    min-width: 300px;
+    max-width: 800px;
+    height: 95vh;
+    min-height: 600px;
+  }
+
+  &__scroll-wrap {
+    height: 95vh;
+    max-height: 95vh;
   }
 }
 
@@ -49,7 +57,7 @@
     &__close {
       top: 5px;
       right: 5px;
-      font-size: 30px;
+      font-size: 10px;
     }
   }
 }

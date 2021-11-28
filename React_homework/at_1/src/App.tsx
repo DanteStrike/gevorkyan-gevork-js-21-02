@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import Routs from "./routs/Routs";
+import Routs from './routs/Routs';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Header />
       </div>
       <div className="app__content">
-        <Routs/>
+        <Routs />
       </div>
       <div className="app__footer">
         <Footer />

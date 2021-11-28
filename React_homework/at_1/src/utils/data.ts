@@ -22,7 +22,7 @@ const createDefaultComment = () => ({
   owner: createDefaultUser(),
   post: ``,
   publishDate: ``,
-})
+});
 
 const createDefaultFullUser = (): IUser => ({
   id: ``,
@@ -55,5 +55,5 @@ export default {
   createDefaultPosts,
   createDefaultFullUser,
   createDefaultComment,
-  createDefaultComments
+  createDefaultComments,
 };

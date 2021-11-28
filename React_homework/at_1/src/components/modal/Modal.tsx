@@ -1,6 +1,7 @@
 import React from 'react';
 import './Modal.scss';
-import {Alert} from "antd";
+import {Alert} from 'antd';
+import {OverlayScrollbarsComponent} from 'overlayscrollbars-react';
 
 interface IModalProps {
   isOpen?: boolean;
@@ -20,7 +21,9 @@ function Modal({children, isOpen, onClose = () => {}, isError, errMsg}: IModalPr
       <button type="button" className="modal__close" onClick={handleClose}>
         X
       </button>
-      <div className="modal__content">{children}</div>
+      <div className="modal__content">
+        <OverlayScrollbarsComponent className="modal__scroll-wrap">{children}</OverlayScrollbarsComponent>
+      </div>
       {isError && <Alert message={errMsg} type="error" className="content-layout__error" closable />}
     </div>
   );

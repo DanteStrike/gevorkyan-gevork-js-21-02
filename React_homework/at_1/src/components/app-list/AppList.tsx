@@ -38,7 +38,7 @@ const listLayout = {
   },
 };
 
-interface IAppListProps<T> {
+export interface IAppListProps<T> {
   dataSource: T[];
   renderItem: (item: T, index: number) => React.ReactNode;
   current: number;
@@ -61,7 +61,9 @@ function AppList<T>({
 }: IAppListProps<T>) {
   return (
     <List
-      className={`app-list ${mod === AppListMod.TABLE ? `app-list--table` : ``}`.trim()}
+      className={`app-list ${mod === AppListMod.TABLE ? `app-list--table` : ``} ${
+        mod === AppListMod.SMALL_ROW ? `app-list--row-small` : ``
+      }`.trim()}
       dataSource={dataSource}
       renderItem={renderItem}
       grid={listLayout[mod]}

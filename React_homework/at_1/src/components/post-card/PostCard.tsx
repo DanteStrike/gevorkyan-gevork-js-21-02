@@ -8,16 +8,18 @@ import CustomLink from '../custom-link/CustomLink';
 interface IPostCard {
   post: IPostPreview;
   hideTop?: boolean;
+  modal?: boolean;
+  renderComments?: () => React.ReactNode;
 }
 
-function PostCard({hideTop = false, post}: IPostCard) {
+function PostCard({hideTop = false, post, modal, renderComments}: IPostCard) {
   const {owner, publishDate, image, text, id} = post;
   const {firstName, lastName, title} = owner;
   const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
   const profileRoute = `/profile/${owner.id}`;
 
   return (
-    <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
+    <article className={`post-card ${hideTop ? `post-card--top-hide` : ``} ${modal ? `post-card--modal` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
         <LinkedAvatar user={owner} className="post-card__avatar" to={profileRoute} />
         <div className="post-card__wrap">
@@ -33,16 +35,19 @@ function PostCard({hideTop = false, post}: IPostCard) {
           <p className="post-card__date">{publishDate}</p>
         </div>
       </div>
-      <CustomLink className="post-card__wrap" to={hideTop ? `${profileRoute}/${post.id}` : `/posts/${post.id}`}>
+      <CustomLink className="post-card__main" to={hideTop ? `${profileRoute}/${post.id}` : `/posts/${post.id}`}>
         <img className="post-card__img" src={image} alt={id} />
         <p className="post-card__text">{text}</p>
       </CustomLink>
+      <div className="post-card__comments">{modal && renderComments && renderComments()}</div>
     </article>
   );
 }
 
 PostCard.defaultProps = {
   hideTop: false,
+  modal: false,
+  renderComments: () => {},
 };
 
 export default React.memo(PostCard);

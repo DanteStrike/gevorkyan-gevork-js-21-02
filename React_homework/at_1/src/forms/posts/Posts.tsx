@@ -43,7 +43,7 @@ function Posts() {
         isLoading={isLoading}
         pageSize={itemPerPage}
         renderItem={(post: IPostPreview) => (
-          <AppList.Item key={post.id} id={`posts-item-${post.id}`}>
+          <AppList.Item key={post.id}>
             <PostCard post={post} />
           </AppList.Item>
         )}

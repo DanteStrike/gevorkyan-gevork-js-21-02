@@ -20,8 +20,6 @@ const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
       } else {
         dispatch(actions.requestFailed(err.message));
       }
-
-      console.log(err);
     });
   dispatch(actions.requestStart(controller));
 };
@@ -41,7 +39,6 @@ const registration = (data: IUserRegistration) => (dispatch: any, _: any, api: A
       } else {
         dispatch(actions.requestFailed(err.message));
       }
-      console.log(err);
     });
 
   dispatch(actions.requestStart(controller));

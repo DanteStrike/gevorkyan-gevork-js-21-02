@@ -7,7 +7,7 @@ import NameSpace from './name-space';
 import {profileReducer} from './profile';
 import {postsReducer} from './posts';
 import {authReducer} from './auth';
-import {postReducer} from "./post";
+import {postReducer} from './post';
 
 const api = configureAPI();
 const rootReducer = combineReducers({

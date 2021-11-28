@@ -19,7 +19,6 @@ const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosIns
       } else {
         dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(err.message));
       }
-      console.log(err);
     });
   dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestStart(controller));
 };
@@ -56,7 +55,6 @@ const loadUserPosts =
         } else {
           dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(err.message));
         }
-        console.log(err);
       });
     dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestStart(controller));
   };

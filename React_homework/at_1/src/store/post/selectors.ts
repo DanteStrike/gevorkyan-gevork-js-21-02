@@ -40,5 +40,5 @@ export default {
   getPostError,
   getCommentsIsLoading,
   getCommentsIsError,
-  getCommentsError
+  getCommentsError,
 };
