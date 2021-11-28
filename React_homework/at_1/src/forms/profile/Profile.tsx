@@ -33,18 +33,21 @@ function Profile({id}: IProfileProps) {
 
   useEffect(() => {
     dispatch(profileOperations.loadProfile(id));
-  }, [dispatch, id])
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(profileOperations.loadUserPosts(id, itemPerPage, page));
   }, [dispatch, id, page]);
 
-  useEffect(() => () => {
-    dispatch(profileActions.fetchActions[RequestType.LOAD_PROFILE].requestAbort());
-    dispatch(profileActions.fetchActions[RequestType.LOAD_USER_POSTS].requestAbort());
-    dispatch(profileActions.reset());
-    dispatch(profileActions.resetList());
-  }, [dispatch])
+  useEffect(
+    () => () => {
+      dispatch(profileActions.fetchActions[RequestType.LOAD_PROFILE].requestAbort());
+      dispatch(profileActions.fetchActions[RequestType.LOAD_USER_POSTS].requestAbort());
+      dispatch(profileActions.reset());
+      dispatch(profileActions.resetList());
+    },
+    [dispatch]
+  );
 
   const handlePaginationChange = (newPage: number) => {
     dispatch(profileActions.changePage(newPage));

@@ -22,5 +22,5 @@ export default {
   getError,
   getIsAuth,
   getAuthUser,
-  getID
+  getID,
 };

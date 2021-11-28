@@ -21,10 +21,13 @@ function Posts() {
     dispatch(postsOperations.load(itemPerPage, page));
   }, [dispatch, page]);
 
-  useEffect(() => () => {
-    dispatch(postsActions.requestAbort());
-    dispatch(postsActions.resetList());
-  }, [dispatch])
+  useEffect(
+    () => () => {
+      dispatch(postsActions.requestAbort());
+      dispatch(postsActions.resetList());
+    },
+    [dispatch]
+  );
 
   const handlePaginationChange = (newPage: number) => {
     dispatch(postsActions.changePage(newPage));

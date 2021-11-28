@@ -2,7 +2,7 @@ import {AxiosInstance} from 'axios';
 import actions from './actions';
 import {FetchErrorType, IPosts, IUser} from '../../types';
 import {RequestType} from './slices/fetch';
-import {RequestUtils} from "../../utils";
+import {RequestUtils} from '../../utils';
 
 const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
   const controller = new AbortController();
@@ -28,10 +28,12 @@ const loadUserPosts =
   (id: string, limit: number, page: number) => (dispatch: any, getState: any, api: AxiosInstance) => {
     const controller = new AbortController();
 
-    const normalized = RequestUtils.normalizeParams(page, limit, 5)
+    const normalized = RequestUtils.normalizeParams(page, limit, 5);
 
     api
-      .get<IPosts>(`/user/${id}/post?page=${normalized.page - 1}&limit=${normalized.limit}`, {signal: controller.signal})
+      .get<IPosts>(`/user/${id}/post?page=${normalized.page - 1}&limit=${normalized.limit}`, {
+        signal: controller.signal,
+      })
       .then((response) => {
         const data: IPosts = {
           limit: response.data.limit,

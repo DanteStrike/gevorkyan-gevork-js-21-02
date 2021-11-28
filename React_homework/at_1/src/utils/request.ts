@@ -3,7 +3,7 @@ const normalizeParams = (page: number, limit: number, minLimit: number) => {
     return {
       limit,
       page,
-    }
+    };
   }
 
   let normalizedLimit = limit;
@@ -19,11 +19,11 @@ const normalizeParams = (page: number, limit: number, minLimit: number) => {
     page: normalizedPage,
     dataSlice: {
       left: ((page - 1) % pageLimit) * limit,
-      right: (((page - 1) % pageLimit) + 1) * limit
-    }
-  }
-}
+      right: (((page - 1) % pageLimit) + 1) * limit,
+    },
+  };
+};
 
 export default {
-  normalizeParams
-}
+  normalizeParams,
+};
