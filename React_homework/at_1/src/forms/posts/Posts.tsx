@@ -19,11 +19,12 @@ function Posts() {
 
   useEffect(() => {
     dispatch(postsOperations.load(itemPerPage, page));
-    return () => {
-      dispatch(postsActions.requestAbort());
-      dispatch(postsActions.resetList());
-    };
   }, [dispatch, page]);
+
+  useEffect(() => () => {
+    dispatch(postsActions.requestAbort());
+    dispatch(postsActions.resetList());
+  }, [dispatch])
 
   const handlePaginationChange = (newPage: number) => {
     dispatch(postsActions.changePage(newPage));

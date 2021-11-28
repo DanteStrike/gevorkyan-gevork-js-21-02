@@ -7,6 +7,7 @@ import useAppSelector from '../../hooks/use-app-selector';
 import {IUserPreview} from '../../types';
 import UserCard from '../../components/user-card/UserCard';
 import CustomLink from '../../components/custom-link/CustomLink';
+import {postsActions} from "../../store/posts";
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -20,11 +21,12 @@ function Users() {
 
   useEffect(() => {
     dispatch(usersOperations.load(itemPerPage, page));
-    return () => {
-      dispatch(usersActions.requestAbort());
-      dispatch(usersActions.resetList());
-    };
   }, [dispatch, page]);
+
+  useEffect(() => () => {
+    dispatch(postsActions.requestAbort());
+    dispatch(postsActions.resetList());
+  }, [dispatch])
 
   const handlePaginationChange = (newPage: number) => {
     dispatch(usersActions.changePage(newPage));

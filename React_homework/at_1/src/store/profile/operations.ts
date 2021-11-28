@@ -2,6 +2,7 @@ import {AxiosInstance} from 'axios';
 import actions from './actions';
 import {FetchErrorType, IPosts, IUser} from '../../types';
 import {RequestType} from './slices/fetch';
+import {RequestUtils} from "../../utils";
 
 const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
   const controller = new AbortController();
@@ -27,17 +28,10 @@ const loadUserPosts =
   (id: string, limit: number, page: number) => (dispatch: any, getState: any, api: AxiosInstance) => {
     const controller = new AbortController();
 
-    const minLimit = 5;
-    let normalizedLimit = limit;
-    let normalizedPage = page;
-    const pageLimit = Math.ceil(minLimit / limit);
-    if (limit < minLimit) {
-      normalizedLimit = pageLimit * limit;
-      normalizedPage = Math.ceil(page / pageLimit);
-    }
+    const normalized = RequestUtils.normalizeParams(page, limit, 5)
 
     api
-      .get<IPosts>(`/user/${id}/post?page=${normalizedPage - 1}&limit=${normalizedLimit}`, {signal: controller.signal})
+      .get<IPosts>(`/user/${id}/post?page=${normalized.page - 1}&limit=${normalized.limit}`, {signal: controller.signal})
       .then((response) => {
         const data: IPosts = {
           limit: response.data.limit,
@@ -45,11 +39,11 @@ const loadUserPosts =
           total: response.data.total,
           data: response.data.data,
         };
-        if (limit < minLimit) {
+        if (normalized.dataSlice) {
           data.data =
             data.data.length < limit
               ? data.data.slice()
-              : data.data.slice(((page - 1) % pageLimit) * limit, (((page - 1) % pageLimit) + 1) * limit);
+              : data.data.slice(normalized.dataSlice.left, normalized.dataSlice.right);
         }
         dispatch(actions.setup(data));
         dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFinished());
