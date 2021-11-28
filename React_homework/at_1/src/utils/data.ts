@@ -16,8 +16,13 @@ const createDefaultPost = (): IPostPreview => ({
   owner: createDefaultUser(),
 });
 
-const createDefaultUsers = (amount: number) => new Array(amount).fill(``).map(createDefaultUser);
-const createDefaultPosts = (amount: number) => new Array(amount).fill(``).map(createDefaultPost);
+const createDefaultComment = () => ({
+  id: ``,
+  message: ``,
+  owner: createDefaultUser(),
+  post: ``,
+  publishDate: ``,
+})
 
 const createDefaultFullUser = (): IUser => ({
   id: ``,
@@ -39,10 +44,16 @@ const createDefaultFullUser = (): IUser => ({
   },
 });
 
+const createDefaultUsers = (amount: number) => new Array(amount).fill(``).map(createDefaultUser);
+const createDefaultPosts = (amount: number) => new Array(amount).fill(``).map(createDefaultPost);
+const createDefaultComments = (amount: number) => new Array(amount).fill(``).map(createDefaultComment);
+
 export default {
   createDefaultUser,
   createDefaultPost,
   createDefaultUsers,
   createDefaultPosts,
   createDefaultFullUser,
+  createDefaultComment,
+  createDefaultComments
 };

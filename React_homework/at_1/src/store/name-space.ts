@@ -3,6 +3,7 @@ const enum NameSpace {
   USERS = `USERS`,
   POSTS = `POSTS`,
   AUTH = `AUTH`,
+  POST = `POST`,
 }
 
 export default NameSpace;
