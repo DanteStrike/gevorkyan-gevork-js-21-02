@@ -19,7 +19,7 @@ function Post({id}: IPostProps) {
 
   const dispatch = useAppDispatch();
   const post = useAppSelector(postSelectors.getPost);
-  // const isPostLoading = useAppSelector(postSelectors.getPostIsLoading);
+  const isPostLoading = useAppSelector(postSelectors.getPostIsLoading);
   const isPostError = useAppSelector(postSelectors.getPostIsError);
   const postError = useAppSelector(postSelectors.getPostError);
 
@@ -83,7 +83,7 @@ function Post({id}: IPostProps) {
       isError={isPostError || isCommentsError}
       errMsg={postError || commentsError}
     >
-      <PostCard post={post} modal renderComments={renderComments} />
+      <PostCard post={post} modal renderComments={renderComments} isLoading={isPostLoading}/>
     </Modal>
   );
 }
