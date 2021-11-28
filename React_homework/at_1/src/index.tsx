@@ -16,8 +16,8 @@ OverlayScrollbars(document.body, {
     initialize: false,
   },
   overflowBehavior: {
-    x: 'hidden'
-  }
+    x: 'hidden',
+  },
 });
 
 const init = (store: typeof configuredStore) => {

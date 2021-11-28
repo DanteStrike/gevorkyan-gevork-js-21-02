@@ -2,8 +2,8 @@ import React from 'react';
 import './PostCard.scss';
 import {Tooltip} from 'antd';
 import {IPostPreview} from '../../types';
-import LinkedAvatar from "../linked-avatar/LinkedAvatar";
-import CustomLink from "../custom-link/CustomLink";
+import LinkedAvatar from '../linked-avatar/LinkedAvatar';
+import CustomLink from '../custom-link/CustomLink';
 
 interface IPostCard {
   post: IPostPreview;
@@ -19,7 +19,7 @@ function PostCard({hideTop = false, post}: IPostCard) {
   return (
     <article className={`post-card ${hideTop ? `post-card--top-hide` : ``}`}>
       <div className={`post-card__top ${hideTop ? `post-card__top--hide` : ``}`}>
-        <LinkedAvatar user={owner} className="post-card__avatar" to={profileRoute}/>
+        <LinkedAvatar user={owner} className="post-card__avatar" to={profileRoute} />
         <div className="post-card__wrap">
           <Tooltip
             placement="topLeft"

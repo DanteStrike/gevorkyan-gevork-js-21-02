@@ -1,8 +1,9 @@
 import NameSpace from '../../name-space';
 import {IPostPreview} from '../../../types';
 import {createListReducer} from '../../hor';
+import {DataUtils} from '../../../utils';
 
-const list = createListReducer<IPostPreview>(`${[NameSpace.PROFILE]}`);
+const list = createListReducer<IPostPreview>(`${[NameSpace.PROFILE]}`, DataUtils.createDefaultPosts(3));
 const listActions = list.actions;
 const listSelectors = list.selectors;
 const listReducer = list.reducer;

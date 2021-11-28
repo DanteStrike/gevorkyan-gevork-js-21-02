@@ -35,9 +35,7 @@ export const createItemReducer = <T>(name: string, initItem: T) => {
     }
 
     if (action.type === RESET) {
-      return ObjectUtils.updateObject(state, {
-        item: initItem,
-      });
+      return ObjectUtils.updateObject(state, initStore);
     }
 
     return state;

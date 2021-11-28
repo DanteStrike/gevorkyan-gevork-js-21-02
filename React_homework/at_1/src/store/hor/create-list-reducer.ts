@@ -7,9 +7,10 @@ export interface IListStore<T> {
   data: T[];
 }
 
-export const createListReducer = <T>(name: string) => {
+export const createListReducer = <T>(name: string, initData?: T[]) => {
   const SETUP = `${name}/list/SETUP`;
   const CHANGE_PAGE = `${name}/list/CHANGE_PAGE`;
+  const RESET = `${name}/list/RESET`;
 
   const setup = (users: {total: number; data: T[]}) => ({
     type: SETUP,
@@ -24,15 +25,20 @@ export const createListReducer = <T>(name: string) => {
     payload: page,
   });
 
+  const resetList = () => ({
+    type: RESET,
+  });
+
   const actions = {
     setup,
     changePage,
+    resetList,
   };
 
   const initStore: IListStore<T> = {
     current: 1,
     total: 0,
-    data: [],
+    data: initData || [],
   };
 
   const reducer = (state = initStore, action: AnyAction): IListStore<T> => {
@@ -45,6 +51,9 @@ export const createListReducer = <T>(name: string) => {
 
       case CHANGE_PAGE:
         return ObjectUtils.updateObject(state, {current: action.payload});
+
+      case RESET:
+        return ObjectUtils.updateObject(state, initStore);
 
       default:
         return state;

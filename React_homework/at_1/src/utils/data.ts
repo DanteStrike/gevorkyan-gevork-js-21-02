@@ -1,4 +1,4 @@
-import {IPostPreview, IUserPreview} from "../types";
+import {IPostPreview, IUserPreview} from '../types';
 
 const createDefaultUser = (): IUserPreview => ({
   id: ``,
@@ -6,18 +6,22 @@ const createDefaultUser = (): IUserPreview => ({
   firstName: ``,
   lastName: ``,
   picture: ``,
-})
+});
 
 const createDefaultPost = (): IPostPreview => ({
   id: ``,
   text: ``,
   image: ``,
   publishDate: ``,
-  owner: createDefaultUser()
-})
+  owner: createDefaultUser(),
+});
+
+const createDefaultUsers = (amount: number) => new Array(amount).fill(``).map(createDefaultUser);
+const createDefaultPosts = (amount: number) => new Array(amount).fill(``).map(createDefaultPost);
 
 export default {
   createDefaultUser,
-  createDefaultPost
-}
-
+  createDefaultPost,
+  createDefaultUsers,
+  createDefaultPosts,
+};

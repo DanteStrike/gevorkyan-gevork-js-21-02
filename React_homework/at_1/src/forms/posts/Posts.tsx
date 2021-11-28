@@ -17,6 +17,10 @@ function Posts() {
 
   useEffect(() => {
     dispatch(postsOperations.load(itemPerPage, page));
+    return () => {
+      dispatch(postsActions.requestAbort());
+      dispatch(postsActions.resetList());
+    };
   }, [dispatch, page]);
 
   const handlePaginationChange = (newPage: number) => {

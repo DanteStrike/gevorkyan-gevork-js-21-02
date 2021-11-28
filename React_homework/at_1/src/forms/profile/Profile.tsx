@@ -26,15 +26,13 @@ function Profile({id}: IProfileProps) {
   useEffect(() => {
     dispatch(profileOperations.loadProfile(id));
     dispatch(profileOperations.loadUserPosts(id, itemPerPage, page));
-  }, [dispatch, id, page]);
-
-  useEffect(
-    () => () => {
+    return () => {
       dispatch(profileActions.fetchActions[RequestType.LOAD_PROFILE].requestAbort());
       dispatch(profileActions.fetchActions[RequestType.LOAD_USER_POSTS].requestAbort());
-    },
-    [dispatch]
-  );
+      dispatch(profileActions.reset());
+      dispatch(profileActions.resetList());
+    };
+  }, [dispatch, id, page]);
 
   const handlePaginationChange = (newPage: number) => {
     dispatch(profileActions.changePage(newPage));
