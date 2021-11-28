@@ -3,10 +3,10 @@ export type UserGenderType = 'male' | 'female' | 'other' | '';
 
 export interface IUserPreview {
   id: string;
-  title: UserTitleType;
+  title?: UserTitleType;
   firstName: string;
   lastName: string;
-  picture: string;
+  picture?: string;
 }
 
 export interface ILocation {
@@ -23,7 +23,6 @@ export interface IUser extends IUserPreview {
   dateOfBirth: string;
   registerDate: string;
   phone: string;
-  picture: string;
   location: ILocation;
 }
 
@@ -37,7 +36,3 @@ export interface IUserRegistration {
 }
 
 export interface IUserUpdate extends IUserRegistration {}
-
-export interface IUserLogin {
-  id: number;
-}

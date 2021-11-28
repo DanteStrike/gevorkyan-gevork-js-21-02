@@ -4,6 +4,7 @@ import {fetchActions} from './slices/fetch';
 const login = (id: string, name: string, picture: string) => ({
   type: types.LOGIN,
   payload: {
+    id,
     picture,
     name,
   },

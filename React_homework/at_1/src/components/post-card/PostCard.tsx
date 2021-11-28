@@ -13,7 +13,7 @@ interface IPostCard {
 function PostCard({hideTop = false, post}: IPostCard) {
   const {owner, publishDate, image, text, id} = post;
   const {firstName, lastName, title} = owner;
-  const name = `${title}. ${lastName} ${firstName}`;
+  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
   const profileRoute = `/profile/${owner.id}`;
 
   return (

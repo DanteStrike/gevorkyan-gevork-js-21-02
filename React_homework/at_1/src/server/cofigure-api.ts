@@ -8,7 +8,6 @@ const configureAPI = () => {
       'app-id': '619a3ac68a32ffd11ccdeea6',
     },
   });
-  api.defaults.headers.post['Content-type'] = 'application/json';
 
   return api;
 };

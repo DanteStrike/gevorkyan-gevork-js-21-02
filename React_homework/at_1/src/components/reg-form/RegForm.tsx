@@ -4,11 +4,29 @@ import moment, {Moment} from 'moment';
 import {Form, Input, DatePicker, Radio} from 'antd';
 import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
+import {IUserRegistration} from "../../types";
+
+interface IRegFormProps {
+  loading?: boolean;
+  onSubmit?: (data: IUserRegistration) => void;
+}
+type RegFormValuesType = Omit<IUserRegistration, "firstName" | "lastName"> & {name: string};
 
 const {Item} = Form;
 
-function RegForm() {
+function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
   const [form] = Form.useForm();
+
+  const handleFormFinish = (filedValues: RegFormValuesType) => {
+    const {name, ...values} = filedValues;
+    const [firstName, ...other] = name.trim().split(` `);
+    const lastName = other.join(``);
+
+    const userReg: IUserRegistration = {
+      firstName, lastName, ...values
+    }
+    onSubmit(userReg);
+  };
 
   return (
     <Form
@@ -17,8 +35,10 @@ function RegForm() {
       name="register"
       size="middle"
       layout="vertical"
+      validateTrigger="submit"
+      onFinish={handleFormFinish}
       initialValues={{
-        firstName: ``,
+        name: ``,
         gender: `male`,
         dateOfBirth: ``,
         email: ``,
@@ -26,11 +46,28 @@ function RegForm() {
       }}
     >
       <Item
-        name="firstName"
-        label="Имя:"
+        name="name"
+        label="ФИО:"
         rules={[
-          {min: 2, message: 'Имя должно содержать больше 2-х символов'},
-          {max: 50, message: 'Имя не может быть длинее 50-и символов'},
+          () => ({
+            validator(_, value: string) {
+              if (!value) {
+                return Promise.reject(new Error('Укажите ФИО'));
+              }
+
+              const [firstName, ...other] = value.trim().split(` `);
+              const lastName = other.join(``);
+              if (firstName.length < 2 || lastName.length < 2) {
+                return Promise.reject(new Error('Имя и фамилия должны содержать больше 2-х символов'));
+              }
+
+              if (firstName.length > 50 || lastName.length > 50) {
+                return Promise.reject(new Error('Имя и фамилия не могут быть длинее 50-и символов'));
+              }
+
+              return Promise.resolve();
+            },
+          })
         ]}
       >
         <Input placeholder="Введите свое имя" />
@@ -70,20 +107,43 @@ function RegForm() {
         />
       </Item>
 
-      <Item name="email" label="Email:" rules={[{type: 'email', message: 'Введите корректную почту'}]}>
+      <Item
+        name="email"
+        label="Email:"
+        rules={[
+          () => ({
+            validator(_, value) {
+              if (!value) {
+                return Promise.reject(new Error('Укажите почту'));
+              }
+              return Promise.resolve();
+            },
+          }),
+          {type: 'email', message: 'Введите корректную почту'}
+        ]}>
         <Input placeholder="anonim@gmail.com" />
       </Item>
 
       <Item
         name="phone"
         label="Телефон:"
-        rules={[{pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'}]}
+        rules={[
+          () => ({
+            validator(_, value) {
+              if (!value) {
+                return Promise.reject(new Error('Укажите телефон'));
+              }
+              return Promise.resolve();
+            },
+          }),
+          {pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'}
+        ]}
       >
         <Input placeholder="+79991114455" />
       </Item>
 
       <Item className="reg-form__last">
-        <Button>Зарегистрироваться</Button>
+        <Button loading={loading}>Зарегистрироваться</Button>
         <CustomLink className="reg-form__link" to="/login">
           Уже есть аккаунт? Войти
         </CustomLink>
@@ -91,5 +151,10 @@ function RegForm() {
     </Form>
   );
 }
+
+RegForm.defaultProps = {
+  loading: false,
+  onSubmit: () => {},
+};
 
 export default React.memo(RegForm);

@@ -9,11 +9,11 @@ interface IUserCardProps {
 
 function UserCard({user}: IUserCardProps) {
   const {firstName, lastName, title, picture} = user;
-  const name = `${title}. ${lastName} ${firstName}`;
+  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
 
   return (
     <article className="user-card" id={`#user-${user.id}`}>
-      <img className="user-card__img" alt={name} src={picture} />
+      {picture ? <img className="user-card__img" alt={name} src={picture}/> : <div className="user-card__img"/>}
       <Tooltip
         placement="top"
         title={user.id}

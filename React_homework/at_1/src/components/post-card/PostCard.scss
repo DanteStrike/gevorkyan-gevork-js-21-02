@@ -54,6 +54,8 @@
     margin-bottom: 5px;
     border-radius: 15px;
     object-fit: cover;
+    font-size: 0;
+    background-color: var(--body-background);
   }
 
   &__text {

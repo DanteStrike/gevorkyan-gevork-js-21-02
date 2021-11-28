@@ -12,13 +12,14 @@ interface IUserPreviewProps {
 
 function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
+  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
 
   return (
     <article className="user-preview">
       <Loading isLoading={isLoading} />
-      <img className="user-preview__img" alt="рисунок карточки" src={picture} />
+      {picture ? <img className="user-preview__img" alt={name} src={picture}/> : <div className="user-preview__img"/>}
       <p className="user-preview__info">
-        <span className="user-preview__title">{`${title}. ${firstName} ${lastName}`}</span>
+        <span className="user-preview__title">{name}</span>
         <span className="user-preview__row">
           <span className="user-preview__prop">Пол:</span> {gender}
         </span>
