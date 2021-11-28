@@ -12,7 +12,7 @@ interface IUserPreviewProps {
 
 function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
-  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
+  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
 
   return (
     <article className="user-preview">

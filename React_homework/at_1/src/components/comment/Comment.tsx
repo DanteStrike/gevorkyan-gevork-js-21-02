@@ -11,7 +11,7 @@ interface ICommentProps {
 function Comment({comment}: ICommentProps) {
   const {owner, publishDate, message} = comment;
   const {firstName, lastName, title} = owner;
-  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
+  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
   const profileRoute = `/profile/${owner.id}`;
 
   return (

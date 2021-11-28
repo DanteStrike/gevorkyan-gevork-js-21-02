@@ -9,7 +9,7 @@ interface IUserCardProps {
 
 function UserCard({user}: IUserCardProps) {
   const {firstName, lastName, title, picture} = user;
-  const name = `${title ? `${title} .` : ``}${lastName} ${firstName}`;
+  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
 
   return (
     <article className="user-card" id={`#user-${user.id}`}>
