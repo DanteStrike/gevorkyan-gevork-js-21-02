@@ -61,7 +61,7 @@ function AppList<T>({
 }: IAppListProps<T>) {
   return (
     <List
-      className="app-list"
+      className={`app-list ${mod === AppListMod.TABLE ? `app-list--table` : ``}`.trim()}
       dataSource={dataSource}
       renderItem={renderItem}
       grid={listLayout[mod]}
