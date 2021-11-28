@@ -1,10 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Auth.scss';
 import {Avatar} from 'antd';
 import CustomLink from '../custom-link/CustomLink';
 
-function Auth() {
-  const [isAuth] = useState(true);
+interface IAuthProps {
+  isAuth: boolean;
+  onLogout: () => void;
+  authUser?: {
+    id: string;
+    name: string;
+    picture: string;
+  };
+}
+
+function Auth({
+  isAuth,
+  onLogout,
+  authUser = {
+    id: ``,
+    name: ``,
+    picture: ``,
+  },
+}: IAuthProps) {
+  const {name, picture, id} = authUser;
 
   return (
     <div className="auth">
@@ -19,17 +37,25 @@ function Auth() {
         </>
       ) : (
         <>
-          <CustomLink className="auth__link auth__link--left auth__link--profile" to="/profile">
-            <Avatar />
-            <span className="auth__user">Анжелика</span>
+          <CustomLink className="auth__link auth__link--left auth__link--profile" to={`/profile/${id}`}>
+            <Avatar src={picture} />
+            <span className="auth__user">{name}</span>
           </CustomLink>
-          <CustomLink className="auth__link auth__link--small" to="/login">
+          <button type="button" className="auth__btn" onClick={onLogout}>
             Выход
-          </CustomLink>
+          </button>
         </>
       )}
     </div>
   );
 }
+
+Auth.defaultProps = {
+  authUser: {
+    id: ``,
+    name: ``,
+    picture: ``,
+  },
+};
 
 export default React.memo(Auth);

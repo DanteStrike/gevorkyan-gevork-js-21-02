@@ -1,15 +1,25 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
-import {IPosts, IUser} from '../../types';
+import {FetchErrorType, IPosts, IUser} from '../../types';
 import {RequestType} from './slices/fetch';
 
 const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
   const controller = new AbortController();
 
-  api.get<IUser>(`/user/${id}`, {signal: controller.signal}).then((response) => {
-    dispatch(actions.set(response.data));
-    dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFinished());
-  });
+  api
+    .get<IUser>(`/user/${id}`, {signal: controller.signal})
+    .then((response) => {
+      dispatch(actions.set(response.data));
+      dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFinished());
+    })
+    .catch((err) => {
+      if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
+        dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(`Профиль не найден`));
+      } else {
+        dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(err.message));
+      }
+      console.log(err);
+    });
   dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestStart(controller));
 };
 
@@ -43,6 +53,14 @@ const loadUserPosts =
         }
         dispatch(actions.setup(data));
         dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFinished());
+      })
+      .catch((err) => {
+        if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
+          dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(`Профиль не найден`));
+        } else {
+          dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(err.message));
+        }
+        console.log(err);
       });
     dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestStart(controller));
   };

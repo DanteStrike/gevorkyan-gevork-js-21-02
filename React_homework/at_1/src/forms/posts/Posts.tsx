@@ -13,6 +13,8 @@ function Posts() {
   const total = useAppSelector(postsSelectors.getTotal);
   const posts = useAppSelector(postsSelectors.getData);
   const isLoading = useAppSelector(postsSelectors.getIsLoading);
+  const isError = useAppSelector(postsSelectors.getIsError);
+  const errMsg = useAppSelector(postsSelectors.getError);
   const itemPerPage = 6;
 
   useEffect(() => {
@@ -28,7 +30,7 @@ function Posts() {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок постов">
+    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок постов" isError={isError} errMsg={errMsg}>
       <AppList
         current={page}
         total={total}

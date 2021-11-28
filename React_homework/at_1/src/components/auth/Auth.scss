@@ -24,6 +24,21 @@
     color: var(--secondory-font-color);
   }
 
+  &__btn {
+    padding: 4px 0 0 8px;
+    font-size: 12px;
+    font-family: var(--secondary-font-family);
+    color: var(--secondory-font-color);
+    border: none;
+    background: unset;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  &__btn:hover {
+    color: #1890ff;
+  }
+
   &__link--profile {
     display: flex;
     flex-grow: 1;

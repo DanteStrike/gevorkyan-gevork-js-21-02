@@ -8,6 +8,7 @@ import {RequestType} from '../../store/profile/slices/fetch';
 import AppList, {AppListMod} from '../../components/app-list/AppList';
 import {IPostPreview} from '../../types';
 import PostCard from '../../components/post-card/PostCard';
+import {authSelectors} from '../../store/auth';
 
 interface IProfileProps {
   id: string;
@@ -15,6 +16,7 @@ interface IProfileProps {
 
 function Profile({id}: IProfileProps) {
   const dispatch = useAppDispatch();
+  const isAuth = useAppSelector(authSelectors.getIsAuth);
   const isProfileLoading = useAppSelector(profileSelectors.getProfileIsLoading);
   const userProfile = useAppSelector(profileSelectors.getProfile);
   const isUserPostsLoading = useAppSelector(profileSelectors.getUserPostsIsLoading);
@@ -22,6 +24,12 @@ function Profile({id}: IProfileProps) {
   const page = useAppSelector(profileSelectors.getPage);
   const total = useAppSelector(profileSelectors.getTotal);
   const itemPerPage = 3;
+
+  const isUserPostsError = useAppSelector(profileSelectors.getUserPostsIsError);
+  const errMsgUserPosts = useAppSelector(profileSelectors.getUserPostsError);
+
+  const isProfileError = useAppSelector(profileSelectors.getProfileIsError);
+  const errMsgProfile = useAppSelector(profileSelectors.getProfileError);
 
   useEffect(() => {
     dispatch(profileOperations.loadProfile(id));
@@ -39,8 +47,14 @@ function Profile({id}: IProfileProps) {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Профиль пользователя">
-      <UserPreview user={userProfile} isLoading={isProfileLoading} />
+    <ContentLayout
+      type={ContentLayoutType.FULL}
+      hideTitle
+      title="Профиль пользователя"
+      isError={isProfileError || isUserPostsError}
+      errMsg={errMsgProfile || errMsgUserPosts}
+    >
+      <UserPreview user={userProfile} isLoading={isProfileLoading} isAuth={isAuth} />
       <AppList
         current={page}
         dataSource={userPosts}

@@ -3,12 +3,13 @@ import './SubmitButton.scss';
 import {Button as ButtonANDT} from 'antd';
 
 interface ISubmitButtonProps {
+  loading?: boolean;
   children?: React.ReactNode;
 }
 
-function SubmitButton({children}: ISubmitButtonProps) {
+function SubmitButton({children, loading}: ISubmitButtonProps) {
   return (
-    <ButtonANDT className="button" type="primary" htmlType="submit" block>
+    <ButtonANDT loading={loading} className="button" type="primary" htmlType="submit" block>
       {children}
     </ButtonANDT>
   );
@@ -16,6 +17,7 @@ function SubmitButton({children}: ISubmitButtonProps) {
 
 SubmitButton.defaultProps = {
   children: ``,
+  loading: false,
 };
 
 export default React.memo(SubmitButton);

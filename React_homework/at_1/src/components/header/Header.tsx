@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import Logo from '../logo/Logo';
 import Menu from '../menu/Menu';
-import Auth from '../auth/Auth';
+import ConnectedAuth from '../connected-auth/ConnectedAuth';
 
 function Header() {
   return (
@@ -15,7 +15,7 @@ function Header() {
           <Menu />
         </div>
         <div className="header__item header__item--auth">
-          <Auth />
+          <ConnectedAuth />
         </div>
       </div>
     </header>

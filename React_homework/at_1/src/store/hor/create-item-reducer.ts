@@ -1,5 +1,4 @@
 import {AnyAction} from 'redux';
-import {ObjectUtils} from '../../utils';
 
 export interface IItemStore<T> {
   item: T;
@@ -23,25 +22,19 @@ export const createItemReducer = <T>(name: string, initItem: T) => {
     reset,
   };
 
-  const initStore: IItemStore<T> = {
-    item: initItem,
-  };
-
-  const reducer = (state = initStore, action: AnyAction): IItemStore<T> => {
+  const reducer = (state = initItem, action: AnyAction): T => {
     if (action.type === SET) {
-      return ObjectUtils.updateObject(state, {
-        item: action.payload,
-      });
+      return action.payload;
     }
 
     if (action.type === RESET) {
-      return ObjectUtils.updateObject(state, initStore);
+      return initItem;
     }
 
     return state;
   };
 
-  const getItem = (store: IItemStore<T>) => store.item;
+  const getItem = (item: T) => item;
   const selectors = {
     getItem,
   };

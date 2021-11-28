@@ -2,22 +2,23 @@ import {combineReducers} from 'redux';
 import {fetchReducer, RequestType} from './slices/fetch';
 import {itemReducer} from './slices/item';
 import NameSpace from '../name-space';
-import {IFetchStore, IItemStore, IListStore} from '../hor';
+import {IFetchStore, IListStore} from '../hor';
 import {IPostPreview, IUser} from '../../types';
 import {listReducer} from './slices/list';
 
+const user = itemReducer;
 const reducer = combineReducers({
   fetch: fetchReducer,
-  user: itemReducer,
+  user,
   posts: listReducer,
 });
-export interface IDuckStore {
+export interface IProfileDuckStore {
   [NameSpace.PROFILE]: {
     fetch: {
       [RequestType.LOAD_PROFILE]: IFetchStore;
       [RequestType.LOAD_USER_POSTS]: IFetchStore;
     };
-    user: IItemStore<IUser>;
+    user: IUser;
     posts: IListStore<IPostPreview>;
   };
 }

@@ -14,6 +14,8 @@ function Users() {
   const total = useAppSelector(usersSelectors.getTotal);
   const users = useAppSelector(usersSelectors.getData);
   const isLoading = useAppSelector(usersSelectors.getIsLoading);
+  const isError = useAppSelector(usersSelectors.getIsError);
+  const errMsg = useAppSelector(usersSelectors.getError);
   const itemPerPage = 6;
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function Users() {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок слушателей">
+    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок слушателей" isError={isError} errMsg={errMsg}>
       <AppList
         current={page}
         total={total}

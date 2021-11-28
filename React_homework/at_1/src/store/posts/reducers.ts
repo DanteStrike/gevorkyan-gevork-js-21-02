@@ -9,7 +9,7 @@ const reducer = combineReducers({
   fetch: fetchReducer,
   list: listReducer,
 });
-export interface IDuckStore {
+export interface IPostsDuckStore {
   [NameSpace.POSTS]: {
     fetch: IFetchStore;
     list: IListStore<IPostPreview>;

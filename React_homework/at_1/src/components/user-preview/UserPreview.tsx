@@ -5,11 +5,12 @@ import {IUser} from '../../types';
 import Loading from '../loading/Loading';
 
 interface IUserPreviewProps {
+  isAuth: boolean;
   user: IUser;
   isLoading: boolean;
 }
 
-function UserPreview({user, isLoading}: IUserPreviewProps) {
+function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
 
   return (
@@ -37,10 +38,12 @@ function UserPreview({user, isLoading}: IUserPreviewProps) {
           <span className="user-preview__prop">ID:</span> {id}
         </span>
       </p>
-      <button type="button" className="user-preview__edit">
-        <EditOutlined />
-        <span className="user-preview__edit-text">Редактировать</span>
-      </button>
+      {isAuth && (
+        <button type="button" className="user-preview__edit">
+          <EditOutlined />
+          <span className="user-preview__edit-text">Редактировать</span>
+        </button>
+      )}
     </article>
   );
 }

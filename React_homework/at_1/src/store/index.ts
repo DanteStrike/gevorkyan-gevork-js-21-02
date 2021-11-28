@@ -6,12 +6,14 @@ import {usersReducer} from './users';
 import NameSpace from './name-space';
 import {profileReducer} from './profile';
 import {postsReducer} from './posts';
+import {authReducer} from './auth';
 
 const api = configureAPI();
 const rootReducer = combineReducers({
   [NameSpace.USERS]: usersReducer,
   [NameSpace.PROFILE]: profileReducer,
   [NameSpace.POSTS]: postsReducer,
+  [NameSpace.AUTH]: authReducer,
 });
 
 const configuredStore = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
