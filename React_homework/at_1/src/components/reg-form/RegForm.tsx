@@ -4,13 +4,13 @@ import moment, {Moment} from 'moment';
 import {Form, Input, DatePicker, Radio} from 'antd';
 import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
-import {IUserRegistration} from "../../types";
+import {IUserRegistration} from '../../types';
 
 interface IRegFormProps {
   loading?: boolean;
   onSubmit?: (data: IUserRegistration) => void;
 }
-type RegFormValuesType = Omit<IUserRegistration, "firstName" | "lastName"> & {name: string};
+type RegFormValuesType = Omit<IUserRegistration, 'firstName' | 'lastName'> & {name: string};
 
 const {Item} = Form;
 
@@ -23,8 +23,10 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
     const lastName = other.join(``);
 
     const userReg: IUserRegistration = {
-      firstName, lastName, ...values
-    }
+      firstName,
+      lastName,
+      ...values,
+    };
     onSubmit(userReg);
   };
 
@@ -67,7 +69,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
 
               return Promise.resolve();
             },
-          })
+          }),
         ]}
       >
         <Input placeholder="Введите свое имя" />
@@ -119,8 +121,9 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
               return Promise.resolve();
             },
           }),
-          {type: 'email', message: 'Введите корректную почту'}
-        ]}>
+          {type: 'email', message: 'Введите корректную почту'},
+        ]}
+      >
         <Input placeholder="anonim@gmail.com" />
       </Item>
 
@@ -136,7 +139,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
               return Promise.resolve();
             },
           }),
-          {pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'}
+          {pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'},
         ]}
       >
         <Input placeholder="+79991114455" />

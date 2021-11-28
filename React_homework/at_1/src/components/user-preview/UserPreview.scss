@@ -14,9 +14,9 @@
   &__img {
     width: 30%;
     margin-right: 20px;
+    background-color: var(--body-background);
     border-radius: 15px;
     object-fit: cover;
-    background-color: var(--body-background);
   }
 
   &__info {

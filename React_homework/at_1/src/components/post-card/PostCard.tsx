@@ -33,8 +33,10 @@ function PostCard({hideTop = false, post}: IPostCard) {
           <p className="post-card__date">{publishDate}</p>
         </div>
       </div>
-      <img className="post-card__img" src={image} alt={id} />
-      <p className="post-card__text">{text}</p>
+      <CustomLink className="post-card__wrap" to={hideTop ? `${profileRoute}/${post.id}` : `/posts/${post.id}`}>
+        <img className="post-card__img" src={image} alt={id} />
+        <p className="post-card__text">{text}</p>
+      </CustomLink>
     </article>
   );
 }

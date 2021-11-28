@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {useHistory} from "react-router-dom";
+import {useHistory} from 'react-router-dom';
 import RegForm from '../../components/reg-form/RegForm';
 import ContentLayout, {ContentLayoutType} from '../../components/content-layout/ContentLayout';
-import useAppSelector from "../../hooks/use-app-selector";
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import {authActions, authOperations, authSelectors} from "../../store/auth";
-import {IUserRegistration} from "../../types";
+import useAppSelector from '../../hooks/use-app-selector';
+import useAppDispatch from '../../hooks/use-app-dispatch';
+import {authActions, authOperations, authSelectors} from '../../store/auth';
+import {IUserRegistration} from '../../types';
 
 function Registration() {
   const dispatch = useAppDispatch();
@@ -23,8 +23,8 @@ function Registration() {
   }, [isAuth, history, authID]);
 
   const handleRegistration = (data: IUserRegistration) => {
-    dispatch(authOperations.registration(data))
-  }
+    dispatch(authOperations.registration(data));
+  };
 
   useEffect(
     () => () => {
@@ -35,7 +35,7 @@ function Registration() {
 
   return (
     <ContentLayout type={ContentLayoutType.CONTENT} title="Регистрация" isError={isError} errMsg={errMsg}>
-      <RegForm loading={isLoading} onSubmit={handleRegistration}/>
+      <RegForm loading={isLoading} onSubmit={handleRegistration} />
     </ContentLayout>
   );
 }

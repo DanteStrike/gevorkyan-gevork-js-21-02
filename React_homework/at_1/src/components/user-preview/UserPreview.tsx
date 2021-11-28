@@ -17,7 +17,7 @@ function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
   return (
     <article className="user-preview">
       <Loading isLoading={isLoading} />
-      {picture ? <img className="user-preview__img" alt={name} src={picture}/> : <div className="user-preview__img"/>}
+      {picture ? <img className="user-preview__img" alt={name} src={picture} /> : <div className="user-preview__img" />}
       <p className="user-preview__info">
         <span className="user-preview__title">{name}</span>
         <span className="user-preview__row">

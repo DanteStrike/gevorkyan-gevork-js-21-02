@@ -2,12 +2,12 @@ import React from 'react';
 import './Modal.scss';
 
 interface IModalProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   children: React.ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
-function Modal({children, isOpen, onClose}: IModalProps) {
+function Modal({children, isOpen, onClose = () => {}}: IModalProps) {
   const handleClose = () => {
     onClose();
   };
@@ -21,5 +21,10 @@ function Modal({children, isOpen, onClose}: IModalProps) {
     </div>
   );
 }
+
+Modal.defaultProps = {
+  isOpen: false,
+  onClose: () => {},
+};
 
 export default Modal;

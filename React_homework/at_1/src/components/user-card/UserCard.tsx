@@ -13,7 +13,7 @@ function UserCard({user}: IUserCardProps) {
 
   return (
     <article className="user-card" id={`#user-${user.id}`}>
-      {picture ? <img className="user-card__img" alt={name} src={picture}/> : <div className="user-card__img"/>}
+      {picture ? <img className="user-card__img" alt={name} src={picture} /> : <div className="user-card__img" />}
       <Tooltip
         placement="top"
         title={user.id}
