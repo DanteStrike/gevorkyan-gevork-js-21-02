@@ -1,25 +1,30 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState} from 'react';
-import moment from 'moment';
+import moment, {Moment} from 'moment';
 import {Form, Input, Select, DatePicker, Upload, Avatar} from 'antd';
 import Button from '../submit-button/SubmitButton';
 import './EditForm.scss';
-import {AntdUtils, FileUtils, ObjectUtils, RequestUtils} from '../../utils';
-import {IUser} from '../../types';
+import {AntdUtils, DateUtils, FileUtils, ObjectUtils, RequestUtils} from '../../utils';
+import {IUser, IUserUpdate, UserGenderType} from '../../types';
 import UploadButton from '../upload-button/UploadButton';
 
 interface IEditFormProps {
   user: IUser;
   loading?: boolean;
-  onSubmit?: (id: string) => void;
+  onSubmit?: (data: IUserUpdate) => void;
 }
 interface IEditFormState {
   loading: boolean;
   img: string | null;
 }
+interface IEditForm {
+  name: string,
+  gender: UserGenderType,
+  dateOfBirth: Moment,
+  phone: string,
+}
 
 const normFile = (e: any) => {
-  console.log('Upload event:', e);
   if (Array.isArray(e)) {
     return e;
   }
@@ -47,8 +52,19 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
   };
 
   const [form] = Form.useForm();
-  const handleFormFinish = (filedValues: {id: string}) => {
-    onSubmit(filedValues.id);
+  const handleFormFinish = (filedValues: IEditForm) => {
+    const normName = DateUtils.normalizeName(filedValues.name);
+    const userUpdate: IUserUpdate = {
+      id: user.id,
+      firstName: normName.firstName,
+      lastName: normName.lastName,
+      picture: avatar.img || user.picture || ``,
+      gender: filedValues.gender,
+      dateOfBirth: filedValues.dateOfBirth.toISOString(),
+      phone: filedValues.phone
+    }
+
+    onSubmit(userUpdate);
   };
 
   return (
@@ -58,13 +74,13 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       name="edit"
       size="middle"
       layout="vertical"
+      validateTrigger="submit"
       onFinish={handleFormFinish}
       initialValues={{
-        name: `${user.firstName} ${user.lastName}`.trim(),
+        name: DateUtils.collectName(user.firstName, user.lastName),
         picture: avatar.img,
         gender: user.gender,
         dateOfBirth: moment(user.dateOfBirth),
-        email: user.email,
         phone: user.phone,
       }}
     >
@@ -105,10 +121,6 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
           placeholder="Выберите дату"
           disabledDate={AntdUtils.disableDateOverCurrent}
         />
-      </Item>
-
-      <Item name="email" label="Email:" rules={[AntdUtils.requireValidatorEmail]}>
-        <Input />
       </Item>
 
       <Item name="phone" label="Телефон:" rules={[AntdUtils.requireValidatorPhone, AntdUtils.phoneFormatValidator]}>

@@ -35,4 +35,7 @@ export interface IUserRegistration {
   phone: string;
 }
 
-export interface IUserUpdate extends IUserRegistration {}
+export interface IUserUpdate extends Omit<IUserRegistration, "email">{
+  id: string;
+  picture: string;
+}

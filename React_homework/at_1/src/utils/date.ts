@@ -20,8 +20,11 @@ const normalizeName = (name: string) => {
   };
 };
 
+const collectName = (firstName: string, lastName: string): string => `${firstName} ${lastName}`.trim();
+
 export default {
   normalizeCardDate,
   normalizeProfileDate,
   normalizeName,
+  collectName
 };

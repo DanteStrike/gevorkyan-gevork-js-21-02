@@ -1,7 +1,8 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
-import {FetchErrorType, IUser, IUserRegistration} from '../../types';
+import {FetchErrorType, IUser, IUserRegistration, IUserUpdate} from '../../types';
 import {authStorageKey} from './types';
+import {profileActions} from "../profile";
 
 const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
   const controller = new AbortController();
@@ -45,7 +46,24 @@ const registration = (data: IUserRegistration) => (dispatch: any, _: any, api: A
   dispatch(actions.requestStart(controller));
 };
 
+const update = (data: IUserUpdate) => (dispatch: any, _: any, api: AxiosInstance) => {
+  const controller = new AbortController();
+
+  api.put<IUser>(`/user/${data.id}`, data)
+    .then((response) => {
+      dispatch(actions.login(response.data.id, response.data.firstName, response.data.picture || ``));
+      dispatch(profileActions.set(response.data))
+      dispatch(actions.requestFinished());
+    })
+    .catch((err) => {
+      dispatch(actions.requestFailed(err.message));
+    })
+
+  dispatch(actions.requestStart(controller));
+}
+
 export default {
   login,
   registration,
+  update
 };
