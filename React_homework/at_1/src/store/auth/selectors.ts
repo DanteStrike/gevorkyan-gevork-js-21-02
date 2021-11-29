@@ -12,6 +12,7 @@ const getIsError = (store: IAuthDuckStore) => fetchSelectors.getIsError(getFetch
 const getError = (store: IAuthDuckStore) => fetchSelectors.getError(getFetchSpace(store));
 
 const getIsAuth = (store: IAuthDuckStore) => getStatusSpace(store) === AuthStatus.AUTHORIZED;
+const getIsAuthWait = (store: IAuthDuckStore) => getStatusSpace(store) === AuthStatus.IDLE;
 
 const getAuthUser = (store: IAuthDuckStore) => getStoreSpace(store).user;
 const getID = (store: IAuthDuckStore) => getAuthUser(store).id;
@@ -23,4 +24,5 @@ export default {
   getIsAuth,
   getAuthUser,
   getID,
+  getIsAuthWait,
 };

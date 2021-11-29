@@ -85,10 +85,10 @@ function Routes() {
           </>
         )}
       />
-      <Route exact path="/denied" render={() => <PageError title="Error: 403" text="Нет доступа"/>} />
-      <Route render={() => <PageError title="Error: 404" text="Страница не найдена"/>} />
+      <Route exact path="/denied" render={() => <PageError title="Error: 403" text="Нет доступа" />} />
+      <Route render={() => <PageError title="Error: 404" text="Страница не найдена" />} />
     </Switch>
   );
 }
 
-export default Routes;
+export default React.memo(Routes);

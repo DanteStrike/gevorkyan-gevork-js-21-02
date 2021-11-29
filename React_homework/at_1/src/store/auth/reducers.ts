@@ -8,9 +8,10 @@ import {ObjectUtils} from '../../utils';
 export const enum AuthStatus {
   AUTHORIZED = `authorized`,
   UNAUTHORIZED = `unauthorized`,
+  IDLE = `idle`,
 }
 
-const authStatusReducer = (state = AuthStatus.UNAUTHORIZED, action: AnyAction) => {
+const authStatusReducer = (state = AuthStatus.IDLE, action: AnyAction) => {
   switch (action.type) {
     case types.LOGIN:
       return AuthStatus.AUTHORIZED;

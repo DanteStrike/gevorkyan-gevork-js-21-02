@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import moment, {Moment} from 'moment';
 import {Form, Input, Select, DatePicker, Upload, Avatar} from 'antd';
 import Button from '../submit-button/SubmitButton';
@@ -52,6 +52,23 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
   };
 
   const [form] = Form.useForm();
+
+  const defaultValues = useMemo(
+    () => ({
+      name: DateUtils.collectName(user.firstName, user.lastName),
+      picture: user.picture || ``,
+      gender: user.gender,
+      dateOfBirth: moment(user.dateOfBirth),
+      phone: user.phone,
+    }),
+    [user]
+  );
+
+  useEffect(() => {
+    form.setFieldsValue(defaultValues);
+    setAvatar((prev) => ObjectUtils.updateObject(prev, {img: defaultValues.picture}));
+  }, [form, defaultValues]);
+
   const handleFormFinish = (filedValues: IEditForm) => {
     const normName = DateUtils.normalizeName(filedValues.name);
     const userUpdate: IUserUpdate = {
@@ -76,13 +93,7 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       layout="vertical"
       validateTrigger="submit"
       onFinish={handleFormFinish}
-      initialValues={{
-        name: DateUtils.collectName(user.firstName, user.lastName),
-        picture: avatar.img,
-        gender: user.gender,
-        dateOfBirth: moment(user.dateOfBirth),
-        phone: user.phone,
-      }}
+      initialValues={defaultValues}
     >
       <Item name="picture" label="Аватарка:" valuePropName="file" getValueFromEvent={normFile} noStyle>
         <Upload
@@ -139,4 +150,4 @@ EditForm.defaultProps = {
   onSubmit: () => {},
 };
 
-export default EditForm;
+export default React.memo(EditForm);

@@ -34,4 +34,4 @@ function Edit() {
   );
 }
 
-export default Edit;
+export default React.memo(Edit);
