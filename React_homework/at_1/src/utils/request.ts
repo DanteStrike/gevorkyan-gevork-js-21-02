@@ -24,6 +24,15 @@ const normalizeParams = (page: number, limit: number, minLimit: number) => {
   };
 };
 
+const dummyRequest = ({onSuccess}: {onSuccess?: Function}) => {
+  setTimeout(() => {
+    if (onSuccess) {
+      onSuccess('ok');
+    }
+  }, 0);
+};
+
 export default {
   normalizeParams,
+  dummyRequest,
 };

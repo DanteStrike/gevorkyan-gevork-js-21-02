@@ -83,7 +83,7 @@ function Post({id}: IPostProps) {
       isError={isPostError || isCommentsError}
       errMsg={postError || commentsError}
     >
-      <PostCard post={post} modal renderComments={renderComments} isLoading={isPostLoading}/>
+      <PostCard post={post} modal renderComments={renderComments} isLoading={isPostLoading} />
     </Modal>
   );
 }

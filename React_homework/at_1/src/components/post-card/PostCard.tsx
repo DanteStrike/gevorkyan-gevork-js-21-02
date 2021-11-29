@@ -4,15 +4,15 @@ import {Tooltip} from 'antd';
 import {IPostPreview} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
-import Loading from "../loading/Loading";
-import {DateUtils} from "../../utils";
+import Loading from '../loading/Loading';
+import {DateUtils} from '../../utils';
 
 interface IPostCard {
   post: IPostPreview;
   hideTop?: boolean;
   modal?: boolean;
   renderComments?: () => React.ReactNode;
-  isLoading?: boolean
+  isLoading?: boolean;
 }
 
 function PostCard({hideTop = false, post, modal, renderComments, isLoading = false}: IPostCard) {
@@ -52,7 +52,7 @@ PostCard.defaultProps = {
   hideTop: false,
   modal: false,
   renderComments: () => {},
-  isLoading: false
+  isLoading: false,
 };
 
 export default React.memo(PostCard);

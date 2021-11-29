@@ -3,7 +3,7 @@ import {IComment} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
 import './Comment.scss';
-import {DateUtils} from "../../utils";
+import {DateUtils} from '../../utils';
 
 interface ICommentProps {
   comment: IComment;

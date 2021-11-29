@@ -1,14 +1,13 @@
 import React from 'react';
-import {useHistory} from "react-router-dom";
-import Modal from "../../components/modal/Modal";
-import EditForm from "../../components/edit-form/EditForm";
+import {useHistory} from 'react-router-dom';
+import Modal from '../../components/modal/Modal';
+import EditForm from '../../components/edit-form/EditForm';
+import useAppSelector from '../../hooks/use-app-selector';
+import {profileSelectors} from '../../store/profile';
 
-interface IEditProps {
-  id: string;
-}
+function Edit() {
+  const profile = useAppSelector(profileSelectors.getProfile);
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Edit({id}: IEditProps) {
   const history = useHistory();
   const handleModalClose = () => {
     const {pathname} = history.location;
@@ -18,9 +17,9 @@ function Edit({id}: IEditProps) {
 
   return (
     <Modal isOpen onClose={handleModalClose}>
-      <EditForm/>
+      <EditForm user={profile} />
     </Modal>
   );
-};
+}
 
 export default Edit;

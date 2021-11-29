@@ -1,10 +1,10 @@
 import React from 'react';
 import './UserPreview.scss';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 import {EditOutlined} from '@ant-design/icons';
 import {IUser} from '../../types';
 import Loading from '../loading/Loading';
-import {DateUtils} from "../../utils";
+import {DateUtils} from '../../utils';
 
 interface IUserPreviewProps {
   isUser: boolean;

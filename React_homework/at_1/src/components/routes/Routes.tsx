@@ -9,7 +9,7 @@ import Posts from '../../forms/posts/Posts';
 import PageNotFound from '../../forms/page-not-found/PageNotFound';
 import useAppSelector from '../../hooks/use-app-selector';
 import {authSelectors} from '../../store/auth';
-import Edit from "../../forms/edit/Edit";
+import Edit from '../../forms/edit/Edit';
 
 interface IIDMatchParams {
   id: string;
@@ -41,16 +41,19 @@ function Routes() {
         exact
         path="/profile/:id/edit"
         render={({
-                   match: {
-                     params: {id},
-                   },
-                 }: RouteComponentProps<IIDMatchParams>) => authID === id ?
-          <>
-            <Profile id={id} />
-            <Edit id={id}/>
-          </>
-          :
-          <Redirect to="/denied"/>}
+          match: {
+            params: {id},
+          },
+        }: RouteComponentProps<IIDMatchParams>) =>
+          authID === id ? (
+            <>
+              <Profile id={id} />
+              <Edit />
+            </>
+          ) : (
+            <Redirect to="/denied" />
+          )
+        }
       />
       <Route
         exact

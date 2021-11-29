@@ -1,8 +1,8 @@
 @import "src/assets/variables";
 
 .post-card {
-  display: flex;
   position: relative;
+  display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 300px;
@@ -33,9 +33,9 @@
 
   &--modal &__wrap {
     display: flex;
-    justify-content: space-between;
     flex-grow: 1;
     align-self: center;
+    justify-content: space-between;
   }
 
   &--top-hide {
