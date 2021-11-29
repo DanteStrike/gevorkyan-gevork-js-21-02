@@ -6,7 +6,7 @@ import Profile from '../../forms/profile/Profile';
 import Post from '../../forms/post/Post';
 import Users from '../../forms/users/Users';
 import Posts from '../../forms/posts/Posts';
-import PageNotFound from '../../forms/page-not-found/PageNotFound';
+import PageError from '../../forms/page-error/PageError';
 import useAppSelector from '../../hooks/use-app-selector';
 import {authSelectors} from '../../store/auth';
 import Edit from '../../forms/edit/Edit';
@@ -85,7 +85,8 @@ function Routes() {
           </>
         )}
       />
-      <Route render={() => <PageNotFound />} />
+      <Route exact path="/denied" render={() => <PageError title="Error: 403" text="Нет доступа"/>} />
+      <Route render={() => <PageError title="Error: 404" text="Страница не найдена"/>} />
     </Switch>
   );
 }
