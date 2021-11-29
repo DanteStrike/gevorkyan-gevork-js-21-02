@@ -1,7 +1,7 @@
 import {RuleObject} from 'antd/es/form';
 import moment from 'moment';
 import {message, Upload} from 'antd';
-import {DateUtils} from './index';
+import DateUtils from './date';
 
 const requireValidator = (text: string) => () => ({
   validator(_: RuleObject, value: any) {

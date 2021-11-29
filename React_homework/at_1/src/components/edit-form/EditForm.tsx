@@ -18,10 +18,10 @@ interface IEditFormState {
   img: string | null;
 }
 interface IEditForm {
-  name: string,
-  gender: UserGenderType,
-  dateOfBirth: Moment,
-  phone: string,
+  name: string;
+  gender: UserGenderType;
+  dateOfBirth: Moment;
+  phone: string;
 }
 
 const normFile = (e: any) => {
@@ -61,8 +61,8 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       picture: avatar.img || user.picture || ``,
       gender: filedValues.gender,
       dateOfBirth: filedValues.dateOfBirth.toISOString(),
-      phone: filedValues.phone
-    }
+      phone: filedValues.phone,
+    };
 
     onSubmit(userUpdate);
   };

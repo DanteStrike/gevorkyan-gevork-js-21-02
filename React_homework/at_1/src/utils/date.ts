@@ -26,5 +26,5 @@ export default {
   normalizeCardDate,
   normalizeProfileDate,
   normalizeName,
-  collectName
+  collectName,
 };
