@@ -8,7 +8,7 @@ const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
   const controller = new AbortController();
 
   api
-    .get<IUser>(`/user1/${id}`, {signal: controller.signal})
+    .get<IUser>(`/user/${id}`, {signal: controller.signal})
     .then((response) => {
       dispatch(actions.login(response.data.id, response.data.firstName, response.data.picture || ``));
       localStorage.setItem(authStorageKey, response.data.id);

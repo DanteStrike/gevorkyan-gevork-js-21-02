@@ -2,29 +2,46 @@ import React, {useEffect, useState} from 'react';
 import './App.scss';
 import {message} from "antd";
 import useAppSelector from "./hooks/use-app-selector";
-import {authSelectors} from "./store/auth";
+import {authOperations, authSelectors} from "./store/auth";
 import Loading from "./components/loading/Loading";
 import MainLayout from "./components/main-layout/MainLayout";
+import {authStorageKey} from "./store/auth/types";
+import configuredStore from "./store";
+
+const enum AppState {
+  INIT = `init`,
+  WAITING = `waiting`,
+  READY = `ready`
+}
 
 function App() {
-  const [isAppSetup, setIsAppSetup] = useState(false);
+  const [appSetup, setAppSetup] = useState<AppState>(AppState.INIT);
+
+  if (appSetup === AppState.INIT) {
+    const authStorageID = localStorage.getItem(authStorageKey) || ``;
+    if (authStorageID !== ``) {
+      configuredStore.dispatch(authOperations.login(authStorageID));
+      setAppSetup(AppState.WAITING);
+    } else {
+      setAppSetup(AppState.READY);
+    }
+  }
 
   const isAuthWait = useAppSelector(authSelectors.getIsAuthWait);
   const isAuthError = useAppSelector(authSelectors.getIsError);
 
   useEffect(() => {
-    if (!isAuthWait || isAuthError) {
-      setIsAppSetup(true)
+    if (appSetup === AppState.WAITING && isAuthError && isAuthWait) {
+      message.error(`Ошибка авто авторизации`);
+      setAppSetup(AppState.READY);
     }
-  }, [isAuthWait, isAuthError])
 
-  useEffect(() => {
-    if (isAppSetup) {
-      message.error(`Ошибка авторизации`)
+    if (appSetup === AppState.WAITING && !isAuthError && !isAuthWait) {
+      setAppSetup(AppState.READY);
     }
-  }, [isAppSetup])
+  }, [appSetup, isAuthError, isAuthWait])
 
-  if (!isAppSetup) {
+  if (appSetup !== AppState.READY) {
     return <Loading isLoading />;
   }
 

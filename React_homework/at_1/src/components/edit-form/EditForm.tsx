@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useEffect, useMemo, useState} from 'react';
 import moment, {Moment} from 'moment';
 import {Form, Input, Select, DatePicker, Upload, Avatar} from 'antd';
@@ -52,7 +51,6 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
   };
 
   const [form] = Form.useForm();
-
   const defaultValues = useMemo(
     () => ({
       name: DateUtils.collectName(user.firstName, user.lastName),
@@ -91,11 +89,11 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       name="edit"
       size="middle"
       layout="vertical"
-      validateTrigger="submit"
+      validateTrigger="onSubmit"
       onFinish={handleFormFinish}
       initialValues={defaultValues}
     >
-      <Item name="picture" label="Аватарка:" valuePropName="file" getValueFromEvent={normFile} noStyle>
+       <Item name="picture" label="Аватарка:" valuePropName="file" getValueFromEvent={normFile} noStyle>
         <Upload
           name="avatar"
           listType="picture-card"
@@ -108,39 +106,39 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
         >
           {avatar.img ? <Avatar src={avatar.img} style={avatarStyle} /> : <UploadButton loading={avatar.loading} />}
         </Upload>
-      </Item>
+       </Item>
 
-      <Item name="name" label="ФИО:" rules={[AntdUtils.requireValidatorName, AntdUtils.userNameValidator]}>
+       <Item name="name" label="ФИО:" rules={[AntdUtils.requireValidatorName, AntdUtils.userNameValidator]}>
         <Input />
-      </Item>
+       </Item>
 
-      <Item name="gender" label="Пол:" rules={[AntdUtils.requireValidatorGender]}>
+       <Item name="gender" label="Пол:" rules={[AntdUtils.requireValidatorGender]}>
         <Select>
           <Select.Option value="male">Муржской</Select.Option>
           <Select.Option value="female">Женский</Select.Option>
           <Select.Option value="other">Другой</Select.Option>
         </Select>
-      </Item>
+       </Item>
 
-      <Item
+       <Item
         name="dateOfBirth"
         label="Дата рождения:"
         rules={[AntdUtils.requireValidatorBirth, AntdUtils.sevenYearsOldValidator]}
-      >
+       >
         <DatePicker
           className="edit-form__date-picker"
           placeholder="Выберите дату"
           disabledDate={AntdUtils.disableDateOverCurrent}
         />
-      </Item>
+       </Item>
 
-      <Item name="phone" label="Телефон:" rules={[AntdUtils.requireValidatorPhone, AntdUtils.phoneFormatValidator]}>
+       <Item name="phone" label="Телефон:" rules={[AntdUtils.requireValidatorPhone, AntdUtils.phoneFormatValidator]}>
         <Input />
-      </Item>
+       </Item>
 
-      <Item className="edit-form__last">
+       <Item className="edit-form__last">
         <Button loading={loading}>Сохранить</Button>
-      </Item>
+       </Item>
     </Form>
   );
 }

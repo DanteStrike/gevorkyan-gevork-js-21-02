@@ -10,8 +10,6 @@ import App from './App';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import {ThemeProvider} from './context/ThemeContext';
 import configuredStore from './store';
-import {authOperations} from './store/auth';
-import {authStorageKey} from './store/auth/types';
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
@@ -23,11 +21,6 @@ OverlayScrollbars(document.body, {
 });
 
 const init = (store: typeof configuredStore) => {
-  const id = localStorage.getItem(authStorageKey) || ``;
-  if (id !== ``) {
-    configuredStore.dispatch(authOperations.login(id));
-  }
-
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
