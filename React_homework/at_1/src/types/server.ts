@@ -8,5 +8,5 @@ export const enum FetchErrorType {
 export const enum FetchErrorCode {
   OK = 200,
   BAD_REQUEST = 400,
-  TIMEOUT = 408,
+  TIMEOUT = `'ECONNABORTED'`,
 }

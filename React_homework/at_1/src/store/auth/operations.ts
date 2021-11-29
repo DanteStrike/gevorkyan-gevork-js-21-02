@@ -11,12 +11,12 @@ const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
     .then((response) => {
       dispatch(actions.login(response.data.id, response.data.firstName, response.data.picture || ``));
       localStorage.setItem(authStorageKey, response.data.id);
+      dispatch(actions.requestFinished());
     })
     .catch((err) => {
-      dispatch(actions.logout());
-
       if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
         dispatch(actions.requestFailed(`Такого ID не существует`));
+        dispatch(actions.logout());
       } else {
         dispatch(actions.requestFailed(err.message));
       }
@@ -32,6 +32,7 @@ const registration = (data: IUserRegistration) => (dispatch: any, _: any, api: A
     .then((response) => {
       dispatch(actions.login(response.data.id, response.data.firstName, response.data.picture || ``));
       localStorage.setItem(authStorageKey, response.data.id);
+      dispatch(actions.requestFinished());
     })
     .catch((err) => {
       if (err.response?.data?.error === FetchErrorType.BODY_NOT_VALID && err.response?.data?.data?.email) {

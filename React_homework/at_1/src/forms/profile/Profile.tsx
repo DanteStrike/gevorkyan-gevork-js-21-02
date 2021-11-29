@@ -16,7 +16,7 @@ interface IProfileProps {
 
 function Profile({id}: IProfileProps) {
   const dispatch = useAppDispatch();
-  const isAuth = useAppSelector(authSelectors.getIsAuth);
+  const authID = useAppSelector(authSelectors.getID);
   const isProfileLoading = useAppSelector(profileSelectors.getProfileIsLoading);
   const userProfile = useAppSelector(profileSelectors.getProfile);
   const isUserPostsLoading = useAppSelector(profileSelectors.getUserPostsIsLoading);
@@ -61,7 +61,7 @@ function Profile({id}: IProfileProps) {
       isError={isProfileError || isUserPostsError}
       errMsg={errMsgProfile || errMsgUserPosts}
     >
-      <UserPreview user={userProfile} isLoading={isProfileLoading} isAuth={isAuth} />
+      <UserPreview user={userProfile} isLoading={isProfileLoading} isUser={id === authID} />
       <AppList
         current={page}
         dataSource={userPosts}

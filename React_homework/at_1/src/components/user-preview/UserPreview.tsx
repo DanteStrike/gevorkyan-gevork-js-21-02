@@ -1,17 +1,18 @@
 import React from 'react';
 import './UserPreview.scss';
+import {Link} from "react-router-dom";
 import {EditOutlined} from '@ant-design/icons';
 import {IUser} from '../../types';
 import Loading from '../loading/Loading';
 import {DateUtils} from "../../utils";
 
 interface IUserPreviewProps {
-  isAuth: boolean;
+  isUser: boolean;
   user: IUser;
   isLoading: boolean;
 }
 
-function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
+function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
   const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
 
@@ -40,11 +41,13 @@ function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
           <span className="user-preview__prop">ID:</span> {id}
         </span>
       </p>
-      {isAuth && (
-        <button type="button" className="user-preview__edit">
-          <EditOutlined />
-          <span className="user-preview__edit-text">Редактировать</span>
-        </button>
+      {isUser && (
+        <div className="user-preview__edit">
+          <Link className="user-preview__edit-text" to={`/profile/${id}/edit`}>
+            <EditOutlined />
+            Редактировать
+          </Link>
+        </div>
       )}
     </article>
   );

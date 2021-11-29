@@ -3,7 +3,7 @@ import axios from 'axios';
 const configureAPI = () => {
   const api = axios.create({
     baseURL: `https://dummyapi.io/data/v1`,
-    timeout: 5000,
+    timeout: 10000,
     headers: {
       'app-id': '619a3ac68a32ffd11ccdeea6',
     },
