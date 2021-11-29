@@ -1,6 +1,7 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
-import {FetchErrorType, IComments, IPostPreview} from '../../types';
+import {IComments, IPostPreview} from '../../types';
+import {FetchErrorType} from '../../enums';
 import {RequestType} from './slices/fetch';
 import {RequestUtils} from '../../utils';
 

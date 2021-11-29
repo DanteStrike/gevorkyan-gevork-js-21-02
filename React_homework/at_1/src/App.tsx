@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
-import {message} from "antd";
-import useAppSelector from "./hooks/use-app-selector";
-import {authOperations, authSelectors} from "./store/auth";
-import Loading from "./components/loading/Loading";
-import MainLayout from "./components/main-layout/MainLayout";
-import {authStorageKey} from "./store/auth/types";
-import configuredStore from "./store";
+import {message} from 'antd';
+import useAppSelector from './hooks/use-app-selector';
+import {authOperations, authSelectors} from './store/auth';
+import Loading from './components/loading/Loading';
+import MainLayout from './components/main-layout/MainLayout';
+import {authStorageKey} from './store/auth/types';
+import configuredStore from './store';
 
 const enum AppState {
   INIT = `init`,
   WAITING = `waiting`,
-  READY = `ready`
+  READY = `ready`,
 }
 
 function App() {
@@ -39,13 +39,13 @@ function App() {
     if (appSetup === AppState.WAITING && !isAuthError && !isAuthWait) {
       setAppSetup(AppState.READY);
     }
-  }, [appSetup, isAuthError, isAuthWait])
+  }, [appSetup, isAuthError, isAuthWait]);
 
   if (appSetup !== AppState.READY) {
     return <Loading isLoading />;
   }
 
-  return <MainLayout/>;
+  return <MainLayout />;
 }
 
 export default App;

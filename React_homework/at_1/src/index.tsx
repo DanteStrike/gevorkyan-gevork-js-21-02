@@ -22,16 +22,14 @@ OverlayScrollbars(document.body, {
 
 const init = (store: typeof configuredStore) => {
   ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <ThemeProvider storageKey="app-theme">
-          <Router>
-            <ScrollToTop />
-            <App />
-          </Router>
-        </ThemeProvider>
-      </Provider>
-    </React.StrictMode>,
+    <Provider store={store}>
+      <ThemeProvider storageKey="app-theme">
+        <Router>
+          <ScrollToTop />
+          <App />
+        </Router>
+      </ThemeProvider>
+    </Provider>,
     document.getElementById('root')
   );
 };

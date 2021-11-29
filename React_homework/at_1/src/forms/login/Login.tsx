@@ -5,6 +5,7 @@ import LoginForm from '../../components/login-form/LoginForm';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import useAppSelector from '../../hooks/use-app-selector';
+import {RouteUtils} from '../../utils';
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ function Login() {
 
   useEffect(() => {
     if (isAuth) {
-      history.push(`profile/${authID}`);
+      history.push(RouteUtils.createProfileRoute(authID));
     }
   }, [isAuth, history, authID]);
 

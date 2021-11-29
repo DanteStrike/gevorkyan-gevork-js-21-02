@@ -1,16 +1,21 @@
 import React from 'react';
 import './RegForm.scss';
-import moment, {Moment} from 'moment';
+import {Moment} from 'moment';
 import {Form, Input, DatePicker, Radio} from 'antd';
 import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
 import {IUserRegistration} from '../../types';
+import {RoutePath} from '../../enums';
+import {DataUtils, ValidateUtils} from '../../utils';
 
 interface IRegFormProps {
   loading?: boolean;
   onSubmit?: (data: IUserRegistration) => void;
 }
-type RegFormValuesType = Omit<IUserRegistration, 'firstName' | 'lastName'> & {name: string};
+type RegFormValuesType = Omit<IUserRegistration, 'firstName' | 'lastName' | 'dateOfBirth'> & {
+  name: string;
+  dateOfBirth: Moment;
+};
 
 const {Item} = Form;
 
@@ -18,14 +23,12 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
   const [form] = Form.useForm();
 
   const handleFormFinish = (filedValues: RegFormValuesType) => {
-    const {name, ...values} = filedValues;
-    const [firstName, ...other] = name.trim().split(` `);
-    const lastName = other.join(``);
-
+    const {name, dateOfBirth, ...values} = filedValues;
+    const normName = DataUtils.normalizeName(name);
     const userReg: IUserRegistration = {
-      firstName,
-      lastName,
+      ...normName,
       ...values,
+      dateOfBirth: dateOfBirth.toISOString(),
     };
     onSubmit(userReg);
   };
@@ -37,7 +40,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
       name="register"
       size="middle"
       layout="vertical"
-      validateTrigger="submit"
+      validateTrigger="onSubmit"
       onFinish={handleFormFinish}
       initialValues={{
         name: ``,
@@ -47,31 +50,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
         phone: ``,
       }}
     >
-      <Item
-        name="name"
-        label="ФИО:"
-        rules={[
-          () => ({
-            validator(_, value: string) {
-              if (!value) {
-                return Promise.reject(new Error('Укажите ФИО'));
-              }
-
-              const [firstName, ...other] = value.trim().split(` `);
-              const lastName = other.join(``);
-              if (firstName.length < 2 || lastName.length < 2) {
-                return Promise.reject(new Error('Имя и фамилия должны содержать больше 2-х символов'));
-              }
-
-              if (firstName.length > 50 || lastName.length > 50) {
-                return Promise.reject(new Error('Имя и фамилия не могут быть длинее 50-и символов'));
-              }
-
-              return Promise.resolve();
-            },
-          }),
-        ]}
-      >
+      <Item name="name" label="ФИО:" rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}>
         <Input placeholder="Введите свое имя" />
       </Item>
 
@@ -86,43 +65,19 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
       <Item
         name="dateOfBirth"
         label="Дата рождения:"
-        rules={[
-          () => ({
-            validator(_, value: Moment) {
-              if (!value) {
-                return Promise.reject(new Error('Укажите дату рождения'));
-              }
-
-              if (value > moment().subtract(7, `years`)) {
-                return Promise.reject(new Error('Вы должны быть старше 7 лет'));
-              }
-
-              return Promise.resolve();
-            },
-          }),
-        ]}
+        rules={[ValidateUtils.requireValidatorBirth, ValidateUtils.sevenYearsOldValidator]}
       >
         <DatePicker
           className="reg-form__date-picker"
           placeholder="Выберите дату"
-          disabledDate={(current) => current && current > moment()}
+          disabledDate={ValidateUtils.disableDateOverCurrent}
         />
       </Item>
 
       <Item
         name="email"
         label="Email:"
-        rules={[
-          () => ({
-            validator(_, value) {
-              if (!value) {
-                return Promise.reject(new Error('Укажите почту'));
-              }
-              return Promise.resolve();
-            },
-          }),
-          {type: 'email', message: 'Введите корректную почту'},
-        ]}
+        rules={[ValidateUtils.requireValidatorEmail, ValidateUtils.emailFormatValidator]}
       >
         <Input placeholder="anonim@gmail.com" />
       </Item>
@@ -130,24 +85,14 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
       <Item
         name="phone"
         label="Телефон:"
-        rules={[
-          () => ({
-            validator(_, value) {
-              if (!value) {
-                return Promise.reject(new Error('Укажите телефон'));
-              }
-              return Promise.resolve();
-            },
-          }),
-          {pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'},
-        ]}
+        rules={[ValidateUtils.requireValidatorPhone, ValidateUtils.phoneFormatValidator]}
       >
         <Input placeholder="+79991114455" />
       </Item>
 
       <Item className="reg-form__last">
         <Button loading={loading}>Зарегистрироваться</Button>
-        <CustomLink className="reg-form__link" to="/login">
+        <CustomLink className="reg-form__link" to={RoutePath.LOGIN}>
           Уже есть аккаунт? Войти
         </CustomLink>
       </Item>

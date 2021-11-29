@@ -11,4 +11,4 @@ function LinkedAvatar({user, className, to}: {user: IUserPreview; className: str
   );
 }
 
-export default LinkedAvatar;
+export default React.memo(LinkedAvatar);

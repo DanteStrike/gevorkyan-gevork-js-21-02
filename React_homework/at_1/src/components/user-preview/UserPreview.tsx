@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {EditOutlined} from '@ant-design/icons';
 import {IUser} from '../../types';
 import Loading from '../loading/Loading';
-import {DateUtils} from '../../utils';
+import {DataUtils, DateUtils, RouteUtils} from '../../utils';
 
 interface IUserPreviewProps {
   isUser: boolean;
@@ -14,7 +14,8 @@ interface IUserPreviewProps {
 
 function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
-  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
+  const name = DataUtils.collectFullName(firstName, lastName, title);
+  const profileEditRoute = RouteUtils.createProfileEditRoute(id);
 
   return (
     <article className="user-preview">
@@ -43,7 +44,7 @@ function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
       </p>
       {isUser && (
         <div className="user-preview__edit">
-          <Link className="user-preview__edit-text" to={`/profile/${id}/edit`}>
+          <Link className="user-preview__edit-text" to={profileEditRoute}>
             <EditOutlined />
             Редактировать
           </Link>

@@ -1,7 +1,7 @@
 import {RuleObject} from 'antd/es/form';
 import moment from 'moment';
 import {message, Upload} from 'antd';
-import DateUtils from './date';
+import DataUtils from './data';
 
 const requireValidator = (text: string) => () => ({
   validator(_: RuleObject, value: any) {
@@ -30,7 +30,7 @@ const sevenYearsOldValidator = yearOldValidator(7);
 
 const userNameValidator = () => ({
   validator(_: RuleObject, value: any) {
-    const {firstName, lastName} = DateUtils.normalizeName(value);
+    const {firstName, lastName} = DataUtils.normalizeName(value);
 
     if (firstName.length < 2 || lastName.length < 2) {
       return Promise.reject(new Error('Имя и фамилия должны содержать больше 2-х символов'));
@@ -57,6 +57,7 @@ const imageValidator = (file: File) => {
 };
 
 const phoneFormatValidator = {pattern: new RegExp(`^\\+?7(\\d{10})$`), message: 'Введите корректный телефон'};
+const emailFormatValidator = {type: 'email' as any, message: 'Введите корректную почту'};
 const disableDateOverCurrent = (current: moment.Moment) => current && current > moment();
 
 export default {
@@ -71,4 +72,5 @@ export default {
   phoneFormatValidator,
   disableDateOverCurrent,
   requireValidatorID,
+  emailFormatValidator,
 };

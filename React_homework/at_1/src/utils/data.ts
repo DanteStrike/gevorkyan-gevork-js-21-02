@@ -48,6 +48,20 @@ const createDefaultUsers = (amount: number) => new Array(amount).fill(``).map(cr
 const createDefaultPosts = (amount: number) => new Array(amount).fill(``).map(createDefaultPost);
 const createDefaultComments = (amount: number) => new Array(amount).fill(``).map(createDefaultComment);
 
+const normalizeName = (name: string) => {
+  const [firstName, ...other] = name.trim().split(` `);
+  const lastName = other.join(``);
+
+  return {
+    firstName,
+    lastName,
+  };
+};
+
+const collectName = (firstName: string, lastName: string): string => `${firstName} ${lastName}`.trim();
+const collectFullName = (firstName: string, lastName: string, title: string | undefined): string =>
+  `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
+
 export default {
   createDefaultUser,
   createDefaultPost,
@@ -56,4 +70,7 @@ export default {
   createDefaultFullUser,
   createDefaultComment,
   createDefaultComments,
+  normalizeName,
+  collectName,
+  collectFullName,
 };

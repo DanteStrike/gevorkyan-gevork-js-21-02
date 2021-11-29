@@ -2,6 +2,8 @@ import React from 'react';
 import './Auth.scss';
 import {Avatar} from 'antd';
 import CustomLink from '../custom-link/CustomLink';
+import {RoutePath} from '../../enums';
+import {RouteUtils} from '../../utils';
 
 interface IAuthProps {
   isAuth: boolean;
@@ -23,21 +25,22 @@ function Auth({
   },
 }: IAuthProps) {
   const {name, picture, id} = authUser;
+  const profileRoute = RouteUtils.createProfileRoute(id);
 
   return (
     <div className="auth">
       {!isAuth ? (
         <>
-          <CustomLink className="auth__link auth__link--left" to="/login">
+          <CustomLink className="auth__link auth__link--left" to={RoutePath.LOGIN}>
             Вход
           </CustomLink>
-          <CustomLink className="auth__link" to="/registration">
+          <CustomLink className="auth__link" to={RoutePath.REGISTRATION}>
             Регистрация
           </CustomLink>
         </>
       ) : (
         <>
-          <CustomLink className="auth__link auth__link--left auth__link--profile" to={`/profile/${id}`}>
+          <CustomLink className="auth__link auth__link--left auth__link--profile" to={profileRoute}>
             <Avatar src={picture} />
             <span className="auth__user">{name}</span>
           </CustomLink>

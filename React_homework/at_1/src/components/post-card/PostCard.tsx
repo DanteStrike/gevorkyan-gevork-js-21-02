@@ -5,7 +5,7 @@ import {IPostPreview} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
 import Loading from '../loading/Loading';
-import {DateUtils} from '../../utils';
+import {DataUtils, DateUtils, RouteUtils} from '../../utils';
 
 interface IPostCard {
   post: IPostPreview;
@@ -18,8 +18,10 @@ interface IPostCard {
 function PostCard({hideTop = false, post, modal, renderComments, isLoading = false}: IPostCard) {
   const {owner, publishDate, image, text, id} = post;
   const {firstName, lastName, title} = owner;
-  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
-  const profileRoute = `/profile/${owner.id}`;
+  const name = DataUtils.collectFullName(firstName, lastName, title);
+  const profileRoute = RouteUtils.createProfileRoute(owner.id);
+  const profilePostRoute = RouteUtils.createProfilePostRoute(owner.id, post.id);
+  const postsPostRoute = RouteUtils.createPostsPost(post.id);
 
   return (
     <article className={`post-card ${hideTop ? `post-card--top-hide` : ``} ${modal ? `post-card--modal` : ``}`}>
@@ -39,7 +41,7 @@ function PostCard({hideTop = false, post, modal, renderComments, isLoading = fal
           <p className="post-card__date">{DateUtils.normalizeCardDate(publishDate)}</p>
         </div>
       </div>
-      <CustomLink className="post-card__main" to={hideTop ? `${profileRoute}/${post.id}` : `/posts/${post.id}`}>
+      <CustomLink className="post-card__main" to={hideTop ? `${profilePostRoute}` : `${postsPostRoute}`}>
         <img className="post-card__img" src={image} alt={id} />
         <p className="post-card__text">{text}</p>
       </CustomLink>

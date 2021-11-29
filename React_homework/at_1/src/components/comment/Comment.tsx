@@ -3,7 +3,7 @@ import {IComment} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
 import './Comment.scss';
-import {DateUtils} from '../../utils';
+import {DataUtils, DateUtils, RouteUtils} from '../../utils';
 
 interface ICommentProps {
   comment: IComment;
@@ -12,8 +12,8 @@ interface ICommentProps {
 function Comment({comment}: ICommentProps) {
   const {owner, publishDate, message} = comment;
   const {firstName, lastName, title} = owner;
-  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
-  const profileRoute = `/profile/${owner.id}`;
+  const name = DataUtils.collectFullName(firstName, lastName, title);
+  const profileRoute = RouteUtils.createProfileRoute(owner.id);
 
   return (
     <article className="comment">
@@ -31,4 +31,4 @@ function Comment({comment}: ICommentProps) {
   );
 }
 
-export default Comment;
+export default React.memo(Comment);

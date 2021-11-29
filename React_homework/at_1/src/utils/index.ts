@@ -4,4 +4,5 @@ export {default as DataUtils} from './data';
 export {default as RequestUtils} from './request';
 export {default as DateUtils} from './date';
 export {default as FileUtils} from './file';
-export {default as AntdUtils} from './antd';
+export {default as ValidateUtils} from './validate';
+export {default as RouteUtils} from './route';

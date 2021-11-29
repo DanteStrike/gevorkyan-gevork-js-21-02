@@ -2,6 +2,7 @@ import React from 'react';
 import './UserCard.scss';
 import {Tooltip} from 'antd';
 import {IUserPreview} from '../../types';
+import {DataUtils} from '../../utils';
 
 interface IUserCardProps {
   user: IUserPreview;
@@ -9,7 +10,7 @@ interface IUserCardProps {
 
 function UserCard({user}: IUserCardProps) {
   const {firstName, lastName, title, picture} = user;
-  const name = `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
+  const name = DataUtils.collectFullName(firstName, lastName, title);
 
   return (
     <article className="user-card" id={`#user-${user.id}`}>

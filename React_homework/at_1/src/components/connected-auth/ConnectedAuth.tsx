@@ -20,4 +20,4 @@ function ConnectedAuth() {
   );
 }
 
-export default ConnectedAuth;
+export default React.memo(ConnectedAuth);

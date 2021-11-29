@@ -1,8 +1,8 @@
 import React from 'react';
-import "./MainLayout.scss";
-import Header from "../header/Header";
-import Routes from "../routes/Routes";
-import Footer from "../footer/Footer";
+import './MainLayout.scss';
+import Header from '../header/Header';
+import Routes from '../routes/Routes';
+import Footer from '../footer/Footer';
 
 function MainLayout() {
   return (
@@ -18,6 +18,6 @@ function MainLayout() {
       </div>
     </div>
   );
-};
+}
 
-export default MainLayout;
+export default React.memo(MainLayout);

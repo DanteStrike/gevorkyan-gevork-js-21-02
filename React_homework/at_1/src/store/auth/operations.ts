@@ -1,8 +1,9 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
-import {FetchErrorType, IUser, IUserRegistration, IUserUpdate} from '../../types';
+import {IUser, IUserRegistration, IUserUpdate} from '../../types';
 import {authStorageKey} from './types';
 import {profileActions} from '../profile';
+import {FetchErrorType} from '../../enums';
 
 const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
   const controller = new AbortController();

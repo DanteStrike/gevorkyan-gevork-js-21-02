@@ -3,6 +3,8 @@ import './LoginForm.scss';
 import {Form, Input} from 'antd';
 import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
+import {RoutePath} from '../../enums';
+import {ValidateUtils} from '../../utils';
 
 interface ILoginFormProps {
   loading?: boolean;
@@ -30,13 +32,13 @@ function LoginForm({onSubmit = () => {}, loading}: ILoginFormProps) {
         id: ``,
       }}
     >
-      <Item name="id" label="ID:" rules={[{required: true, message: 'Введите ID'}]}>
+      <Item name="id" label="ID:" rules={[ValidateUtils.requireValidatorID]}>
         <Input placeholder="Введите свой ID" />
       </Item>
 
       <Item className="login-form__last">
         <Button loading={loading}>Войти</Button>
-        <CustomLink className="login-form__link" to="/registration">
+        <CustomLink className="login-form__link" to={RoutePath.REGISTRATION}>
           Еще нет аккаунта? Зарегистрироваться
         </CustomLink>
       </Item>

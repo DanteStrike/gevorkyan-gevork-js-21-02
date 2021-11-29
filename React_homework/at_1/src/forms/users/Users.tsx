@@ -7,7 +7,6 @@ import useAppSelector from '../../hooks/use-app-selector';
 import {IUserPreview} from '../../types';
 import UserCard from '../../components/user-card/UserCard';
 import CustomLink from '../../components/custom-link/CustomLink';
-import {postsActions} from '../../store/posts';
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -25,8 +24,8 @@ function Users() {
 
   useEffect(
     () => () => {
-      dispatch(postsActions.requestAbort());
-      dispatch(postsActions.resetList());
+      dispatch(usersActions.requestAbort());
+      dispatch(usersActions.resetList());
     },
     [dispatch]
   );

@@ -10,6 +10,7 @@ import PageError from '../../forms/page-error/PageError';
 import useAppSelector from '../../hooks/use-app-selector';
 import {authSelectors} from '../../store/auth';
 import Edit from '../../forms/edit/Edit';
+import RoutePath from '../../enums/routes';
 
 interface IIDMatchParams {
   id: string;
@@ -23,14 +24,14 @@ function Routes() {
 
   return (
     <Switch>
-      <Route exact path="/">
-        <Redirect to="/registration" />
+      <Route exact path={RoutePath.BASE}>
+        <Redirect to={RoutePath.LOGIN} />
       </Route>
-      <Route exact path="/login" component={() => <Login />} />
-      <Route exact path="/registration" component={() => <Registration />} />
+      <Route exact path={RoutePath.LOGIN} component={() => <Login />} />
+      <Route exact path={RoutePath.REGISTRATION} component={() => <Registration />} />
       <Route
         exact
-        path="/profile/:id"
+        path={`${RoutePath.PROFILE}/:id`}
         render={({
           match: {
             params: {id},
@@ -39,7 +40,7 @@ function Routes() {
       />
       <Route
         exact
-        path="/profile/:id/edit"
+        path={`${RoutePath.PROFILE}/:id/edit`}
         render={({
           match: {
             params: {id},
@@ -51,13 +52,13 @@ function Routes() {
               <Edit />
             </>
           ) : (
-            <Redirect to="/denied" />
+            <Redirect to={RoutePath.DENIED} />
           )
         }
       />
       <Route
         exact
-        path="/profile/:id/:postID"
+        path={`${RoutePath.PROFILE}/:id/:postID`}
         render={({
           match: {
             params: {id, postID},
@@ -69,10 +70,10 @@ function Routes() {
           </>
         )}
       />
-      <Route exact path="/users" component={() => <Users />} />
-      <Route exact path="/posts" render={() => <Posts />} />
+      <Route exact path={RoutePath.USERS} component={() => <Users />} />
+      <Route exact path={RoutePath.POSTS} render={() => <Posts />} />
       <Route
-        path="/posts/:id"
+        path={`${RoutePath.POSTS}/:id`}
         exact
         render={({
           match: {
@@ -85,7 +86,7 @@ function Routes() {
           </>
         )}
       />
-      <Route exact path="/denied" render={() => <PageError title="Error: 403" text="Нет доступа" />} />
+      <Route exact path={RoutePath.DENIED} render={() => <PageError title="Error: 403" text="Нет доступа" />} />
       <Route render={() => <PageError title="Error: 404" text="Страница не найдена" />} />
     </Switch>
   );
