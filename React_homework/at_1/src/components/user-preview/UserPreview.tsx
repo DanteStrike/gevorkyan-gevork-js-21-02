@@ -3,6 +3,7 @@ import './UserPreview.scss';
 import {EditOutlined} from '@ant-design/icons';
 import {IUser} from '../../types';
 import Loading from '../loading/Loading';
+import {DateUtils} from "../../utils";
 
 interface IUserPreviewProps {
   isAuth: boolean;
@@ -24,10 +25,10 @@ function UserPreview({user, isLoading, isAuth}: IUserPreviewProps) {
           <span className="user-preview__prop">Пол:</span> {gender}
         </span>
         <span className="user-preview__row">
-          <span className="user-preview__prop">Дата рождения:</span> {dateOfBirth}
+          <span className="user-preview__prop">Дата рождения:</span> {DateUtils.normalizeProfileDate(dateOfBirth)}
         </span>
         <span className="user-preview__row">
-          <span className="user-preview__prop">Дата регистрации:</span> {registerDate}
+          <span className="user-preview__prop">Дата регистрации:</span> {DateUtils.normalizeProfileDate(registerDate)}
         </span>
         <span className="user-preview__row">
           <span className="user-preview__prop">Email:</span> {email}

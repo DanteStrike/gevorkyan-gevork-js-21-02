@@ -5,6 +5,7 @@ import {IPostPreview} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
 import Loading from "../loading/Loading";
+import {DateUtils} from "../../utils";
 
 interface IPostCard {
   post: IPostPreview;
@@ -35,7 +36,7 @@ function PostCard({hideTop = false, post, modal, renderComments, isLoading = fal
               <h2 className="post-card__title">{name}</h2>
             </CustomLink>
           </Tooltip>
-          <p className="post-card__date">{publishDate}</p>
+          <p className="post-card__date">{DateUtils.normalizeCardDate(publishDate)}</p>
         </div>
       </div>
       <CustomLink className="post-card__main" to={hideTop ? `${profileRoute}/${post.id}` : `/posts/${post.id}`}>
