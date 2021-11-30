@@ -6,6 +6,7 @@ import useAppSelector from '../../hooks/use-app-selector';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import {IUserRegistration} from '../../types';
+import {RouteUtils} from "../../utils";
 
 function Registration() {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ function Registration() {
 
   useEffect(() => {
     if (isAuth) {
-      history.push(`profile/${authID}`);
+      history.push(RouteUtils.createProfileRoute(authID));
     }
   }, [isAuth, history, authID]);
 
