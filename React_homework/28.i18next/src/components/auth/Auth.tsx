@@ -4,7 +4,7 @@ import {Avatar} from 'antd';
 import CustomLink from '../custom-link/CustomLink';
 import {RoutePath} from '../../enums';
 import {RouteUtils} from '../../utils';
-import useAppTranslation from "../../hooks/use-app-translation";
+import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IAuthProps {
   isAuth: boolean;

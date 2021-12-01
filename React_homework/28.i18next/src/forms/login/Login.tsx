@@ -6,7 +6,7 @@ import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import useAppSelector from '../../hooks/use-app-selector';
 import {RouteUtils} from '../../utils';
-import useAppTranslation from "../../hooks/use-app-translation";
+import useAppTranslation from '../../hooks/use-app-translation';
 
 function Login() {
   const {t} = useAppTranslation(`loginForm`);

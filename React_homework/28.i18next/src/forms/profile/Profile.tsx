@@ -9,12 +9,14 @@ import AppList, {AppListMod} from '../../components/app-list/AppList';
 import {IPostPreview} from '../../types';
 import PostCard from '../../components/post-card/PostCard';
 import {authSelectors} from '../../store/auth';
+import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IProfileProps {
   id: string;
 }
 
 function Profile({id}: IProfileProps) {
+  const {t} = useAppTranslation(`profile`);
   const dispatch = useAppDispatch();
   const authID = useAppSelector(authSelectors.getID);
   const isAuthLoading = useAppSelector(authSelectors.getIsLoading);
@@ -58,7 +60,7 @@ function Profile({id}: IProfileProps) {
     <ContentLayout
       type={ContentLayoutType.FULL}
       hideTitle
-      title="Профиль пользователя"
+      title={t(`title`)}
       isError={isProfileError || isUserPostsError}
       errMsg={errMsgProfile || errMsgUserPosts}
     >

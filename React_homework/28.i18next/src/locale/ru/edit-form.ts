@@ -4,24 +4,24 @@ const EDIT_FORM = {
   },
   name: {
     title: `ФИО:`,
-    placeholder: `Введите свое имя`
+    placeholder: `Введите свое имя`,
   },
   gender: {
     title: `Пол:`,
     options: {
       male: `Мужской`,
       female: `Женский`,
-      other: `Другой`
-    }
+      other: `Другой`,
+    },
   },
   dateOfBirth: {
     title: `Дата рождения:`,
-    placeholder: `Выберите дату`
+    placeholder: `Выберите дату`,
   },
   phone: {
-    title: `Телеофон:`
+    title: `Телеофон:`,
   },
-  save: `Сохранить`
-}
+  save: `Сохранить`,
+};
 
 export default EDIT_FORM;

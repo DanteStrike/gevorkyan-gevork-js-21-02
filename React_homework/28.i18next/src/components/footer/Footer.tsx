@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import ThemeSwitcher from '../theme-switcher/ThemeSwitcher';
-import LangSelector from "../lang-selector/LangSelector";
+import LangSelector from '../lang-selector/LangSelector';
 
 function Footer() {
   return (

@@ -2,19 +2,19 @@ const REG_FORM = {
   title: `Registration`,
   name: {
     title: `Full name:`,
-    placeholder: `Input full name`
+    placeholder: `Input full name`,
   },
   gender: {
     title: `Gender:`,
     options: {
       male: `Male`,
       female: `Female`,
-      other: `Other`
-    }
+      other: `Other`,
+    },
   },
   dateOfBirth: {
     title: `Date of birth:`,
-    placeholder: `Choose date`
+    placeholder: `Choose date`,
   },
   email: {
     title: `E-mail:`,
@@ -25,7 +25,7 @@ const REG_FORM = {
     placeholder: `+79995553322`,
   },
   register: `Register`,
-  message: `Do you have account? Login`
-}
+  message: `Do you have account? Login`,
+};
 
 export default REG_FORM;

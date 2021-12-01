@@ -7,7 +7,7 @@ import CustomLink from '../custom-link/CustomLink';
 import {IUserRegistration} from '../../types';
 import {RoutePath} from '../../enums';
 import {DataUtils, ValidateUtils} from '../../utils';
-import useAppTranslation from "../../hooks/use-app-translation";
+import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IRegFormProps {
   loading?: boolean;
@@ -52,7 +52,11 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
         phone: ``,
       }}
     >
-      <Item name="name" label={t(`name.title`)} rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}>
+      <Item
+        name="name"
+        label={t(`name.title`)}
+        rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}
+      >
         <Input placeholder={t(`name.placeholder`)} />
       </Item>
 

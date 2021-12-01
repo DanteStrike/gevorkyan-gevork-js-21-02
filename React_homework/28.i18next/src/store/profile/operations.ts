@@ -1,5 +1,6 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
+import i18next from '../../locale/i18next';
 import {IPosts, IUser} from '../../types';
 import {FetchErrorType} from '../../enums';
 import {RequestType} from './slices/fetch';
@@ -16,7 +17,9 @@ const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosIns
     })
     .catch((err) => {
       if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
-        dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(`Профиль не найден`));
+        dispatch(
+          actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(i18next.t(`error.network.notFoundProfile`))
+        );
       } else {
         dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFailed(err.message));
       }
@@ -52,7 +55,9 @@ const loadUserPosts =
       })
       .catch((err) => {
         if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
-          dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(`Профиль не найден`));
+          dispatch(
+            actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(i18next.t(`error.network.notFoundProfile`))
+          );
         } else {
           dispatch(actions.fetchActions[RequestType.LOAD_USER_POSTS].requestFailed(err.message));
         }

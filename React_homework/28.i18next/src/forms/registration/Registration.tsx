@@ -6,8 +6,8 @@ import useAppSelector from '../../hooks/use-app-selector';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import {IUserRegistration} from '../../types';
-import {RouteUtils} from "../../utils";
-import useAppTranslation from "../../hooks/use-app-translation";
+import {RouteUtils} from '../../utils';
+import useAppTranslation from '../../hooks/use-app-translation';
 
 function Registration() {
   const {t} = useAppTranslation(`regForm`);

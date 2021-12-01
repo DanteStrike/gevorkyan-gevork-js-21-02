@@ -1,4 +1,5 @@
 import {IPostPreview, IUser, IUserPreview} from '../types';
+import i18next from '../locale/i18next';
 
 const createDefaultUser = (): IUserPreview => ({
   id: ``,
@@ -60,7 +61,7 @@ const normalizeName = (name: string) => {
 
 const collectName = (firstName: string, lastName: string): string => `${firstName} ${lastName}`.trim();
 const collectFullName = (firstName: string, lastName: string, title: string | undefined): string =>
-  `${title ? `${title}. ` : ``}${lastName} ${firstName}`;
+  `${title ? `${i18next.t(`profile.userName.title.${title}`)}. ` : ``}${lastName} ${firstName}`;
 
 export default {
   createDefaultUser,

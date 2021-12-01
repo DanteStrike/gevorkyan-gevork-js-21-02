@@ -11,6 +11,7 @@ import useAppSelector from '../../hooks/use-app-selector';
 import {authSelectors} from '../../store/auth';
 import Edit from '../../forms/edit/Edit';
 import RoutePath from '../../enums/routes';
+import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IIDMatchParams {
   id: string;
@@ -20,6 +21,7 @@ interface IWithPostID extends IIDMatchParams {
 }
 
 function Routes() {
+  const {t} = useAppTranslation(`error.page`);
   const authID = useAppSelector(authSelectors.getID);
 
   return (
@@ -86,8 +88,8 @@ function Routes() {
           </>
         )}
       />
-      <Route exact path={RoutePath.DENIED} render={() => <PageError title="Error: 403" text="Нет доступа" />} />
-      <Route render={() => <PageError title="Error: 404" text="Страница не найдена" />} />
+      <Route exact path={RoutePath.DENIED} render={() => <PageError title="Error: 403" text={t(`permission`)} />} />
+      <Route render={() => <PageError title="Error: 404" text={t(`notFound`)} />} />
     </Switch>
   );
 }

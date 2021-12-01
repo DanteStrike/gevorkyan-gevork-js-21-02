@@ -1,5 +1,6 @@
 import {AxiosInstance} from 'axios';
 import actions from './actions';
+import i18next from '../../locale/i18next';
 import {IComments, IPostPreview} from '../../types';
 import {FetchErrorType} from '../../enums';
 import {RequestType} from './slices/fetch';
@@ -16,7 +17,7 @@ const loadPost = (id: string) => (dispatch: any, getState: any, api: AxiosInstan
     })
     .catch((err) => {
       if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
-        dispatch(actions.fetchActions[RequestType.LOAD_POST].requestFailed(`Пост не найден`));
+        dispatch(actions.fetchActions[RequestType.LOAD_POST].requestFailed(i18next.t(`error.network.notFoundPost`)));
       } else {
         dispatch(actions.fetchActions[RequestType.LOAD_POST].requestFailed(err.message));
       }
@@ -52,7 +53,9 @@ const loadComments =
       })
       .catch((err) => {
         if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
-          dispatch(actions.fetchActions[RequestType.LOAD_COMMENTS].requestFailed(`Пост не найден`));
+          dispatch(
+            actions.fetchActions[RequestType.LOAD_COMMENTS].requestFailed(i18next.t(`error.network.notFoundPost`))
+          );
         } else {
           dispatch(actions.fetchActions[RequestType.LOAD_COMMENTS].requestFailed(err.message));
         }

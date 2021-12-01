@@ -7,8 +7,10 @@ import useAppSelector from '../../hooks/use-app-selector';
 import {IUserPreview} from '../../types';
 import UserCard from '../../components/user-card/UserCard';
 import CustomLink from '../../components/custom-link/CustomLink';
+import useAppTranslation from '../../hooks/use-app-translation';
 
 function Users() {
+  const {t} = useAppTranslation(`menu`);
   const dispatch = useAppDispatch();
   const page = useAppSelector(usersSelectors.getPage);
   const total = useAppSelector(usersSelectors.getTotal);
@@ -35,7 +37,7 @@ function Users() {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок слушателей" isError={isError} errMsg={errMsg}>
+    <ContentLayout type={ContentLayoutType.FULL} hideTitle title={t(`users`)} isError={isError} errMsg={errMsg}>
       <AppList
         current={page}
         total={total}

@@ -4,7 +4,7 @@ import {UserOutlined, PictureOutlined} from '@ant-design/icons';
 import CustomLink from '../custom-link/CustomLink';
 import './Menu.scss';
 import {RoutePath} from '../../enums';
-import useAppTranslation from "../../hooks/use-app-translation";
+import useAppTranslation from '../../hooks/use-app-translation';
 
 const iconStyle = {
   fontSize: `20px`,

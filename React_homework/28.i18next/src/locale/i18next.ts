@@ -1,10 +1,9 @@
 import i18next from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import RU from './ru'
-import EN from './en'
-
+import RU from './ru';
+import EN from './en';
 
 i18next
   .use(initReactI18next)
@@ -14,10 +13,10 @@ i18next
     fallbackLng: 'ru',
     resources: {
       en: {
-        translation: EN
+        translation: EN,
       },
       ru: {
-        translation: RU
+        translation: RU,
       },
     },
   });

@@ -6,7 +6,7 @@ import './EditForm.scss';
 import {ValidateUtils, DataUtils, FileUtils, ObjectUtils, RequestUtils} from '../../utils';
 import {IUser, IUserUpdate, UserGenderType} from '../../types';
 import UploadButton from '../upload-button/UploadButton';
-import useAppTranslation from "../../hooks/use-app-translation";
+import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IEditFormProps {
   user: IUser;
@@ -110,8 +110,12 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
         </Upload>
       </Item>
 
-      <Item name="name" label={t(`name.title`)} rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}>
-        <Input placeholder={t(`name.placeholder`)}/>
+      <Item
+        name="name"
+        label={t(`name.title`)}
+        rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}
+      >
+        <Input placeholder={t(`name.placeholder`)} />
       </Item>
 
       <Item name="gender" label={t(`gender.title`)} rules={[ValidateUtils.requireValidatorGender]}>

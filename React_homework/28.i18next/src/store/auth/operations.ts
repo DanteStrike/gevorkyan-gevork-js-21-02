@@ -1,4 +1,5 @@
 import {AxiosInstance} from 'axios';
+import i18next from '../../locale/i18next';
 import actions from './actions';
 import {IUser, IUserRegistration, IUserUpdate} from '../../types';
 import {authStorageKey} from './types';
@@ -17,7 +18,7 @@ const login = (id: string) => (dispatch: any, _: any, api: AxiosInstance) => {
     })
     .catch((err) => {
       if (err.response?.data?.error === FetchErrorType.PARAMS_NOT_VALID) {
-        dispatch(actions.requestFailed(`Такого ID не существует`));
+        dispatch(actions.requestFailed(i18next.t(`error.network.notFoundID`)));
         dispatch(actions.logout());
       } else {
         dispatch(actions.requestFailed(err.message));
@@ -38,7 +39,7 @@ const registration = (data: IUserRegistration) => (dispatch: any, _: any, api: A
     })
     .catch((err) => {
       if (err.response?.data?.error === FetchErrorType.BODY_NOT_VALID && err.response?.data?.data?.email) {
-        dispatch(actions.requestFailed(`Пользователь с такой почтой уже зарегистрирован`));
+        dispatch(actions.requestFailed(i18next.t(`error.network.emailExist`)));
       } else {
         dispatch(actions.requestFailed(err.message));
       }

@@ -2,19 +2,19 @@ const REG_FORM = {
   title: `Регистрация`,
   name: {
     title: `ФИО:`,
-    placeholder: `Введите свое имя`
+    placeholder: `Введите свое имя`,
   },
   gender: {
     title: `Пол:`,
     options: {
       male: `Мужской`,
       female: `Женский`,
-      other: `Другой`
-    }
+      other: `Другой`,
+    },
   },
   dateOfBirth: {
     title: `Дата рождения:`,
-    placeholder: `Выберите дату`
+    placeholder: `Выберите дату`,
   },
   email: {
     title: `E-mail:`,
@@ -25,7 +25,7 @@ const REG_FORM = {
     placeholder: `+79995553322`,
   },
   register: `Зарегистрироваться`,
-  message: `Уже есть аккаунт? Войти`
-}
+  message: `Уже есть аккаунт? Войти`,
+};
 
 export default REG_FORM;

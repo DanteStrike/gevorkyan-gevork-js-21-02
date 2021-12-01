@@ -4,24 +4,24 @@ const EDIT_FORM = {
   },
   name: {
     title: `Full name:`,
-    placeholder: `Input full name`
+    placeholder: `Input full name`,
   },
   gender: {
     title: `Gender:`,
     options: {
       male: `Male`,
       female: `Female`,
-      other: `Other`
-    }
+      other: `Other`,
+    },
   },
   dateOfBirth: {
     title: `Date of birth:`,
-    placeholder: `Choose date`
+    placeholder: `Choose date`,
   },
   phone: {
-    title: `Phone:`
+    title: `Phone:`,
   },
-  save: `Save`
-}
+  save: `Save`,
+};
 
 export default EDIT_FORM;

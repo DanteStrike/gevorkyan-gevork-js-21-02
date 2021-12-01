@@ -6,8 +6,10 @@ import {postsActions, postsOperations, postsSelectors} from '../../store/posts';
 import {IPostPreview} from '../../types';
 import AppList from '../../components/app-list/AppList';
 import PostCard from '../../components/post-card/PostCard';
+import useAppTranslation from '../../hooks/use-app-translation';
 
 function Posts() {
+  const {t} = useAppTranslation(`menu`);
   const dispatch = useAppDispatch();
   const page = useAppSelector(postsSelectors.getPage);
   const total = useAppSelector(postsSelectors.getTotal);
@@ -34,7 +36,7 @@ function Posts() {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title="Спиок постов" isError={isError} errMsg={errMsg}>
+    <ContentLayout type={ContentLayoutType.FULL} hideTitle title={t(`users`)} isError={isError} errMsg={errMsg}>
       <AppList
         current={page}
         total={total}

@@ -1,7 +1,7 @@
 const AUTH = {
   login: `Login`,
   registration: `Registration`,
-  logout: `Logout`
-}
+  logout: `Logout`,
+};
 
 export default AUTH;
