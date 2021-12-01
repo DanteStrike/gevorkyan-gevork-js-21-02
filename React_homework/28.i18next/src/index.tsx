@@ -10,6 +10,7 @@ import App from './App';
 import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import {ThemeProvider} from './context/ThemeContext';
 import configuredStore from './store';
+import './locale/i18next';
 
 OverlayScrollbars(document.body, {
   nativeScrollbarsOverlaid: {
