@@ -1,4 +1,5 @@
 const REG_FORM = {
+  title: `Registration`,
   name: {
     title: `Full name:`,
     placeholder: `Input full name`

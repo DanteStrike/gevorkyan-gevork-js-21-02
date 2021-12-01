@@ -1,4 +1,5 @@
 const REG_FORM = {
+  title: `Регистрация`,
   name: {
     title: `ФИО:`,
     placeholder: `Введите свое имя`

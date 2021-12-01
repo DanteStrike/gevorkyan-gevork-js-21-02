@@ -5,6 +5,7 @@ import Button from '../submit-button/SubmitButton';
 import CustomLink from '../custom-link/CustomLink';
 import {RoutePath} from '../../enums';
 import {ValidateUtils} from '../../utils';
+import useAppTranslation from "../../hooks/use-app-translation";
 
 interface ILoginFormProps {
   loading?: boolean;
@@ -14,6 +15,7 @@ interface ILoginFormProps {
 const {Item} = Form;
 
 function LoginForm({onSubmit = () => {}, loading}: ILoginFormProps) {
+  const {t} = useAppTranslation(`loginForm`);
   const [form] = Form.useForm();
 
   const handleFormFinish = (filedValues: {id: string}) => {
@@ -33,13 +35,13 @@ function LoginForm({onSubmit = () => {}, loading}: ILoginFormProps) {
       }}
     >
       <Item name="id" label="ID:" rules={[ValidateUtils.requireValidatorID]}>
-        <Input placeholder="Введите свой ID" />
+        <Input placeholder={t(`id.placeholder`)} />
       </Item>
 
       <Item className="login-form__last">
-        <Button loading={loading}>Войти</Button>
+        <Button loading={loading}>{t(`enter`)}</Button>
         <CustomLink className="login-form__link" to={RoutePath.REGISTRATION}>
-          Еще нет аккаунта? Зарегистрироваться
+          {t(`message`)}
         </CustomLink>
       </Item>
     </Form>

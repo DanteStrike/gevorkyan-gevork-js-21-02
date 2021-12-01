@@ -6,8 +6,10 @@ import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import useAppSelector from '../../hooks/use-app-selector';
 import {RouteUtils} from '../../utils';
+import useAppTranslation from "../../hooks/use-app-translation";
 
 function Login() {
+  const {t} = useAppTranslation(`loginForm`);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const isAuth = useAppSelector(authSelectors.getIsAuth);
@@ -34,7 +36,7 @@ function Login() {
   );
 
   return (
-    <ContentLayout type={ContentLayoutType.CONTENT} title="Вход" isError={isError} errMsg={errMsg}>
+    <ContentLayout type={ContentLayoutType.CONTENT} title={t(`title`)} isError={isError} errMsg={errMsg}>
       <LoginForm onSubmit={handleLogin} loading={isLoading} />
     </ContentLayout>
   );

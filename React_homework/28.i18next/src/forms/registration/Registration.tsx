@@ -7,8 +7,10 @@ import useAppDispatch from '../../hooks/use-app-dispatch';
 import {authActions, authOperations, authSelectors} from '../../store/auth';
 import {IUserRegistration} from '../../types';
 import {RouteUtils} from "../../utils";
+import useAppTranslation from "../../hooks/use-app-translation";
 
 function Registration() {
+  const {t} = useAppTranslation(`regForm`);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const isAuth = useAppSelector(authSelectors.getIsAuth);
@@ -35,7 +37,7 @@ function Registration() {
   );
 
   return (
-    <ContentLayout type={ContentLayoutType.CONTENT} title="Регистрация" isError={isError} errMsg={errMsg}>
+    <ContentLayout type={ContentLayoutType.CONTENT} title={t(`title`)} isError={isError} errMsg={errMsg}>
       <RegForm loading={isLoading} onSubmit={handleRegistration} />
     </ContentLayout>
   );
