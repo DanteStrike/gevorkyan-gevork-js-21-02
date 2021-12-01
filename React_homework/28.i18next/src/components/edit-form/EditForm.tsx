@@ -6,6 +6,7 @@ import './EditForm.scss';
 import {ValidateUtils, DataUtils, FileUtils, ObjectUtils, RequestUtils} from '../../utils';
 import {IUser, IUserUpdate, UserGenderType} from '../../types';
 import UploadButton from '../upload-button/UploadButton';
+import useAppTranslation from "../../hooks/use-app-translation";
 
 interface IEditFormProps {
   user: IUser;
@@ -33,6 +34,7 @@ const avatarStyle = {width: '100%', height: '100%'};
 const {Item} = Form;
 
 function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
+  const {t} = useAppTranslation(`editForm`);
   const [avatar, setAvatar] = useState<IEditFormState>({
     loading: false,
     img: user.picture || null,
@@ -93,7 +95,7 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       onFinish={handleFormFinish}
       initialValues={defaultValues}
     >
-      <Item name="picture" label="Аватарка:" valuePropName="file" getValueFromEvent={normFile} noStyle>
+      <Item name="picture" label={t(`avatar`)} valuePropName="file" getValueFromEvent={normFile} noStyle>
         <Upload
           name="avatar"
           listType="picture-card"
@@ -108,40 +110,40 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
         </Upload>
       </Item>
 
-      <Item name="name" label="ФИО:" rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}>
-        <Input />
+      <Item name="name" label={t(`name.title`)} rules={[ValidateUtils.requireValidatorName, ValidateUtils.userNameValidator]}>
+        <Input placeholder={t(`name.placeholder`)}/>
       </Item>
 
-      <Item name="gender" label="Пол:" rules={[ValidateUtils.requireValidatorGender]}>
+      <Item name="gender" label={t(`gender.title`)} rules={[ValidateUtils.requireValidatorGender]}>
         <Select>
-          <Select.Option value="male">Муржской</Select.Option>
-          <Select.Option value="female">Женский</Select.Option>
-          <Select.Option value="other">Другой</Select.Option>
+          <Select.Option value="male">{t(`gender.options.male`)}</Select.Option>
+          <Select.Option value="female">{t(`gender.options.female`)}</Select.Option>
+          <Select.Option value="other">{t(`gender.options.other`)}</Select.Option>
         </Select>
       </Item>
 
       <Item
         name="dateOfBirth"
-        label="Дата рождения:"
+        label={t(`dateOfBirth.title`)}
         rules={[ValidateUtils.requireValidatorBirth, ValidateUtils.sevenYearsOldValidator]}
       >
         <DatePicker
           className="edit-form__date-picker"
-          placeholder="Выберите дату"
+          placeholder={t(`dateOfBirth.placeholder`)}
           disabledDate={ValidateUtils.disableDateOverCurrent}
         />
       </Item>
 
       <Item
         name="phone"
-        label="Телефон:"
+        label={t(`phone.title`)}
         rules={[ValidateUtils.requireValidatorPhone, ValidateUtils.phoneFormatValidator]}
       >
         <Input />
       </Item>
 
       <Item className="edit-form__last">
-        <Button loading={loading}>Сохранить</Button>
+        <Button loading={loading}>{t(`save`)}</Button>
       </Item>
     </Form>
   );

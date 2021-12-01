@@ -81,7 +81,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
         label={t(`email.title`)}
         rules={[ValidateUtils.requireValidatorEmail, ValidateUtils.emailFormatValidator]}
       >
-        <Input placeholder="anonim@gmail.com" />
+        <Input placeholder={t(`email.placeholder`)} />
       </Item>
 
       <Item
@@ -89,7 +89,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
         label={t(`phone.title`)}
         rules={[ValidateUtils.requireValidatorPhone, ValidateUtils.phoneFormatValidator]}
       >
-        <Input placeholder="+79991114455" />
+        <Input placeholder={t(`phone.placeholder`)} />
       </Item>
 
       <Item className="reg-form__last">

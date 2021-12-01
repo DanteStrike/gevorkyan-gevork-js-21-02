@@ -1,5 +1,7 @@
-const REG_FORM = {
-  title: `Регистрация`,
+const EDIT_FORM = {
+  avatar: {
+    title: `Аватар`,
+  },
   name: {
     title: `ФИО:`,
     placeholder: `Введите свое имя`
@@ -16,16 +18,10 @@ const REG_FORM = {
     title: `Дата рождения:`,
     placeholder: `Выберите дату`
   },
-  email: {
-    title: `E-mail:`,
-    placeholder: `anonim@gmail.com`,
-  },
   phone: {
-    title: `Телеофон:`,
-    placeholder: `+79995553322`,
+    title: `Телеофон:`
   },
-  register: `Зарегистрироваться`,
-  message: `Уже есть аккаунт? Войти`
+  save: `Сохранить`
 }
 
-export default REG_FORM;
+export default EDIT_FORM;
