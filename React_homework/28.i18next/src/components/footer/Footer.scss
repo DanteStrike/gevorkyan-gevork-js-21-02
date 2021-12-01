@@ -20,8 +20,9 @@
     font-size: 18px;
   }
 
-  &__item--switcher {
-    justify-content: flex-end;
+  &__item--switchers {
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -45,7 +46,8 @@
       order: 2;
     }
 
-    &__item--switcher {
+    &__item--switchers {
+      justify-content: space-around;
       order: 1;
     }
   }
