@@ -4,6 +4,7 @@ import {Avatar} from 'antd';
 import CustomLink from '../custom-link/CustomLink';
 import {RoutePath} from '../../enums';
 import {RouteUtils} from '../../utils';
+import useAppTranslation from "../../hooks/use-app-translation";
 
 interface IAuthProps {
   isAuth: boolean;
@@ -24,6 +25,7 @@ function Auth({
     picture: ``,
   },
 }: IAuthProps) {
+  const {t} = useAppTranslation(`auth`);
   const {name, picture, id} = authUser;
   const profileRoute = RouteUtils.createProfileRoute(id);
 
@@ -32,10 +34,10 @@ function Auth({
       {!isAuth ? (
         <>
           <CustomLink className="auth__link auth__link--left" to={RoutePath.LOGIN}>
-            Вход
+            {t(`login`)}
           </CustomLink>
           <CustomLink className="auth__link" to={RoutePath.REGISTRATION}>
-            Регистрация
+            {t(`registration`)}
           </CustomLink>
         </>
       ) : (
@@ -45,7 +47,7 @@ function Auth({
             <span className="auth__user">{name}</span>
           </CustomLink>
           <button type="button" className="auth__btn" onClick={onLogout}>
-            Выход
+            {t(`logout`)}
           </button>
         </>
       )}
