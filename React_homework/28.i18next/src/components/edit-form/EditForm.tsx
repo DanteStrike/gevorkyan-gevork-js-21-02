@@ -141,7 +141,7 @@ function EditForm({user, onSubmit = () => {}, loading}: IEditFormProps) {
       <Item
         name="phone"
         label={t(`phone.title`)}
-        rules={[ValidateUtils.requireValidatorPhone, ValidateUtils.phoneFormatValidator]}
+        rules={[ValidateUtils.requireValidatorPhone, ValidateUtils.phoneFormatValidator()]}
       >
         <Input />
       </Item>
