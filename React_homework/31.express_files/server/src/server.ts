@@ -21,11 +21,13 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', router);
+app.use(`*`, (req: Request, res: Response) => {
+  res.status(404).send(`Api not found`);
+})
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   console.log(err);
-  logger.fatal(LoggerMessages.AppCore.FATAL_ERROR);
-  logger.fatal(err);
+  logger.fatal(LoggerMessages.AppCore.FATAL_ERROR, err);
   res.status(500).send(`Internal Server Error`);
   next();
 });

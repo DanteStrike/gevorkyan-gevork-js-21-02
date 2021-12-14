@@ -23,7 +23,7 @@ class FileService {
   static updateFile(req: Request, res: Response) {
     logger.info(LoggerMessages.FileService.UPDATE_FILE_INPUT_PARAMS, JSON.stringify(req.body));
 
-    if (!req.body.file) {
+    if (req.body.file === undefined) {
       logger.info(LoggerMessages.FileService.UPDATE_FILE_INPUT_PARAMS_FILE);
       res.status(404).json(`Not found: file params undefined`);
       return;

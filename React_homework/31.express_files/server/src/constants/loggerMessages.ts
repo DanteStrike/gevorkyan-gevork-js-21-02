@@ -1,6 +1,6 @@
 export namespace LoggerMessages {
   export enum AppCore {
-    FATAL_ERROR = `app crashed with unexpected fatal error`,
+    FATAL_ERROR = `app crashed with unexpected fatal error = {}`,
   }
 
   export enum FileService {
