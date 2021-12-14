@@ -1,26 +1,31 @@
-export enum UserService {
-  GET_USER_LIST_INPUT_PARAMS = '[UserService.getUserList] NO INPUT PARAMS',
-  GET_USER_LIST_SUCCESS = '[UserService.getUserList] success status={} response={}',
-  GET_USER_LIST_ERROR = '[UserService.getUserList] error status={} response={}',
-  CREATE_USER_INPUT_PARAMS = '[UserService.createUser] INPUT PARAMS body={}',
-  CREATE_USER_SUCCESS = '[UserService.createUser] success status={} response={}',
-  CREATE_USER_FAIL = '[UserService.createUser] fail status={} response={}',
-  CREATE_USER_ERROR = '[UserService.createUser] error status={} response={}',
+export namespace LoggerMessages {
+  export enum AppCore {
+    FATAL_ERROR = `app crashed with unexpected fatal error`,
+  }
+
+  export enum FileService {
+    GET_FILE_INPUT_PARAMS = `[FileService.getFile] NO NEED INPUT PARAMS`,
+    GET_FILE_SUCCESS = '[FileService.getFile] success status={} response={}',
+    GET_FILE_ERROR = '[FileService.getFile] error status={} response={}',
+    UPDATE_FILE_INPUT_PARAMS = '[FileService.updateFile] INPUT PARAMS body={}',
+    UPDATE_FILE_INPUT_PARAMS_FILE = '[FileService.updateFile] INPUT PARAMS body.file undefined',
+    UPDATE_FILE_SUCCESS = '[FileService.updateFile] success status={} response={}',
+    UPDATE_FILE_ERROR = '[FileService.updateFile] error status={} response={}',
+  }
+
+  export enum FileRepository {
+    GET_FILE_CONTENT_READ = '[FileRepository.getFileContent] invoke fs.readFile',
+    GET_FILE_CONTENT_READ_SUCCESS = '[FileRepository.getFileContent] fs.readFile success result={}',
+    GET_FILE_CONTENT_READ_ERROR = '[FileRepository.getFileContent] fs.readFile error {}',
+    UPDATE_FILE_CONTENT_WRITE = '[FileRepository.updateFileContent] invoke fs.writeFile',
+    UPDATE_FILE_CONTENT_WRITE_SUCCESS = '[FileRepository.updateFileContent] fs.writeFile success',
+    UPDATE_FILE_CONTENT_WRITE_ERROR = '[FileRepository.updateFileContent] fs.writeFile error {}',
+    UPDATE_FILE_CONTENT_READ = '[FileRepository.updateFileContent] invoke [FileRepository.getFileContent]',
+  }
 }
 
-export enum UserRepository {
-  GET_USER_LIST_THIRD_PARTY_INVOKE = '[UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty',
-  GET_USER_LIST_THIRD_PARTY_REPLY_SUCCESS = '[UserRepository.getUserListThirdParty] reply {}',
-  GET_USER_LIST_THIRD_PARTY_REPLY_ERROR = '[UserRepository.getUserListThirdParty] error {}',
-  GET_USER_LIST_THIRD_PARTY_REPLY_RESULT = '[UserRepository.getUserListThirdParty] result {}',
-}
-
-export enum UserActions {
-  CREATE_USER_INVOKE = '[UserActions.createUser] invoke fakeApi.fakeCreateUser name={} lastName={}',
-  CREATE_USER_REPLY_SUCCESS = '[UserActions.createUser] success {}',
-  CREATE_USER_REPLY_ERROR = '[UserActions.createUser] error {}',
-}
-
-// type ValuesOf<E> = E[keyof E];
-// type Enums = UserService | UserRepository | UserActions;
-export type LoggerMessagesType = UserService | UserRepository | UserActions;
+type ValuesOf<E> = E[keyof E];
+type Enums = typeof LoggerMessages;
+export type LoggerMessagesType = {
+  [k in keyof Enums]: ValuesOf<Enums[k]>;
+}[keyof Enums];

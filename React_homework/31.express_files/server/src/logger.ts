@@ -2,10 +2,9 @@ import context from 'request-context';
 import {createRollingFileLogger} from 'simple-node-logger';
 import format from 'string-format';
 import {LoggerMessagesType} from './constants/loggerMessages';
-import loggerContextName from './constants/loggerContextName';
 import loggerConfig from './configs/loggerConfig';
 
-const logger = createRollingFileLogger(loggerConfig);
+const logger = createRollingFileLogger(loggerConfig.options);
 
 type LoggerArgsType = Array<{[k: string]: any} | string | number>;
 type FormatArgsType = Array<{[k: string]: any} | string>;
@@ -14,7 +13,7 @@ const normalizeArgsForFormat = (...args: LoggerArgsType): FormatArgsType =>
   args.map((arg) => (typeof arg !== `object` ? arg.toString() : arg));
 
 const collectLogMessage = (message: LoggerMessagesType, ...args: LoggerArgsType): string =>
-  `|ID: ${context.get(loggerContextName)}| ${format(message, ...normalizeArgsForFormat(...args))}`;
+  `|ID: ${context.get(loggerConfig.contextName)}| ${format(message, ...normalizeArgsForFormat(...args))}`;
 
 export default {
   ...logger,

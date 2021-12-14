@@ -1,7 +1,10 @@
 const loggerConfig = {
-  logDirectory: './logs',
-  fileNamePattern: '<DATE>.log',
-  dateFormat: 'DD.MM.YYYY',
+  contextName: `uuid`,
+  options: {
+    logDirectory: './logs',
+    fileNamePattern: '<DATE>.log',
+    dateFormat: 'DD.MM.YYYY',
+  },
 };
 
 export default loggerConfig;
