@@ -1,0 +1,17 @@
+.app {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 15px;
+  background-color: #e6e6e6;
+}
+
+.app__title {
+  text-align: center;
+}
+
+.app__save {
+  width: 100%;
+  text-align: center;
+}
