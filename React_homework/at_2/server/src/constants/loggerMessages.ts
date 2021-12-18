@@ -10,6 +10,10 @@ export namespace LoggerMessages {
     GET_USER_ERROR = `[UserService.getUser] failed: status = {}, response = {}`,
     GET_USER_NORMALIZED = `[UserService.getUser] after mapping date = {}`,
 
+    GET_USER_POSTS_INPUT_PARAMS = `[UserService.getUser] Input params: id = {}, limit = {}, page = {}`,
+    GET_USER_POSTS_SUCCESS = `[UserService.getUser] success: status = {}, response = {}`,
+    GET_USER_POSTS_ERROR = `[UserService.getUser] failed: status = {}, response = {}`,
+
     GET_USERS_LIST_INPUT_PARAMS = `[UserService.getUsersList] Input params: limit = {}, page = {}`,
     GET_USERS_LIST_SUCCESS = `[UserService.getUsersList] success: status = {}, response = {}`,
     GET_USERS_LIST_ERROR = `[UserService.getUsersList] failed: status = {}, response = {}`,
@@ -31,6 +35,10 @@ export namespace LoggerMessages {
     GET_USER_BY_ID_FROM_DUMMY_API_START = `[UserRepository.getUserByIDFromDummyAPI] starting request to dummyAPI: req = {}`,
     GET_USER_BY_ID_FROM_DUMMY_API_SUCCESS = `[UserRepository.getUserByIDFromDummyAPI] request success: status = {}, data = {}`,
     GET_USER_BY_ID_FROM_DUMMY_API_ERROR = `[UserRepository.getUserByIDFromDummyAPI] request failed: status = {}, error = {}`,
+
+    GET_USER_POSTS_FROM_DUMMY_API_START = `[UserRepository.getUserPostsFromDummyAPI] starting request to dummyAPI: req = {}`,
+    GET_USER_POSTS_FROM_DUMMY_API_SUCCESS = `[UserRepository.getUserPostsFromDummyAPI] request success: status = {}, data = {}`,
+    GET_USER_POSTS_FROM_DUMMY_API_ERROR = `[UserRepository.getUserPostsFromDummyAPI] request failed: status = {}, error = {}`,
   }
 
   export enum UserActions {

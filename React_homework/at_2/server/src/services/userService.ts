@@ -7,7 +7,7 @@ import {IPaginationParams} from "../types/params";
 import {IError} from "../types/error";
 import UserMapper from "../mappers/userMapper";
 import {IUser, IUserRegistration, IUserUpdate} from "../types/user";
-import {IUsers} from "../types/lists";
+import {IPosts, IUsers} from "../types/lists";
 import UserActions from "../actions/userActions";
 
 class UserService {
@@ -90,6 +90,29 @@ class UserService {
       .catch((error: IError) => {
 
         logger.info(LoggerMessages.UserService.UPDATE_USER_ERROR, error.status, error.data);
+
+        res.status(error.status).json(error.data);
+      })
+  }
+
+  static getUserPosts(req: Request<{id: string},IPosts,any,IPaginationParams>, res: Response) {
+    const params: Required<IPaginationParams> = {
+      limit: req.query.limit || `0`,
+      page: req.query.page || `0`
+    }
+
+    logger.info(LoggerMessages.UserService.GET_USER_POSTS_INPUT_PARAMS, req.params.id, params.limit, params.page)
+
+    UserRepository.getUserPostsFromDummyAPI(req.params.id, params.limit, params.page)
+      .then((response) => {
+
+        logger.info(LoggerMessages.UserService.GET_USER_POSTS_SUCCESS, response.status, response.data);
+
+        res.status(response.status).json(response.data);
+      })
+      .catch((error: IError) => {
+
+        logger.info(LoggerMessages.UserService.GET_USER_POSTS_ERROR, error.status, error.data);
 
         res.status(error.status).json(error.data);
       })
