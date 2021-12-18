@@ -65,6 +65,13 @@ export namespace LoggerMessages {
     GET_POST_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
   }
 
+  export enum CommentService {
+    GET_COMMENTS_INPUT_PARAMS = `[CommentService.getComments] Input params: id = {}`,
+    GET_COMMENTS_SUCCESS = `[CommentService.getComments] success: status = {}, response = {}`,
+    GET_COMMENTS_ERROR = `[CommentService.getComments] failed: status = {}, response = {}`,
+    GET_COMMENTS_NORMALIZED = `[CommentService.getComments] after mapping date = {}`,
+  }
+
   export enum CommentRepository {
     GET_COMMENTS_FROM_DUMMY_API_START = `[CommentRepository.getCommentsFromDummyAPI] starting request to dummyAPI: req = {}`,
     GET_COMMENTS_FROM_DUMMY_API_SUCCESS = `[CommentRepository.getCommentsFromDummyAPI] request success: status = {}, data = {}`,
