@@ -52,6 +52,12 @@ export namespace LoggerMessages {
     GET_POST_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostFromDummyAPI] request success: status = {}, data = {}`,
     GET_POST_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
   }
+
+  export enum CommentRepository {
+    GET_COMMENTS_FROM_DUMMY_API_START = `[CommentRepository.getCommentsFromDummyAPI] starting request to dummyAPI: req = {}`,
+    GET_COMMENTS_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostFromDummyAPI] request success: status = {}, data = {}`,
+    GET_COMMENTS_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
+  }
 }
 
 type ValuesOf<E> = E[keyof E];

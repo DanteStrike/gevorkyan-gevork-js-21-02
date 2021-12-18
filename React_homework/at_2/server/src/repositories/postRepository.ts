@@ -9,7 +9,7 @@ class PostRepository {
   static getPostFromDummyAPI(id: string) {
     const requestURL = `/post/${id}`;
 
-    logger.info(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_START, requestURL);
+    logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_START, requestURL);
 
     return dummyAPI.get<IPostPreview>(requestURL)
       .then((response) => {
