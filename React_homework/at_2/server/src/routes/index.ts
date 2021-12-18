@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import commonRouter from "./commonRouter";
-import userRouter from "./userRouter";
-import postRouter from "./postRouter";
+import commonRouter from './commonRouter';
+import userRouter from './userRouter';
+import postRouter from './postRouter';
 
 const APIRouter = Router();
 APIRouter.use(`/user`, userRouter);

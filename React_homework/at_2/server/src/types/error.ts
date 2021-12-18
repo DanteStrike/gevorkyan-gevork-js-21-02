@@ -1,8 +1,8 @@
 export interface IErrorData {
-  error: string
+  error: string;
 }
 
 export interface IError {
-  status: number,
-  data: IErrorData
+  status: number;
+  data: IErrorData;
 }

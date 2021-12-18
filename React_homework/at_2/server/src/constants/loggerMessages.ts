@@ -1,7 +1,7 @@
 export namespace LoggerMessages {
   export enum CommonService {
     PATH_NOT_FOUND = `[CommonService.getAppPathNotFoundError] route not found: route = {}`,
-    INTERNAL_SERVER_ERROR = `[CommonService.getUnexpectedServerError] unexpected error: error = {}`
+    INTERNAL_SERVER_ERROR = `[CommonService.getUnexpectedServerError] unexpected error: error = {}`,
   }
 
   export enum UserService {
@@ -24,7 +24,7 @@ export namespace LoggerMessages {
 
     UPDATE_USER_INPUT_PARAMS = `[UserService.updateUser] Input: body = {}, params = {}`,
     UPDATE_USER_SUCCESS = `[UserService.updateUser] success: status = {}, response = {}`,
-    UPDATE_USER_ERROR = `[UserService.updateUser] failed: status = {}, response = {}`
+    UPDATE_USER_ERROR = `[UserService.updateUser] failed: status = {}, response = {}`,
   }
 
   export enum UserRepository {

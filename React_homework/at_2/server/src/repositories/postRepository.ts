@@ -1,9 +1,9 @@
-import {AxiosError} from "axios";
-import {dummyAPI, logger} from "../utils";
-import {IComments, IPosts} from "../types/lists";
-import {LoggerMessages} from "../constants/loggerMessages";
-import ErrorMapper from "../mappers/errorMapper";
-import {IPostPreview} from "../types/post";
+import {AxiosError} from 'axios';
+import {dummyAPI, logger} from '../utils';
+import {IComments, IPosts} from '../types/lists';
+import {LoggerMessages} from '../constants/loggerMessages';
+import ErrorMapper from '../mappers/errorMapper';
+import {IPostPreview} from '../types/post';
 
 class PostRepository {
   static getPostFromDummyAPI(id: string) {
@@ -11,7 +11,8 @@ class PostRepository {
 
     logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_START, requestURL);
 
-    return dummyAPI.get<IPostPreview>(requestURL)
+    return dummyAPI
+      .get<IPostPreview>(requestURL)
       .then((response) => {
         logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_SUCCESS, response.status, response.data);
 
@@ -23,7 +24,7 @@ class PostRepository {
         logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_ERROR, mappedErr.status, mappedErr.data);
 
         return Promise.reject(mappedErr);
-      })
+      });
   }
 
   static getPostsFromDummyAPI(limit: string, page: string) {
@@ -31,9 +32,9 @@ class PostRepository {
 
     logger.info(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_START, requestURL);
 
-    return dummyAPI.get<IPosts>(requestURL)
+    return dummyAPI
+      .get<IPosts>(requestURL)
       .then((response) => {
-
         logger.info(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_SUCCESS, response.status, response.data);
 
         return response;
@@ -52,17 +53,25 @@ class PostRepository {
 
     logger.info(LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_START, requestURL);
 
-    return dummyAPI.get<IComments>(requestURL)
+    return dummyAPI
+      .get<IComments>(requestURL)
       .then((response) => {
-
-        logger.info(LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_SUCCESS, response.status, response.data);
+        logger.info(
+          LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_SUCCESS,
+          response.status,
+          response.data
+        );
 
         return response;
       })
       .catch((error: AxiosError) => {
         const mappedErr = ErrorMapper.mapAxiosError(error);
 
-        logger.info(LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_ERROR, mappedErr.status, mappedErr.data);
+        logger.info(
+          LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_ERROR,
+          mappedErr.status,
+          mappedErr.data
+        );
 
         return Promise.reject(mappedErr);
       });

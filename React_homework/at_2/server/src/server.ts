@@ -4,7 +4,7 @@ import {v4 as generateUUID} from 'uuid';
 import serverConfig from './configs/serverConfig';
 import router from './routes';
 import loggerConfig from './configs/loggerConfig';
-import CommonService from "./services/commonService";
+import CommonService from './services/commonService';
 
 const app: Application = express();
 app.use(express.json());

@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import CommonService from "../services/commonService";
+import CommonService from '../services/commonService';
 
 const commonRouter = Router();
 

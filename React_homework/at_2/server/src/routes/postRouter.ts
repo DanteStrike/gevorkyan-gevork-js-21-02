@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import PostService from "../services/postService";
+import PostService from '../services/postService';
 
-const postRouter = Router()
+const postRouter = Router();
 postRouter.get(``, PostService.getPosts);
 postRouter.get(`/:id`, PostService.getPost);
 postRouter.get(`/:id/comment`, PostService.getPostComments);
