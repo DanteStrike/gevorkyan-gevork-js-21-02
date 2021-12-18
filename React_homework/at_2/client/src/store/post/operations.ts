@@ -4,7 +4,6 @@ import i18next from '../../locale/i18next';
 import {IComments, IPostPreview} from '../../types';
 import {FetchErrorType} from '../../enums';
 import {RequestType} from './slices/fetch';
-import {RequestUtils} from '../../utils';
 
 const loadPost = (id: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
   const controller = new AbortController();
@@ -29,26 +28,12 @@ const loadComments =
   (id: string, limit: number, page: number) => (dispatch: any, getState: any, api: AxiosInstance) => {
     const controller = new AbortController();
 
-    const normalized = RequestUtils.normalizeParams(page, limit, 5);
-
     api
-      .get<IComments>(`/post/${id}/comment?page=${normalized.page - 1}&limit=${normalized.limit}&locale=${i18next.resolvedLanguage}`, {
+      .get<IComments>(`/post/${id}/comment?page=${page - 1}&limit=${limit}&locale=${i18next.resolvedLanguage}`, {
         signal: controller.signal,
       })
       .then((response) => {
-        const data: IComments = {
-          limit: response.data.limit,
-          page: response.data.page,
-          total: response.data.total,
-          data: response.data.data,
-        };
-        if (normalized.dataSlice) {
-          data.data =
-            data.data.length < limit
-              ? data.data.slice()
-              : data.data.slice(normalized.dataSlice.left, normalized.dataSlice.right);
-        }
-        dispatch(actions.setup(data));
+        dispatch(actions.setup(response.data));
         dispatch(actions.fetchActions[RequestType.LOAD_COMMENTS].requestFinished());
       })
       .catch((err) => {
