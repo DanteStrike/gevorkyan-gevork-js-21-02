@@ -32,7 +32,7 @@ const loadComments =
     const normalized = RequestUtils.normalizeParams(page, limit, 5);
 
     api
-      .get<IComments>(`/post/${id}/comment?page=${normalized.page - 1}&limit=${normalized.limit}`, {
+      .get<IComments>(`/post/${id}/comment?page=${normalized.page - 1}&limit=${normalized.limit}&locale=${i18next.resolvedLanguage}`, {
         signal: controller.signal,
       })
       .then((response) => {

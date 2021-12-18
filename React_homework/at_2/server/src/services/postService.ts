@@ -17,7 +17,7 @@ class PostService {
 
         logger.info(LoggerMessages.PostService.GET_POST_SUCCESS, response.status, response.data);
 
-        const result = PostMapper.normalizePostForClient(response.data);
+        const result = PostMapper.normalizePostForClient(response.data, req.query.locale);
 
         logger.info(LoggerMessages.PostService.GET_POST_NORMALIZED, result);
 

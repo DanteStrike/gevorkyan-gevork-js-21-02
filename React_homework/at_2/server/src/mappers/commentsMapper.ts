@@ -6,7 +6,7 @@ class CommentsMapper {
     return ObjectUtils.updateObject(comment, {publishDate: DateUtils.normalizeCardDate(comment.publishDate, locale)})
   }
 
-  static normalizePostsForClient(comments: IComment[], locale?: string): IComment[] {
+  static normalizeCommentsForClient(comments: IComment[], locale?: string): IComment[] {
     return comments.map((comment) => CommentsMapper.normalizeCommentForClient(comment, locale));
   }
 }

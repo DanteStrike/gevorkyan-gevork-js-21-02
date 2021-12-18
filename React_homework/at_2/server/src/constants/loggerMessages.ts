@@ -66,7 +66,7 @@ export namespace LoggerMessages {
   }
 
   export enum CommentService {
-    GET_COMMENTS_INPUT_PARAMS = `[CommentService.getComments] Input params: id = {}`,
+    GET_COMMENTS_INPUT_PARAMS = `[CommentService.getComments] Input params: postId = {}, limit = {}, page = {}`,
     GET_COMMENTS_SUCCESS = `[CommentService.getComments] success: status = {}, response = {}`,
     GET_COMMENTS_ERROR = `[CommentService.getComments] failed: status = {}, response = {}`,
     GET_COMMENTS_NORMALIZED = `[CommentService.getComments] after mapping date = {}`,
