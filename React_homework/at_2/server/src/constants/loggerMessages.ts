@@ -43,6 +43,18 @@ export namespace LoggerMessages {
     UPDATE_USER_ON_DUMMY_API_ERROR = `[UserActions.updateUserOnDummyAPI] request failed: status = {}, error = {}`,
   }
 
+  export enum PostService {
+    GET_POST_INPUT_PARAMS = `[PostService.getPost] Input params: id = {}`,
+    GET_POST_SUCCESS = `[PostService.getPost] success: status = {}, response = {}`,
+    GET_POST_ERROR = `[PostService.getPost] failed: status = {}, response = {}`,
+    GET_POST_NORMALIZED = `[PostService.getPost] after mapping date = {}`,
+
+    GET_POSTS_LIST_INPUT_PARAMS = `[PostService.getPosts] Input params: limit = {}, page = {}`,
+    GET_POSTS_LIST_SUCCESS = `[PostService.getPosts] success: status = {}, response = {}`,
+    GET_POSTS_LIST_ERROR = `[PostService.getPosts] failed: status = {}, response = {}`,
+    GET_POSTS_LIST_NORMALIZED = `[PostService.getPosts] after mapping date = {}`,
+  }
+
   export enum PostRepository {
     GET_POSTS_FROM_DUMMY_API_START = `[PostRepository.getPostsFromDummyAPI] starting request to dummyAPI: req = {}`,
     GET_POSTS_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostsFromDummyAPI] request success: status = {}, data = {}`,
@@ -55,8 +67,8 @@ export namespace LoggerMessages {
 
   export enum CommentRepository {
     GET_COMMENTS_FROM_DUMMY_API_START = `[CommentRepository.getCommentsFromDummyAPI] starting request to dummyAPI: req = {}`,
-    GET_COMMENTS_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostFromDummyAPI] request success: status = {}, data = {}`,
-    GET_COMMENTS_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
+    GET_COMMENTS_FROM_DUMMY_API_SUCCESS = `[CommentRepository.getCommentsFromDummyAPI] request success: status = {}, data = {}`,
+    GET_COMMENTS_FROM_DUMMY_API_ERROR = `[CommentRepository.getCommentsFromDummyAPI] request failed: status = {}, error = {}`,
   }
 }
 
