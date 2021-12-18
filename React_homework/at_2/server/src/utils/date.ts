@@ -1,14 +1,14 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 
-const normalizeCardDate = (date: string): string => {
-  const momentDate = moment(date);
-  return `${momentDate.format('DD MMMM HH:mm')}`;
-};
+const setupLocal = (date: string, locale?: string): moment.Moment => moment(date).locale(locale || ``)
+
+const normalizeCardDate = (date: string, locale?: string): string =>
+  `${setupLocal(date, locale)
+    .format('DD MMMM HH:mm')}`;
 
 const normalizeUserDate = (date: string, locale?: string): string =>
-  `${moment(date)
-    .locale(locale || ``)
+  `${setupLocal(date, locale)
     .format('DD MMMM YYYY')}`;
 
 export default {

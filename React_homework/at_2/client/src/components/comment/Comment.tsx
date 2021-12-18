@@ -3,7 +3,7 @@ import {IComment} from '../../types';
 import LinkedAvatar from '../linked-avatar/LinkedAvatar';
 import CustomLink from '../custom-link/CustomLink';
 import './Comment.scss';
-import {DataUtils, DateUtils, RouteUtils} from '../../utils';
+import {DataUtils, RouteUtils} from '../../utils';
 
 interface ICommentProps {
   comment: IComment;
@@ -23,7 +23,7 @@ function Comment({comment}: ICommentProps) {
           <CustomLink to={profileRoute}>
             <h2 className="comment__title">{name}</h2>
           </CustomLink>
-          <p className="comment__date">{DateUtils.normalizeCardDate(publishDate)}</p>
+          <p className="comment__date">{publishDate}</p>
         </div>
       </div>
       <p className="comment__text">{message}</p>

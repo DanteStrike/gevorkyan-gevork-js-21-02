@@ -9,7 +9,7 @@ import PostCard from '../../components/post-card/PostCard';
 import useAppTranslation from '../../hooks/use-app-translation';
 
 function Posts() {
-  const {t} = useAppTranslation(`menu`);
+  const {t, i18n} = useAppTranslation(`menu`);
   const dispatch = useAppDispatch();
   const page = useAppSelector(postsSelectors.getPage);
   const total = useAppSelector(postsSelectors.getTotal);
@@ -21,7 +21,7 @@ function Posts() {
 
   useEffect(() => {
     dispatch(postsOperations.load(itemPerPage, page));
-  }, [dispatch, page]);
+  }, [dispatch, page, i18n.resolvedLanguage]);
 
   useEffect(
     () => () => {

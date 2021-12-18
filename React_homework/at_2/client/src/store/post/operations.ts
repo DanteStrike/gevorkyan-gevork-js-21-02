@@ -10,7 +10,7 @@ const loadPost = (id: string) => (dispatch: any, getState: any, api: AxiosInstan
   const controller = new AbortController();
 
   api
-    .get<IPostPreview>(`/post/${id}`, {signal: controller.signal})
+    .get<IPostPreview>(`/post/${id}?locale=${i18next.resolvedLanguage}`, {signal: controller.signal})
     .then((response) => {
       dispatch(actions.set(response.data));
       dispatch(actions.fetchActions[RequestType.LOAD_POST].requestFinished());

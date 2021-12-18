@@ -9,7 +9,7 @@ import {IPosts} from "../types/lists";
 import {IPaginationParams} from "../types/params";
 
 class PostService {
-  static getPost(req: Request<{id: string}>, res: Response) {
+  static getPost(req: Request<{id: string},any,any,{locale?: string}>, res: Response) {
     logger.info(LoggerMessages.PostService.GET_POST_INPUT_PARAMS, req.params.id);
 
     PostRepository.getPostFromDummyAPI(req.params.id)
@@ -31,7 +31,7 @@ class PostService {
       })
   }
 
-  static getPosts(req: Request<core.ParamsDictionary,IPosts,any,IPaginationParams>, res: Response) {
+  static getPosts(req: Request<core.ParamsDictionary,IPosts,any,IPaginationParams & {locale?: string}>, res: Response) {
     const params: Required<IPaginationParams> = {
       limit: req.query.limit || `0`,
       page: req.query.page || `0`
@@ -45,7 +45,7 @@ class PostService {
         logger.info(LoggerMessages.PostService.GET_POSTS_LIST_SUCCESS, response.status, response.data);
 
         const result = response.data;
-        result.data = PostMapper.normalizePostsForClient(result.data);
+        result.data = PostMapper.normalizePostsForClient(result.data, req.query.locale);
 
         logger.info(LoggerMessages.PostService.GET_POSTS_LIST_NORMALIZED, result);
 
