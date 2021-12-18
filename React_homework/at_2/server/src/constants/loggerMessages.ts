@@ -42,6 +42,16 @@ export namespace LoggerMessages {
     UPDATE_USER_ON_DUMMY_API_SUCCESS = `[UserActions.updateUserOnDummyAPI] request success: status = {}, data = {}`,
     UPDATE_USER_ON_DUMMY_API_ERROR = `[UserActions.updateUserOnDummyAPI] request failed: status = {}, error = {}`,
   }
+
+  export enum PostRepository {
+    GET_POSTS_FROM_DUMMY_API_START = `[PostRepository.getPostsFromDummyAPI] starting request to dummyAPI: req = {}`,
+    GET_POSTS_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostsFromDummyAPI] request success: status = {}, data = {}`,
+    GET_POSTS_FROM_DUMMY_API_ERROR = `[PostRepository.getPostsFromDummyAPI] request failed: status = {}, error = {}`,
+
+    GET_POST_FROM_DUMMY_API_START = `[PostRepository.getPostFromDummyAPI] starting request to dummyAPI: req = {}`,
+    GET_POST_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostFromDummyAPI] request success: status = {}, data = {}`,
+    GET_POST_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
+  }
 }
 
 type ValuesOf<E> = E[keyof E];
