@@ -6,11 +6,11 @@ import {FetchErrorType} from '../../enums';
 import {RequestType} from './slices/fetch';
 import {RequestUtils} from '../../utils';
 
-const loadProfile = (id: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
+const loadProfile = (id: string, locale: string) => (dispatch: any, getState: any, api: AxiosInstance) => {
   const controller = new AbortController();
 
   api
-    .get<IUser>(`/user/${id}`, {signal: controller.signal})
+    .get<IUser>(`/user/${id}?locale=${locale}`, {signal: controller.signal})
     .then((response) => {
       dispatch(actions.set(response.data));
       dispatch(actions.fetchActions[RequestType.LOAD_PROFILE].requestFinished());

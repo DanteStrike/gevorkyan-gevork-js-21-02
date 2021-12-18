@@ -6,6 +6,12 @@ const normalizeCardDate = (date: string): string => {
   return `${momentDate.format('DD MMMM HH:mm')}`;
 };
 
+const normalizeUserDate = (date: string, locale?: string): string =>
+  `${moment(date)
+    .locale(locale || ``)
+    .format('DD MMMM YYYY')}`;
+
 export default {
   normalizeCardDate,
+  normalizeUserDate,
 };

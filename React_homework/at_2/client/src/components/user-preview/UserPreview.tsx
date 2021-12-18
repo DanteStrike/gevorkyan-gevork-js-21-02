@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {EditOutlined} from '@ant-design/icons';
 import {IUser} from '../../types';
 import Loading from '../loading/Loading';
-import {DataUtils, DateUtils, RouteUtils} from '../../utils';
+import {DataUtils, RouteUtils} from '../../utils';
 import useAppTranslation from '../../hooks/use-app-translation';
 
 interface IUserPreviewProps {
@@ -14,7 +14,7 @@ interface IUserPreviewProps {
 }
 
 function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
-  const {t, i18n} = useAppTranslation(`profile`);
+  const {t} = useAppTranslation(`profile`);
   const {id, picture, title, firstName, lastName, gender, email, dateOfBirth, registerDate, phone} = user;
   const name = DataUtils.collectFullName(firstName, lastName, title);
   const profileEditRoute = RouteUtils.createProfileEditRoute(id);
@@ -30,11 +30,11 @@ function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
         </span>
         <span className="user-preview__row">
           <span className="user-preview__prop">{t(`dateOfBirth`)}</span>{' '}
-          {DateUtils.normalizeProfileDate(dateOfBirth, i18n.resolvedLanguage)}
+          {dateOfBirth}
         </span>
         <span className="user-preview__row">
           <span className="user-preview__prop">{t(`registerDate`)}</span>{' '}
-          {DateUtils.normalizeProfileDate(registerDate, i18n.resolvedLanguage)}
+          {registerDate}
         </span>
         <span className="user-preview__row">
           <span className="user-preview__prop">{t(`email`)}</span> {email}
