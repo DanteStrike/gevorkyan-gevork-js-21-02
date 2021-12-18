@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import * as core from "express-serve-static-core";
-import {logger} from "../utils";
+import {logger, RequestUtils} from "../utils";
 import {LoggerMessages} from "../constants/loggerMessages";
 import UserRepository from "../repositories/userRepository";
 import {IPaginationParams} from "../types/params";
@@ -101,14 +101,29 @@ class UserService {
       page: req.query.page || `0`
     }
 
+    const normalized = RequestUtils.normalizeQuery(Number(params.page), Number(params.limit), 5);
+
     logger.info(LoggerMessages.UserService.GET_USER_POSTS_INPUT_PARAMS, req.params.id, params.limit, params.page)
 
-    UserRepository.getUserPostsFromDummyAPI(req.params.id, params.limit, params.page)
+    UserRepository.getUserPostsFromDummyAPI(req.params.id, normalized.limit.toString(), normalized.page.toString())
       .then((response) => {
 
         logger.info(LoggerMessages.UserService.GET_USER_POSTS_SUCCESS, response.status, response.data);
 
-        res.status(response.status).json(response.data);
+        const result: IPosts = {
+          limit: response.data.limit,
+          page: response.data.page,
+          total: response.data.total,
+          data: response.data.data,
+        };
+        if (normalized.dataSlice) {
+          result.data =
+            result.data.length < Number(params.limit)
+              ? result.data.slice()
+              : result.data.slice(normalized.dataSlice.left, normalized.dataSlice.right);
+        }
+
+        res.status(response.status).json(result);
       })
       .catch((error: IError) => {
 

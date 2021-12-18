@@ -61,6 +61,11 @@ export namespace LoggerMessages {
     GET_POSTS_LIST_SUCCESS = `[PostService.getPosts] success: status = {}, response = {}`,
     GET_POSTS_LIST_ERROR = `[PostService.getPosts] failed: status = {}, response = {}`,
     GET_POSTS_LIST_NORMALIZED = `[PostService.getPosts] after mapping date = {}`,
+
+    GET_POST_COMMENTS_INPUT_PARAMS = `[PostService.getPostComments] Input params: postId = {}, limit = {}, page = {}`,
+    GET_POST_COMMENTS_SUCCESS = `[PostService.getPostComments] success: status = {}, response = {}`,
+    GET_POST_COMMENTS_ERROR = `[PostService.getPostComments] failed: status = {}, response = {}`,
+    GET_POST_COMMENTS_NORMALIZED = `[PostService.getPostComments] after mapping date = {}`,
   }
 
   export enum PostRepository {
@@ -71,19 +76,10 @@ export namespace LoggerMessages {
     GET_POST_FROM_DUMMY_API_START = `[PostRepository.getPostFromDummyAPI] starting request to dummyAPI: req = {}`,
     GET_POST_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostFromDummyAPI] request success: status = {}, data = {}`,
     GET_POST_FROM_DUMMY_API_ERROR = `[PostRepository.getPostFromDummyAPI] request failed: status = {}, error = {}`,
-  }
 
-  export enum CommentService {
-    GET_COMMENTS_INPUT_PARAMS = `[CommentService.getComments] Input params: postId = {}, limit = {}, page = {}`,
-    GET_COMMENTS_SUCCESS = `[CommentService.getComments] success: status = {}, response = {}`,
-    GET_COMMENTS_ERROR = `[CommentService.getComments] failed: status = {}, response = {}`,
-    GET_COMMENTS_NORMALIZED = `[CommentService.getComments] after mapping date = {}`,
-  }
-
-  export enum CommentRepository {
-    GET_COMMENTS_FROM_DUMMY_API_START = `[CommentRepository.getCommentsFromDummyAPI] starting request to dummyAPI: req = {}`,
-    GET_COMMENTS_FROM_DUMMY_API_SUCCESS = `[CommentRepository.getCommentsFromDummyAPI] request success: status = {}, data = {}`,
-    GET_COMMENTS_FROM_DUMMY_API_ERROR = `[CommentRepository.getCommentsFromDummyAPI] request failed: status = {}, error = {}`,
+    GET_POST_COMMENTS_FROM_DUMMY_API_START = `[PostRepository.getPostCommentsFromDummyAPI] starting request to dummyAPI: req = {}`,
+    GET_POST_COMMENTS_FROM_DUMMY_API_SUCCESS = `[PostRepository.getPostCommentsFromDummyAPI] request success: status = {}, data = {}`,
+    GET_POST_COMMENTS_FROM_DUMMY_API_ERROR = `[PostRepository.getPostCommentsFromDummyAPI] request failed: status = {}, error = {}`,
   }
 }
 
