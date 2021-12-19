@@ -10,7 +10,13 @@ type LoggerArgsType = Array<{[k: string]: any} | string | number>;
 type FormatArgsType = Array<{[k: string]: any} | string>;
 
 const normalizeArgsForFormat = (...args: LoggerArgsType): FormatArgsType =>
-  args.map((arg) => (typeof arg !== `object` ? arg.toString() : JSON.stringify(arg)));
+  args.map((arg) => {
+    if (typeof arg === `object` || !arg) {
+      return JSON.stringify(arg);
+    }
+
+    return arg.toString();
+  });
 
 const collectLogMessage = (message: LoggerMessagesType, ...args: LoggerArgsType): string =>
   `|ID: ${context.get(loggerConfig.contextName)}| ${format(message, ...normalizeArgsForFormat(...args))}`;

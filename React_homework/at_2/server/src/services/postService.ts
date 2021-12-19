@@ -2,98 +2,86 @@ import {Request, Response} from 'express';
 import * as core from 'express-serve-static-core';
 import {logger, RequestUtils} from '../utils';
 import {LoggerMessages} from '../constants/loggerMessages';
-import {IError} from '../types/error';
 import PostRepository from '../repositories/postRepository';
 import PostMapper from '../mappers/postMapper';
 import {IComments, IPosts} from '../types/lists';
-import {IPaginationParams} from '../types/params';
+import {IPaginationParams, IPaginationQuery} from '../types/params';
+import Service from "./service";
+import {DummyAPIConstants} from "../constants/dummyAPI";
+import ListMapper from "../mappers/listMapper";
 
-class PostService {
+class PostService extends Service {
   static getPost(req: Request<{id: string}, any, any, {locale?: string}>, res: Response) {
-    logger.info(LoggerMessages.PostService.GET_POST_INPUT_PARAMS, req.params.id);
+    logger.info(LoggerMessages.PostService.GET_POST_INPUT_PARAMS, req.params.id, req.query.locale || ``);
 
-    PostRepository.getPostFromDummyAPI(req.params.id)
-      .then((response) => {
+    PostService.createCommonServerResponse(
+      res,
+      PostRepository.getPostFromDummyAPI(req.params.id),
+      (response) => {
         logger.info(LoggerMessages.PostService.GET_POST_SUCCESS, response.status, response.data);
-
-        const result = PostMapper.normalizePostForClient(response.data, req.query.locale);
-
-        logger.info(LoggerMessages.PostService.GET_POST_NORMALIZED, result);
-
-        res.status(response.status).json(result);
-      })
-      .catch((error: IError) => {
+      },
+      (response) => {
+        const {status} = response;
+        const mappedData = PostMapper.normalizeDateForClient(response.data, req.query.locale);
+        logger.info(LoggerMessages.PostService.GET_POST_NORMALIZED, mappedData);
+        return {status, data: mappedData}
+      },
+      (error) => {
         logger.info(LoggerMessages.PostService.GET_POST_ERROR, error.status, error.data);
-
-        res.status(error.status).json(error.data);
-      });
+      }
+    )
   }
 
   static getPosts(
-    req: Request<core.ParamsDictionary, IPosts, any, IPaginationParams & {locale?: string}>,
+    req: Request<core.ParamsDictionary, IPosts, any, IPaginationQuery & {locale?: string}>,
     res: Response
   ) {
-    const params: Required<IPaginationParams> = {
-      limit: req.query.limit || `0`,
-      page: req.query.page || `0`,
-    };
+    const pagParams: IPaginationParams = RequestUtils.getPaginationParams(req.query);
+    logger.info(LoggerMessages.PostService.GET_POSTS_LIST_INPUT_PARAMS, req.query, pagParams.limit, pagParams.page, req.query.locale || ``);
 
-    logger.info(LoggerMessages.PostService.GET_POSTS_LIST_INPUT_PARAMS, params.limit, params.page);
-
-    PostRepository.getPostsFromDummyAPI(params.limit, params.page)
-      .then((response) => {
+    PostService.createCommonServerResponse(
+      res,
+      PostRepository.getPostsFromDummyAPI(pagParams.limit, pagParams.page),
+      (response) => {
         logger.info(LoggerMessages.PostService.GET_POSTS_LIST_SUCCESS, response.status, response.data);
-
-        const result = response.data;
-        result.data = PostMapper.normalizePostsForClient(result.data, req.query.locale);
-
-        logger.info(LoggerMessages.PostService.GET_POSTS_LIST_NORMALIZED, result);
-
-        res.status(response.status).json(response.data);
-      })
-      .catch((error: IError) => {
+      },
+      (response) => {
+        const {status, data} = response;
+        const mappedData = PostMapper.normalizeDatesForClient(data.data, req.query.locale);
+        logger.info(LoggerMessages.PostService.GET_POSTS_LIST_NORMALIZED, mappedData);
+        return {status, data: {...data, data: mappedData}}
+      },
+      (error) => {
         logger.info(LoggerMessages.PostService.GET_POSTS_LIST_ERROR, error.status, error.data);
-
-        res.status(error.status).json(error.data);
-      });
+      }
+    )
   }
 
   static getPostComments(
-    req: Request<{id: string}, IComments, any, IPaginationParams & {locale?: string}>,
+    req: Request<{id: string}, IComments, any, IPaginationQuery & {locale?: string}>,
     res: Response
   ) {
-    const params: Required<IPaginationParams> = {
-      limit: req.query.limit || `0`,
-      page: req.query.page || `0`,
-    };
+    const pagParams: IPaginationParams = RequestUtils.getPaginationParams(req.query);
+    const normalizedPagParams = RequestUtils.normalizePaginationQuery(pagParams.limit, pagParams.page, DummyAPIConstants.MIN_LIMIT);
+    logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_INPUT_PARAMS, req.params.id, req.query, pagParams, normalizedPagParams);
 
-    const normalized = RequestUtils.normalizeQuery(Number(params.page), Number(params.limit), 5);
-
-    logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_INPUT_PARAMS, req.params.id, params.limit, params.page);
-
-    PostRepository.getPostCommentsFromDummyAPI(req.params.id, normalized.limit.toString(), normalized.page.toString())
-      .then((response) => {
+    PostService.createCommonServerResponse(
+      res,
+      PostRepository.getPostCommentsFromDummyAPI(req.params.id, normalizedPagParams.limit, normalizedPagParams.page),
+      (response) => {
         logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_SUCCESS, response.status, response.data);
-
-        const result = response.data;
-        result.data = PostMapper.normalizeCommentsForClient(result.data, req.query.locale);
-
-        if (normalized.dataSlice) {
-          result.data =
-            result.data.length < Number(params.limit)
-              ? result.data.slice()
-              : result.data.slice(normalized.dataSlice.left, normalized.dataSlice.right);
-        }
-
-        logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_NORMALIZED, result);
-
-        res.status(response.status).json(response.data);
-      })
-      .catch((error: IError) => {
+      },
+      (response) => {
+        const {status, data} = response;
+        const mappedData: IComments = ListMapper.normalizeList(data, pagParams, normalizedPagParams);
+        mappedData.data = PostMapper.normalizeDatesForClient(mappedData.data, req.query.locale);
+        logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_NORMALIZED, mappedData);
+        return {status, data: mappedData}
+      },
+      (error) => {
         logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_ERROR, error.status, error.data);
-
-        res.status(error.status).json(error.data);
-      });
+      }
+    )
   }
 }
 

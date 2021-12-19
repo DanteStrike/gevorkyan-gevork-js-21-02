@@ -1,22 +1,12 @@
-import {DateUtils, ObjectUtils} from '../utils';
-import {IPostPreview} from '../types/post';
-import {IComment} from '../types/comment';
+import {DateUtils} from '../utils';
 
 class PostMapper {
-  static normalizePostForClient(post: IPostPreview, locale?: string): IPostPreview {
-    return ObjectUtils.updateObject(post, {publishDate: DateUtils.normalizeCardDate(post.publishDate, locale)});
+  static normalizeDateForClient<T extends {publishDate: string}>(item: T, locale?: string): T {
+    return { ...item, publishDate: DateUtils.normalizeCardDate(item.publishDate, locale)};
   }
 
-  static normalizePostsForClient(posts: IPostPreview[], locale?: string): IPostPreview[] {
-    return posts.map((post) => PostMapper.normalizePostForClient(post, locale));
-  }
-
-  static normalizeCommentForClient(comment: IComment, locale?: string): IComment {
-    return ObjectUtils.updateObject(comment, {publishDate: DateUtils.normalizeCardDate(comment.publishDate, locale)});
-  }
-
-  static normalizeCommentsForClient(comments: IComment[], locale?: string): IComment[] {
-    return comments.map((comment) => PostMapper.normalizeCommentForClient(comment, locale));
+  static normalizeDatesForClient<T extends {publishDate: string}>(items: T[], locale?: string): T[] {
+    return items.map((item) => PostMapper.normalizeDateForClient(item, locale));
   }
 }
 

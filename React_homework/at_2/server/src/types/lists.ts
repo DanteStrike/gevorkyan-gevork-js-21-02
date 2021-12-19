@@ -2,7 +2,7 @@ import {IUserPreview} from './user';
 import {IPostPreview} from './post';
 import {IComment} from './comment';
 
-interface IList<T> {
+export interface IList<T> {
   data: T[];
   total: number;
   page: number;
