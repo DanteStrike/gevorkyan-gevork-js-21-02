@@ -16,7 +16,7 @@ interface IProfileProps {
 }
 
 function Profile({id}: IProfileProps) {
-  const {t} = useAppTranslation(`profile`);
+  const {t, i18n} = useAppTranslation(`profile`);
   const dispatch = useAppDispatch();
   const authID = useAppSelector(authSelectors.getID);
   const isAuthLoading = useAppSelector(authSelectors.getIsLoading);
@@ -36,7 +36,7 @@ function Profile({id}: IProfileProps) {
 
   useEffect(() => {
     dispatch(profileOperations.loadProfile(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, i18n.resolvedLanguage]);
 
   useEffect(() => {
     dispatch(profileOperations.loadUserPosts(id, itemPerPage, page));
