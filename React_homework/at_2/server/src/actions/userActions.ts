@@ -15,7 +15,7 @@ class UserActions {
         return response;
       })
       .catch((error: AxiosError | Error) => {
-        logger.info(LoggerMessages.UserActions.CREATE_USER_ON_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.UserActions.CREATE_USER_ON_DUMMY_API_ERROR, error);
         return Promise.reject(error);
       });
   }
@@ -31,7 +31,7 @@ class UserActions {
         return response;
       })
       .catch((error: AxiosError) => {
-        logger.info(LoggerMessages.UserActions.UPDATE_USER_ON_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.UserActions.UPDATE_USER_ON_DUMMY_API_ERROR, error);
         return Promise.reject(error);
       });
   }

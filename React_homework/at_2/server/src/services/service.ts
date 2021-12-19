@@ -2,6 +2,8 @@ import axios, {AxiosError, AxiosResponse} from "axios";
 import {Response} from "express";
 import {IServerErrorRes, IServerRes} from "../types/request";
 import ErrorMessages from "../constants/errorMessages";
+import {logger} from "../utils";
+import {LoggerMessages} from "../constants/loggerMessages";
 
 class Service {
   protected static createCommonServerResponse<T>(
@@ -24,6 +26,7 @@ class Service {
       })
       .catch((error: AxiosError | Error) => {
         console.log(error);
+        logger.error(LoggerMessages.Service.ERROR, error)
 
         const errServerRes: IServerErrorRes = {
           status: 500,

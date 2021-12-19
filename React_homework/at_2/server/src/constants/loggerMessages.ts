@@ -1,4 +1,8 @@
 export namespace LoggerMessages {
+  export enum Service {
+    ERROR = `[Service.createCommonServerResponse] error = {}`
+  }
+
   export enum CommonService {
     PATH_NOT_FOUND = `[CommonService.getAppPathNotFoundError] route not found: route = {}`,
     INTERNAL_SERVER_ERROR = `[CommonService.getUnexpectedServerError] unexpected error: error = {}`,

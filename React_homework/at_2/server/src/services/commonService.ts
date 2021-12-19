@@ -5,7 +5,7 @@ import {LoggerMessages} from '../constants/loggerMessages';
 
 class CommonService {
   static getAppPathNotFoundError(req: Request, res: Response) {
-    logger.info(LoggerMessages.CommonService.PATH_NOT_FOUND, req.originalUrl);
+    logger.error(LoggerMessages.CommonService.PATH_NOT_FOUND, req.originalUrl);
     res.status(404).json({error: ErrorMessages.PATH_NOT_FOUND});
   }
 

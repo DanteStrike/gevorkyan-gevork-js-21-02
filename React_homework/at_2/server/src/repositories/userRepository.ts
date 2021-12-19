@@ -16,7 +16,7 @@ class UserRepository extends ApiAxiosRepository{
         logger.info(LoggerMessages.UserRepository.GET_USER_BY_ID_FROM_DUMMY_API_SUCCESS, response.status, response.data);
       },
       (error) => {
-        logger.info(LoggerMessages.UserRepository.GET_USER_BY_ID_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.UserRepository.GET_USER_BY_ID_FROM_DUMMY_API_ERROR, error);
       }
     )
   }
@@ -35,7 +35,7 @@ class UserRepository extends ApiAxiosRepository{
         );
       },
       (error) => {
-        logger.info(LoggerMessages.UserRepository.GET_USER_POSTS_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.UserRepository.GET_USER_POSTS_FROM_DUMMY_API_ERROR, error);
       }
     )
   }
@@ -54,7 +54,7 @@ class UserRepository extends ApiAxiosRepository{
         );
       },
       (error) => {
-        logger.info(LoggerMessages.UserRepository.GET_USERS_LIST_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.UserRepository.GET_USERS_LIST_FROM_DUMMY_API_ERROR, error);
       }
     )
   }

@@ -28,7 +28,7 @@ class UserService extends Service {
         return {status, data: mappedData}
       },
       (err) => {
-        logger.info(LoggerMessages.UserService.GET_USER_ERROR, err.status, err.data);
+        logger.error(LoggerMessages.UserService.GET_USER_ERROR, err.status, err.data);
       }
     )
   }
@@ -44,7 +44,7 @@ class UserService extends Service {
       },
       null,
       (err) => {
-        logger.info(LoggerMessages.UserService.GET_USERS_LIST_ERROR, err.status, err.data);
+        logger.error(LoggerMessages.UserService.GET_USERS_LIST_ERROR, err.status, err.data);
       }
     )
   }
@@ -59,7 +59,7 @@ class UserService extends Service {
       },
       null,
       (err) => {
-        logger.info(LoggerMessages.UserService.CREATE_USER_ERROR, err.status, err.data);
+        logger.error(LoggerMessages.UserService.CREATE_USER_ERROR, err.status, err.data);
       }
     )
   }
@@ -74,7 +74,7 @@ class UserService extends Service {
       },
       null,
       (err) => {
-        logger.info(LoggerMessages.UserService.UPDATE_USER_ERROR, err.status, err.data);
+        logger.error(LoggerMessages.UserService.UPDATE_USER_ERROR, err.status, err.data);
       }
     )
   }
@@ -96,7 +96,7 @@ class UserService extends Service {
         return {status, data: mappedData}
       },
       (err) => {
-        logger.info(LoggerMessages.UserService.GET_USER_POSTS_ERROR, err.status, err.data);
+        logger.error(LoggerMessages.UserService.GET_USER_POSTS_ERROR, err.status, err.data);
       }
     )
   }

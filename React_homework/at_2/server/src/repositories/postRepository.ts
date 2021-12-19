@@ -16,7 +16,7 @@ class PostRepository extends ApiAxiosRepository{
         logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_SUCCESS, response.status, response.data);
       },
       (error) => {
-        logger.info(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.PostRepository.GET_POST_FROM_DUMMY_API_ERROR, error);
       }
     )
   }
@@ -31,7 +31,7 @@ class PostRepository extends ApiAxiosRepository{
         logger.info(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_SUCCESS, response.status, response.data);
       },
       (error) => {
-        logger.info(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.PostRepository.GET_POSTS_FROM_DUMMY_API_ERROR, error);
       }
     )
   }
@@ -50,7 +50,7 @@ class PostRepository extends ApiAxiosRepository{
         );
       },
       (error) => {
-        logger.info(LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_ERROR, error);
+        logger.error(LoggerMessages.PostRepository.GET_POST_COMMENTS_FROM_DUMMY_API_ERROR, error);
       }
     )
   }
