@@ -74,12 +74,12 @@ const TaskEdit = React.memo((
         value={descValue}
         onChange={(evt) => setDescValue(evt.target.value)}
       />
-      <label htmlFor={`task-${id}-date-start`}>Start</label>
+      <label htmlFor={`task-${id}-data-start`}>Start</label>
       <input
         name="date-start"
         type="datetime-local"
         className="task-edit__date"
-        id={`task-${id}-date-start`}
+        id={`task-${id}-data-start`}
         value={formatDateToValue(dateStart)}
         onChange={(evt) => {
           const tempTime = new Date(evt.target.value).getTime();
@@ -89,12 +89,12 @@ const TaskEdit = React.memo((
           setDateStart(tempTime);
         }}
       />
-      <label htmlFor={`task-${id}-date-end`}>End</label>
+      <label htmlFor={`task-${id}-data-end`}>End</label>
       <input
         name="date-end"
         type="datetime-local"
         className="task-edit__date"
-        id={`task-${id}-date-end`}
+        id={`task-${id}-data-end`}
         value={formatDateToValue(dateEnd)}
         onChange={(evt) => {
           const tempTime = new Date(evt.target.value).getTime();
