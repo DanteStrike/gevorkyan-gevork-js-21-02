@@ -8,9 +8,9 @@ import UserMapper from '../mappers/userMapper';
 import {IUser, IUserRegistration, IUserUpdate} from '../types/user';
 import {IPosts, IUsers} from '../types/lists';
 import UserActions from '../actions/userActions';
-import Service from "./service";
-import {DummyAPIConstants} from "../constants/dummyAPI";
-import ListMapper from "../mappers/listMapper";
+import Service from './service';
+import {DummyAPIConstants} from '../constants/dummyAPI';
+import ListMapper from '../mappers/listMapper';
 
 class UserService extends Service {
   static getUser(req: Request<{id: string}, any, any, {locale?: string}>, res: Response) {
@@ -25,12 +25,12 @@ class UserService extends Service {
         const {status} = response;
         const mappedData = UserMapper.normalizeUserForClient(response.data, req.query.locale);
         logger.info(LoggerMessages.UserService.GET_USER_NORMALIZED, mappedData);
-        return {status, data: mappedData}
+        return {status, data: mappedData};
       },
       (err) => {
         logger.error(LoggerMessages.UserService.GET_USER_ERROR, err.status, err.data);
       }
-    )
+    );
   }
 
   static getUsersList(req: Request<core.ParamsDictionary, IUsers, any, IPaginationQuery>, res: Response) {
@@ -46,7 +46,7 @@ class UserService extends Service {
       (err) => {
         logger.error(LoggerMessages.UserService.GET_USERS_LIST_ERROR, err.status, err.data);
       }
-    )
+    );
   }
 
   static createUser(req: Request<core.ParamsDictionary, IUser, IUserRegistration>, res: Response) {
@@ -61,7 +61,7 @@ class UserService extends Service {
       (err) => {
         logger.error(LoggerMessages.UserService.CREATE_USER_ERROR, err.status, err.data);
       }
-    )
+    );
   }
 
   static updateUser(req: Request<{id: string}, IUser, IUserUpdate>, res: Response) {
@@ -76,13 +76,23 @@ class UserService extends Service {
       (err) => {
         logger.error(LoggerMessages.UserService.UPDATE_USER_ERROR, err.status, err.data);
       }
-    )
+    );
   }
 
   static getUserPosts(req: Request<{id: string}, IPosts, any, IPaginationQuery>, res: Response) {
     const pagParams: IPaginationParams = RequestUtils.getPaginationParams(req.query);
-    const normalizedPagParams = RequestUtils.normalizePaginationQuery(pagParams.limit, pagParams.page, DummyAPIConstants.MIN_LIMIT);
-    logger.info(LoggerMessages.UserService.GET_USER_POSTS_INPUT_PARAMS, req.params.id, req.query, pagParams, normalizedPagParams);
+    const normalizedPagParams = RequestUtils.normalizePaginationQuery(
+      pagParams.limit,
+      pagParams.page,
+      DummyAPIConstants.MIN_LIMIT
+    );
+    logger.info(
+      LoggerMessages.UserService.GET_USER_POSTS_INPUT_PARAMS,
+      req.params.id,
+      req.query,
+      pagParams,
+      normalizedPagParams
+    );
     UserService.createCommonServerResponse(
       res,
       UserRepository.getUserPostsFromDummyAPI(req.params.id, normalizedPagParams.limit, normalizedPagParams.page),
@@ -93,12 +103,12 @@ class UserService extends Service {
         const {status, data} = response;
         const mappedData: IPosts = ListMapper.normalizeList(data, pagParams, normalizedPagParams);
         logger.info(LoggerMessages.UserService.GET_USER_POSTS_NORMALIZED, mappedData);
-        return {status, data: mappedData}
+        return {status, data: mappedData};
       },
       (err) => {
         logger.error(LoggerMessages.UserService.GET_USER_POSTS_ERROR, err.status, err.data);
       }
-    )
+    );
   }
 }
 

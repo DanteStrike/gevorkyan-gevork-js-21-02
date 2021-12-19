@@ -1,9 +1,9 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
-import {Response} from "express";
-import {IServerErrorRes, IServerRes} from "../types/request";
-import ErrorMessages from "../constants/errorMessages";
-import {logger} from "../utils";
-import {LoggerMessages} from "../constants/loggerMessages";
+import axios, {AxiosError, AxiosResponse} from 'axios';
+import {Response} from 'express';
+import {IServerErrorRes, IServerRes} from '../types/request';
+import ErrorMessages from '../constants/errorMessages';
+import {logger} from '../utils';
+import {LoggerMessages} from '../constants/loggerMessages';
 
 class Service {
   protected static createCommonServerResponse<T>(
@@ -11,26 +11,26 @@ class Service {
     request: Promise<AxiosResponse<T>>,
     onSuccess?: (response: IServerRes<T>) => void,
     mapper?: ((response: AxiosResponse<T>) => IServerRes<T>) | null,
-    onError?: (error: IServerErrorRes) => void,
+    onError?: (error: IServerErrorRes) => void
   ) {
     request
       .then((response) => {
-        const successServerRes: IServerRes<T> = mapper === undefined || mapper === null ?
-          {status: response.status, data: response.data} : mapper(response);
+        const successServerRes: IServerRes<T> =
+          mapper === undefined || mapper === null ? {status: response.status, data: response.data} : mapper(response);
 
         if (onSuccess !== undefined) {
           onSuccess(successServerRes);
         }
 
-        res.status(successServerRes.status).json(successServerRes.data)
+        res.status(successServerRes.status).json(successServerRes.data);
       })
       .catch((error: AxiosError | Error) => {
         console.log(error);
-        logger.error(LoggerMessages.Service.ERROR, error)
+        logger.error(LoggerMessages.Service.ERROR, error);
 
         const errServerRes: IServerErrorRes = {
           status: 500,
-          data: {error: ErrorMessages.INTERNAL_SERVER_ERROR}
+          data: {error: ErrorMessages.INTERNAL_SERVER_ERROR},
         };
 
         if (axios.isAxiosError(error)) {
@@ -38,7 +38,12 @@ class Service {
 
           if (axiosError.code !== undefined) {
             errServerRes.status = 500;
-            errServerRes.data = {error: axiosError.code === 'ECONNABORTED' ? ErrorMessages.THIRD_PARTY_TIMEOUT_ERROR : ErrorMessages.INTERNAL_SERVER_ERROR}
+            errServerRes.data = {
+              error:
+                axiosError.code === 'ECONNABORTED'
+                  ? ErrorMessages.THIRD_PARTY_TIMEOUT_ERROR
+                  : ErrorMessages.INTERNAL_SERVER_ERROR,
+            };
           } else {
             errServerRes.status = axiosError.response?.status || 500;
             errServerRes.data = {error: axiosError.response?.data?.error || ErrorMessages.INTERNAL_SERVER_ERROR};
@@ -50,7 +55,7 @@ class Service {
         }
 
         res.status(errServerRes.status).json(errServerRes.data);
-      })
+      });
   }
 }
 

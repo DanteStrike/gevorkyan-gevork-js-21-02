@@ -7,7 +7,9 @@ const load = (limit: number, page: number) => (dispatch: any, _: any, api: Axios
   const controller = new AbortController();
 
   api
-    .get<IPosts>(`/post?page=${page - 1}&limit=${limit}&locale=${i18next.resolvedLanguage}`, {signal: controller.signal})
+    .get<IPosts>(`/post?page=${page - 1}&limit=${limit}&locale=${i18next.resolvedLanguage}`, {
+      signal: controller.signal,
+    })
     .then((response) => {
       dispatch(actions.setup(response.data));
       dispatch(actions.requestFinished());

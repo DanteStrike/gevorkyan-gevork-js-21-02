@@ -1,10 +1,10 @@
-import {INormalizedPaginationParams, IPaginationParams, IPaginationQuery} from "../types/params";
-import {DummyAPIConstants} from "../constants/dummyAPI";
+import {INormalizedPaginationParams, IPaginationParams, IPaginationQuery} from '../types/params';
+import {DummyAPIConstants} from '../constants/dummyAPI';
 
 const getPaginationParams = (query: IPaginationQuery): IPaginationParams => ({
   limit: Number(query.limit) || DummyAPIConstants.DEFAULT_LIMIT,
   page: Number(query.page) || DummyAPIConstants.DEFAULT_PAGE,
-})
+});
 
 const normalizePaginationQuery = (limit: number, page: number, minLimit: number): INormalizedPaginationParams => {
   if (limit >= minLimit) {
@@ -34,5 +34,5 @@ const normalizePaginationQuery = (limit: number, page: number, minLimit: number)
 
 export default {
   normalizePaginationQuery,
-  getPaginationParams
+  getPaginationParams,
 };

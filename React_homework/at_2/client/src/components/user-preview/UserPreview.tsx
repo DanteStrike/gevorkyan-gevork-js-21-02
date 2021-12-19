@@ -29,12 +29,10 @@ function UserPreview({user, isLoading, isUser}: IUserPreviewProps) {
           <span className="user-preview__prop">{t(`gender`)}</span> {gender}
         </span>
         <span className="user-preview__row">
-          <span className="user-preview__prop">{t(`dateOfBirth`)}</span>{' '}
-          {dateOfBirth}
+          <span className="user-preview__prop">{t(`dateOfBirth`)}</span> {dateOfBirth}
         </span>
         <span className="user-preview__row">
-          <span className="user-preview__prop">{t(`registerDate`)}</span>{' '}
-          {registerDate}
+          <span className="user-preview__prop">{t(`registerDate`)}</span> {registerDate}
         </span>
         <span className="user-preview__row">
           <span className="user-preview__prop">{t(`email`)}</span> {email}

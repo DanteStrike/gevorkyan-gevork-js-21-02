@@ -6,9 +6,9 @@ import PostRepository from '../repositories/postRepository';
 import PostMapper from '../mappers/postMapper';
 import {IComments, IPosts} from '../types/lists';
 import {IPaginationParams, IPaginationQuery} from '../types/params';
-import Service from "./service";
-import {DummyAPIConstants} from "../constants/dummyAPI";
-import ListMapper from "../mappers/listMapper";
+import Service from './service';
+import {DummyAPIConstants} from '../constants/dummyAPI';
+import ListMapper from '../mappers/listMapper';
 
 class PostService extends Service {
   static getPost(req: Request<{id: string}, any, any, {locale?: string}>, res: Response) {
@@ -24,12 +24,12 @@ class PostService extends Service {
         const {status} = response;
         const mappedData = PostMapper.normalizeDateForClient(response.data, req.query.locale);
         logger.info(LoggerMessages.PostService.GET_POST_NORMALIZED, mappedData);
-        return {status, data: mappedData}
+        return {status, data: mappedData};
       },
       (error) => {
         logger.error(LoggerMessages.PostService.GET_POST_ERROR, error.status, error.data);
       }
-    )
+    );
   }
 
   static getPosts(
@@ -37,7 +37,13 @@ class PostService extends Service {
     res: Response
   ) {
     const pagParams: IPaginationParams = RequestUtils.getPaginationParams(req.query);
-    logger.info(LoggerMessages.PostService.GET_POSTS_LIST_INPUT_PARAMS, req.query, pagParams.limit, pagParams.page, req.query.locale || ``);
+    logger.info(
+      LoggerMessages.PostService.GET_POSTS_LIST_INPUT_PARAMS,
+      req.query,
+      pagParams.limit,
+      pagParams.page,
+      req.query.locale || ``
+    );
 
     PostService.createCommonServerResponse(
       res,
@@ -49,12 +55,12 @@ class PostService extends Service {
         const {status, data} = response;
         const mappedData = PostMapper.normalizeDatesForClient(data.data, req.query.locale);
         logger.info(LoggerMessages.PostService.GET_POSTS_LIST_NORMALIZED, mappedData);
-        return {status, data: {...data, data: mappedData}}
+        return {status, data: {...data, data: mappedData}};
       },
       (error) => {
         logger.error(LoggerMessages.PostService.GET_POSTS_LIST_ERROR, error.status, error.data);
       }
-    )
+    );
   }
 
   static getPostComments(
@@ -62,8 +68,18 @@ class PostService extends Service {
     res: Response
   ) {
     const pagParams: IPaginationParams = RequestUtils.getPaginationParams(req.query);
-    const normalizedPagParams = RequestUtils.normalizePaginationQuery(pagParams.limit, pagParams.page, DummyAPIConstants.MIN_LIMIT);
-    logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_INPUT_PARAMS, req.params.id, req.query, pagParams, normalizedPagParams);
+    const normalizedPagParams = RequestUtils.normalizePaginationQuery(
+      pagParams.limit,
+      pagParams.page,
+      DummyAPIConstants.MIN_LIMIT
+    );
+    logger.info(
+      LoggerMessages.PostService.GET_POST_COMMENTS_INPUT_PARAMS,
+      req.params.id,
+      req.query,
+      pagParams,
+      normalizedPagParams
+    );
 
     PostService.createCommonServerResponse(
       res,
@@ -76,12 +92,12 @@ class PostService extends Service {
         const mappedData: IComments = ListMapper.normalizeList(data, pagParams, normalizedPagParams);
         mappedData.data = PostMapper.normalizeDatesForClient(mappedData.data, req.query.locale);
         logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_NORMALIZED, mappedData);
-        return {status, data: mappedData}
+        return {status, data: mappedData};
       },
       (error) => {
         logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_ERROR, error.status, error.data);
       }
-    )
+    );
   }
 }
 

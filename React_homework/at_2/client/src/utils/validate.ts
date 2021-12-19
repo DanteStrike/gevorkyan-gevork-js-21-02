@@ -57,7 +57,10 @@ const imageValidator = (file: File) => {
   return (isJpgOrPng && isLt2M) || Upload.LIST_IGNORE;
 };
 
-const phoneFormatValidator = () => ({pattern: new RegExp(`^\\+?7(\\d{10})$`), message: i18next.t(`error.validate.phone.format`)});
+const phoneFormatValidator = () => ({
+  pattern: new RegExp(`^\\+?7(\\d{10})$`),
+  message: i18next.t(`error.validate.phone.format`),
+});
 const emailFormatValidator = () => ({type: 'email' as any, message: i18next.t(`error.validate.email.format`)});
 const disableDateOverCurrent = (current: moment.Moment) => current && current > moment();
 

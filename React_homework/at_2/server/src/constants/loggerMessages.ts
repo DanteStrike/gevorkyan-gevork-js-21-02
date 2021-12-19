@@ -1,6 +1,6 @@
 export namespace LoggerMessages {
   export enum Service {
-    ERROR = `[Service.createCommonServerResponse] error = {}`
+    ERROR = `[Service.createCommonServerResponse] error = {}`,
   }
 
   export enum CommonService {

@@ -1,10 +1,10 @@
-import {AxiosError, AxiosResponse} from "axios";
+import {AxiosError, AxiosResponse} from 'axios';
 
 class ApiAxiosRepository {
   protected static createCommonAxiosRequest<T>(
     request: Promise<AxiosResponse<T>>,
     onSuccess?: (response: AxiosResponse<T>) => void,
-    onError?: (error: AxiosError | Error) => void,
+    onError?: (error: AxiosError | Error) => void
   ): Promise<AxiosResponse<T>> {
     return request
       .then((response) => {
@@ -20,7 +20,7 @@ class ApiAxiosRepository {
         }
 
         return Promise.reject(error);
-      })
+      });
   }
 }
 
