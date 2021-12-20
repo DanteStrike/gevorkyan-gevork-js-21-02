@@ -18,7 +18,7 @@ const normalizeArgsForFormat = (...args: LoggerArgsType): FormatArgsType =>
     return arg.toString();
   });
 
-const collectLogMessage = (message: LoggerMessagesType, ...args: LoggerArgsType): string =>
+export const collectLogMessage = (message: LoggerMessagesType, ...args: LoggerArgsType): string =>
   `|ID: ${context.get(loggerConfig.contextName)}| ${format(message, ...normalizeArgsForFormat(...args))}`;
 
 export default {

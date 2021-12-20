@@ -13,7 +13,7 @@ class Service {
     mapper?: ((response: AxiosResponse<T>) => IServerRes<T>) | null,
     onError?: (error: IServerErrorRes) => void
   ) {
-    request
+    return request
       .then((response) => {
         const successServerRes: IServerRes<T> =
           mapper === undefined || mapper === null ? {status: response.status, data: response.data} : mapper(response);
@@ -25,7 +25,6 @@ class Service {
         res.status(successServerRes.status).json(successServerRes.data);
       })
       .catch((error: AxiosError | Error) => {
-        console.log(error);
         logger.error(LoggerMessages.Service.ERROR, error);
 
         const errServerRes: IServerErrorRes = {

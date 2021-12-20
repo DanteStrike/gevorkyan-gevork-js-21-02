@@ -10,7 +10,6 @@ class CommonService {
   }
 
   static getUnexpectedServerError(err: any, req: Request, res: Response, next: NextFunction) {
-    console.log(err);
     logger.fatal(LoggerMessages.CommonService.INTERNAL_SERVER_ERROR, err);
     res.status(500).json({error: ErrorMessages.INTERNAL_SERVER_ERROR});
     next();

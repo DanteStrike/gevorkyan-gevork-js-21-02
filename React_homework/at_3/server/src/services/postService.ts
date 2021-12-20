@@ -95,7 +95,7 @@ class PostService extends Service {
         return {status, data: mappedData};
       },
       (error) => {
-        logger.info(LoggerMessages.PostService.GET_POST_COMMENTS_ERROR, error.status, error.data);
+        logger.error(LoggerMessages.PostService.GET_POST_COMMENTS_ERROR, error.status, error.data);
       }
     );
   }
