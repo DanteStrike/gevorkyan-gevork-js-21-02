@@ -1,11 +1,13 @@
 import React, {useContext} from 'react';
 import {Switch} from 'antd';
 import './ThemeSwithcer.scss';
-import {Theme, ThemeContext} from '../../context/ThemeContext';
+import {Theme as ContextThemes, ThemeContext} from '../../context/ThemeContext';
 import useAppTranslation from '../../hooks/use-app-translation';
+
 
 function ThemeSwitcher() {
   const themeContext = useContext(ThemeContext);
+  const Theme = ContextThemes;
   const {t} = useAppTranslation(`theme`);
 
   const handleThemeChange = (checked: boolean) => {
