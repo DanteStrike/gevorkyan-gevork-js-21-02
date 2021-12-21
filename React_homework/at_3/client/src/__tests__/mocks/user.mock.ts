@@ -31,8 +31,8 @@ export const fullUser: IUser = {
   picture: `url`,
   gender: `female`,
   email: `email`,
-  dateOfBirth: `un-normalized`,
-  registerDate: `un-normalized`,
+  dateOfBirth: `normalized`,
+  registerDate: `normalized`,
   phone: `phone`,
   location: {
     street: `street`,
