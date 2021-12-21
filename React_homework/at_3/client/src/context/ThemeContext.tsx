@@ -1,7 +1,7 @@
 import React from 'react';
 import {DomUtils} from '../utils';
 
-export const enum Theme {
+export enum Theme {
   LIGHT = `light`,
   DARK = `dark`,
   DEFAULT = `light`,
