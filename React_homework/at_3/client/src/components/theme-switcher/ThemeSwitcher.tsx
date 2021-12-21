@@ -4,7 +4,6 @@ import './ThemeSwithcer.scss';
 import {Theme as ContextThemes, ThemeContext} from '../../context/ThemeContext';
 import useAppTranslation from '../../hooks/use-app-translation';
 
-
 function ThemeSwitcher() {
   const themeContext = useContext(ThemeContext);
   const Theme = ContextThemes;
