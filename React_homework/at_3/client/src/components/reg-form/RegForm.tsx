@@ -39,7 +39,7 @@ function RegForm({loading, onSubmit = () => {}}: IRegFormProps) {
     <Form
       className="reg-form"
       form={form}
-      name="register"
+      name="registration"
       size="middle"
       layout="vertical"
       validateTrigger="onSubmit"
