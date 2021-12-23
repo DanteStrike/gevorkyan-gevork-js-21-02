@@ -65,6 +65,7 @@ const emailFormatValidator = () => ({type: 'email' as any, message: i18next.t(`e
 const disableDateOverCurrent = (current: moment.Moment) => current && current > moment();
 
 export default {
+  requireValidator,
   userNameValidator,
   imageValidator,
   requireValidatorName,

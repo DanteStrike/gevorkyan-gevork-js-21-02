@@ -36,7 +36,7 @@ function Posts() {
   };
 
   return (
-    <ContentLayout type={ContentLayoutType.FULL} hideTitle title={t(`users`)} isError={isError} errMsg={errMsg}>
+    <ContentLayout type={ContentLayoutType.FULL} hideTitle title={t(`posts`)} isError={isError} errMsg={errMsg}>
       <AppList
         current={page}
         total={total}
