@@ -1,35 +1,30 @@
-import {createMemoryHistory} from "history";
-import {shallow, render, mount} from "enzyme";
-import {Router} from "react-router-dom";
-import React from "react";
-import {Provider} from "react-redux";
-import Routes from "../../../components/routes/Routes";
-import mockStore from "../../mocks/store.mock";
-import * as useAppSelectorModule from "../../../hooks/use-app-selector";
-
+import {createMemoryHistory} from 'history';
+import {shallow, render, mount} from 'enzyme';
+import {Router} from 'react-router-dom';
+import React from 'react';
+import {Provider} from 'react-redux';
+import Routes from '../../../components/routes/Routes';
+import mockStore from '../../mocks/store.mock';
+import * as useAppSelectorModule from '../../../hooks/use-app-selector';
 
 describe(`Component Routes should render correctly`, () => {
   it(`snapshot test`, () => {
-    jest.spyOn(useAppSelectorModule, "default").mockReturnValue(null);
+    jest.spyOn(useAppSelectorModule, 'default').mockReturnValue(null);
 
-    const wrapper = shallow(<Routes/>);
+    const wrapper = shallow(<Routes />);
     expect(wrapper).toMatchSnapshot();
   });
-})
+});
 
 describe(`Component Routes should work correctly`, () => {
-  beforeEach(() => {
-    jest.restoreAllMocks();
-  })
-
   it(`/profile/userID/edit path test`, () => {
-    jest.spyOn(useAppSelectorModule, "default").mockReturnValueOnce(`userID`);
+    jest.spyOn(useAppSelectorModule, 'default').mockReturnValueOnce(`userID`);
     const history = createMemoryHistory();
     history.push(`/profile/userID/edit`);
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -38,26 +33,26 @@ describe(`Component Routes should work correctly`, () => {
   });
 
   it(`error path test`, () => {
-    jest.spyOn(useAppSelectorModule, "default").mockReturnValue(null);
+    jest.spyOn(useAppSelectorModule, 'default').mockReturnValue(null);
 
     const history = createMemoryHistory();
     history.push(`/errorPath`);
     const wrapper = render(
       <Router history={history}>
-        <Routes/>
+        <Routes />
       </Router>
     );
     expect(wrapper.find(`h1`).text()).toBe(`Error: 404`);
   });
 
   it(`denied path test`, () => {
-    jest.spyOn(useAppSelectorModule, "default").mockReturnValueOnce(null);
+    jest.spyOn(useAppSelectorModule, 'default').mockReturnValueOnce(null);
 
     const history = createMemoryHistory();
     history.push(`/denied`);
     const wrapper = render(
       <Router history={history}>
-        <Routes/>
+        <Routes />
       </Router>
     );
     expect(wrapper.find(`h1`).text()).toBe(`Error: 403`);
@@ -70,7 +65,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -84,7 +79,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -98,7 +93,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -111,7 +106,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -124,7 +119,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -137,7 +132,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -151,7 +146,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = render(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -165,7 +160,7 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
@@ -178,10 +173,10 @@ describe(`Component Routes should work correctly`, () => {
     const wrapper = mount(
       <Provider store={mockStore}>
         <Router history={history}>
-          <Routes/>
+          <Routes />
         </Router>
       </Provider>
     );
     expect(wrapper.find(`h1`).text()).toBe(`Login`);
   });
-})
+});

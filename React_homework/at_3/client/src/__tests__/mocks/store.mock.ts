@@ -1,4 +1,4 @@
-import configureStore from 'redux-mock-store'
+import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 export const initStoreData = {
@@ -6,7 +6,7 @@ export const initStoreData = {
     fetch: {
       status: 'idle',
       error: null,
-      controller: null
+      controller: null,
     },
     list: {
       current: 1,
@@ -17,58 +17,58 @@ export const initStoreData = {
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
+          picture: '',
         },
         {
           id: '',
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
+          picture: '',
         },
         {
           id: '',
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
+          picture: '',
         },
         {
           id: '',
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
+          picture: '',
         },
         {
           id: '',
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
+          picture: '',
         },
         {
           id: '',
           title: '',
           firstName: '',
           lastName: '',
-          picture: ''
-        }
-      ]
-    }
+          picture: '',
+        },
+      ],
+    },
   },
   PROFILE: {
     fetch: {
       loadProfile: {
         status: 'idle',
         error: null,
-        controller: null
+        controller: null,
       },
       loadUserPosts: {
         status: 'idle',
         error: null,
-        controller: null
-      }
+        controller: null,
+      },
     },
     user: {
       id: '',
@@ -86,8 +86,8 @@ export const initStoreData = {
         city: '',
         state: '',
         country: '',
-        timezone: ''
-      }
+        timezone: '',
+      },
     },
     posts: {
       current: 1,
@@ -103,8 +103,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -116,8 +116,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -129,17 +129,17 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
-        }
-      ]
-    }
+            picture: '',
+          },
+        },
+      ],
+    },
   },
   POSTS: {
     fetch: {
       status: 'idle',
       error: null,
-      controller: null
+      controller: null,
     },
     list: {
       current: 1,
@@ -155,8 +155,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -168,8 +168,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -181,8 +181,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -194,8 +194,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -207,8 +207,8 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
+            picture: '',
+          },
         },
         {
           id: '',
@@ -220,37 +220,37 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
-          }
-        }
-      ]
-    }
+            picture: '',
+          },
+        },
+      ],
+    },
   },
   AUTH: {
     fetch: {
       status: 'idle',
       error: null,
-      controller: null
+      controller: null,
     },
     status: 'idle',
     user: {
       id: '',
       name: '',
-      picture: ''
-    }
+      picture: '',
+    },
   },
   POST: {
     fetch: {
       loadPost: {
         status: 'idle',
         error: null,
-        controller: null
+        controller: null,
       },
       loadComments: {
         status: 'idle',
         error: null,
-        controller: null
-      }
+        controller: null,
+      },
     },
     post: {
       id: '',
@@ -262,8 +262,8 @@ export const initStoreData = {
         title: '',
         firstName: '',
         lastName: '',
-        picture: ''
-      }
+        picture: '',
+      },
     },
     comments: {
       current: 1,
@@ -277,10 +277,10 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
+            picture: '',
           },
           post: '',
-          publishDate: ''
+          publishDate: '',
         },
         {
           id: '',
@@ -290,15 +290,15 @@ export const initStoreData = {
             title: '',
             firstName: '',
             lastName: '',
-            picture: ''
+            picture: '',
           },
           post: '',
-          publishDate: ''
-        }
-      ]
-    }
-  }
-}
+          publishDate: '',
+        },
+      ],
+    },
+  },
+};
 
 const middlewares = [thunk];
 const configuredStore = configureStore(middlewares);

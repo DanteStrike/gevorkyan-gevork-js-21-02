@@ -1,39 +1,34 @@
 import {mount, shallow} from 'enzyme';
-import React from 'react';
-import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import moment from 'moment';
-import RegForm from '../../../components/reg-form/RegForm';
+import {Router} from 'react-router-dom';
+import React from 'react';
 import sleep from '../../mocks/utils';
+import LoginForm from '../../../components/login-form/LoginForm';
 
-describe(`Component RegForm should render correctly`, () => {
+describe(`Component LoginForm should render correctly`, () => {
   it(`snapshot default test`, () => {
-    const wrapper = shallow(<RegForm />);
+    const wrapper = shallow(<LoginForm />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it(`snapshot loading test`, () => {
-    const wrapper = shallow(<RegForm loading />);
+    const wrapper = shallow(<LoginForm loading />);
     expect(wrapper).toMatchSnapshot();
   });
 });
 
-describe(`Component RegForm should work correctly`, () => {
+describe(`Component LoginForm should work correctly`, () => {
   it(`call submit test`, () => {
     const history = createMemoryHistory();
     const submitHandler = jest.fn(() => {});
     const wrapper = mount(
       <Router history={history}>
-        <RegForm onSubmit={submitHandler} />
+        <LoginForm onSubmit={submitHandler} />
       </Router>
     );
 
     const mockData = {
-      name: `full user name`,
-      gender: `female`,
-      dateOfBirth: moment().subtract(18, 'years'),
-      email: `email@mail.ru`,
-      phone: `+79999999999`,
+      id: `anyID`,
     };
 
     wrapper.children().children().prop(`form`).setFieldsValue(mockData);
@@ -42,6 +37,7 @@ describe(`Component RegForm should work correctly`, () => {
 
     return sleep().then(() => {
       expect(submitHandler).toHaveBeenCalledTimes(1);
+      expect(submitHandler).toHaveBeenLastCalledWith(`anyID`);
     });
   });
 });
